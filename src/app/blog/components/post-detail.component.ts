@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Post } from '../interface/post';
 
 @Component({
-  selector: 'post-detail',
+  selector: 'app-post-detail',
   template: `
     <ui-hero [title]="post.title" [description]="post.created"></ui-hero>
     <div class="row">

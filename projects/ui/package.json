@@ -1,6 +1,9 @@
 {
   "name": "@kikstart/ui",
+  "description": "Set of ready to use declarative Angular UI components.",
+  "license": "MIT",
   "version": "0.0.0-development",
+  "private": false,
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",
@@ -9,5 +12,12 @@
     "ngx-bootstrap": "^5.2.0",
     "ngx-timeago": "^1.0.2",
     "ngx-toastr": "^11.2.1"
+  },
+  "devDependencies": {
+    "semantic-release": "^15.13.31"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beeman/kikstart-ui.git"
   }
 }

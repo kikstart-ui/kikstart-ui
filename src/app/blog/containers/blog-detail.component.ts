@@ -10,7 +10,7 @@ import { BlogService } from '../services/blog.service';
 
     <ng-template #outlet let-data="data" let-errors="errors">
       <ui-debug *ngIf="errors && errors.length" label="Errors" [data]="errors"></ui-debug>
-      <post-detail *ngIf="data" [post]="data"></post-detail>
+      <app-post-detail *ngIf="data" [post]="data"></app-post-detail>
     </ng-template>
   `,
 })

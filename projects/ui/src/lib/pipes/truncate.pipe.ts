@@ -9,14 +9,20 @@ export class TruncatePipe implements PipeTransform {
     const biggestWord = 50;
     const ellipses = '...';
 
-    if (typeof value === 'undefined') return value;
-    if (value.length <= length) return value;
-    if (length < ellipses.length) return '';
+    if (typeof value === 'undefined') {
+      return value;
+    }
+    if (value.length <= length) {
+      return value;
+    }
+    if (length < ellipses.length) {
+      return '';
+    }
 
-    //.. truncate to about correct length
+    // .. truncate to about correct length
     let truncatedText = value.slice(0, length + biggestWord);
 
-    //.. now nibble ends till correct length
+    // .. now nibble ends till correct length
     while (truncatedText.length > length - ellipses.length) {
       const lastSpace = truncatedText.lastIndexOf(' ');
 

@@ -9,7 +9,7 @@ import { BlogService } from '../services/blog.service';
     <ui-hero title="Blog" description="This is what a blog would look like..."></ui-hero>
     <div class="row">
       <div class="col-8 offset-2">
-        <post-list [posts]="posts$ | async"></post-list>
+        <app-post-list [posts]="posts$ | async"></app-post-list>
       </div>
     </div>
   `,

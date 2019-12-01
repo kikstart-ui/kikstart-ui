@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Post } from '../interface/post';
 
 @Component({
-  selector: 'post-list',
+  selector: 'app-post-list',
   template: `
     <div *ngFor="let post of posts" class="mb-5">
       <ui-card>
