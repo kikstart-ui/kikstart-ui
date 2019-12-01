@@ -21,21 +21,7 @@ yarn add bootswatch bootstrap font-awesome ngx-timeago ngx-bootstrap ngx-toastr 
 Update `src/styles.scss`:
 
 ```scss
-@import '~bootswatch/dist/darkly/_variables.scss';
-@import '~bootstrap/scss/bootstrap.scss';
-@import '~bootswatch/dist/darkly/_bootswatch.scss';
-
-$fa-font-path: '~font-awesome/fonts';
-@import '~font-awesome/scss/font-awesome.scss';
-
-body,
-html {
-  height: 100vh;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
+@import '~@kikstart/ui/_styles.scss';
 ```
 
 # MIT License
