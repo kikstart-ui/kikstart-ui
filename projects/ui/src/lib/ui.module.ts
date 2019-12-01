@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { UiFormsModule } from './ui-forms.module';
 import { TruncatePipe } from './pipes/truncate.pipe';
 
+import { UiAuthComponent } from './components/ui-auth/ui-auth.component';
 import { UiBrandComponent } from './components/ui-brand.component';
 import { UiCardComponent } from './components/ui-card.component';
 import { UiCardBodyComponent } from './components/ui-card-body.component';
@@ -38,6 +39,7 @@ import { UiTabsComponent } from './components/ui-tabs.component';
 import { UiUserComponent } from './components/ui-user.component';
 
 const COMPONENTS = [
+  UiAuthComponent,
   UiBrandComponent,
   UiCardComponent,
   UiCardBodyComponent,

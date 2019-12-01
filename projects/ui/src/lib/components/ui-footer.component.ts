@@ -6,15 +6,28 @@ import { UiLink } from '../interfaces/ui-link';
   template: `
     <footer class="my-5 footer">
       <div class="container">
-        <div class="float-right">
-          <ng-container *ngIf="links.length">
-            <ui-link *ngFor="let link of links" [link]="link" linkClass="text-muted"></ui-link>
-          </ng-container>
-        </div>
-        <div class="">
-          <ng-container *ngIf="html"><div [innerHTML]="html"></div></ng-container>
-          <ng-container *ngIf="text">{{ text }}</ng-container>
-        </div>
+        <ng-container *ngIf="centered">
+          <div class="text-center">
+            <ng-container *ngIf="html"><div [innerHTML]="html"></div></ng-container>
+            <ng-container *ngIf="text">{{ text }}</ng-container>
+            <div class="my-3">
+              <ng-container *ngIf="links.length">
+                <ui-link *ngFor="let link of links" [link]="link" linkClass="text-muted"></ui-link>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!centered">
+          <div class="float-right">
+            <ng-container *ngIf="links.length">
+              <ui-link *ngFor="let link of links" [link]="link" linkClass="text-muted"></ui-link>
+            </ng-container>
+          </div>
+          <div>
+            <ng-container *ngIf="html"><div [innerHTML]="html"></div></ng-container>
+            <ng-container *ngIf="text">{{ text }}</ng-container>
+          </div>
+        </ng-container>
       </div>
     </footer>
   `,
@@ -28,6 +41,7 @@ import { UiLink } from '../interfaces/ui-link';
   ],
 })
 export class UiFooterComponent {
+  @Input() centered = false;
   @Input() html: string;
   @Input() text: string;
   @Input() links: UiLink[] = [];
