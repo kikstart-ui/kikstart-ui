@@ -10,10 +10,11 @@ export const appLayout: UiLayout = {
   header: {
     style: 'dark',
     links: [
-      { path: 'home', label: 'Home', icon: 'fa fa-fw fa-home' },
-      { path: 'docs', label: 'Docs', icon: 'fa fa-fw fa-book' },
-      { path: 'blog', label: 'Blog', icon: 'fa fa-fw fa-rss' },
-      { path: 'style-guide', label: 'Style Guide', icon: 'fa fa-fw fa-paint-brush' },
+      { path: '/home', label: 'Home', icon: 'fa fa-fw fa-home' },
+      { path: '/docs', label: 'Docs', icon: 'fa fa-fw fa-book' },
+      { path: '/blog', label: 'Blog', icon: 'fa fa-fw fa-rss' },
+      { path: '/login', label: 'Auth', icon: 'fa fa-fw fa-lock' },
+      { path: '/style-guide', label: 'Style Guide', icon: 'fa fa-fw fa-paint-brush' },
       { url: 'https://github.com/beeman/kikstart-ui', label: 'GitHub', icon: 'fa fa-fw fa-github' },
     ],
   },

@@ -4,9 +4,11 @@ import { appLayout } from './app.config';
 @Component({
   selector: 'app-root',
   template: `
-    <router-outlet></router-outlet>
+    <ui-layout [config]="config">
+      <router-outlet></router-outlet>
+    </ui-layout>
   `,
 })
-export class AppComponent {
+export class AppLayoutComponent {
   config = appLayout;
 }
