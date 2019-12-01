@@ -10,12 +10,12 @@ export const appLayout: UiLayout = {
   header: {
     style: 'dark',
     links: [
-      { path: '/home', label: 'Home', icon: 'fa fa-fw fa-home' },
-      { path: '/docs', label: 'Docs', icon: 'fa fa-fw fa-book' },
-      { path: '/blog', label: 'Blog', icon: 'fa fa-fw fa-rss' },
-      { path: '/login', label: 'Auth', icon: 'fa fa-fw fa-lock' },
-      { path: '/style-guide', label: 'Style Guide', icon: 'fa fa-fw fa-paint-brush' },
-      { url: 'https://github.com/beeman/kikstart-ui', label: 'GitHub', icon: 'fa fa-fw fa-github' },
+      { path: '/home', label: 'Home', icon: 'mr-2 fa fa-fw fa-home' },
+      { path: '/docs', label: 'Docs', icon: 'mr-2 fa fa-fw fa-book' },
+      { path: '/blog', label: 'Blog', icon: 'mr-2 fa fa-fw fa-rss' },
+      { path: '/login', label: 'Auth', icon: 'mr-2 fa fa-fw fa-lock' },
+      { path: '/style-guide', label: 'Style Guide', icon: 'mr-2 fa fa-fw fa-paint-brush' },
+      { url: 'https://github.com/beeman/kikstart-ui', label: 'GitHub', icon: 'mr-2 fa fa-fw fa-github' },
     ],
   },
   footer: {
