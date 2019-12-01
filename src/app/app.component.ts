@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import { appLayout } from './app.config';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <ui-layout [config]="config">
+      <router-outlet></router-outlet>
+    </ui-layout>
+  `,
 })
 export class AppComponent {
-  title = 'kikstart-dark-theme';
+  config = appLayout;
 }
