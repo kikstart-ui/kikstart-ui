@@ -5,6 +5,8 @@
 $fa-font-path: '~font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome.scss';
 
+@import '~ngx-toastr/toastr-bs4-alert';
+
 body,
 html {
   height: 100vh;
