@@ -4,6 +4,7 @@
   "license": "MIT",
   "version": "0.0.0-development",
   "private": false,
+  "access": "public",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",
