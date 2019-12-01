@@ -49,9 +49,15 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: yarn
-      - run: yarn build
+      - run: yarn build --base-href=/kikstart-ui/
       - run: yarn semantic-release --branch develop
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           GH_TOKEN: ${{secrets.GH_TOKEN}}
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v2.5.0
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.GH_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./dist/kikstart-ui
