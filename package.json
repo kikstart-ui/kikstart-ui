@@ -9,11 +9,13 @@
     "start": "ng serve",
     "build": "yarn build:lib && yarn build:demo",
     "build:demo": "ng build --prod",
+    "prebuild:lib": "cp LICENSE README.md projects/ui/",
     "build:lib": "ng-packagr -p projects/ui/ng-package.json",
+    "postbuild:lib": "yarn build:lib:scss",
+    "build:lib:scss": "scss-bundle -p scss-bundle.config.json",
     "test": "true # ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "pre:semantic-release": "cp README.md projects/ui/README.md",
     "semantic-release": "cd dist/ui && semantic-release"
   },
   "private": true,
@@ -60,12 +62,13 @@
     "ng-packagr": "^5.4.0",
     "prettier": "1.19.1",
     "protractor": "~5.4.0",
+    "scss-bundle": "^3.0.2",
+    "semantic-release": "^15.13.31",
     "ts-node": "~7.0.0",
     "tsickle": "^0.37.0",
     "tslint": "~5.15.0",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "~3.5.3",
-    "semantic-release": "^15.13.31"
+    "typescript": "~3.5.3"
   },
   "husky": {
     "hooks": {
