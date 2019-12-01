@@ -43,5 +43,3 @@ export class AuthResetComponent implements OnInit {
     }, 1000);
   }
 }
-
-[];
