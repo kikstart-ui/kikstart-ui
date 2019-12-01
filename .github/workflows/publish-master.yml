@@ -60,4 +60,4 @@ jobs:
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.GH_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./book
+          PUBLISH_DIR: ./dist/kikstart-ui
