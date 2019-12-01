@@ -15,7 +15,9 @@ import { Post } from '../interface/post';
           </h2>
           <div [innerHTML]="post.snippet"></div>
           <div class="my-3">
-            <ui-link [link]="{ path: post.id, label: 'Read More', iconAfter: 'fa fa-angle-double-right' }"></ui-link>
+            <ui-link
+              [link]="{ path: post.id, label: 'Read More', iconAfter: 'ml-2 fa fa-angle-double-right' }"
+            ></ui-link>
           </div>
         </ui-card-body>
       </ui-card>

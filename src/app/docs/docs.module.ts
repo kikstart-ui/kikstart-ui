@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { UiModule } from '../ui/ui.module';
+import { UiModule } from '@kikstart/ui';
 import { DocsIndexComponent } from './containers/docs-index.component';
 
 const routes: Routes = [

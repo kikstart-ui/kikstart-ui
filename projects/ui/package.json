@@ -1,0 +1,13 @@
+{
+  "name": "@kikstart/ui",
+  "version": "0.0.0-development",
+  "peerDependencies": {
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14",
+    "@ngx-formly/bootstrap": "^5.5.6",
+    "@ngx-formly/core": "^5.5.6",
+    "ngx-bootstrap": "^5.2.0",
+    "ngx-timeago": "^1.0.2",
+    "ngx-toastr": "^11.2.1"
+  }
+}

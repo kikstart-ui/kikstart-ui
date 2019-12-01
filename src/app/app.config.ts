@@ -1,4 +1,4 @@
-import { UiLayout } from './ui/interfaces/ui-layout';
+import { UiLayout } from '@kikstart/ui';
 
 export const appLayout: UiLayout = {
   brand: {

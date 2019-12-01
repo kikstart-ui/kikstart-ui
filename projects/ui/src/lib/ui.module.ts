@@ -66,13 +66,14 @@ const COMPONENTS = [
   UiUserComponent,
 ];
 
-const MODULES = [CommonModule, RouterModule, BsDropdownModule, ModalModule];
+const MODULES = [CommonModule, BsDropdownModule, ModalModule];
 
 @NgModule({
   entryComponents: [UiDialogFormComponent, UiDialogProgressComponent],
   declarations: [TruncatePipe, ...COMPONENTS],
   imports: [
     ...MODULES,
+    RouterModule.forChild([]),
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
     UiFormsModule,

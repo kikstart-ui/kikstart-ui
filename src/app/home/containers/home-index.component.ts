@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { appLayout } from '../../app.config';
 
-import { UiCard } from '../../ui/interfaces/ui-card';
-import { UiLink } from '../../ui/interfaces/ui-link';
-import { UiBrand } from '../../ui/interfaces/ui-brand';
+import { UiCard } from '@kikstart/ui';
+import { UiLink } from '@kikstart/ui';
+import { UiBrand } from '@kikstart/ui';
 
 @Component({
   template: `
@@ -20,7 +20,7 @@ export class HomeIndexComponent implements OnInit {
   link: UiLink = {
     path: '/docs',
     label: 'Learn more',
-    iconAfter: 'fa fa-angle-double-right',
+    iconAfter: 'ml-2 fa fa-angle-double-right',
   };
   cards: UiCard[] = [
     {
@@ -31,7 +31,7 @@ export class HomeIndexComponent implements OnInit {
         {
           label: 'Get Started',
           path: '/docs',
-          iconAfter: 'fa fa-angle-double-right',
+          iconAfter: 'ml-2 fa fa-angle-double-right',
         },
       ],
     },
@@ -43,7 +43,7 @@ export class HomeIndexComponent implements OnInit {
         {
           label: 'View Posts',
           path: '/blog',
-          iconAfter: 'fa fa-angle-double-right',
+          iconAfter: 'ml-2 fa fa-angle-double-right',
         },
       ],
     },
@@ -55,7 +55,7 @@ export class HomeIndexComponent implements OnInit {
         {
           label: 'Learn More',
           path: '/style-guides',
-          iconAfter: 'fa fa-angle-double-right',
+          iconAfter: 'ml-2 fa fa-angle-double-right',
         },
       ],
     },

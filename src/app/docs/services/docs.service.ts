@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 
-import { UiLink } from '../../ui/interfaces/ui-link';
+import { UiLink } from '@kikstart/ui';
 import { Document } from '../interface/document';
 
 import docsJson from '../../content/docs.json';

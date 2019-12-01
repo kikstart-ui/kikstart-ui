@@ -19,13 +19,13 @@ import { UiBrand } from '../interfaces/ui-brand';
         margin-right: 10px;
       }
       .brand-name {
-        font-weight: 800;
+        font-weight: 700;
         letter-spacing: 4px;
       }
       .brand-product {
         color: #bdbdbd;
         margin-left: 5px;
-        font-weight: 100;
+        font-weight: 400;
         letter-spacing: 4px;
       }
       .brand-separator {

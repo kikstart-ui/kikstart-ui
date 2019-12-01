@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { UiModule } from './ui/ui.module';
+import { UiModule } from '@kikstart/ui';
 
 import { appRoutes } from './app.routes';
 import { AppComponent } from './app.component';

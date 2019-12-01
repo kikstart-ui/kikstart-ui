@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 
-import { UiLink } from '../../ui/interfaces/ui-link';
+import { UiLink } from '@kikstart/ui';
 import { Post } from '../interface/post';
 
 import postsJson from '../../content/posts.json';

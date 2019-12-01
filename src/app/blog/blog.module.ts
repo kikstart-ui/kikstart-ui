@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { UiModule } from '../ui/ui.module';
+import { UiModule } from '@kikstart/ui';
 import { BlogIndexComponent } from './containers/blog-index.component';
 import { BlogDetailComponent } from './containers/blog-detail.component';
 
