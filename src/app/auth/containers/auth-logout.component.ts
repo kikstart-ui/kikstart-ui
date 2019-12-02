@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { UiService } from '@kikstart/ui';
 
 import { AuthWebHelper } from '../helpers/auth-web.helper';
-import { appLayout } from '../../app.config';
 
 @Component({
   template: `
@@ -11,11 +10,13 @@ import { appLayout } from '../../app.config';
   `,
 })
 export class AuthLogoutComponent implements OnInit {
-  brand = { ...appLayout.brand, size: 'lg' };
-  footer = appLayout.footer;
+  brand = AuthWebHelper.brand;
+  footer = AuthWebHelper.footer;
   links = [AuthWebHelper.logoutLink];
 
-  constructor(private ui: UiService, private router: Router) {}
+  constructor(private ui: UiService, private router: Router) {
+    this.ui.setMetaData({ title: 'Logout' });
+  }
 
   ngOnInit() {
     setTimeout(() => {

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { UiService } from '@kikstart/ui';
 
 import { AuthWebHelper } from '../helpers/auth-web.helper';
-import { appLayout } from '../../app.config';
 
 @Component({
   template: `
@@ -24,8 +24,8 @@ import { appLayout } from '../../app.config';
   `,
 })
 export class AuthLoginComponent {
-  brand = { ...appLayout.brand, size: 'lg' };
-  footer = appLayout.footer;
+  brand = AuthWebHelper.brand;
+  footer = AuthWebHelper.footer;
   form = new FormGroup({});
   model = { username: 'admin', password: 'password' };
   fields = AuthWebHelper.loginFields;
@@ -33,13 +33,16 @@ export class AuthLoginComponent {
   links = [AuthWebHelper.loginLink, AuthWebHelper.registerLink];
   bottomLink = AuthWebHelper.forgotLink;
 
-  constructor(public ui: UiService, public router: Router) {}
+  constructor(public ui: UiService, public router: Router) {
+    this.ui.setMetaData({ title: 'Login' });
+  }
 
   async handleAction({ type, payload }) {
     this.loading = true;
     this.form.disable();
 
     setTimeout(() => {
+      this.form.enable();
       this.ui.toastSuccess('You are logged in!');
       return this.router.navigate(['/']);
     }, 1000);

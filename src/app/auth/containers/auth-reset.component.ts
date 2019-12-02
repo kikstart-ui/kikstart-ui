@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { UiService } from '@kikstart/ui';
 
 import { AuthWebHelper } from '../helpers/auth-web.helper';
-import { appLayout } from '../../app.config';
-import { Router } from '@angular/router';
 
 @Component({
   template: `
@@ -22,15 +22,17 @@ import { Router } from '@angular/router';
   `,
 })
 export class AuthResetComponent implements OnInit {
-  brand = { ...appLayout.brand, size: 'lg' };
-  footer = appLayout.footer;
+  brand = AuthWebHelper.brand;
+  footer = AuthWebHelper.footer;
   form = new FormGroup({});
   fields = [AuthWebHelper.emailField];
   loading = false;
   links = [AuthWebHelper.forgotLink, AuthWebHelper.registerLink];
   bottomLink = AuthWebHelper.loginLink;
 
-  constructor(public ui: UiService, private router: Router) {}
+  constructor(public ui: UiService, private router: Router) {
+    this.ui.setMetaData({ title: 'Reset password' });
+  }
 
   ngOnInit() {}
 

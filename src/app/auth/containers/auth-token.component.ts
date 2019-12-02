@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthWebHelper } from '../helpers/auth-web.helper';
-import { appLayout } from '../../app.config';
-import { UiService } from '@kikstart/ui';
 import { Router } from '@angular/router';
+
+import { UiService } from '@kikstart/ui';
+
+import { AuthWebHelper } from '../helpers/auth-web.helper';
 
 @Component({
   template: `
@@ -10,11 +11,13 @@ import { Router } from '@angular/router';
   `,
 })
 export class AuthTokenComponent implements OnInit {
-  brand = { ...appLayout.brand, size: 'lg' };
-  footer = appLayout.footer;
+  brand = AuthWebHelper.brand;
+  footer = AuthWebHelper.footer;
   links = [AuthWebHelper.loadingLink];
 
-  constructor(public ui: UiService, private router: Router) {}
+  constructor(public ui: UiService, private router: Router) {
+    this.ui.setMetaData({ title: 'Login' });
+  }
 
   ngOnInit() {
     this.handleAction({ payload: true });

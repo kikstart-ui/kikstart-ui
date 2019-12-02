@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { appLayout } from '../../app.config';
 
-import { UiCard } from '@kikstart/ui';
+import { UiCard, UiService } from '@kikstart/ui';
 import { UiLink } from '@kikstart/ui';
 import { UiBrand } from '@kikstart/ui';
 
@@ -60,7 +60,9 @@ export class HomeIndexComponent implements OnInit {
       ],
     },
   ];
-  constructor() {}
+  constructor(private ui: UiService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ui.setMetaData({ title: 'Home' });
+  }
 }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { appLayout } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,4 @@ import { appLayout } from './app.config';
     <router-outlet></router-outlet>
   `,
 })
-export class AppComponent {
-  config = appLayout;
-}
+export class AppComponent {}

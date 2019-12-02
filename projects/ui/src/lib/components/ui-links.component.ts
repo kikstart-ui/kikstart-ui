@@ -10,6 +10,6 @@ import { UiLink } from '../interfaces/ui-link';
   `,
 })
 export class UiLinksComponent {
-  @Input() links: UiLink[];
+  @Input() links: UiLink[] = [];
   @Input() linkClass: string;
 }

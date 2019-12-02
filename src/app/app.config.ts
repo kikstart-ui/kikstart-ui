@@ -6,6 +6,7 @@ export const appLayout: UiLayout = {
     name: 'kikstart',
     product: 'ui',
     separator: '|',
+    description: 'Set of ready to use declarative Angular UI components.',
   },
   header: {
     style: 'dark',
