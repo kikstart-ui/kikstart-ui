@@ -28,6 +28,7 @@ import { UiHeaderComponent } from './components/ui-header.component';
 import { UiHeroComponent } from './components/ui-hero.component';
 import { UiLayoutComponent } from './components/ui-layout.component';
 import { UiLinkComponent } from './components/ui-link.component';
+import { UiLinksComponent } from './components/ui-links.component';
 import { UiListComponent } from './components/ui-list.component';
 import { UiListItemComponent } from './components/ui-list-item.component';
 import { UiLoadingComponent } from './components/ui-loading.component';
@@ -57,6 +58,7 @@ const COMPONENTS = [
   UiHeroComponent,
   UiLayoutComponent,
   UiLinkComponent,
+  UiLinksComponent,
   UiListComponent,
   UiListItemComponent,
   UiLoadingComponent,
