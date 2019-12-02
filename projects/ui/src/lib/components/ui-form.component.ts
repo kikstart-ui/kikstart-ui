@@ -7,11 +7,10 @@ import { FormlyFieldConfig, FormlyFormBuilder } from '@ngx-formly/core';
   template: `
     <form [formGroup]="form" novalidate (ngSubmit)="submit()">
       <div>
-        <formly-form [model]="model" [fields]="fields" [form]="form" [options]="options">
-          <button type="submit" style="display: none;" [disabled]="form.touched && !form.valid">
-            submit
-          </button>
-        </formly-form>
+        <formly-form [model]="model" [fields]="fields" [form]="form" [options]="options"> </formly-form>
+        <button type="submit" style="display: none;" [disabled]="form.touched && !form.valid">
+          submit
+        </button>
       </div>
       <div class="mt-5" *ngIf="submitButton">
         <div class="text-right">
