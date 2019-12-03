@@ -7,12 +7,7 @@ import { UiBrand } from '@kikstart/ui';
 
 @Component({
   template: `
-    <ui-hero
-      [brand]="brand"
-      description="Set of ready to use declarative Angular UI components."
-      [link]="link"
-      [cards]="cards"
-    ></ui-hero>
+    <ui-hero [brand]="brand" [description]="brand.description" [link]="link" [cards]="cards"></ui-hero>
   `,
 })
 export class HomeIndexComponent implements OnInit {

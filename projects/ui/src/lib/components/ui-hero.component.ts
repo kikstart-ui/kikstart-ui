@@ -24,8 +24,8 @@ import { UiBrand } from '../interfaces/ui-brand';
       <ng-container *ngFor="let card of cards">
         <div class="col-12 col-sm-12 col-md-4 mb-5">
           <ui-card>
-            <ui-card-header [cardTitle]="card.title"></ui-card-header>
-            <ui-card-body>
+            <ui-card-header *ngIf="card.title" [cardTitle]="card.title"></ui-card-header>
+            <ui-card-body *ngIf="card.content">
               {{ card.content }}
             </ui-card-body>
             <ui-card-footer *ngIf="card?.links?.length">
