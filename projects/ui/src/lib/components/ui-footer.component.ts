@@ -4,7 +4,7 @@ import { UiLink } from '../interfaces/ui-link';
 @Component({
   selector: 'ui-footer',
   template: `
-    <footer class="footer my-{{ margin }}">
+    <footer class="footer">
       <div class="container">
         <ng-container *ngIf="centered">
           <div class="text-center">
@@ -29,7 +29,6 @@ import { UiLink } from '../interfaces/ui-link';
   `,
 })
 export class UiFooterComponent {
-  @Input() margin = 5;
   @Input() centered = false;
   @Input() html: string;
   @Input() text: string;

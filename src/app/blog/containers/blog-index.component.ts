@@ -10,7 +10,7 @@ import { BlogService } from '../services/blog.service';
   template: `
     <ui-hero title="Blog" description="This is what a blog would look like..."></ui-hero>
     <div class="row">
-      <div class="col-8 offset-2">
+      <div class="col-12 col-md-8 offset-md-2">
         <app-post-list [posts]="posts$ | async"></app-post-list>
       </div>
     </div>

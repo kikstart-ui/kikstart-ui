@@ -6,7 +6,7 @@ import { Post } from '../interface/post';
   template: `
     <ui-hero [title]="post.title" [description]="post.created"></ui-hero>
     <div class="row">
-      <div class="col-8 offset-2">
+      <div class="col-12 col-md-8 offset-md-2">
         <ui-card>
           <ui-card-body>
             <div [innerHTML]="post.content"></div>

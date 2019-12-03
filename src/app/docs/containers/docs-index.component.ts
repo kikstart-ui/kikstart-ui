@@ -9,10 +9,10 @@ import { DocsService } from '../services/docs.service';
 @Component({
   template: `
     <div class="row">
-      <div class="col-3">
+      <div class="col-12 col-md-3">
         <ui-sidebar [links]="service.navigation$ | async"></ui-sidebar>
       </div>
-      <div class="col-9">
+      <div class="col-12 col-md-9">
         <ng-container *ngIf="document$ | async as document">
           <ui-card>
             <ui-card-header [cardTitle]="document.title"></ui-card-header>

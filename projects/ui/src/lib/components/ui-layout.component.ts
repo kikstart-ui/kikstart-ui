@@ -14,7 +14,9 @@ import { UiLayout } from '../interfaces/ui-layout';
     <ui-content [fluid]="config?.content?.fluid" [padding]="config?.content?.padding || true">
       <ng-content></ng-content>
     </ui-content>
-    <ui-footer [html]="config?.footer.html" [links]="config?.footer.links"></ui-footer>
+    <div class="my-md-5 my-3">
+      <ui-footer [html]="config?.footer.html" [links]="config?.footer.links"></ui-footer>
+    </div>
   `,
 })
 export class UiLayoutComponent {

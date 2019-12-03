@@ -22,7 +22,7 @@ import { UiBrand } from '../interfaces/ui-brand';
     </div>
     <div class="row" *ngIf="cards.length">
       <ng-container *ngFor="let card of cards">
-        <div class="col-4">
+        <div class="col-12 col-sm-12 col-md-4 mb-5">
           <ui-card>
             <ui-card-header [cardTitle]="card.title"></ui-card-header>
             <ui-card-body>
