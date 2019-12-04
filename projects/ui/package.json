@@ -17,7 +17,7 @@
     "ngx-toastr": "^11.2.1"
   },
   "devDependencies": {
-    "semantic-release": "^15.13.31"
+    "semantic-release": "15.13.31"
   },
   "repository": {
     "type": "git",
