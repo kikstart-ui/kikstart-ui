@@ -1,7 +1,6 @@
-$link-color: #3498db;
-@import '~bootswatch/dist/darkly/_variables.scss';
+@import 'nord/_variables.scss';
 @import '~bootstrap/scss/bootstrap.scss';
-@import '~bootswatch/dist/darkly/_bootswatch.scss';
+@import 'nord/_bootswatch.scss';
 
 $fa-font-path: '~font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome.scss';
