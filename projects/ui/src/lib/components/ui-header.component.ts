@@ -8,7 +8,7 @@ import { UiLink } from '../interfaces/ui-link';
   template: `
     <header>
       <nav class="navbar navbar-expand-md navbar-{{ style }} bg-{{ style }}">
-        <div [class.container]="!fluid" [class.container-fluid]="fluid">
+        <div [class.container-xl]="!fluid" [class.container-fluid]="fluid">
           <a class="navbar-brand" routerLink="/">
             <ui-brand [brand]="brand"></ui-brand>
           </a>
