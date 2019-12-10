@@ -23,7 +23,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/apple-touch-icon.png",
+              "src/favicon.ico",
+              "src/favicon-16x16.png",
+              "src/favicon-32x32.png",
+              "src/assets"
+            ],
             "styles": ["src/styles.scss"],
             "scripts": []
           },
@@ -83,7 +89,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/apple-touch-icon.png",
+              "src/favicon.ico",
+              "src/favicon-16x16.png",
+              "src/favicon-32x32.png",
+              "src/assets"
+            ],
             "styles": ["src/styles.scss"],
             "scripts": []
           }
