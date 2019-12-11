@@ -1,4 +1,4 @@
-![](title.svg)
+[![](header.svg)](https://github.com/beeman/kikstart-ui)
 
 # @kikstart/ui
 
