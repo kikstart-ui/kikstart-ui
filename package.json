@@ -71,6 +71,9 @@
     "tslint-config-prettier": "1.18.0",
     "typescript": "~3.5.3"
   },
+  "resolutions": {
+    "terser-webpack-plugin": "2.2.3"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
