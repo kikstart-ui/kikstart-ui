@@ -5,7 +5,7 @@ export interface UiLayout {
   brand: UiBrand;
   header?: {
     fluid?: boolean;
-    style?: string;
+    style?: 'dark' | 'light';
     links?: UiLink[];
   };
   content?: {
