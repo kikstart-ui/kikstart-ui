@@ -887,10 +887,10 @@
   dependencies:
     tslib "^1.9.0"
 
-"@ngx-formly/core@5.5.6":
-  version "5.5.6"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.5.6.tgz#ef0347a91c4a921bc4ff5d450f7c61f744a3898c"
-  integrity sha512-/V1WH56Hr/84Cej6HTj0Qxp3Sy33o0LDD4zilTwRU1dXfoQkJputUOHVaF3+Ga9r3pTZxZfqPXmKysSamalFkA==
+"@ngx-formly/core@5.5.7":
+  version "5.5.7"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.5.7.tgz#2fdbf9265b7463605a9a0f8e2eddb24b8922ed95"
+  integrity sha512-TVHcOB0+htcenz78XiNIhGLgnkikfGtt0j2lS8TaYe3ZDwNWpafhwOpCWOf35i0cqi6zX/1/eHWUcRHmaNraCQ==
   dependencies:
     tslib "^1.7.1"
 
