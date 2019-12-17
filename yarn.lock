@@ -880,10 +880,10 @@
     tree-kill "1.2.1"
     webpack-sources "1.4.3"
 
-"@ngx-formly/bootstrap@5.5.6":
-  version "5.5.6"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/bootstrap/-/bootstrap-5.5.6.tgz#0d966950c4960367ec25b20e7e489ac4ff6e55f1"
-  integrity sha512-flnNLxjA4qA2AvG97OrdMcFWSswjdOFA7mo8UNGYqXXGR+XkU88g0D7N3XP2DIZ4knzG5KgQxpLwMJOvZITy7A==
+"@ngx-formly/bootstrap@5.5.7":
+  version "5.5.7"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/bootstrap/-/bootstrap-5.5.7.tgz#df820179383d67c90c1307a5a3b314ade396d15f"
+  integrity sha512-J79hN8o6EUze/4OO0wzeGxb7JlD38pJsPteJUC/8cCC8hVW3EYzGTQ4iXuvPuwPfs0ZqwVEZE+XS9qFiE0M3yA==
   dependencies:
     tslib "^1.9.0"
 
