@@ -5,7 +5,7 @@ import { UiLink } from '../interfaces/ui-link';
   selector: 'ui-footer',
   template: `
     <footer class="footer">
-      <div class="container">
+      <div class="container-xl">
         <ng-container *ngIf="centered">
           <div class="text-center">
             <div *ngIf="html" [innerHTML]="html"></div>
