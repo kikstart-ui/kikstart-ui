@@ -1,11 +1,10 @@
-name: Test and build
+name: Lint, Build and Test
 
 on:
   push:
     branches:
       - '*'
       - '!master'
-      - '!develop'
   pull_request:
     branches:
       - '*'
