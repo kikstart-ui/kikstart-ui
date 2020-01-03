@@ -1,8 +1,12 @@
-![](title.svg)
+[![](header.svg)](https://github.com/beeman/kikstart-ui)
 
-# kikstart.dev ui
+# @kikstart/ui
 
 > Set of ready to use declarative Angular UI components.
+
+## Usage
+
+For now, head over to the [kikstart-ui-starter](https://github.com/beeman/kikstart-ui-starter) repo if you want to use this.
 
 ## Work in progress...
 
