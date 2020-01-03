@@ -27,7 +27,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn
       - run: yarn build --base-href=/kikstart-ui/
-      - run: yarn semantic-release --branch develop
+      - run: yarn semantic-release --branch master
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
