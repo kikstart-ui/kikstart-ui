@@ -7,5 +7,12 @@ import { Component } from '@angular/core';
       <ng-content></ng-content>
     </div>
   `,
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
 })
 export class UiCardComponent {}

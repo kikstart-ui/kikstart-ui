@@ -11,11 +11,14 @@ import { UiFormsModule } from './ui-forms.module';
 import { TruncatePipe } from './pipes/truncate.pipe';
 
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component';
+import { UiAvatarComponent } from './components/ui-avatar.component';
 import { UiBrandComponent } from './components/ui-brand.component';
+import { UiButtonComponent } from './components/ui-button.component';
 import { UiCardComponent } from './components/ui-card.component';
 import { UiCardBodyComponent } from './components/ui-card-body.component';
 import { UiCardFooterComponent } from './components/ui-card-footer.component';
 import { UiCardHeaderComponent } from './components/ui-card-header.component';
+import { UiCommentComponent } from './components/ui-comment.component';
 import { UiContentComponent } from './components/ui-content.component';
 import { UiDataComponent } from './components/ui-data.component';
 import { UiDebugComponent } from './components/ui-debug.component';
@@ -41,11 +44,14 @@ import { UiUserComponent } from './components/ui-user.component';
 
 const COMPONENTS = [
   UiAuthComponent,
+  UiAvatarComponent,
   UiBrandComponent,
+  UiButtonComponent,
   UiCardComponent,
   UiCardBodyComponent,
   UiCardFooterComponent,
   UiCardHeaderComponent,
+  UiCommentComponent,
   UiContentComponent,
   UiDataComponent,
   UiDebugComponent,
