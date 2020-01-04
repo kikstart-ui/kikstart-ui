@@ -12,6 +12,7 @@ export const appLayout: UiLayout = {
     style: 'dark',
     links: [
       { path: '/home', label: 'Home', icon: 'mr-2 fa fa-fw fa-home' },
+      { path: '/demo', label: 'Demo', icon: 'mr-2 fa fa-fw fa-magic' },
       { path: '/docs', label: 'Docs', icon: 'mr-2 fa fa-fw fa-book' },
       { path: '/blog', label: 'Blog', icon: 'mr-2 fa fa-fw fa-rss' },
       { path: '/login', label: 'Auth', icon: 'mr-2 fa fa-fw fa-lock' },
