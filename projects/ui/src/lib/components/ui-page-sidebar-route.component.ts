@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
       <router-outlet></router-outlet>
     </ui-page-sidebar>
   `,
-  styles: [],
 })
 export class UiPageSidebarRouteComponent {
   public title$: Observable<string>;

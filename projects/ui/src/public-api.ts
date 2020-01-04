@@ -2,11 +2,14 @@
  * Public API Surface of ui
  */
 export { UiAuthComponent } from './lib/components/ui-auth/ui-auth.component';
+export { UiAvatarComponent } from './lib/components/ui-avatar.component';
 export { UiBrandComponent } from './lib/components/ui-brand.component';
+export { UiButtonComponent } from './lib/components/ui-button.component';
 export { UiCardComponent } from './lib/components/ui-card.component';
 export { UiCardBodyComponent } from './lib/components/ui-card-body.component';
 export { UiCardFooterComponent } from './lib/components/ui-card-footer.component';
 export { UiCardHeaderComponent } from './lib/components/ui-card-header.component';
+export { UiCommentComponent } from './lib/components/ui-comment.component';
 export { UiContentComponent } from './lib/components/ui-content.component';
 export { UiDataComponent, UiDataShape } from './lib/components/ui-data.component';
 export { UiDebugComponent } from './lib/components/ui-debug.component';
@@ -32,6 +35,7 @@ export { UiUserComponent } from './lib/components/ui-user.component';
 
 export { FormHelper } from './lib/helpers/form.helper';
 export { UiBrand } from './lib/interfaces/ui-brand';
+export { UiButton } from './lib/interfaces/ui-button';
 export { UiCard } from './lib/interfaces/ui-card';
 export { UiLayout } from './lib/interfaces/ui-layout';
 export { UiLink } from './lib/interfaces/ui-link';
