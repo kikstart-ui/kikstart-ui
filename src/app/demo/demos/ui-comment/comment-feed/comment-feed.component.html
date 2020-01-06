@@ -1,0 +1,16 @@
+<ng-container *ngFor="let i of items; let idx = index">
+  <ui-comment
+    class="mb-2"
+    (action)="handleAction($event)"
+    (delete)="deleteComment(idx)"
+    [deleteButton]="true"
+    [buttons]="buttons"
+    [avatar]="avatar"
+    [name]="name"
+    [link]="link"
+    [username]="username"
+    [time]="time"
+    [text]="text"
+  >
+  </ui-comment>
+</ng-container>
