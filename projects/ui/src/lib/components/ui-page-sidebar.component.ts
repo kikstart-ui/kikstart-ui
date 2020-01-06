@@ -5,8 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
   template: `
     <div class="row">
       <div class="col-12 col-md-3">
-        <div class="card">
-          <div *ngIf="title" class="card-header">{{ title }}</div>
+        <ui-card>
+          <ui-card-header *ngIf="title">
+            <h5 class="my-0 card-title">{{ title }}</h5>
+          </ui-card-header>
           <ui-list>
             <ui-list-item
               *ngFor="let link of links"
@@ -21,7 +23,7 @@ import { Component, Input, OnInit } from '@angular/core';
               </a>
             </ui-list-item>
           </ui-list>
-        </div>
+        </ui-card>
       </div>
       <div class="col-12 col-md-9">
         <ng-content></ng-content>
@@ -30,10 +32,7 @@ import { Component, Input, OnInit } from '@angular/core';
   `,
   styles: [],
 })
-export class UiPageSidebarComponent implements OnInit {
+export class UiPageSidebarComponent {
   @Input() public title: string;
   @Input() public links: { path: string; label: string; params?: any }[] = [];
-  constructor() {}
-
-  ngOnInit() {}
 }
