@@ -40,6 +40,7 @@ import { UiListItemComponent } from './components/ui-list-item.component';
 import { UiLoadingComponent } from './components/ui-loading.component';
 import { UiPageSidebarComponent } from './components/ui-page-sidebar.component';
 import { UiPageSidebarRouteComponent } from './components/ui-page-sidebar-route.component';
+import { UiRenderComponent } from './components/ui-render.component';
 import { UiSidebarComponent } from './components/ui-sidebar.component';
 import { UiSidebarItemComponent } from './components/ui-sidebar-item.component';
 import { UiTabsComponent } from './components/ui-tabs.component';
@@ -75,6 +76,7 @@ const COMPONENTS = [
   UiLoadingComponent,
   UiPageSidebarComponent,
   UiPageSidebarRouteComponent,
+  UiRenderComponent,
   UiSidebarComponent,
   UiSidebarItemComponent,
   UiTabsComponent,
