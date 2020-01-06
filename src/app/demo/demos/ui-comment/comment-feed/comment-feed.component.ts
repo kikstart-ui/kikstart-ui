@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { UiService } from '@kikstart/ui';
 
-import { DemoService } from '../../../services/demo.service';
-import { ActivatedRoute } from '@angular/router';
-
 @Component({
   templateUrl: './comment-feed.component.html',
 })
@@ -30,21 +27,13 @@ export class CommentFeedComponent {
   ];
   public items = new Array(10).fill(1);
 
-  constructor(public service: DemoService, public ui: UiService, public route: ActivatedRoute) {
-    this.route.data.subscribe(res => {
-      console.log(res);
-    });
-  }
+  constructor(public ui: UiService) {}
 
-  handleAction($event) {
-    console.log($event);
+  handleAction({ type }) {
+    this.ui.toastSuccess(`You clicked the ${type} button!`);
   }
 
   deleteComment($event) {
-    console.log('deleteComment', $event);
-  }
-
-  updateComment($event: any) {
-    console.log($event);
+    this.ui.toastSuccess(`Deleting comment!`);
   }
 }

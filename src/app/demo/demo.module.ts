@@ -14,6 +14,7 @@ const routes: Routes = [
         { path: '/demo/ui-code', label: 'ui-code' },
         { path: '/demo/ui-comment', label: 'ui-comment' },
         { path: '/demo/ui-comment-form', label: 'ui-comment-form' },
+        { path: '/demo/ui-form', label: 'ui-form' },
       ],
     },
     children: [
@@ -34,6 +35,10 @@ const routes: Routes = [
         path: 'ui-comment-form',
         loadChildren: () =>
           import('./demos/ui-comment-form/ui-comment-form-demo.module').then(m => m.UiCommentFormDemoModule),
+      },
+      {
+        path: 'ui-form',
+        loadChildren: () => import('./demos/ui-form/ui-form-demo.module').then(m => m.UiFormDemoModule),
       },
     ],
   },
