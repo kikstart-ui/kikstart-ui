@@ -894,7 +894,7 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@ctrl/ngx-numbered-codeblock@^2.0.0":
+"@ctrl/ngx-numbered-codeblock@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@ctrl/ngx-numbered-codeblock/-/ngx-numbered-codeblock-2.0.0.tgz#0f0140016bc508d9d57149ad05a278234371f69f"
   integrity sha512-/NOivtf8HEiJyEduccRv/if02+rV8fFbpGg3FHs9oPfAV+wPwZov1bq0D0megnbAF8Ki76TJ9TQ9IPuqqTHgdQ==
@@ -8369,7 +8369,7 @@ pretty-bytes@^5.3.0:
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.3.0.tgz#f2849e27db79fb4d6cfe24764fc4134f165989f2"
   integrity sha512-hjGrh+P926p4R4WbaB6OckyRtO0F0/lQBiT+0gnxjV+5kjPBrfVBFCsCLbMqVQeydvIoouYTCmmEURiH3R1Bdg==
 
-prismjs@^1.18.0:
+prismjs@1.18.0:
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.18.0.tgz#8f04dd47fa232cbd27d1ca969107580ff43f06e4"
   integrity sha512-N0r3i/Cto516V8+GKKamhsPVZSFcO0TMUBtIDW6uq6BVqoC3FNtZVZ+cmH16N2XtGQlgRN+sFUTjOdCsEP51qw==
