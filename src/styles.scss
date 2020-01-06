@@ -1,1 +1,7 @@
 @import '../projects/ui/src/lib/styles/styles';
+
+@import '~prismjs/themes/prism-okaidia.css';
+// TODO: Fix this in the ui-code component or upstream.
+pre.codeblock {
+  margin: 0;
+}

@@ -3,36 +3,48 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { UiModule, UiPageSidebarRouteComponent } from '@kikstart/ui';
 
-import { DemoAuthComponent } from './containers/demo-auth.component';
-import { DemoAvatarComponent } from './containers/demo-avatar.component';
-import { DemoCommentComponent } from './containers/demo-comment.component';
-import { DemoCommentFormComponent } from './containers/demo-comment-form.component';
-
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'auth' },
   {
     path: '',
     component: UiPageSidebarRouteComponent,
     data: {
       title: 'Component Demos',
       links: [
-        { path: '/demo/auth', label: 'ui-auth' },
-        { path: '/demo/avatar', label: 'ui-avatar' },
-        { path: '/demo/comment', label: 'ui-comment' },
-        { path: '/demo/comment-form', label: 'ui-comment-form' },
+        { path: '/demo/ui-avatar', label: 'ui-avatar' },
+        { path: '/demo/ui-code', label: 'ui-code' },
+        { path: '/demo/ui-comment', label: 'ui-comment' },
+        { path: '/demo/ui-comment-form', label: 'ui-comment-form' },
+        { path: '/demo/ui-form', label: 'ui-form' },
       ],
     },
     children: [
-      { path: 'auth', component: DemoAuthComponent },
-      { path: 'avatar', component: DemoAvatarComponent },
-      { path: 'comment', component: DemoCommentComponent },
-      { path: 'comment-form', component: DemoCommentFormComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'ui-avatar' },
+      {
+        path: 'ui-avatar',
+        loadChildren: () => import('./demos/ui-avatar/ui-avatar-demo.module').then(m => m.UiAvatarDemoModule),
+      },
+      {
+        path: 'ui-code',
+        loadChildren: () => import('./demos/ui-code/ui-code-demo.module').then(m => m.UiCodeDemoModule),
+      },
+      {
+        path: 'ui-comment',
+        loadChildren: () => import('./demos/ui-comment/ui-comment-demo.module').then(m => m.UiCommentDemoModule),
+      },
+      {
+        path: 'ui-comment-form',
+        loadChildren: () =>
+          import('./demos/ui-comment-form/ui-comment-form-demo.module').then(m => m.UiCommentFormDemoModule),
+      },
+      {
+        path: 'ui-form',
+        loadChildren: () => import('./demos/ui-form/ui-form-demo.module').then(m => m.UiFormDemoModule),
+      },
     ],
   },
 ];
 
 @NgModule({
-  declarations: [DemoAuthComponent, DemoAvatarComponent, DemoCommentComponent, DemoCommentFormComponent],
   imports: [UiModule, RouterModule.forChild(routes)],
 })
 export class DemoModule {}

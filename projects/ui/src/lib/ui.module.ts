@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { NumberedCodeblockModule } from '@ctrl/ngx-numbered-codeblock';
 import { TimeagoModule } from 'ngx-timeago';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -18,6 +19,7 @@ import { UiCardComponent } from './components/ui-card.component';
 import { UiCardBodyComponent } from './components/ui-card-body.component';
 import { UiCardFooterComponent } from './components/ui-card-footer.component';
 import { UiCardHeaderComponent } from './components/ui-card-header.component';
+import { UiCodeComponent } from './components/ui-code.component';
 import { UiCommentComponent } from './components/ui-comment.component';
 import { UiCommentFormComponent } from './components/ui-comment-form.component';
 import { UiContentComponent } from './components/ui-content.component';
@@ -52,6 +54,7 @@ const COMPONENTS = [
   UiCardBodyComponent,
   UiCardFooterComponent,
   UiCardHeaderComponent,
+  UiCodeComponent,
   UiCommentComponent,
   UiCommentFormComponent,
   UiContentComponent,
@@ -78,7 +81,7 @@ const COMPONENTS = [
   UiUserComponent,
 ];
 
-const MODULES = [CommonModule, BsDropdownModule, ModalModule];
+const MODULES = [CommonModule, BsDropdownModule, ModalModule, NumberedCodeblockModule];
 
 @NgModule({
   entryComponents: [UiDialogFormComponent, UiDialogProgressComponent],

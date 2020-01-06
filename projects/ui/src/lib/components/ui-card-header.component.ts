@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   template: `
     <div class="card-header">
       <ng-container *ngIf="cardTitle">
-        <h4 class="my-1">{{ cardTitle }}</h4>
+        <h5 class="my-0">{{ cardTitle }}</h5>
       </ng-container>
       <ng-content></ng-content>
     </div>
