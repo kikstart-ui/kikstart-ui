@@ -8,6 +8,7 @@ if (environment.production) {
   enableProdMode();
 }
 
+import 'marked/lib/marked';
 import 'prismjs';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-javascript';

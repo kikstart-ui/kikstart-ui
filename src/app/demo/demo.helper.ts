@@ -8,6 +8,8 @@ export class DemoHelper {
     switch (ext) {
       case 'html':
         return 'html';
+      case 'md':
+        return 'markdown';
       case 'ts':
         return 'typescript';
       default:

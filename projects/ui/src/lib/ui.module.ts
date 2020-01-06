@@ -6,6 +6,7 @@ import { NumberedCodeblockModule } from '@ctrl/ngx-numbered-codeblock';
 import { TimeagoModule } from 'ngx-timeago';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 import { ToastrModule } from 'ngx-toastr';
 
 import { UiFormsModule } from './ui-forms.module';
@@ -38,6 +39,7 @@ import { UiLinksComponent } from './components/ui-links.component';
 import { UiListComponent } from './components/ui-list.component';
 import { UiListItemComponent } from './components/ui-list-item.component';
 import { UiLoadingComponent } from './components/ui-loading.component';
+import { UiMarkdownComponent } from './components/ui-markdown.component';
 import { UiPageSidebarComponent } from './components/ui-page-sidebar.component';
 import { UiPageSidebarRouteComponent } from './components/ui-page-sidebar-route.component';
 import { UiRenderComponent } from './components/ui-render.component';
@@ -74,6 +76,7 @@ const COMPONENTS = [
   UiListComponent,
   UiListItemComponent,
   UiLoadingComponent,
+  UiMarkdownComponent,
   UiPageSidebarComponent,
   UiPageSidebarRouteComponent,
   UiRenderComponent,
@@ -90,10 +93,19 @@ const MODULES = [CommonModule, BsDropdownModule, ModalModule, NumberedCodeblockM
   declarations: [TruncatePipe, ...COMPONENTS],
   imports: [
     ...MODULES,
+    UiFormsModule,
     RouterModule.forChild([]),
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
-    UiFormsModule,
+    MarkdownModule.forRoot({
+      markedOptions: {
+        provide: MarkedOptions,
+        useValue: {
+          gfm: true,
+          tables: true,
+        },
+      },
+    }),
     TimeagoModule.forRoot(),
     ToastrModule.forRoot({
       progressBar: true,
