@@ -4,7 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'ui-page-sidebar',
   template: `
     <div class="row">
-      <div class="col-4">
+      <div class="col-12 col-md-3">
         <div class="card">
           <div *ngIf="title" class="card-header">{{ title }}</div>
           <ui-list>
@@ -23,7 +23,7 @@ import { Component, Input, OnInit } from '@angular/core';
           </ui-list>
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-12 col-md-9">
         <ng-content></ng-content>
       </div>
     </div>
