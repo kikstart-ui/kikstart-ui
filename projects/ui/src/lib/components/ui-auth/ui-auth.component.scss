@@ -4,6 +4,9 @@
   border-top: 0;
 }
 
+.nav-pills .nav-link {
+  border-bottom: 0;
+}
 .nav-pills .nav-link.active {
   background-color: #303030;
   background-clip: border-box;

@@ -19,6 +19,7 @@ import { UiCardBodyComponent } from './components/ui-card-body.component';
 import { UiCardFooterComponent } from './components/ui-card-footer.component';
 import { UiCardHeaderComponent } from './components/ui-card-header.component';
 import { UiCommentComponent } from './components/ui-comment.component';
+import { UiCommentFormComponent } from './components/ui-comment-form.component';
 import { UiContentComponent } from './components/ui-content.component';
 import { UiDataComponent } from './components/ui-data.component';
 import { UiDebugComponent } from './components/ui-debug.component';
@@ -52,6 +53,7 @@ const COMPONENTS = [
   UiCardFooterComponent,
   UiCardHeaderComponent,
   UiCommentComponent,
+  UiCommentFormComponent,
   UiContentComponent,
   UiDataComponent,
   UiDebugComponent,
