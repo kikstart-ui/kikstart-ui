@@ -8,7 +8,7 @@ export const config = {
   title: 'ui-avatar demos',
   demos: [
     DemoHelper.config({
-      title: 'Simple Comment',
+      title: 'Avatar sizes',
       description: 'The <code>ui-avatar</code> component can be used to render an avatar in various sizes.',
       component: AvatarSimpleComponent,
       path: 'demos/ui-avatar',

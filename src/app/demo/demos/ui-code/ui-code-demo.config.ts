@@ -6,8 +6,8 @@ export const config = {
   title: 'ui-code demos',
   demos: [
     DemoHelper.config({
-      title: 'Simple Comment',
-      description: 'The <code>ui-code</code> component can be used to render out a code snippet.',
+      title: 'Code Highlighting',
+      description: 'The <code>ui-code</code> component can be used to render and highlight a code snippet.',
       component: CodeSimpleComponent,
       path: 'demos/ui-code',
       files: ['code-simple.component.ts', 'code-simple.component.html'],

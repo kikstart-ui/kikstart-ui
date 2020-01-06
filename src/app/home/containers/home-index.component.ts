@@ -14,7 +14,7 @@ export class HomeIndexComponent implements OnInit {
   brand: UiBrand = { ...appLayout.brand, size: 'lg' };
   link: UiLink = {
     path: '/demo',
-    label: "Look at some demo's",
+    label: 'Look at some demos',
     iconAfter: 'ml-2 fa fa-angle-double-right',
   };
   cards: UiCard[] = [
