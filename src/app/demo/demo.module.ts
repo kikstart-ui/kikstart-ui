@@ -5,6 +5,7 @@ import { UiModule, UiPageSidebarRouteComponent } from '@kikstart/ui';
 
 import { DemoAuthComponent } from './containers/demo-auth.component';
 import { DemoAvatarComponent } from './containers/demo-avatar.component';
+import { DemoCodeComponent } from './containers/demo-code.component';
 import { DemoCommentComponent } from './containers/demo-comment.component';
 import { DemoCommentFormComponent } from './containers/demo-comment-form.component';
 
@@ -18,6 +19,7 @@ const routes: Routes = [
       links: [
         { path: '/demo/auth', label: 'ui-auth' },
         { path: '/demo/avatar', label: 'ui-avatar' },
+        { path: '/demo/code', label: 'ui-code' },
         { path: '/demo/comment', label: 'ui-comment' },
         { path: '/demo/comment-form', label: 'ui-comment-form' },
       ],
@@ -25,6 +27,7 @@ const routes: Routes = [
     children: [
       { path: 'auth', component: DemoAuthComponent },
       { path: 'avatar', component: DemoAvatarComponent },
+      { path: 'code', component: DemoCodeComponent },
       { path: 'comment', component: DemoCommentComponent },
       { path: 'comment-form', component: DemoCommentFormComponent },
     ],
@@ -32,7 +35,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [DemoAuthComponent, DemoAvatarComponent, DemoCommentComponent, DemoCommentFormComponent],
+  declarations: [
+    DemoAuthComponent,
+    DemoAvatarComponent,
+    DemoCodeComponent,
+    DemoCommentComponent,
+    DemoCommentFormComponent,
+  ],
   imports: [UiModule, RouterModule.forChild(routes)],
 })
 export class DemoModule {}
