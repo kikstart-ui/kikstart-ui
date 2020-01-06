@@ -110,6 +110,8 @@ export class UiCommentFormComponent implements OnInit {
   submit($event) {
     if (this.reset$) {
       this.form.disable();
+    } else {
+      this.resetForm();
     }
     this.action.emit($event);
   }
