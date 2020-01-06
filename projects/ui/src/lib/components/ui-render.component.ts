@@ -12,11 +12,11 @@ import {
 @Component({
   selector: 'ui-render',
   template: `
-    <ng-template #demo></ng-template>
+    <ng-template #target></ng-template>
   `,
 })
 export class UiRenderComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('demo', { read: ViewContainerRef, static: false }) demoRef: ViewContainerRef;
+  @ViewChild('target', { read: ViewContainerRef, static: false }) ref: ViewContainerRef;
   @Input() public component: any;
   @Input() public inputs: any[];
   @Input() public outputs: any[];
@@ -37,7 +37,7 @@ export class UiRenderComponent implements AfterViewInit, OnDestroy {
 
   renderDemoComponent() {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.component);
-    this.componentRef = this.demoRef.createComponent(componentFactory);
+    this.componentRef = this.ref.createComponent(componentFactory);
 
     if (this.componentRef.instance) {
       // Wire up the inputs

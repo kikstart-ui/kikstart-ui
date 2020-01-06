@@ -39,7 +39,7 @@ import { UiService } from '@kikstart/ui';
     </ng-container>
   `,
 })
-export class DemoViewerComponent {
+export class DemoComponent {
   public routeData$: Observable<Data>;
 
   constructor(public route: ActivatedRoute, private ui: UiService) {
