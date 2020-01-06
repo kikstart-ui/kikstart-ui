@@ -28,6 +28,7 @@ export { UiListItemComponent } from './lib/components/ui-list-item.component';
 export { UiLoadingComponent } from './lib/components/ui-loading.component';
 export { UiPageSidebarComponent } from './lib/components/ui-page-sidebar.component';
 export { UiPageSidebarRouteComponent } from './lib/components/ui-page-sidebar-route.component';
+export { UiRenderComponent } from './lib/components/ui-render.component';
 export { UiSidebarComponent } from './lib/components/ui-sidebar.component';
 export { UiSidebarItemComponent } from './lib/components/ui-sidebar-item.component';
 export { UiTabsComponent } from './lib/components/ui-tabs.component';

@@ -19,7 +19,7 @@ import { UiService } from '@kikstart/ui';
             <tabset>
               <tab heading="Example">
                 <ui-card-body>
-                  <app-viewer-preview [component]="demo.component"></app-viewer-preview>
+                  <ui-render [component]="demo.component"></ui-render>
                 </ui-card-body>
               </tab>
               <ng-container *ngFor="let file of demo.files">
