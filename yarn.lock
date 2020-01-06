@@ -913,10 +913,10 @@
     tree-kill "1.2.1"
     webpack-sources "1.4.3"
 
-"@ngx-formly/bootstrap@5.5.7":
-  version "5.5.7"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/bootstrap/-/bootstrap-5.5.7.tgz#df820179383d67c90c1307a5a3b314ade396d15f"
-  integrity sha512-J79hN8o6EUze/4OO0wzeGxb7JlD38pJsPteJUC/8cCC8hVW3EYzGTQ4iXuvPuwPfs0ZqwVEZE+XS9qFiE0M3yA==
+"@ngx-formly/bootstrap@5.5.8":
+  version "5.5.8"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/bootstrap/-/bootstrap-5.5.8.tgz#1b2432f195d0763152bde59b9d52f80b28ae4c1a"
+  integrity sha512-rlTnQQ/rnfsaYOOJuCt7iTtICOEjefN2sXdMMLVFoURzu0wb4gT6p37vzAkJY9cxpHvu3jwJoc/gSiS9zatIfw==
   dependencies:
     tslib "^1.9.0"
 
