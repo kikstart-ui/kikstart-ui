@@ -40,9 +40,12 @@ export { randInt } from './lib/helpers/index';
 export { UiBrand } from './lib/interfaces/ui-brand';
 export { UiButton } from './lib/interfaces/ui-button';
 export { UiCard } from './lib/interfaces/ui-card';
+export { UiComment } from './lib/interfaces/ui-comment';
 export { UiLayout } from './lib/interfaces/ui-layout';
 export { UiLink } from './lib/interfaces/ui-link';
 export { UiTab } from './lib/interfaces/ui-tab';
+export { UiUser } from './lib/interfaces/ui-user';
+
 export { TruncatePipe } from './lib/pipes/truncate.pipe';
 export { UiService } from './lib/services/ui.service';
 export { UiModule } from './lib/ui.module';

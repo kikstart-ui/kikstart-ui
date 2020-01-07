@@ -1,16 +1,8 @@
 <div class="row">
   <div class="col-12 col-md-6">
-    <ui-form [model]="model" [fields]="fields" [submitButton]="false"></ui-form>
+    <ui-form [model]="comment" [fields]="fields" [submitButton]="false"></ui-form>
   </div>
   <div class="col-12 col-md-6">
-    <ui-comment
-      [avatar]="model.avatar"
-      [name]="model.name"
-      [link]="model.link"
-      [username]="model.username"
-      [time]="model.time"
-      [text]="model.text"
-    >
-    </ui-comment>
+    <ui-comment [comment]="comment"></ui-comment>
   </div>
 </div>
