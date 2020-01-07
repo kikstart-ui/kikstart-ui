@@ -34,7 +34,9 @@ export { UiSidebarItemComponent } from './lib/components/ui-sidebar-item.compone
 export { UiTabsComponent } from './lib/components/ui-tabs.component';
 export { UiUserComponent } from './lib/components/ui-user.component';
 
+export { ButtonHelper } from './lib/helpers/button.helper';
 export { FormHelper } from './lib/helpers/form.helper';
+export { randInt } from './lib/helpers/index';
 export { UiBrand } from './lib/interfaces/ui-brand';
 export { UiButton } from './lib/interfaces/ui-button';
 export { UiCard } from './lib/interfaces/ui-card';
