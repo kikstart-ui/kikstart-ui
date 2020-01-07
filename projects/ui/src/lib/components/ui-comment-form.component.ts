@@ -8,8 +8,8 @@ import { FormlyTemplateOptions } from '@ngx-formly/core';
 @Component({
   selector: 'ui-comment-form',
   template: `
-    <div class="media" [class.p-2]="padding">
-      <ui-avatar *ngIf="avatar" [avatar]="avatar" class="mr-2"></ui-avatar>
+    <div class="media">
+      <ui-avatar *ngIf="avatar" [avatar]="avatar" class="mr-3"></ui-avatar>
       <div class="media-body">
         <ng-container *ngIf="fields.length">
           <div>
@@ -61,7 +61,6 @@ export class UiCommentFormComponent implements OnInit {
   @Input() avatar?: string;
   @Input() form = new FormGroup({});
   @Input() model = { text: null };
-  @Input() padding = true;
   @Input() fields: FormHelper[] = [];
 
   @Output() action = new EventEmitter(true);

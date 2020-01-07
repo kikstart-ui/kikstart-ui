@@ -4,7 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'ui-avatar',
   template: `
     <img
-      [attr.alt]="avatar"
+      [attr.alt]="alt"
       [attr.src]="avatar"
       class="avatar"
       [class.avatar-sm]="size === 'sm'"
