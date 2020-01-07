@@ -1,39 +1,47 @@
 import { Component } from '@angular/core';
-import { UiService } from '@kikstart/ui';
+import { ButtonHelper, randInt, UiComment, UiService } from '@kikstart/ui';
 
 @Component({
   templateUrl: './comment-feed.component.html',
 })
 export class CommentFeedComponent {
-  public avatar = 'assets/logo.png';
+  public feed: UiComment[] = [];
+
   public link = ['/demo/avatar'];
-  public name = 'kikstart.dev';
-  public username = '@KikstartDev';
-  public time = new Date('Sat, 04 Jan 2020 00:41:30 GMT');
-  public text = 'This is a demo of the ui-comment component';
-  public buttons = [
-    {
-      label: 'Like',
-      icon: 'fa fa-fw fa-heart',
-      action: 'LIKE',
-      payload: { id: 'some-id' },
-    },
-    {
-      label: 'Comment',
-      icon: 'fa fa-fw fa-comment',
-      action: 'COMMENT',
-      payload: { id: 'some-id' },
-    },
-  ];
-  public items = new Array(10).fill(1);
 
-  constructor(public ui: UiService) {}
-
-  handleAction({ type }) {
-    this.ui.toastSuccess(`You clicked the ${type} button!`);
+  constructor(public ui: UiService) {
+    this.createCommentFeed();
   }
 
-  deleteComment($event) {
-    this.ui.toastSuccess(`Deleting comment!`);
+  private createCommentFeed() {
+    for (let i = 0; i < 10; i++) {
+      const comment: UiComment = {
+        id: i.toString(),
+        text: 'This is a demo of the ui-comment component',
+        created: new Date('Sat, 04 Jan 2020 00:41:30 GMT'),
+        author: {
+          name: 'kikstart.dev',
+          avatar: 'assets/logo.png',
+          username: '@KikstartDev',
+        },
+        buttons: [
+          ButtonHelper.like({
+            label: `${randInt(0, 15)} Likes`,
+            payload: { id: i },
+          }),
+          ButtonHelper.comment({
+            label: `${randInt(0, 15)} Comments`,
+            payload: { id: i },
+            path: '/demo/ui-comment',
+            queryParams: { id: i.toString() },
+          }),
+        ],
+      };
+      this.feed.push(comment);
+    }
+  }
+
+  handleAction({ type, payload }) {
+    this.ui.toastSuccess(`${type}: ${payload.id}!`);
   }
 }

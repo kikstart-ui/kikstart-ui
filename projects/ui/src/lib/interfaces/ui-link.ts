@@ -1,5 +1,5 @@
 export interface UiLink {
-  label: string;
+  label?: string;
   path?: string;
   url?: string;
   icon?: string;

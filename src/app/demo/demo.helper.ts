@@ -1,24 +1,33 @@
-import { CommentFormLoadingComponent } from './demos/ui-comment-form/comment-form-loading/comment-form-loading.component';
+const getLastPart = (item: string, separator: string) => {
+  const parts = item.split(separator);
+  return parts[parts.length - 1];
+};
 
 export class DemoHelper {
   static fileType = name => {
-    const parts = name.split('.');
-    const ext = parts[parts.length - 1];
+    const ext = getLastPart(name, '.');
 
     switch (ext) {
+      case 'graphql':
+        return 'graphql';
       case 'html':
         return 'html';
+      case 'md':
+        return 'markdown';
+      case 'js':
+        return 'javascript';
+      case 'json':
+        return 'json';
       case 'ts':
         return 'typescript';
       default:
-        console.log(`Unknown ext ${ext}... Default: html`);
+        console.log(`DemoHelper.fileType: Unknown extension ${ext}... Default: html`);
         return 'html';
     }
   };
 
   static file = (path, language = null) => {
-    const parts = path.split('/');
-    const name = parts[parts.length - 1];
+    const name = getLastPart(path, '/');
 
     return {
       name,

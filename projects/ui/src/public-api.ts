@@ -28,18 +28,24 @@ export { UiListItemComponent } from './lib/components/ui-list-item.component';
 export { UiLoadingComponent } from './lib/components/ui-loading.component';
 export { UiPageSidebarComponent } from './lib/components/ui-page-sidebar.component';
 export { UiPageSidebarRouteComponent } from './lib/components/ui-page-sidebar-route.component';
+export { UiRenderComponent } from './lib/components/ui-render.component';
 export { UiSidebarComponent } from './lib/components/ui-sidebar.component';
 export { UiSidebarItemComponent } from './lib/components/ui-sidebar-item.component';
 export { UiTabsComponent } from './lib/components/ui-tabs.component';
 export { UiUserComponent } from './lib/components/ui-user.component';
 
+export { ButtonHelper } from './lib/helpers/button.helper';
 export { FormHelper } from './lib/helpers/form.helper';
+export { randInt } from './lib/helpers/index';
 export { UiBrand } from './lib/interfaces/ui-brand';
 export { UiButton } from './lib/interfaces/ui-button';
 export { UiCard } from './lib/interfaces/ui-card';
+export { UiComment } from './lib/interfaces/ui-comment';
 export { UiLayout } from './lib/interfaces/ui-layout';
 export { UiLink } from './lib/interfaces/ui-link';
 export { UiTab } from './lib/interfaces/ui-tab';
+export { UiUser } from './lib/interfaces/ui-user';
+
 export { TruncatePipe } from './lib/pipes/truncate.pipe';
 export { UiService } from './lib/services/ui.service';
 export { UiModule } from './lib/ui.module';

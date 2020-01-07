@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { DemoSharedModule } from '../../demo-shared.module';
-import { DemoViewerComponent } from '../../containers/demo-viewer.component';
+import { DemoComponent } from '../../components/demo.component';
 
 import { components, config } from './ui-comment-demo.config';
 
 @NgModule({
-  imports: [DemoSharedModule, RouterModule.forChild([{ path: '', component: DemoViewerComponent, data: config }])],
+  imports: [DemoSharedModule, RouterModule.forChild([{ path: '', component: DemoComponent, data: config }])],
   declarations: [...components],
   entryComponents: [...components],
 })

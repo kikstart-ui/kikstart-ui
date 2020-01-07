@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { UiModule } from '@kikstart/ui';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
-import { DemoViewerComponent } from './containers/demo-viewer.component';
-import { DemoViewerPreviewComponent } from './containers/demo-viewer-preview.component';
+import { DemoComponent } from './components/demo.component';
 
 @NgModule({
-  declarations: [DemoViewerComponent, DemoViewerPreviewComponent],
-  exports: [UiModule, DemoViewerComponent, DemoViewerPreviewComponent],
+  declarations: [DemoComponent],
+  exports: [UiModule, DemoComponent],
   imports: [UiModule, TabsModule.forRoot()],
 })
 export class DemoSharedModule {}
