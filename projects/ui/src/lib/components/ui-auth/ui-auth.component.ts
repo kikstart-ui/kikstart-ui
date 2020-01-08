@@ -5,6 +5,7 @@ import { UiBrand } from '../../interfaces/ui-brand'
 import { UiTab } from '../../interfaces/ui-tab'
 import { FormHelper } from '../../helpers/form.helper'
 import { UiLink } from '../../interfaces/ui-link'
+import { UiBrandSizes } from '../../components/ui-brand.component'
 
 /**
  * The ui-auth component can be used to create authentication pages by defining them.
@@ -16,6 +17,7 @@ import { UiLink } from '../../interfaces/ui-link'
 })
 export class UiAuthComponent {
   @Input() brand: UiBrand
+  @Input() brandSize: UiBrandSizes = 'lg'
   @Input() footer?: { html?: string; text?: string; links?: UiLink[] }
   @Input() bottomLink: { path: string; label: string }
   @Input() links: UiTab[] = []
