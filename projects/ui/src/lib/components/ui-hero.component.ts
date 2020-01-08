@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core'
 import { UiCard } from '../interfaces/ui-card'
 import { UiLink } from '../interfaces/ui-link'
 import { UiBrand } from '../interfaces/ui-brand'
+import { UiAvatarSizes } from './ui-avatar.component'
+import { UiBrandSizes } from './ui-brand.component'
 
 @Component({
   selector: 'ui-hero',
@@ -9,6 +11,7 @@ import { UiBrand } from '../interfaces/ui-brand'
     <div class="jumbotron mb-0" [class.text-center]="centered">
       <div class="my-3 mb-5">
         <div class="mb-3">
+          <ui-avatar *ngIf="avatar" [avatar]="avatar" [size]="avatarSize"></ui-avatar>
           <ui-brand *ngIf="brand" [brand]="brand" [size]="brandSize"></ui-brand>
           <h1 *ngIf="title" class="display-4 my-2">{{ title }}</h1>
         </div>
@@ -52,8 +55,10 @@ import { UiBrand } from '../interfaces/ui-brand'
   ],
 })
 export class UiHeroComponent {
+  @Input() avatar: string
+  @Input() avatarSize: UiAvatarSizes = 'xl'
   @Input() brand: UiBrand
-  @Input() brandSize: 'sm' | 'lg' = 'lg'
+  @Input() brandSize: UiBrandSizes = 'lg'
   @Input() centered = true
   @Input() link: UiLink
   @Input() title?: string

@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core'
 import { UiBrand } from '../interfaces/ui-brand'
 
+export type UiBrandSizes = 'sm' | 'lg'
+
 @Component({
   selector: 'ui-brand',
   template: `
@@ -54,5 +56,5 @@ import { UiBrand } from '../interfaces/ui-brand'
 })
 export class UiBrandComponent {
   @Input() brand: UiBrand
-  @Input() size: 'sm' | 'lg' = 'sm'
+  @Input() size: UiBrandSizes = 'sm'
 }
