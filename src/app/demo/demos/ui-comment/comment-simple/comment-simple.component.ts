@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
   templateUrl: './comment-simple.component.html',
@@ -13,5 +13,5 @@ export class CommentSimpleComponent {
       name: 'kikstart.dev',
       username: '@KikstartDev',
     },
-  };
+  }
 }

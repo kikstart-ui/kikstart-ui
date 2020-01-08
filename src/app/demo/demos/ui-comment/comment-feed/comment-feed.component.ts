@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
-import { ButtonHelper, randInt, UiComment, UiService } from '@kikstart/ui';
+import { Component } from '@angular/core'
+import { ButtonHelper, randInt, UiComment, UiService } from '@kikstart/ui'
 
 @Component({
   templateUrl: './comment-feed.component.html',
 })
 export class CommentFeedComponent {
-  public feed: UiComment[] = [];
+  public feed: UiComment[] = []
 
-  public link = ['/demo/avatar'];
+  public link = ['/demo/avatar']
 
   constructor(public ui: UiService) {
-    this.createCommentFeed();
+    this.createCommentFeed()
   }
 
   private createCommentFeed() {
@@ -36,12 +36,12 @@ export class CommentFeedComponent {
             queryParams: { id: i.toString() },
           }),
         ],
-      };
-      this.feed.push(comment);
+      }
+      this.feed.push(comment)
     }
   }
 
   handleAction({ type, payload }) {
-    this.ui.toastSuccess(`${type}: ${payload.id}!`);
+    this.ui.toastSuccess(`${type}: ${payload.id}!`)
   }
 }

@@ -1,9 +1,9 @@
-import { Component, Input, TemplateRef } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core'
 
 export interface UiDataShape {
-  data: { [key: string]: any };
-  errors?: [];
-  loading?: boolean;
+  data: { [key: string]: any }
+  errors?: []
+  loading?: boolean
 }
 
 @Component({
@@ -26,8 +26,8 @@ export interface UiDataShape {
   `,
 })
 export class UiDataComponent {
-  @Input() data: UiDataShape = { data: [] };
-  @Input() debug = false;
-  @Input() outlet: TemplateRef<any>;
-  @Input() select: string;
+  @Input() data: UiDataShape = { data: [] }
+  @Input() debug = false
+  @Input() outlet: TemplateRef<any>
+  @Input() select: string
 }

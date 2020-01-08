@@ -1,4 +1,4 @@
-import { UiButton } from '../../public-api';
+import { UiButton } from '../../public-api'
 
 export enum UiButtonActions {
   COMMENT = 'COMMENT',
@@ -12,14 +12,14 @@ export enum UiButtonIcons {
 
 export class ButtonHelper {
   static button(config: UiButton): UiButton {
-    return { ...config };
+    return { ...config }
   }
   static comment(config: UiButton): UiButton {
     return ButtonHelper.button({
       icon: config.icon || config.iconAfter ? null : UiButtonIcons.COMMENT,
       action: config.action || config.path ? null : UiButtonActions.COMMENT,
       ...config,
-    });
+    })
   }
 
   static like(config: UiButton): UiButton {
@@ -27,6 +27,6 @@ export class ButtonHelper {
       icon: config.icon || config.iconAfter ? null : UiButtonIcons.LIKE,
       action: config.action || config.path ? null : UiButtonActions.LIKE,
       ...config,
-    });
+    })
   }
 }

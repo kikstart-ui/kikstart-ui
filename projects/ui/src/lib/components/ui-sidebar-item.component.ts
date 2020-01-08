@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { UiLink } from '../interfaces/ui-link';
-import { UiService } from '../services/ui.service';
+import { Component, Input } from '@angular/core'
+import { UiLink } from '../interfaces/ui-link'
+import { UiService } from '../services/ui.service'
 
 @Component({
   selector: 'ui-sidebar-item',
@@ -12,9 +12,15 @@ import { UiService } from '../services/ui.service';
       [class.child-active]="ui.isRouteActive(link.path)"
       [routerLink]="link.path"
     >
-      <ui-link [link]="link" [linkClass]="ui.isRouteActive(link.path, true) ? '' : 'text-muted'"></ui-link>
+      <ui-link
+        [link]="link"
+        [linkClass]="ui.isRouteActive(link.path, true) ? '' : 'text-muted'"
+      ></ui-link>
       <ng-container *ngIf="link.children && link.children.length">
-        <i *ngIf="!ui.isRouteActive(link.path)" class="fa fa-fw mt-1 fa-chevron-right pull-right"></i>
+        <i
+          *ngIf="!ui.isRouteActive(link.path)"
+          class="fa fa-fw mt-1 fa-chevron-right pull-right"
+        ></i>
         <i *ngIf="ui.isRouteActive(link.path)" class="fa fa-fw mt-1 fa-chevron-down pull-right"></i>
       </ng-container>
     </div>
@@ -49,8 +55,8 @@ import { UiService } from '../services/ui.service';
   ],
 })
 export class UiSidebarItemComponent {
-  @Input() child = false;
-  @Input() link: UiLink;
+  @Input() child = false
+  @Input() link: UiLink
 
   constructor(public ui: UiService) {}
 }

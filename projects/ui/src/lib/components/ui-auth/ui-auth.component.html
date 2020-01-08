@@ -59,7 +59,11 @@
                     {{ bottomLink.label }}
                   </a>
                   <div class="float-right">
-                    <button [disabled]="!form.valid" (click)="formEl.submit()" class="btn btn-success">
+                    <button
+                      [disabled]="!form.valid"
+                      (click)="formEl.submit()"
+                      class="btn btn-success"
+                    >
                       {{ label }}
                     </button>
                   </div>

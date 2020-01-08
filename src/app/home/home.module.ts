@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
 
-import { UiModule } from '@kikstart/ui';
-import { HomeIndexComponent } from './containers/home-index.component';
+import { UiModule } from '@kikstart/ui'
+import { HomeIndexComponent } from './containers/home-index.component'
 
-const routes: Routes = [{ path: '', component: HomeIndexComponent }];
+const routes: Routes = [{ path: '', component: HomeIndexComponent }]
 
 @NgModule({
   imports: [UiModule, RouterModule.forChild(routes)],

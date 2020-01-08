@@ -1,8 +1,8 @@
-import { DemoHelper } from '../../demo.helper';
+import { DemoHelper } from '../../demo.helper'
 
-import { RenderSimpleComponent } from './render-simple.component';
+import { RenderSimpleComponent } from './render-simple.component'
 
-export const components = [RenderSimpleComponent];
+export const components = [RenderSimpleComponent]
 
 export const config = {
   title: 'ui-render demos',
@@ -16,4 +16,4 @@ export const config = {
       files: ['render-demo.component.ts', 'render-simple.component.ts'],
     }),
   ],
-};
+}

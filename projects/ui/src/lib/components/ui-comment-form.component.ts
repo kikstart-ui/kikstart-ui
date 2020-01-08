@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { FormGroup } from '@angular/forms'
+import { Observable } from 'rxjs'
 
-import { FormHelper } from '../helpers/form.helper';
-import { FormlyTemplateOptions } from '@ngx-formly/core';
+import { FormHelper } from '../helpers/form.helper'
+import { FormlyTemplateOptions } from '@ngx-formly/core'
 
 @Component({
   selector: 'ui-comment-form',
@@ -25,7 +25,9 @@ import { FormlyTemplateOptions } from '@ngx-formly/core';
           </div>
           <div class="mt-3">
             <div class="float-left" *ngIf="maxLength">
-              <button disabled="true" class="btn px-0">{{ textCount }} / {{ maxLength }}</button>
+              <button disabled="true" class="btn btn-sm px-0">
+                {{ textCount }} / {{ maxLength }}
+              </button>
             </div>
             <div class="float-right" *ngIf="submitButton">
               <button [disabled]="!form.valid" (click)="formEl.submit()" class="btn btn-success">
@@ -46,36 +48,40 @@ import { FormlyTemplateOptions } from '@ngx-formly/core';
       ::ng-deep textarea.form-control {
         background-color: inherit !important;
         color: inherit !important;
+        border: 1px solid #444 !important;
+      }
+      ::ng-deep textarea.form-control:disabled {
+        color: #999 !important;
       }
     `,
   ],
 })
 export class UiCommentFormComponent implements OnInit {
-  @Input() reset$: Observable<boolean>;
-  @Input() minLength: boolean | number = 1;
-  @Input() maxLength: boolean | number = 280;
-  @Input() rows: boolean | number = 3;
-  @Input() required = true;
-  @Input() submitButton: boolean | string = 'Submit';
-  @Input() placeholder = 'Enter your comment';
-  @Input() avatar?: string;
-  @Input() form = new FormGroup({});
-  @Input() model = { text: null };
-  @Input() fields: FormHelper[] = [];
+  @Input() reset$: Observable<boolean>
+  @Input() minLength: boolean | number = 1
+  @Input() maxLength: boolean | number = 280
+  @Input() rows: boolean | number = 3
+  @Input() required = true
+  @Input() submitButton: boolean | string = 'Submit'
+  @Input() placeholder = 'Enter your comment'
+  @Input() avatar?: string
+  @Input() form = new FormGroup({})
+  @Input() model = { text: null }
+  @Input() fields: FormHelper[] = []
 
-  @Output() action = new EventEmitter(true);
+  @Output() action = new EventEmitter(true)
 
   ngOnInit() {
-    this.fields = [this.createCommentField()];
+    this.fields = [this.createCommentField()]
     if (this.reset$) {
       this.reset$.subscribe(val => {
-        this.resetForm();
-      });
+        this.resetForm()
+      })
     }
   }
 
   get textCount() {
-    return this.model.text ? this.model.text.length : 0;
+    return this.model.text ? this.model.text.length : 0
   }
 
   createCommentField() {
@@ -84,34 +90,34 @@ export class UiCommentFormComponent implements OnInit {
       required: this.required,
       blur: f => {
         if (!f.formControl.value) {
-          f.formControl.markAsUntouched();
+          f.formControl.markAsUntouched()
         }
       },
-    };
+    }
     if (this.minLength && typeof this.minLength === 'number') {
-      fieldOptions.minLength = this.minLength;
+      fieldOptions.minLength = this.minLength
     }
     if (this.maxLength && typeof this.maxLength === 'number') {
-      fieldOptions.maxLength = this.maxLength;
+      fieldOptions.maxLength = this.maxLength
     }
     if (this.rows && typeof this.rows === 'number') {
-      fieldOptions.rows = this.rows;
+      fieldOptions.rows = this.rows
     }
-    return FormHelper.textarea('text', fieldOptions);
+    return FormHelper.textarea('text', fieldOptions)
   }
 
   resetForm() {
-    this.model = { text: null };
-    this.form.enable();
-    this.form.reset();
+    this.model = { text: null }
+    this.form.enable()
+    this.form.reset()
   }
 
   submit($event) {
     if (this.reset$) {
-      this.form.disable();
+      this.form.disable()
     } else {
-      this.resetForm();
+      this.resetForm()
     }
-    this.action.emit($event);
+    this.action.emit($event)
   }
 }
