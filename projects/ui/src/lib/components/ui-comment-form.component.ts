@@ -25,7 +25,7 @@ import { FormlyTemplateOptions } from '@ngx-formly/core';
           </div>
           <div class="mt-3">
             <div class="float-left" *ngIf="maxLength">
-              <button disabled="true" class="btn px-0">{{ textCount }} / {{ maxLength }}</button>
+              <button disabled="true" class="btn btn-sm px-0">{{ textCount }} / {{ maxLength }}</button>
             </div>
             <div class="float-right" *ngIf="submitButton">
               <button [disabled]="!form.valid" (click)="formEl.submit()" class="btn btn-success">
@@ -46,6 +46,10 @@ import { FormlyTemplateOptions } from '@ngx-formly/core';
       ::ng-deep textarea.form-control {
         background-color: inherit !important;
         color: inherit !important;
+        border: 1px solid #444 !important;
+      }
+      ::ng-deep textarea.form-control:disabled {
+        color: #999 !important;
       }
     `,
   ],
