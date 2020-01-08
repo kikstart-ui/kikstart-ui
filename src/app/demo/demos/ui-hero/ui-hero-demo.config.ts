@@ -2,8 +2,9 @@ import { DemoHelper } from '../../demo.helper'
 
 import { HeroCompleteComponent } from './hero-complete.component'
 import { HeroSimpleComponent } from './hero-simple.component'
+import { HeroUserComponent } from './hero-user.component'
 
-export const components = [HeroCompleteComponent, HeroSimpleComponent]
+export const components = [HeroCompleteComponent, HeroSimpleComponent, HeroUserComponent]
 
 export const config = {
   title: 'ui-hero demos',
@@ -14,6 +15,13 @@ export const config = {
       component: HeroSimpleComponent,
       path: 'demos/ui-hero',
       files: ['hero-simple.component.ts', 'hero-simple.component.html'],
+    }),
+    DemoHelper.config({
+      title: 'User Example',
+      description: `The <code>ui-hero</code> component can be used to show a user as a hero!`,
+      component: HeroUserComponent,
+      path: 'demos/ui-hero',
+      files: ['hero-user.component.ts', 'hero-user.component.html'],
     }),
     DemoHelper.config({
       title: 'Complete Example',
