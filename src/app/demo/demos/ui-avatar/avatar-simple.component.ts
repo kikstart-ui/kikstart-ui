@@ -9,5 +9,7 @@ export class AvatarSimpleComponent {
     { name: 'Small', size: 'sm' },
     { name: 'Medium (default)', size: 'md' },
     { name: 'Large', size: 'lg' },
+    { name: 'Extra Large', size: 'xl' },
+    { name: 'Extra Extra Large', size: 'xxl' },
   ]
 }
