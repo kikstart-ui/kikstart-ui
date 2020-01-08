@@ -1,34 +1,34 @@
-import { Meta, Title } from '@angular/platform-browser';
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { cloneDeep } from 'lodash';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Meta, Title } from '@angular/platform-browser'
+import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
+import { cloneDeep } from 'lodash'
+import { BehaviorSubject, Observable } from 'rxjs'
 
-import { ToastrService } from 'ngx-toastr';
-import { BsModalService } from 'ngx-bootstrap';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { ToastrService } from 'ngx-toastr'
+import { BsModalService } from 'ngx-bootstrap'
+import { FormlyFieldConfig } from '@ngx-formly/core'
 
-import { UiDialogFormComponent } from '../components/ui-dialog-form.component';
-import { UiDialogProgressComponent } from '../components/ui-dialog-progress.component';
-import { UiLayout } from '../interfaces/ui-layout';
+import { UiDialogFormComponent } from '../components/ui-dialog-form.component'
+import { UiDialogProgressComponent } from '../components/ui-dialog-progress.component'
+import { UiLayout } from '../interfaces/ui-layout'
 
 interface SiteDialogFormParams {
-  handler?: (data) => Observable<any>;
-  fields: FormlyFieldConfig[];
-  model?: any;
-  title?: string;
+  handler?: (data) => Observable<any>
+  fields: FormlyFieldConfig[]
+  model?: any
+  title?: string
 }
 
 @Injectable({ providedIn: 'root' })
 export class UiService {
-  private layoutSubject = new BehaviorSubject<UiLayout>(null);
+  private layoutSubject = new BehaviorSubject<UiLayout>(null)
 
   set layout(layout: UiLayout) {
-    this.layoutSubject.next(layout);
+    this.layoutSubject.next(layout)
   }
 
   get layout(): UiLayout {
-    return this.layoutSubject.getValue();
+    return this.layoutSubject.getValue()
   }
 
   constructor(
@@ -47,7 +47,7 @@ export class UiService {
         title,
         handler,
       },
-    });
+    })
   }
 
   openProgress() {
@@ -55,37 +55,38 @@ export class UiService {
       initialState: {
         title: 'Loading...',
       },
-    });
+    })
   }
 
   toastSuccess(message = 'OK :)', title?: string) {
-    return this.toast.success(message, title);
+    return this.toast.success(message, title)
   }
 
   toastError(message = 'Something went wrong :(', title?: string) {
-    return this.toast.error(message, title);
+    return this.toast.error(message, title)
   }
 
   isRouteActive(url: string, exact = false): boolean {
-    return this.router.isActive(url, exact);
+    return this.router.isActive(url, exact)
   }
 
   setMetaData(config?: { description?: string; image?: string; title?: string }) {
-    config = config || {};
-    const brand = this.layout.brand || null;
-    const appTitle = [brand.name, brand.product].join(` ${brand.separator} `) + ' - ' + brand.description;
+    config = config || {}
+    const brand = this.layout.brand || null
+    const appTitle =
+      [brand.name, brand.product].join(` ${brand.separator} `) + ' - ' + brand.description
 
     // Get the description from the config, or use the default App Description
-    const description = config.description || brand.description;
+    const description = config.description || brand.description
 
     // Get the image from the config or use the App Image;
-    const image = config.image || brand.logo;
+    const image = config.image || brand.logo
 
     // Get the title from the config and append the App Title, or just use the App Title
-    const title = config.title ? `${config.title} - ${appTitle}` : appTitle;
+    const title = config.title ? `${config.title} - ${appTitle}` : appTitle
 
     // Set the Application Title
-    this.title.setTitle(title);
+    this.title.setTitle(title)
 
     const tags = [
       { name: 'description', content: description },
@@ -101,8 +102,8 @@ export class UiService {
       { property: 'og:title', content: title },
       { property: 'og:description', content: description },
       { property: 'og:image', content: image },
-    ];
+    ]
 
-    tags.forEach(tag => this.meta.updateTag(tag));
+    tags.forEach(tag => this.meta.updateTag(tag))
   }
 }

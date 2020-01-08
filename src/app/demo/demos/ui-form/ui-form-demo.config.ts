@@ -1,11 +1,11 @@
-import { DemoHelper } from '../../demo.helper';
+import { DemoHelper } from '../../demo.helper'
 
-import { FormSimpleComponent } from './form-simple/form-simple.component';
-import { FormLoginComponent } from './form-login/form-login.component';
+import { FormSimpleComponent } from './form-simple/form-simple.component'
+import { FormLoginComponent } from './form-login/form-login.component'
 
-export const components = [FormLoginComponent, FormSimpleComponent];
+export const components = [FormLoginComponent, FormSimpleComponent]
 
-const base = 'demos/ui-form';
+const base = 'demos/ui-form'
 
 export const config = {
   title: 'ui-form demos',
@@ -28,4 +28,4 @@ and defaults.
       files: ['form-login.component.ts', 'form-login.component.html'],
     }),
   ],
-};
+}

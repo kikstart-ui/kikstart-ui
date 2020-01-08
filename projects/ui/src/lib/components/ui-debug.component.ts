@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'ui-debug',
@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class UiDebugComponent {
-  @Input() data: any;
-  @Input() json = true;
-  @Input() label: string;
+  @Input() data: any
+  @Input() json = true
+  @Input() label: string
 }

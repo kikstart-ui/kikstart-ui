@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
-import { ConfigOption, FormlyModule } from '@ngx-formly/core';
-import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
+import { ConfigOption, FormlyModule } from '@ngx-formly/core'
+import { FormlyBootstrapModule } from '@ngx-formly/bootstrap'
 
 import {
   emailValidator,
@@ -12,7 +12,7 @@ import {
   maxValidationMessage,
   minlengthValidationMessage,
   minValidationMessage,
-} from './validators';
+} from './validators'
 
 const config: ConfigOption = {
   types: [],
@@ -25,10 +25,16 @@ const config: ConfigOption = {
     { name: 'email', message: emailValidatorMessage },
   ],
   validators: [{ name: 'email', validation: emailValidator }],
-};
+}
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, FormlyModule.forRoot(config), FormlyBootstrapModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FormlyModule.forRoot(config),
+    FormlyBootstrapModule,
+  ],
   exports: [FormsModule, ReactiveFormsModule, FormlyModule, FormlyBootstrapModule],
 })
 export class UiFormsModule {}

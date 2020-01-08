@@ -1,8 +1,8 @@
-import { DemoHelper } from '../../demo.helper';
+import { DemoHelper } from '../../demo.helper'
 
-import { BrandSimpleComponent } from './brand-simple.component';
+import { BrandSimpleComponent } from './brand-simple.component'
 
-export const components = [BrandSimpleComponent];
+export const components = [BrandSimpleComponent]
 
 export const config = {
   title: 'ui-brand demos',
@@ -15,4 +15,4 @@ export const config = {
       files: ['brand-simple.component.ts', 'brand-simple.component.html'],
     }),
   ],
-};
+}

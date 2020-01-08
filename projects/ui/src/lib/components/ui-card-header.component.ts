@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'ui-card-header',
@@ -12,5 +12,5 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class UiCardHeaderComponent {
-  @Input() cardTitle: string;
+  @Input() cardTitle: string
 }

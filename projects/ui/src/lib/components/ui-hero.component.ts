@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { UiCard } from '../interfaces/ui-card';
-import { UiLink } from '../interfaces/ui-link';
-import { UiBrand } from '../interfaces/ui-brand';
+import { Component, Input } from '@angular/core'
+import { UiCard } from '../interfaces/ui-card'
+import { UiLink } from '../interfaces/ui-link'
+import { UiBrand } from '../interfaces/ui-brand'
 
 @Component({
   selector: 'ui-hero',
@@ -52,11 +52,11 @@ import { UiBrand } from '../interfaces/ui-brand';
   ],
 })
 export class UiHeroComponent {
-  @Input() brand: UiBrand;
-  @Input() brandSize: 'sm' | 'lg' = 'lg';
-  @Input() centered = true;
-  @Input() link: UiLink;
-  @Input() title?: string;
-  @Input() description?: string;
-  @Input() cards: UiCard[] = [];
+  @Input() brand: UiBrand
+  @Input() brandSize: 'sm' | 'lg' = 'lg'
+  @Input() centered = true
+  @Input() link: UiLink
+  @Input() title?: string
+  @Input() description?: string
+  @Input() cards: UiCard[] = []
 }

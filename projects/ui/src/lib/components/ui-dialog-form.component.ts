@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { FormlyFieldConfig } from '@ngx-formly/core';
-import { FormGroup } from '@angular/forms';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { Component, Input } from '@angular/core'
+import { FormlyFieldConfig } from '@ngx-formly/core'
+import { FormGroup } from '@angular/forms'
+import { BsModalRef } from 'ngx-bootstrap/modal'
 
-import { Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs'
 
 @Component({
   template: `
@@ -30,38 +30,38 @@ import { Observable, of } from 'rxjs';
   ],
 })
 export class UiDialogFormComponent {
-  loading: boolean;
-  error: string;
-  success: string;
+  loading: boolean
+  error: string
+  success: string
 
-  @Input() fields: FormlyFieldConfig[];
-  @Input() form = new FormGroup({});
-  @Input() model: any = {};
-  @Input() title: string;
-  @Input() handler: (data: any) => Observable<any> = data => of(data);
+  @Input() fields: FormlyFieldConfig[]
+  @Input() form = new FormGroup({})
+  @Input() model: any = {}
+  @Input() title: string
+  @Input() handler: (data: any) => Observable<any> = data => of(data)
 
   constructor(public ref: BsModalRef) {}
 
   cancel() {
-    this.ref.hide();
+    this.ref.hide()
   }
 
   submit() {
-    this.error = null;
-    this.loading = true;
-    this.form.disable();
+    this.error = null
+    this.loading = true
+    this.form.disable()
     this.handler(this.model).subscribe(
       () => {
-        this.loading = false;
-        this.success = 'Success!';
-        setTimeout(() => this.ref.hide(), 500);
+        this.loading = false
+        this.success = 'Success!'
+        setTimeout(() => this.ref.hide(), 500)
       },
       err => {
-        this.error = err;
-        this.loading = false;
-        this.form.enable();
-        console.log(err);
+        this.error = err
+        this.loading = false
+        this.form.enable()
+        console.log(err)
       },
-    );
+    )
   }
 }

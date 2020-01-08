@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'ui-list-item',
@@ -10,5 +10,5 @@ import { Component, Input } from '@angular/core';
   styles: [],
 })
 export class UiListItemComponent {
-  @Input() public active = false;
+  @Input() public active = false
 }

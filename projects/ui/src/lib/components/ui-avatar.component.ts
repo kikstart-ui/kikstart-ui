@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
   selector: 'ui-avatar',
@@ -34,7 +34,7 @@ import { Component, Input, OnInit } from '@angular/core';
   ],
 })
 export class UiAvatarComponent {
-  @Input() public alt = 'Avatar';
-  @Input() public avatar: string;
-  @Input() public size: 'sm' | 'md' | 'lg' = 'md';
+  @Input() public alt = 'Avatar'
+  @Input() public avatar: string
+  @Input() public size: 'sm' | 'md' | 'lg' = 'md'
 }

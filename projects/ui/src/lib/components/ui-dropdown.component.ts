@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'ui-dropdown',
@@ -34,7 +34,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styles: [],
 })
 export class UiDropdownComponent {
-  @Input() items: { [key: string]: string };
-  @Input() selected: string;
-  @Output() changeSelected = new EventEmitter();
+  @Input() items: { [key: string]: string }
+  @Input() selected: string
+  @Output() changeSelected = new EventEmitter()
 }

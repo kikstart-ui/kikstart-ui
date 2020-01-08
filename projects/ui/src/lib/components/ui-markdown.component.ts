@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'ui-markdown',
@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class UiMarkdownComponent {
-  @Input() public data: string;
+  @Input() public data: string
 }

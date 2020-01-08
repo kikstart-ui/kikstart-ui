@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormHelper, UiComment } from '@kikstart/ui';
+import { Component } from '@angular/core'
+import { FormHelper, UiComment } from '@kikstart/ui'
 
 @Component({
   templateUrl: './comment-custom.component.html',
@@ -15,7 +15,7 @@ export class CommentCustomComponent {
       username: '@beeman',
       path: '/profiles/@beeman',
     },
-  };
+  }
 
   public fields = [
     FormHelper.input('author.name', { label: 'Author Name', required: true }),
@@ -25,5 +25,5 @@ export class CommentCustomComponent {
     FormHelper.input('path', { label: 'path', required: true }),
     FormHelper.input('created', { label: 'time', required: true }),
     FormHelper.input('text', { label: 'text', required: true }),
-  ];
+  ]
 }

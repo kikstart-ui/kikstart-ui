@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 
 @Component({
   template: `
@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   `,
 })
 export class RenderDemoComponent {
-  @Input() label = 'Default Click Text';
-  @Input() buttonClass = 'info';
-  @Output() action = new EventEmitter();
+  @Input() label = 'Default Click Text'
+  @Input() buttonClass = 'info'
+  @Output() action = new EventEmitter()
 }

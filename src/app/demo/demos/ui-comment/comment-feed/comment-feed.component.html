@@ -1,3 +1,9 @@
 <ng-container *ngFor="let comment of feed">
-  <ui-comment class="mb-2" (action)="handleAction($event)" [deleteButton]="true" [comment]="comment"> </ui-comment>
+  <ui-comment
+    class="mb-2"
+    (action)="handleAction($event)"
+    [deleteButton]="true"
+    [comment]="comment"
+  >
+  </ui-comment>
 </ng-container>

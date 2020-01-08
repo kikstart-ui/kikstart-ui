@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
   selector: 'ui-page-sidebar',
@@ -33,6 +33,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styles: [],
 })
 export class UiPageSidebarComponent {
-  @Input() public title: string;
-  @Input() public links: { path: string; label: string; params?: any }[] = [];
+  @Input() public title: string
+  @Input() public links: { path: string; label: string; params?: any }[] = []
 }

@@ -1,20 +1,20 @@
-import { UiBrand } from './ui-brand';
-import { UiLink } from './ui-link';
+import { UiBrand } from './ui-brand'
+import { UiLink } from './ui-link'
 
 export interface UiLayout {
-  brand: UiBrand;
+  brand: UiBrand
   header?: {
-    fluid?: boolean;
-    style?: 'dark' | 'light';
-    links?: UiLink[];
-  };
+    fluid?: boolean
+    style?: 'dark' | 'light'
+    links?: UiLink[]
+  }
   content?: {
-    fluid?: boolean;
-    padding?: boolean;
-  };
+    fluid?: boolean
+    padding?: boolean
+  }
   footer?: {
-    html?: string;
-    text?: string;
-    links?: UiLink[];
-  };
+    html?: string
+    text?: string
+    links?: UiLink[]
+  }
 }

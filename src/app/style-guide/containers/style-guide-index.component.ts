@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { UiService } from '@kikstart/ui';
+import { Component } from '@angular/core'
+import { UiService } from '@kikstart/ui'
 
 @Component({
   template: `
@@ -8,6 +8,6 @@ import { UiService } from '@kikstart/ui';
 })
 export class StyleGuideIndexComponent {
   constructor(private ui: UiService) {
-    this.ui.setMetaData({ title: 'Style Guide' });
+    this.ui.setMetaData({ title: 'Style Guide' })
   }
 }

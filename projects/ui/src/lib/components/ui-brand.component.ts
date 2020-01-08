@@ -1,11 +1,16 @@
-import { Component, Input } from '@angular/core';
-import { UiBrand } from '../interfaces/ui-brand';
+import { Component, Input } from '@angular/core'
+import { UiBrand } from '../interfaces/ui-brand'
 
 @Component({
   selector: 'ui-brand',
   template: `
     <span [class.brand-sm]="size === 'sm'" [class.brand-lg]="size === 'lg'">
-      <img *ngIf="brand?.logo" [attr.src]="brand?.logo" class="brand-logo d-inline-block align-top" alt="brand logo" />
+      <img
+        *ngIf="brand?.logo"
+        [attr.src]="brand?.logo"
+        class="brand-logo d-inline-block align-top"
+        alt="brand logo"
+      />
       <span *ngIf="brand?.name" class="brand-name">{{ brand?.name }}</span>
       <span *ngIf="brand?.separator" class="brand-separator">{{ brand?.separator }}</span>
       <span *ngIf="brand?.product" class="brand-product">{{ brand?.product }}</span>
@@ -48,6 +53,6 @@ import { UiBrand } from '../interfaces/ui-brand';
   ],
 })
 export class UiBrandComponent {
-  @Input() brand: UiBrand;
-  @Input() size: 'sm' | 'lg' = 'sm';
+  @Input() brand: UiBrand
+  @Input() size: 'sm' | 'lg' = 'sm'
 }

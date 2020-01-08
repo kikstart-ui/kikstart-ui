@@ -1,8 +1,8 @@
-import { DemoHelper } from '../../demo.helper';
+import { DemoHelper } from '../../demo.helper'
 
-import { MarkdownSimpleComponent } from './markdown-simple.component';
+import { MarkdownSimpleComponent } from './markdown-simple.component'
 
-export const components = [MarkdownSimpleComponent];
+export const components = [MarkdownSimpleComponent]
 
 export const config = {
   title: 'ui-markdown demos',
@@ -15,4 +15,4 @@ export const config = {
       files: ['markdown-simple.example.md', 'markdown-simple.component.ts'],
     }),
   ],
-};
+}

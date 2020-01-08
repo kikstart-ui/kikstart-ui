@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 
-import { UiComment } from '../interfaces/ui-comment';
+import { UiComment } from '../interfaces/ui-comment'
 
 @Component({
   selector: 'ui-comment',
@@ -16,7 +16,10 @@ import { UiComment } from '../interfaces/ui-comment';
       <div class="media-body">
         <div class="mt-0">
           <div class="pull-right" *ngIf="deleteButton">
-            <button class="btn btn-sm text-muted" (click)="action.emit({ type: 'DELETE', payload: comment })">
+            <button
+              class="btn btn-sm text-muted"
+              (click)="action.emit({ type: 'DELETE', payload: comment })"
+            >
               <i class="fa fa-times"></i>
             </button>
           </div>
@@ -32,7 +35,11 @@ import { UiComment } from '../interfaces/ui-comment';
             <span *ngIf="comment?.author?.username"> {{ comment?.author?.username }} </span>
             <span *ngIf="comment?.author?.username && comment?.created" class="mx-1"> · </span>
             <span *ngIf="comment?.created">
-              <ui-link *ngIf="comment?.path" [path]="comment?.path" [label]="comment?.created | timeago"></ui-link>
+              <ui-link
+                *ngIf="comment?.path"
+                [path]="comment?.path"
+                [label]="comment?.created | timeago"
+              ></ui-link>
               <span *ngIf="!comment?.path">{{ comment?.created | timeago }}</span>
             </span>
           </small>
@@ -60,7 +67,7 @@ import { UiComment } from '../interfaces/ui-comment';
   ],
 })
 export class UiCommentComponent {
-  @Input() comment?: UiComment;
-  @Input() deleteButton = false;
-  @Output() action = new EventEmitter();
+  @Input() comment?: UiComment
+  @Input() deleteButton = false
+  @Output() action = new EventEmitter()
 }

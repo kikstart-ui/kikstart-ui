@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
   template: `
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class MarkdownSimpleComponent {
-  public data = require('!!raw-loader!./markdown-simple.example.md').default as string;
+  public data = require('!!raw-loader!./markdown-simple.example.md').default as string
 }

@@ -1,28 +1,28 @@
-import { FormHelper } from '@kikstart/ui';
-import { appLayout } from '../../app.config';
+import { FormHelper } from '@kikstart/ui'
+import { appLayout } from '../../app.config'
 
 export class AuthWebHelper {
-  static brand = { ...appLayout.brand, size: 'lg' };
-  static footer = appLayout.footer;
-  static loginLink = { path: '/login', label: 'Log in' };
-  static logoutLink = { path: '/logout', label: 'Logging out...' };
-  static signedOutLink = { path: '/logout', label: 'You are logged out.' };
-  static registerLink = { path: '/register', label: 'Register' };
-  static forgotLink = { path: '/reset-password', label: 'Forgot password?' };
-  static loadingLink = { path: '/token', label: 'Loading...' };
+  static brand = { ...appLayout.brand, size: 'lg' }
+  static footer = appLayout.footer
+  static loginLink = { path: '/login', label: 'Log in' }
+  static logoutLink = { path: '/logout', label: 'Logging out...' }
+  static signedOutLink = { path: '/logout', label: 'You are logged out.' }
+  static registerLink = { path: '/register', label: 'Register' }
+  static forgotLink = { path: '/reset-password', label: 'Forgot password?' }
+  static loadingLink = { path: '/token', label: 'Loading...' }
 
   static emailField = FormHelper.email('email', {
     label: 'Email',
     required: true,
-  });
+  })
   static nameField = FormHelper.input('name', {
     label: 'Name',
     required: true,
-  });
+  })
   static passwordField = FormHelper.password('password', {
     label: 'Password',
     minLength: 8,
-  });
+  })
   static usernameField = FormHelper.input(
     'username',
     {
@@ -30,13 +30,13 @@ export class AuthWebHelper {
       required: true,
     },
     { focus: true },
-  );
+  )
 
   static registerFields: FormHelper[] = [
     AuthWebHelper.usernameField,
     AuthWebHelper.nameField,
     AuthWebHelper.emailField,
     AuthWebHelper.passwordField,
-  ];
-  static loginFields: FormHelper[] = [AuthWebHelper.usernameField, AuthWebHelper.passwordField];
+  ]
+  static loginFields: FormHelper[] = [AuthWebHelper.usernameField, AuthWebHelper.passwordField]
 }

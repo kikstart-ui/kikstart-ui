@@ -1,9 +1,9 @@
-import { DemoHelper } from '../../demo.helper';
+import { DemoHelper } from '../../demo.helper'
 
-import { HeroCompleteComponent } from './hero-complete.component';
-import { HeroSimpleComponent } from './hero-simple.component';
+import { HeroCompleteComponent } from './hero-complete.component'
+import { HeroSimpleComponent } from './hero-simple.component'
 
-export const components = [HeroCompleteComponent, HeroSimpleComponent];
+export const components = [HeroCompleteComponent, HeroSimpleComponent]
 
 export const config = {
   title: 'ui-hero demos',
@@ -23,4 +23,4 @@ export const config = {
       files: ['hero-complete.component.ts', 'hero-complete.component.html'],
     }),
   ],
-};
+}
