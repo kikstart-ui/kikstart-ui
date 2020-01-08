@@ -11,6 +11,7 @@ const routes: Routes = [
       title: 'Component Demos',
       links: [
         { path: '/demo/ui-avatar', label: 'ui-avatar' },
+        { path: '/demo/ui-brand', label: 'ui-brand' },
         { path: '/demo/ui-code', label: 'ui-code' },
         { path: '/demo/ui-comment', label: 'ui-comment' },
         { path: '/demo/ui-comment-form', label: 'ui-comment-form' },
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'ui-avatar',
         loadChildren: () => import('./demos/ui-avatar/ui-avatar-demo.module').then(m => m.UiAvatarDemoModule),
+      },
+      {
+        path: 'ui-brand',
+        loadChildren: () => import('./demos/ui-brand/ui-brand-demo.module').then(m => m.UiBrandDemoModule),
       },
       {
         path: 'ui-code',
