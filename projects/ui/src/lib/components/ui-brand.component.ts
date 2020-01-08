@@ -30,7 +30,7 @@ import { UiBrand } from '../interfaces/ui-brand';
       }
       .brand-separator {
         margin-left: 2px;
-        /*color: #555;*/
+        color: #555;
         font-weight: 200;
       }
       .brand-sm {

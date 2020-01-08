@@ -38,6 +38,15 @@ import { UiService } from '@kikstart/ui';
       </ng-container>
     </ng-container>
   `,
+  styles: [
+    `
+      .tab-pane {
+        background-color: #222;
+        border: 1px solid #444;
+        border-top: 0;
+      }
+    `,
+  ],
 })
 export class DemoComponent {
   public routeData$: Observable<Data>;

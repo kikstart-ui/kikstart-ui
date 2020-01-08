@@ -5,5 +5,4 @@ export interface UiBrand {
   product?: string;
   separator?: string;
   description?: string;
-  size?: 'lg';
 }

@@ -11,7 +11,7 @@ import { UiBrand } from '@kikstart/ui';
   `,
 })
 export class HomeIndexComponent implements OnInit {
-  brand: UiBrand = { ...appLayout.brand, size: 'lg' };
+  brand: UiBrand = appLayout.brand;
   link: UiLink = {
     path: '/demo',
     label: 'Look at some demos',
@@ -19,37 +19,25 @@ export class HomeIndexComponent implements OnInit {
   };
   cards: UiCard[] = [
     {
-      title: 'Documentation',
+      title: 'Demos',
       content: `Donec lobortis velit sed suscipit lobortis. Ut non quam metus. Nullam a maximus mi. Quisque justo
       nunc, sollicitudin euismod euismod at, tincidunt ut tellus. Vivamus rhoncus mattis varius.`,
       links: [
         {
-          label: 'Get Started',
+          label: 'Show Demos',
+          path: '/demo',
+          iconAfter: 'ml-2 fa fa-angle-double-right',
+        },
+      ],
+    },
+    {
+      title: 'Docs',
+      content: `Donec lobortis velit sed suscipit lobortis. Ut non quam metus. Nullam a maximus mi. Quisque justo
+      nunc, sollicitudin euismod euismod at, tincidunt ut tellus. Vivamus rhoncus mattis varius.`,
+      links: [
+        {
+          label: 'Read Docs',
           path: '/docs',
-          iconAfter: 'ml-2 fa fa-angle-double-right',
-        },
-      ],
-    },
-    {
-      title: 'Blog',
-      content: `Donec lobortis velit sed suscipit lobortis. Ut non quam metus. Nullam a maximus mi. Quisque justo
-      nunc, sollicitudin euismod euismod at, tincidunt ut tellus. Vivamus rhoncus mattis varius.`,
-      links: [
-        {
-          label: 'View Posts',
-          path: '/blog',
-          iconAfter: 'ml-2 fa fa-angle-double-right',
-        },
-      ],
-    },
-    {
-      title: 'Style Guides',
-      content: `Donec lobortis velit sed suscipit lobortis. Ut non quam metus. Nullam a maximus mi. Quisque justo
-      nunc, sollicitudin euismod euismod at, tincidunt ut tellus. Vivamus rhoncus mattis varius.`,
-      links: [
-        {
-          label: 'Learn More',
-          path: '/style-guides',
           iconAfter: 'ml-2 fa fa-angle-double-right',
         },
       ],
