@@ -6,6 +6,8 @@
   "scripts": {
     "ng": "ng",
     "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
+    "compodoc": "npx compodoc -p projects/ui/tsconfig.lib.json -d src/app/api-docs/ -e json",
+    "compodoc:watch": "nodemon -x 'yarn compodoc' --watch projects --ext ts",
     "start": "ng serve",
     "build": "yarn build:lib && yarn build:demo",
     "build:demo": "ng build --prod",
@@ -48,6 +50,7 @@
     "@angular/cli": "8.3.21",
     "@angular/compiler-cli": "8.2.14",
     "@angular/language-service": "8.2.14",
+    "@compodoc/compodoc": "1.1.11",
     "@ctrl/ngx-numbered-codeblock": "2.0.0",
     "@types/jasmine": "3.5.0",
     "@types/jasminewd2": "2.0.8",
@@ -85,6 +88,10 @@
   "lint-staged": {
     "*.{js,json,css,scss,less,md,ts,html,component.html}": [
       "prettier --write",
+      "git add"
+    ],
+    "projects/ui/*.{js,json,css,scss,less,md,ts,html,component.html}": [
+      "yarn compodoc",
       "git add"
     ]
   },

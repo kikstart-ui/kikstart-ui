@@ -6,6 +6,9 @@ import { UiTab } from '../../interfaces/ui-tab'
 import { FormHelper } from '../../helpers/form.helper'
 import { UiLink } from '../../interfaces/ui-link'
 
+/**
+ * The ui-auth component can be used to create authentication pages by defining them.
+ */
 @Component({
   selector: 'ui-auth',
   templateUrl: './ui-auth.component.html',

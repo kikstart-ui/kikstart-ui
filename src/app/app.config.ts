@@ -12,11 +12,13 @@ export const appLayout: UiLayout = {
     style: 'dark',
     links: [
       { path: '/home', label: 'Home', icon: 'mr-2 fa fa-fw fa-home' },
-      { path: '/demo', label: 'Demo', icon: 'mr-2 fa fa-fw fa-magic' },
-      { path: '/docs', label: 'Docs', icon: 'mr-2 fa fa-fw fa-book' },
-      { path: '/blog', label: 'Blog', icon: 'mr-2 fa fa-fw fa-rss' },
-      { path: '/login', label: 'Auth', icon: 'mr-2 fa fa-fw fa-lock' },
-      { path: '/style-guide', label: 'Style Guide', icon: 'mr-2 fa fa-fw fa-paint-brush' },
+      { path: '/demos', label: 'Demos', icon: 'mr-2 fa fa-fw fa-magic' },
+      { path: '/api-docs', label: 'API Docs', icon: 'mr-2 fa fa-fw fa-wrench' },
+      {
+        url: 'https://github.com/beeman/kikstart-ui-starter',
+        label: 'Starter',
+        icon: 'mr-2 fa fa-fw fa-rocket',
+      },
       {
         url: 'https://github.com/beeman/kikstart-ui',
         label: 'GitHub',
@@ -25,10 +27,10 @@ export const appLayout: UiLayout = {
     ],
   },
   footer: {
-    html: `Copyright <a href="">kikstart.dev</a> 2019.`,
+    html: `<small class="text-muted">Copyright <a href="">kikstart.dev</a> 2019-${new Date().getFullYear()}.</small>`,
     links: [
-      { url: 'https://github.com/beeman', label: '', icon: 'fa fa-fw fa-2x fa-github' },
-      { url: 'https://twitter.com/beeman_nl', label: '', icon: 'fa fa-fw fa-2x fa-twitter' },
+      { url: 'https://github.com/beeman', label: '', icon: 'fa fa-fw fa-1x fa-github' },
+      { url: 'https://twitter.com/beeman_nl', label: '', icon: 'fa fa-fw fa-1x fa-twitter' },
     ],
   },
 }

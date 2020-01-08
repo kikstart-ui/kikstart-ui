@@ -12,7 +12,7 @@ import { UiDialogFormComponent } from '../components/ui-dialog-form.component'
 import { UiDialogProgressComponent } from '../components/ui-dialog-progress.component'
 import { UiLayout } from '../interfaces/ui-layout'
 
-interface SiteDialogFormParams {
+interface UiDialogFormParams {
   handler?: (data) => Observable<any>
   fields: FormlyFieldConfig[]
   model?: any
@@ -39,7 +39,7 @@ export class UiService {
     private toast: ToastrService,
   ) {}
 
-  openForm({ model, title, handler, fields }: SiteDialogFormParams) {
+  openForm({ model, title, handler, fields }: UiDialogFormParams) {
     this.modal.show(UiDialogFormComponent, {
       initialState: {
         model: cloneDeep(model),
