@@ -11,10 +11,12 @@ const routes: Routes = [
       title: 'Component Demos',
       links: [
         { path: '/demo/ui-avatar', label: 'ui-avatar' },
+        { path: '/demo/ui-brand', label: 'ui-brand' },
         { path: '/demo/ui-code', label: 'ui-code' },
         { path: '/demo/ui-comment', label: 'ui-comment' },
         { path: '/demo/ui-comment-form', label: 'ui-comment-form' },
         { path: '/demo/ui-form', label: 'ui-form' },
+        { path: '/demo/ui-hero', label: 'ui-hero' },
         { path: '/demo/ui-markdown', label: 'ui-markdown' },
         { path: '/demo/ui-render', label: 'ui-render' },
       ],
@@ -24,6 +26,10 @@ const routes: Routes = [
       {
         path: 'ui-avatar',
         loadChildren: () => import('./demos/ui-avatar/ui-avatar-demo.module').then(m => m.UiAvatarDemoModule),
+      },
+      {
+        path: 'ui-brand',
+        loadChildren: () => import('./demos/ui-brand/ui-brand-demo.module').then(m => m.UiBrandDemoModule),
       },
       {
         path: 'ui-code',
@@ -41,6 +47,10 @@ const routes: Routes = [
       {
         path: 'ui-form',
         loadChildren: () => import('./demos/ui-form/ui-form-demo.module').then(m => m.UiFormDemoModule),
+      },
+      {
+        path: 'ui-hero',
+        loadChildren: () => import('./demos/ui-hero/ui-hero-demo.module').then(m => m.UiHeroDemoModule),
       },
       {
         path: 'ui-markdown',

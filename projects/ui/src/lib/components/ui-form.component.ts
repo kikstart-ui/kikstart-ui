@@ -12,7 +12,7 @@ import { FormlyFieldConfig, FormlyFormBuilder } from '@ngx-formly/core';
           submit
         </button>
       </div>
-      <div class="mt-5" *ngIf="submitButton">
+      <div class="mt-4" *ngIf="submitButton">
         <div class="text-right">
           <button *ngIf="submitButton" [disabled]="!form.valid" type="submit" class="btn btn-success">
             {{ submitButton }}
