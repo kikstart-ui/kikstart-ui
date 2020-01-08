@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { UiBrand } from '@kikstart/ui/lib/interfaces/ui-brand';
+import { Component } from '@angular/core'
+import { UiBrand } from '@kikstart/ui/lib/interfaces/ui-brand'
 
 @Component({
   templateUrl: './brand-simple.component.html',
@@ -11,9 +11,9 @@ export class BrandSimpleComponent {
     product: 'ui',
     color: '#e83e8c',
     logo: 'assets/logo.png',
-  };
+  }
   public examples = [
     { name: 'Small (default)', size: 'sm' },
     { name: 'Large', size: 'lg' },
-  ];
+  ]
 }

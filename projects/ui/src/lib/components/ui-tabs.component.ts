@@ -1,14 +1,18 @@
-import { Component, Input } from '@angular/core';
-import { UiTab } from '../interfaces/ui-tab';
+import { Component, Input } from '@angular/core'
+import { UiTab } from '../interfaces/ui-tab'
 
 @Component({
   selector: 'ui-tabs',
   template: `
     <ul class="nav nav-pills nav-fill">
       <li class="nav-item" *ngFor="let tab of tabs">
-        <a class="nav-link py-3" routerLinkActive="active" [routerLink]="tab.path" [queryParams]="tab.queryParams">{{
-          tab.label
-        }}</a>
+        <a
+          class="nav-link py-3"
+          routerLinkActive="active"
+          [routerLink]="tab.path"
+          [queryParams]="tab.queryParams"
+          >{{ tab.label }}</a
+        >
       </li>
     </ul>
   `,
@@ -26,5 +30,5 @@ import { UiTab } from '../interfaces/ui-tab';
   ],
 })
 export class UiTabsComponent {
-  @Input() public tabs: UiTab[] = [];
+  @Input() public tabs: UiTab[] = []
 }

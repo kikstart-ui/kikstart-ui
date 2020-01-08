@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core'
 
-import { UiBrand } from '../interfaces/ui-brand';
-import { UiLink } from '../interfaces/ui-link';
+import { UiBrand } from '../interfaces/ui-brand'
+import { UiLink } from '../interfaces/ui-link'
 
 @Component({
   selector: 'ui-header',
@@ -29,14 +29,14 @@ import { UiLink } from '../interfaces/ui-link';
   `,
 })
 export class UiHeaderComponent {
-  @Input() public brand: UiBrand;
-  @Input() public fluid = false;
-  @Input() public links: UiLink[] = [];
-  @Input() public style: 'light' | 'dark' = 'dark';
+  @Input() public brand: UiBrand
+  @Input() public fluid = false
+  @Input() public links: UiLink[] = []
+  @Input() public style: 'light' | 'dark' = 'dark'
 
-  public navBarOpen = false;
+  public navBarOpen = false
 
   toggleNavBar() {
-    this.navBarOpen = !this.navBarOpen;
+    this.navBarOpen = !this.navBarOpen
   }
 }

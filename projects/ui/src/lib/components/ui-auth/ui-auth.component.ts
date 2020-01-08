@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { FormGroup } from '@angular/forms'
 
-import { UiBrand } from '../../interfaces/ui-brand';
-import { UiTab } from '../../interfaces/ui-tab';
-import { FormHelper } from '../../helpers/form.helper';
-import { UiLink } from '../../interfaces/ui-link';
+import { UiBrand } from '../../interfaces/ui-brand'
+import { UiTab } from '../../interfaces/ui-tab'
+import { FormHelper } from '../../helpers/form.helper'
+import { UiLink } from '../../interfaces/ui-link'
 
 @Component({
   selector: 'ui-auth',
@@ -12,32 +12,32 @@ import { UiLink } from '../../interfaces/ui-link';
   styleUrls: ['./ui-auth.component.scss'],
 })
 export class UiAuthComponent {
-  @Input() brand: UiBrand;
-  @Input() footer?: { html?: string; text?: string; links?: UiLink[] };
-  @Input() bottomLink: { path: string; label: string };
-  @Input() links: UiTab[] = [];
-  @Input() name = 'kikstart.dev';
-  @Input() label: string;
-  @Input() loading = false;
-  @Input() form = new FormGroup({});
-  @Input() model = {};
-  @Input() fields: FormHelper[] = [];
-  @Input() navigation = true;
-  @Input() socialButtons = false;
-  @Output() action = new EventEmitter();
-  selectedSocial: 'github' | 'google';
+  @Input() brand: UiBrand
+  @Input() footer?: { html?: string; text?: string; links?: UiLink[] }
+  @Input() bottomLink: { path: string; label: string }
+  @Input() links: UiTab[] = []
+  @Input() name = 'kikstart.dev'
+  @Input() label: string
+  @Input() loading = false
+  @Input() form = new FormGroup({})
+  @Input() model = {}
+  @Input() fields: FormHelper[] = []
+  @Input() navigation = true
+  @Input() socialButtons = false
+  @Output() action = new EventEmitter()
+  selectedSocial: 'github' | 'google'
 
   constructor() {}
 
   signInGithub() {
-    this.loading = true;
-    this.selectedSocial = 'github';
-    return this.action.emit({ type: 'SOCIAL', payload: 'github' });
+    this.loading = true
+    this.selectedSocial = 'github'
+    return this.action.emit({ type: 'SOCIAL', payload: 'github' })
   }
 
   signInGoogle() {
-    this.loading = true;
-    this.selectedSocial = 'google';
-    return this.action.emit({ type: 'SOCIAL', payload: 'google' });
+    this.loading = true
+    this.selectedSocial = 'google'
+    return this.action.emit({ type: 'SOCIAL', payload: 'google' })
   }
 }

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Post } from '../interface/post';
+import { Component, Input } from '@angular/core'
+import { Post } from '../interface/post'
 
 @Component({
   selector: 'app-post-list',
@@ -16,7 +16,11 @@ import { Post } from '../interface/post';
           <div [innerHTML]="post.snippet"></div>
           <div class="my-3">
             <ui-link
-              [link]="{ path: post.id, label: 'Read More', iconAfter: 'ml-2 fa fa-angle-double-right' }"
+              [link]="{
+                path: post.id,
+                label: 'Read More',
+                iconAfter: 'ml-2 fa fa-angle-double-right'
+              }"
             ></ui-link>
           </div>
         </ui-card-body>
@@ -25,5 +29,5 @@ import { Post } from '../interface/post';
   `,
 })
 export class PostListComponent {
-  @Input() posts: Post[] = [];
+  @Input() posts: Post[] = []
 }

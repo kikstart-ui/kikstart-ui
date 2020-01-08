@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { UiLink } from '../interfaces/ui-link';
+import { Component, Input } from '@angular/core'
+import { UiLink } from '../interfaces/ui-link'
 
 @Component({
   selector: 'ui-link',
@@ -19,8 +19,8 @@ import { UiLink } from '../interfaces/ui-link';
   `,
 })
 export class UiLinkComponent {
-  @Input() link: UiLink;
-  @Input() path?: string;
-  @Input() label?: string;
-  @Input() linkClass?: string;
+  @Input() link: UiLink
+  @Input() path?: string
+  @Input() label?: string
+  @Input() linkClass?: string
 }

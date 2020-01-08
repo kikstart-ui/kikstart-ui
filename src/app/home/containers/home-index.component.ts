@@ -1,22 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { appLayout } from '../../app.config';
+import { Component, OnInit } from '@angular/core'
+import { appLayout } from '../../app.config'
 
-import { UiCard, UiService } from '@kikstart/ui';
-import { UiLink } from '@kikstart/ui';
-import { UiBrand } from '@kikstart/ui';
+import { UiCard, UiService } from '@kikstart/ui'
+import { UiLink } from '@kikstart/ui'
+import { UiBrand } from '@kikstart/ui'
 
 @Component({
   template: `
-    <ui-hero [brand]="brand" [description]="brand.description" [link]="link" [cards]="cards"></ui-hero>
+    <ui-hero
+      [brand]="brand"
+      [description]="brand.description"
+      [link]="link"
+      [cards]="cards"
+    ></ui-hero>
   `,
 })
 export class HomeIndexComponent implements OnInit {
-  brand: UiBrand = appLayout.brand;
+  brand: UiBrand = appLayout.brand
   link: UiLink = {
     path: '/demo',
     label: 'Look at some demos',
     iconAfter: 'ml-2 fa fa-angle-double-right',
-  };
+  }
   cards: UiCard[] = [
     {
       title: 'Demos',
@@ -42,10 +47,10 @@ export class HomeIndexComponent implements OnInit {
         },
       ],
     },
-  ];
+  ]
   constructor(private ui: UiService) {}
 
   ngOnInit() {
-    this.ui.setMetaData({ title: 'Home' });
+    this.ui.setMetaData({ title: 'Home' })
   }
 }

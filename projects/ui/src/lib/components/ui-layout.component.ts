@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { UiLayout } from '../interfaces/ui-layout';
+import { Component, Input } from '@angular/core'
+import { UiLayout } from '../interfaces/ui-layout'
 
 @Component({
   selector: 'ui-layout',
@@ -20,5 +20,5 @@ import { UiLayout } from '../interfaces/ui-layout';
   `,
 })
 export class UiLayoutComponent {
-  @Input() config: UiLayout;
+  @Input() config: UiLayout
 }

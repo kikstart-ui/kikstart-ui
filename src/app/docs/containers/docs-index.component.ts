@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { UiService } from '@kikstart/ui';
+import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
+import { Observable } from 'rxjs'
+import { map, switchMap, tap } from 'rxjs/operators'
+import { UiService } from '@kikstart/ui'
 
-import { DocsService } from '../services/docs.service';
+import { DocsService } from '../services/docs.service'
 
 @Component({
   template: `
@@ -26,17 +26,17 @@ import { DocsService } from '../services/docs.service';
   `,
 })
 export class DocsIndexComponent implements OnInit {
-  public url: string;
-  public document$: Observable<any>;
+  public url: string
+  public document$: Observable<any>
 
   constructor(public route: ActivatedRoute, public service: DocsService, private ui: UiService) {}
 
   ngOnInit() {
-    this.ui.setMetaData({ title: 'Docs' });
+    this.ui.setMetaData({ title: 'Docs' })
     this.document$ = this.route.url.pipe(
       map(segments => segments.map(segment => segment.path).join('/')),
       tap(url => (this.url = url)),
       switchMap(url => this.service.getDocument(url)),
-    );
+    )
   }
 }

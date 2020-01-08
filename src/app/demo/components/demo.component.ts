@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Data } from '@angular/router';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { UiService } from '@kikstart/ui';
+import { Component } from '@angular/core'
+import { ActivatedRoute, Data } from '@angular/router'
+import { Observable } from 'rxjs'
+import { tap } from 'rxjs/operators'
+import { UiService } from '@kikstart/ui'
 
 @Component({
   template: `
@@ -25,7 +25,8 @@ import { UiService } from '@kikstart/ui';
               <ng-container *ngFor="let file of demo.files">
                 <tab [heading]="file.name">
                   <div class="m-4 p-2 alert alert-danger" *ngIf="!file.code">
-                    File not found: {{ file.name }}. Did you set the code property in the route data?
+                    File not found: {{ file.name }}. Did you set the code property in the route
+                    data?
                   </div>
                   <div class="p-2" *ngIf="file.code">
                     <ui-code [code]="file.code" [language]="file.language"></ui-code>
@@ -49,15 +50,15 @@ import { UiService } from '@kikstart/ui';
   ],
 })
 export class DemoComponent {
-  public routeData$: Observable<Data>;
+  public routeData$: Observable<Data>
 
   constructor(public route: ActivatedRoute, private ui: UiService) {
     this.routeData$ = this.route.data.pipe(
       tap(({ title }) => {
         if (title) {
-          this.ui.setMetaData({ title });
+          this.ui.setMetaData({ title })
         }
       }),
-    );
+    )
   }
 }

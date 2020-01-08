@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Post } from '../interface/post';
+import { Component, Input, OnInit } from '@angular/core'
+import { Post } from '../interface/post'
 
 @Component({
   selector: 'app-post-detail',
@@ -17,7 +17,7 @@ import { Post } from '../interface/post';
   `,
 })
 export class PostDetailComponent implements OnInit {
-  @Input() post: Post;
+  @Input() post: Post
   constructor() {}
 
   ngOnInit() {}

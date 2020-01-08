@@ -9,7 +9,7 @@
 There is support for `inline code` and code blocks with syntax highlighting:
 
 ```typescript
-const hello: string = 'world';
+const hello: string = 'world'
 ```
 
 #### Links

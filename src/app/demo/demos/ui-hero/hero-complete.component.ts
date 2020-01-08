@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { UiBrand, UiCard } from '@kikstart/ui';
+import { Component } from '@angular/core'
+import { UiBrand, UiCard } from '@kikstart/ui'
 
 @Component({
   templateUrl: './hero-complete.component.html',
@@ -10,7 +10,7 @@ export class HeroCompleteComponent {
     separator: '|',
     product: 'ui',
     logo: 'assets/logo.png',
-  };
+  }
   public cards: UiCard[] = [
     {
       title: 'Card 1',
@@ -27,7 +27,7 @@ export class HeroCompleteComponent {
       content: 'The content of card 3',
       links: [{ path: '/', label: 'Read more', iconAfter: 'ml-2 fa fa-angle-double-right' }],
     },
-  ];
-  public title = 'This is ui-hero';
-  public description = 'A great component to use for headers or the homepage';
+  ]
+  public title = 'This is ui-hero'
+  public description = 'A great component to use for headers or the homepage'
 }

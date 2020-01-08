@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { UiService } from '@kikstart/ui';
+import { Component } from '@angular/core'
+import { UiService } from '@kikstart/ui'
 
-import { RenderDemoComponent } from './render-demo.component';
+import { RenderDemoComponent } from './render-demo.component'
 
 @Component({
   template: `
@@ -9,18 +9,18 @@ import { RenderDemoComponent } from './render-demo.component';
   `,
 })
 export class RenderSimpleComponent {
-  public component = RenderDemoComponent;
+  public component = RenderDemoComponent
   public inputs = {
     label: 'Click Me',
     buttonClass: 'success',
-  };
+  }
   public outputs = {
     action: $event => this.handleAction($event),
-  };
+  }
 
   constructor(private ui: UiService) {}
 
   handleAction($event) {
-    this.ui.toastSuccess(JSON.stringify($event));
+    this.ui.toastSuccess(JSON.stringify($event))
   }
 }

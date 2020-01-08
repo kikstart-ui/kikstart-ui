@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
-import { delay, tap } from 'rxjs/operators';
-import { UiService } from '@kikstart/ui';
+import { Component } from '@angular/core'
+import { BehaviorSubject, of } from 'rxjs'
+import { delay, tap } from 'rxjs/operators'
+import { UiService } from '@kikstart/ui'
 
 @Component({
   templateUrl: './comment-form-loading.component.html',
 })
 export class CommentFormLoadingComponent {
-  private reset = new BehaviorSubject<boolean>(true);
-  public reset$ = this.reset.asObservable();
+  private reset = new BehaviorSubject<boolean>(true)
+  public reset$ = this.reset.asObservable()
 
   constructor(private ui: UiService) {}
 
@@ -20,6 +20,6 @@ export class CommentFormLoadingComponent {
         tap(() => this.ui.toastSuccess('Comment saved!')),
         tap(() => this.reset.next(true)),
       )
-      .subscribe();
+      .subscribe()
   }
 }

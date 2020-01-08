@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { BlogService } from '../services/blog.service';
+import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
+import { Observable } from 'rxjs'
+import { map, switchMap, tap } from 'rxjs/operators'
+import { BlogService } from '../services/blog.service'
 
 @Component({
   template: `
@@ -15,8 +15,8 @@ import { BlogService } from '../services/blog.service';
   `,
 })
 export class BlogDetailComponent implements OnInit {
-  public url: string;
-  public data$: Observable<any>;
+  public url: string
+  public data$: Observable<any>
 
   constructor(public route: ActivatedRoute, public service: BlogService) {}
 
@@ -25,6 +25,6 @@ export class BlogDetailComponent implements OnInit {
       map(segments => segments.map(segment => segment.path).join('/')),
       tap(url => (this.url = url)),
       switchMap(url => this.service.getPost(url)),
-    );
+    )
   }
 }

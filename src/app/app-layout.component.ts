@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { UiService } from '@kikstart/ui';
+import { Component } from '@angular/core'
+import { UiService } from '@kikstart/ui'
 
 @Component({
   selector: 'app-root',

@@ -1,40 +1,40 @@
 const getLastPart = (item: string, separator: string) => {
-  const parts = item.split(separator);
-  return parts[parts.length - 1];
-};
+  const parts = item.split(separator)
+  return parts[parts.length - 1]
+}
 
 export class DemoHelper {
   static fileType = name => {
-    const ext = getLastPart(name, '.');
+    const ext = getLastPart(name, '.')
 
     switch (ext) {
       case 'graphql':
-        return 'graphql';
+        return 'graphql'
       case 'html':
-        return 'html';
+        return 'html'
       case 'md':
-        return 'markdown';
+        return 'markdown'
       case 'js':
-        return 'javascript';
+        return 'javascript'
       case 'json':
-        return 'json';
+        return 'json'
       case 'ts':
-        return 'typescript';
+        return 'typescript'
       default:
-        console.log(`DemoHelper.fileType: Unknown extension ${ext}... Default: html`);
-        return 'html';
+        console.log(`DemoHelper.fileType: Unknown extension ${ext}... Default: html`)
+        return 'html'
     }
-  };
+  }
 
   static file = (path, language = null) => {
-    const name = getLastPart(path, '/');
+    const name = getLastPart(path, '/')
 
     return {
       name,
       language: language ? language : DemoHelper.fileType(name),
       code: require(`!!raw-loader!./${path}`).default,
-    };
-  };
+    }
+  }
 
   static config = ({
     path,
@@ -43,11 +43,11 @@ export class DemoHelper {
     title,
     description,
   }: {
-    path: string;
-    component: any;
-    files: string[];
-    title: string;
-    description: string;
+    path: string
+    component: any
+    files: string[]
+    title: string
+    description: string
   }) => {
     return {
       path,
@@ -55,6 +55,6 @@ export class DemoHelper {
       description,
       component,
       files: files.map(file => DemoHelper.file(`${path}/${file}`)),
-    };
-  };
+    }
+  }
 }

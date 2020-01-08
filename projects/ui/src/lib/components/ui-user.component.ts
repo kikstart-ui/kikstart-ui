@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
   selector: 'ui-user',
@@ -24,11 +24,11 @@ import { Component, Input, OnInit } from '@angular/core';
   ],
 })
 export class UiUserComponent implements OnInit {
-  @Input() public avatar: string;
-  @Input() public link: string | string[];
-  @Input() public name: string;
-  @Input() public title: string;
-  @Input() public onlyPicture = false;
+  @Input() public avatar: string
+  @Input() public link: string | string[]
+  @Input() public name: string
+  @Input() public title: string
+  @Input() public onlyPicture = false
 
   constructor() {}
 
