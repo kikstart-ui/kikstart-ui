@@ -12,8 +12,8 @@ export const appLayout: UiLayout = {
     style: 'dark',
     links: [
       { path: '/home', label: 'Home', icon: 'mr-2 fa fa-fw fa-home' },
-      { path: '/demo', label: 'Demo', icon: 'mr-2 fa fa-fw fa-magic' },
-      { path: '/docs', label: 'Docs', icon: 'mr-2 fa fa-fw fa-book' },
+      { path: '/demos', label: 'Demos', icon: 'mr-2 fa fa-fw fa-magic' },
+      { path: '/api-docs', label: 'API Docs', icon: 'mr-2 fa fa-fw fa-wrench' },
       {
         url: 'https://github.com/beeman/kikstart-ui-starter',
         label: 'Starter',

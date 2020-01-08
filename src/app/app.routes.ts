@@ -7,9 +7,12 @@ export const appRoutes: Routes = [
     path: '',
     component: AppLayoutComponent,
     children: [
+      {
+        path: 'api-docs',
+        loadChildren: () => import('./api-docs/api-docs.module').then(m => m.ApiDocsModule),
+      },
+      { path: 'demos', loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule) },
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
-      { path: 'demo', loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule) },
-      { path: 'docs', loadChildren: () => import('./docs/docs.module').then(m => m.DocsModule) },
     ],
   },
 ]
