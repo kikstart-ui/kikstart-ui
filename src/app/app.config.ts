@@ -14,9 +14,11 @@ export const appLayout: UiLayout = {
       { path: '/home', label: 'Home', icon: 'mr-2 fa fa-fw fa-home' },
       { path: '/demo', label: 'Demo', icon: 'mr-2 fa fa-fw fa-magic' },
       { path: '/docs', label: 'Docs', icon: 'mr-2 fa fa-fw fa-book' },
-      { path: '/blog', label: 'Blog', icon: 'mr-2 fa fa-fw fa-rss' },
-      { path: '/login', label: 'Auth', icon: 'mr-2 fa fa-fw fa-lock' },
-      { path: '/style-guide', label: 'Style Guide', icon: 'mr-2 fa fa-fw fa-paint-brush' },
+      {
+        url: 'https://github.com/beeman/kikstart-ui-starter',
+        label: 'Starter',
+        icon: 'mr-2 fa fa-fw fa-rocket',
+      },
       {
         url: 'https://github.com/beeman/kikstart-ui',
         label: 'GitHub',
