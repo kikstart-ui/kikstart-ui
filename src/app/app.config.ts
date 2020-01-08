@@ -27,10 +27,10 @@ export const appLayout: UiLayout = {
     ],
   },
   footer: {
-    html: `Copyright <a href="">kikstart.dev</a> 2019.`,
+    html: `<small class="text-muted">Copyright <a href="">kikstart.dev</a> 2019-${new Date().getFullYear()}.</small>`,
     links: [
-      { url: 'https://github.com/beeman', label: '', icon: 'fa fa-fw fa-2x fa-github' },
-      { url: 'https://twitter.com/beeman_nl', label: '', icon: 'fa fa-fw fa-2x fa-twitter' },
+      { url: 'https://github.com/beeman', label: '', icon: 'fa fa-fw fa-1x fa-github' },
+      { url: 'https://twitter.com/beeman_nl', label: '', icon: 'fa fa-fw fa-1x fa-twitter' },
     ],
   },
 }
