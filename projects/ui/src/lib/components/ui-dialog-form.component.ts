@@ -13,7 +13,7 @@ import { Observable, of } from 'rxjs'
       <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
       <div class="alert alert-success" *ngIf="success">{{ success }}</div>
       <div class="card-body">
-        <ui-form [form]="form" [fields]="fields" [model]="model"></ui-form>
+        <ui-form [submitButton]="false" [form]="form" [fields]="fields" [model]="model"></ui-form>
       </div>
       <div class="card-footer text-right">
         <button class="mr-2 btn btn-danger" (click)="cancel()">Cancel</button>

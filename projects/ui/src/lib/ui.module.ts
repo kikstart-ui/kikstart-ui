@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 
 import { NumberedCodeblockModule } from '@ctrl/ngx-numbered-codeblock'
+import { ShowdownModule } from 'ngx-showdown'
 import { TimeagoModule } from 'ngx-timeago'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { ModalModule } from 'ngx-bootstrap/modal'
-import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown'
 import { ToastrModule } from 'ngx-toastr'
 
 import { UiFormsModule } from './ui-forms.module'
@@ -97,15 +97,7 @@ const MODULES = [CommonModule, BsDropdownModule, ModalModule, NumberedCodeblockM
     RouterModule.forChild([]),
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
-    MarkdownModule.forRoot({
-      markedOptions: {
-        provide: MarkedOptions,
-        useValue: {
-          gfm: true,
-          tables: true,
-        },
-      },
-    }),
+    ShowdownModule,
     TimeagoModule.forRoot(),
     ToastrModule.forRoot({
       progressBar: true,
