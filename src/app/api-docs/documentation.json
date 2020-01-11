@@ -1705,7 +1705,7 @@
   "components": [
     {
       "name": "UiAuthComponent",
-      "id": "component-UiAuthComponent-bbc00442ce1b69bf40c19beca1d5093f",
+      "id": "component-UiAuthComponent-c0187f767490f80d1f07349e1f71d83d",
       "file": "projects/ui/src/lib/components/ui-auth/ui-auth.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -1720,73 +1720,79 @@
       "inputsClass": [
         {
           "name": "bottomLink",
-          "line": 20,
+          "line": 22,
           "type": "literal type"
         },
         {
           "name": "brand",
-          "line": 18,
+          "line": 19,
           "type": "UiBrand"
+        },
+        {
+          "name": "brandSize",
+          "defaultValue": "'lg'",
+          "line": 20,
+          "type": "UiBrandSizes"
         },
         {
           "name": "fields",
           "defaultValue": "[]",
-          "line": 27,
+          "line": 29,
           "type": "FormHelper[]"
         },
         {
           "name": "footer",
-          "line": 19,
+          "line": 21,
           "type": "literal type"
         },
         {
           "name": "form",
           "defaultValue": "new FormGroup({})",
-          "line": 25,
+          "line": 27,
           "type": "FormGroup"
         },
         {
           "name": "label",
-          "line": 23,
+          "line": 25,
           "type": "string"
         },
         {
           "name": "links",
           "defaultValue": "[]",
-          "line": 21,
+          "line": 23,
           "type": "UiTab[]"
         },
         {
           "name": "loading",
           "defaultValue": "false",
-          "line": 24
+          "line": 26
         },
         {
           "name": "model",
           "defaultValue": "{}",
-          "line": 26
+          "line": 28
         },
         {
           "name": "name",
           "defaultValue": "'kikstart.dev'",
-          "line": 22
+          "line": 24
         },
         {
           "name": "navigation",
           "defaultValue": "true",
-          "line": 28
+          "line": 30
         },
         {
           "name": "socialButtons",
           "defaultValue": "false",
-          "line": 29
+          "line": 31
         }
       ],
       "outputsClass": [
         {
           "name": "action",
           "defaultValue": "new EventEmitter()",
-          "line": 30,
+          "line": 32,
           "type": "EventEmitter"
         }
       ],
@@ -1796,7 +1802,7 @@
           "type": "\"github\" | \"google\"",
           "optional": false,
           "description": "",
-          "line": 31
+          "line": 33
         }
       ],
       "methodsClass": [
@@ -1806,7 +1812,7 @@
           "optional": false,
           "returnType": "any",
           "typeParameters": [],
-          "line": 35
+          "line": 37
         },
         {
           "name": "signInGoogle",
@@ -1814,7 +1820,7 @@
           "optional": false,
           "returnType": "any",
           "typeParameters": [],
-          "line": 41
+          "line": 43
         }
       ],
       "hostBindings": [],
@@ -1822,7 +1828,7 @@
       "description": "<p>The ui-auth component can be used to create authentication pages by defining them.</p>\n",
       "rawdescription": "The ui-auth component can be used to create authentication pages by defining them.",
       "type": "component",
-      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { FormGroup } from '@angular/forms'\n\nimport { UiBrand } from '../../interfaces/ui-brand'\nimport { UiTab } from '../../interfaces/ui-tab'\nimport { FormHelper } from '../../helpers/form.helper'\nimport { UiLink } from '../../interfaces/ui-link'\n\n/**\n * The ui-auth component can be used to create authentication pages by defining them.\n */\n@Component({\n  selector: 'ui-auth',\n  templateUrl: './ui-auth.component.html',\n  styleUrls: ['./ui-auth.component.scss'],\n})\nexport class UiAuthComponent {\n  @Input() brand: UiBrand\n  @Input() footer?: { html?: string; text?: string; links?: UiLink[] }\n  @Input() bottomLink: { path: string; label: string }\n  @Input() links: UiTab[] = []\n  @Input() name = 'kikstart.dev'\n  @Input() label: string\n  @Input() loading = false\n  @Input() form = new FormGroup({})\n  @Input() model = {}\n  @Input() fields: FormHelper[] = []\n  @Input() navigation = true\n  @Input() socialButtons = false\n  @Output() action = new EventEmitter()\n  selectedSocial: 'github' | 'google'\n\n  constructor() {}\n\n  signInGithub() {\n    this.loading = true\n    this.selectedSocial = 'github'\n    return this.action.emit({ type: 'SOCIAL', payload: 'github' })\n  }\n\n  signInGoogle() {\n    this.loading = true\n    this.selectedSocial = 'google'\n    return this.action.emit({ type: 'SOCIAL', payload: 'google' })\n  }\n}\n",
+      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { FormGroup } from '@angular/forms'\n\nimport { UiBrand } from '../../interfaces/ui-brand'\nimport { UiTab } from '../../interfaces/ui-tab'\nimport { FormHelper } from '../../helpers/form.helper'\nimport { UiLink } from '../../interfaces/ui-link'\nimport { UiBrandSizes } from '../../components/ui-brand.component'\n\n/**\n * The ui-auth component can be used to create authentication pages by defining them.\n */\n@Component({\n  selector: 'ui-auth',\n  templateUrl: './ui-auth.component.html',\n  styleUrls: ['./ui-auth.component.scss'],\n})\nexport class UiAuthComponent {\n  @Input() brand: UiBrand\n  @Input() brandSize: UiBrandSizes = 'lg'\n  @Input() footer?: { html?: string; text?: string; links?: UiLink[] }\n  @Input() bottomLink: { path: string; label: string }\n  @Input() links: UiTab[] = []\n  @Input() name = 'kikstart.dev'\n  @Input() label: string\n  @Input() loading = false\n  @Input() form = new FormGroup({})\n  @Input() model = {}\n  @Input() fields: FormHelper[] = []\n  @Input() navigation = true\n  @Input() socialButtons = false\n  @Output() action = new EventEmitter()\n  selectedSocial: 'github' | 'google'\n\n  constructor() {}\n\n  signInGithub() {\n    this.loading = true\n    this.selectedSocial = 'github'\n    return this.action.emit({ type: 'SOCIAL', payload: 'github' })\n  }\n\n  signInGoogle() {\n    this.loading = true\n    this.selectedSocial = 'google'\n    return this.action.emit({ type: 'SOCIAL', payload: 'google' })\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": [
         {
@@ -1835,13 +1841,13 @@
         "name": "constructor",
         "description": "",
         "args": [],
-        "line": 31
+        "line": 33
       },
-      "templateData": "<div class=\"d-flex flex-column vh-100\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-12 col-sm-12 col-md-6 offset-md-3 col-xl-4 offset-xl-4\">\n        <div class=\"text-center mt-md-5 mt-3\">\n          <div routerLink=\"/\" class=\"cursor-pointer\">\n            <ui-brand [brand]=\"brand\"></ui-brand>\n          </div>\n        </div>\n        <div class=\"mt-md-5 mt-3\">\n          <ui-tabs [tabs]=\"links\"></ui-tabs>\n        </div>\n        <div class=\"card\">\n          <div class=\"card-body\">\n            <div class=\"mt-3\" *ngIf=\"socialButtons\">\n              <div>\n                <button\n                  class=\"mb-3 btn btn-block text-left\"\n                  [class.btn-outline-light]=\"selectedSocial !== 'github'\"\n                  [class.btn-success]=\"selectedSocial === 'github'\"\n                  [disabled]=\"!form.enabled || loading\"\n                  (click)=\"signInGithub()\"\n                >\n                  <i class=\"fa fa-fw mt-1 mr-2 fa-github pull-left\"></i>\n                  {{ label }} with GitHub\n                </button>\n              </div>\n              <div>\n                <button\n                  class=\"mb-3 btn btn-block text-left\"\n                  [class.btn-outline-light]=\"selectedSocial !== 'google'\"\n                  [class.btn-success]=\"selectedSocial === 'google'\"\n                  [disabled]=\"!form.enabled || loading\"\n                  (click)=\"signInGoogle()\"\n                >\n                  <i class=\"fa fa-fw mt-1 mr-2 fa-google pull-left\"></i>\n                  {{ label }} with Google\n                </button>\n              </div>\n            </div>\n            <div class=\"py-3\">\n              <ng-container *ngIf=\"!fields.length || loading\">\n                <ui-loading></ui-loading>\n              </ng-container>\n              <ng-container *ngIf=\"fields.length && !loading\">\n                <div>\n                  <ui-form\n                    #formEl\n                    [form]=\"form\"\n                    [model]=\"model\"\n                    [fields]=\"fields\"\n                    (action)=\"action.emit($event)\"\n                    [submitButton]=\"false\"\n                  >\n                  </ui-form>\n                </div>\n                <div class=\"mt-5\">\n                  <a *ngIf=\"bottomLink\" [routerLink]=\"bottomLink.path\" class=\"btn btn-outline-info\">\n                    {{ bottomLink.label }}\n                  </a>\n                  <div class=\"float-right\">\n                    <button\n                      [disabled]=\"!form.valid\"\n                      (click)=\"formEl.submit()\"\n                      class=\"btn btn-success\"\n                    >\n                      {{ label }}\n                    </button>\n                  </div>\n                </div>\n              </ng-container>\n              <ng-content></ng-content>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"mt-md-5 mt-3\">\n      <ui-footer\n        *ngIf=\"footer\"\n        [centered]=\"true\"\n        [links]=\"footer.links\"\n        [html]=\"footer.html\"\n        [text]=\"footer.text\"\n      ></ui-footer>\n    </div>\n  </div>\n</div>\n"
+      "templateData": "<div class=\"d-flex flex-column vh-100\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-12 col-sm-12 col-md-6 offset-md-3 col-xl-4 offset-xl-4\">\n        <div class=\"text-center mt-md-5 mt-3\">\n          <div routerLink=\"/\" class=\"cursor-pointer\">\n            <ui-brand [brand]=\"brand\" [size]=\"brandSize\"></ui-brand>\n          </div>\n        </div>\n        <div class=\"mt-md-5 mt-3\">\n          <ui-tabs [tabs]=\"links\"></ui-tabs>\n        </div>\n        <div class=\"card\">\n          <div class=\"card-body\">\n            <div class=\"mt-3\" *ngIf=\"socialButtons\">\n              <div>\n                <button\n                  class=\"mb-3 btn btn-block text-left\"\n                  [class.btn-outline-light]=\"selectedSocial !== 'github'\"\n                  [class.btn-success]=\"selectedSocial === 'github'\"\n                  [disabled]=\"!form.enabled || loading\"\n                  (click)=\"signInGithub()\"\n                >\n                  <i class=\"fa fa-fw mt-1 mr-2 fa-github pull-left\"></i>\n                  {{ label }} with GitHub\n                </button>\n              </div>\n              <div>\n                <button\n                  class=\"mb-3 btn btn-block text-left\"\n                  [class.btn-outline-light]=\"selectedSocial !== 'google'\"\n                  [class.btn-success]=\"selectedSocial === 'google'\"\n                  [disabled]=\"!form.enabled || loading\"\n                  (click)=\"signInGoogle()\"\n                >\n                  <i class=\"fa fa-fw mt-1 mr-2 fa-google pull-left\"></i>\n                  {{ label }} with Google\n                </button>\n              </div>\n            </div>\n            <div class=\"py-3\">\n              <ng-container *ngIf=\"!fields.length || loading\">\n                <ui-loading></ui-loading>\n              </ng-container>\n              <ng-container *ngIf=\"fields.length && !loading\">\n                <div>\n                  <ui-form\n                    #formEl\n                    [form]=\"form\"\n                    [model]=\"model\"\n                    [fields]=\"fields\"\n                    (action)=\"action.emit($event)\"\n                    [submitButton]=\"false\"\n                  >\n                  </ui-form>\n                </div>\n                <div class=\"mt-5\">\n                  <a *ngIf=\"bottomLink\" [routerLink]=\"bottomLink.path\" class=\"btn btn-outline-info\">\n                    {{ bottomLink.label }}\n                  </a>\n                  <div class=\"float-right\">\n                    <button\n                      [disabled]=\"!form.valid\"\n                      (click)=\"formEl.submit()\"\n                      class=\"btn btn-success\"\n                    >\n                      {{ label }}\n                    </button>\n                  </div>\n                </div>\n              </ng-container>\n              <ng-content></ng-content>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"mt-md-5 mt-3\">\n      <ui-footer\n        *ngIf=\"footer\"\n        [centered]=\"true\"\n        [links]=\"footer.links\"\n        [html]=\"footer.html\"\n        [text]=\"footer.text\"\n      ></ui-footer>\n    </div>\n  </div>\n</div>\n"
     },
     {
       "name": "UiAvatarComponent",
-      "id": "component-UiAvatarComponent-27c4c62fe2170eb1ecdc8e935a8e83f3",
+      "id": "component-UiAvatarComponent-5d863cc4acf03951a2da5769e8427cc4",
       "file": "projects/ui/src/lib/components/ui-avatar.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -1851,27 +1857,27 @@
       "selector": "ui-avatar",
       "styleUrls": [],
       "styles": [
-        "\n      .avatar {\n        border-radius: 50%;\n      }\n      .avatar-sm {\n        height: 24px;\n        width: 24px;\n      }\n      .avatar-md {\n        height: 48px;\n        width: 48px;\n      }\n      .avatar-lg {\n        height: 96px;\n        width: 96px;\n      }\n    "
+        "\n      .avatar {\n        border-radius: 50%;\n      }\n      .avatar-sm {\n        height: 24px;\n        width: 24px;\n      }\n      .avatar-md {\n        height: 48px;\n        width: 48px;\n      }\n      .avatar-lg {\n        height: 96px;\n        width: 96px;\n      }\n      .avatar-xl {\n        height: 128px;\n        width: 128px;\n      }\n      .avatar-xxl {\n        height: 256px;\n        width: 256px;\n      }\n    "
       ],
-      "template": "<img\n  [attr.alt]=\"alt\"\n  [attr.src]=\"avatar\"\n  class=\"avatar\"\n  [class.avatar-sm]=\"size === 'sm'\"\n  [class.avatar-md]=\"size === 'md'\"\n  [class.avatar-lg]=\"size === 'lg'\"\n  *ngIf=\"avatar\"\n/>\n",
+      "template": "<img\n  [attr.alt]=\"alt\"\n  [attr.src]=\"avatar\"\n  class=\"avatar\"\n  [class.avatar-sm]=\"size === 'sm'\"\n  [class.avatar-md]=\"size === 'md'\"\n  [class.avatar-lg]=\"size === 'lg'\"\n  [class.avatar-xl]=\"size === 'xl'\"\n  [class.avatar-xxl]=\"size === 'xxl'\"\n  *ngIf=\"avatar\"\n/>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
           "name": "alt",
           "defaultValue": "'Avatar'",
-          "line": 37
+          "line": 49
         },
         {
           "name": "avatar",
-          "line": 38,
+          "line": 50,
           "type": "string"
         },
         {
           "name": "size",
           "defaultValue": "'md'",
-          "line": 39,
-          "type": "\"sm\" | \"md\" | \"lg\""
+          "line": 51,
+          "type": "UiAvatarSizes"
         }
       ],
       "outputsClass": [],
@@ -1882,14 +1888,14 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input, OnInit } from '@angular/core'\n\n@Component({\n  selector: 'ui-avatar',\n  template: `\n    <img\n      [attr.alt]=\"alt\"\n      [attr.src]=\"avatar\"\n      class=\"avatar\"\n      [class.avatar-sm]=\"size === 'sm'\"\n      [class.avatar-md]=\"size === 'md'\"\n      [class.avatar-lg]=\"size === 'lg'\"\n      *ngIf=\"avatar\"\n    />\n  `,\n  styles: [\n    `\n      .avatar {\n        border-radius: 50%;\n      }\n      .avatar-sm {\n        height: 24px;\n        width: 24px;\n      }\n      .avatar-md {\n        height: 48px;\n        width: 48px;\n      }\n      .avatar-lg {\n        height: 96px;\n        width: 96px;\n      }\n    `,\n  ],\n})\nexport class UiAvatarComponent {\n  @Input() public alt = 'Avatar'\n  @Input() public avatar: string\n  @Input() public size: 'sm' | 'md' | 'lg' = 'md'\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\n\nexport type UiAvatarSizes = 'sm' | 'md' | 'lg' | 'xl' | 'xxl'\n\n@Component({\n  selector: 'ui-avatar',\n  template: `\n    <img\n      [attr.alt]=\"alt\"\n      [attr.src]=\"avatar\"\n      class=\"avatar\"\n      [class.avatar-sm]=\"size === 'sm'\"\n      [class.avatar-md]=\"size === 'md'\"\n      [class.avatar-lg]=\"size === 'lg'\"\n      [class.avatar-xl]=\"size === 'xl'\"\n      [class.avatar-xxl]=\"size === 'xxl'\"\n      *ngIf=\"avatar\"\n    />\n  `,\n  styles: [\n    `\n      .avatar {\n        border-radius: 50%;\n      }\n      .avatar-sm {\n        height: 24px;\n        width: 24px;\n      }\n      .avatar-md {\n        height: 48px;\n        width: 48px;\n      }\n      .avatar-lg {\n        height: 96px;\n        width: 96px;\n      }\n      .avatar-xl {\n        height: 128px;\n        width: 128px;\n      }\n      .avatar-xxl {\n        height: 256px;\n        width: 256px;\n      }\n    `,\n  ],\n})\nexport class UiAvatarComponent {\n  @Input() public alt = 'Avatar'\n  @Input() public avatar: string\n  @Input() public size: UiAvatarSizes = 'md'\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
-      "stylesData": "\n      .avatar {\n        border-radius: 50%;\n      }\n      .avatar-sm {\n        height: 24px;\n        width: 24px;\n      }\n      .avatar-md {\n        height: 48px;\n        width: 48px;\n      }\n      .avatar-lg {\n        height: 96px;\n        width: 96px;\n      }\n    \n"
+      "stylesData": "\n      .avatar {\n        border-radius: 50%;\n      }\n      .avatar-sm {\n        height: 24px;\n        width: 24px;\n      }\n      .avatar-md {\n        height: 48px;\n        width: 48px;\n      }\n      .avatar-lg {\n        height: 96px;\n        width: 96px;\n      }\n      .avatar-xl {\n        height: 128px;\n        width: 128px;\n      }\n      .avatar-xxl {\n        height: 256px;\n        width: 256px;\n      }\n    \n"
     },
     {
       "name": "UiBrandComponent",
-      "id": "component-UiBrandComponent-96c260f5e19f7a70d2df225a0b0bc10f",
+      "id": "component-UiBrandComponent-dba1c5125e0777d95f34772a1c55c413",
       "file": "projects/ui/src/lib/components/ui-brand.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -1907,14 +1913,14 @@
       "inputsClass": [
         {
           "name": "brand",
-          "line": 56,
+          "line": 58,
           "type": "UiBrand"
         },
         {
           "name": "size",
           "defaultValue": "'sm'",
-          "line": 57,
-          "type": "\"sm\" | \"lg\""
+          "line": 59,
+          "type": "UiBrandSizes"
         }
       ],
       "outputsClass": [],
@@ -1925,7 +1931,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiBrand } from '../interfaces/ui-brand'\n\n@Component({\n  selector: 'ui-brand',\n  template: `\n    <span [class.brand-sm]=\"size === 'sm'\" [class.brand-lg]=\"size === 'lg'\">\n      <img\n        *ngIf=\"brand?.logo\"\n        [attr.src]=\"brand?.logo\"\n        class=\"brand-logo d-inline-block align-top\"\n        alt=\"brand logo\"\n      />\n      <span *ngIf=\"brand?.name\" class=\"brand-name\">{{ brand?.name }}</span>\n      <span *ngIf=\"brand?.separator\" class=\"brand-separator\">{{ brand?.separator }}</span>\n      <span *ngIf=\"brand?.product\" class=\"brand-product\">{{ brand?.product }}</span>\n    </span>\n  `,\n  styles: [\n    `\n      .brand-logo {\n        height: 30px;\n        width: 30px;\n        margin-right: 10px;\n      }\n      .brand-name {\n        font-weight: 700;\n        letter-spacing: 4px;\n      }\n      .brand-product {\n        color: #bdbdbd;\n        margin-left: 5px;\n        font-weight: 400;\n        letter-spacing: 4px;\n      }\n      .brand-separator {\n        margin-left: 2px;\n        color: #555;\n        font-weight: 200;\n      }\n      .brand-sm {\n        line-height: 30px;\n      }\n      .brand-lg {\n        font-size: 24px;\n      }\n      .brand-lg .brand-logo {\n        height: 40px;\n        width: 40px;\n        margin-right: 10px;\n      }\n    `,\n  ],\n})\nexport class UiBrandComponent {\n  @Input() brand: UiBrand\n  @Input() size: 'sm' | 'lg' = 'sm'\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiBrand } from '../interfaces/ui-brand'\n\nexport type UiBrandSizes = 'sm' | 'lg'\n\n@Component({\n  selector: 'ui-brand',\n  template: `\n    <span [class.brand-sm]=\"size === 'sm'\" [class.brand-lg]=\"size === 'lg'\">\n      <img\n        *ngIf=\"brand?.logo\"\n        [attr.src]=\"brand?.logo\"\n        class=\"brand-logo d-inline-block align-top\"\n        alt=\"brand logo\"\n      />\n      <span *ngIf=\"brand?.name\" class=\"brand-name\">{{ brand?.name }}</span>\n      <span *ngIf=\"brand?.separator\" class=\"brand-separator\">{{ brand?.separator }}</span>\n      <span *ngIf=\"brand?.product\" class=\"brand-product\">{{ brand?.product }}</span>\n    </span>\n  `,\n  styles: [\n    `\n      .brand-logo {\n        height: 30px;\n        width: 30px;\n        margin-right: 10px;\n      }\n      .brand-name {\n        font-weight: 700;\n        letter-spacing: 4px;\n      }\n      .brand-product {\n        color: #bdbdbd;\n        margin-left: 5px;\n        font-weight: 400;\n        letter-spacing: 4px;\n      }\n      .brand-separator {\n        margin-left: 2px;\n        color: #555;\n        font-weight: 200;\n      }\n      .brand-sm {\n        line-height: 30px;\n      }\n      .brand-lg {\n        font-size: 24px;\n      }\n      .brand-lg .brand-logo {\n        height: 40px;\n        width: 40px;\n        margin-right: 10px;\n      }\n    `,\n  ],\n})\nexport class UiBrandComponent {\n  @Input() brand: UiBrand\n  @Input() size: UiBrandSizes = 'sm'\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "\n      .brand-logo {\n        height: 30px;\n        width: 30px;\n        margin-right: 10px;\n      }\n      .brand-name {\n        font-weight: 700;\n        letter-spacing: 4px;\n      }\n      .brand-product {\n        color: #bdbdbd;\n        margin-left: 5px;\n        font-weight: 400;\n        letter-spacing: 4px;\n      }\n      .brand-separator {\n        margin-left: 2px;\n        color: #555;\n        font-weight: 200;\n      }\n      .brand-sm {\n        line-height: 30px;\n      }\n      .brand-lg {\n        font-size: 24px;\n      }\n      .brand-lg .brand-logo {\n        height: 40px;\n        width: 40px;\n        margin-right: 10px;\n      }\n    \n"
@@ -3007,7 +3013,7 @@
     },
     {
       "name": "UiHeroComponent",
-      "id": "component-UiHeroComponent-cfc178dc52f678d8fc32d2a703a4c467",
+      "id": "component-UiHeroComponent-63069a657fd6f4908e18b4c8e921568b",
       "file": "projects/ui/src/lib/components/ui-hero.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -3017,45 +3023,56 @@
       "selector": "ui-hero",
       "styleUrls": [],
       "styles": ["\n      .row {\n        margin: -48px 12px 0;\n      }\n    "],
-      "template": "<div class=\"jumbotron mb-0\" [class.text-center]=\"centered\">\n  <div class=\"my-3 mb-5\">\n    <div class=\"mb-3\">\n      <ui-brand *ngIf=\"brand\" [brand]=\"brand\" [size]=\"brandSize\"></ui-brand>\n      <h1 *ngIf=\"title\" class=\"display-4 my-2\">{{ title }}</h1>\n    </div>\n    <p class=\"lead mt-2\">\n      {{ description }}\n    </p>\n    <div *ngIf=\"link\" class=\"mt-4 my-3\">\n      <ui-link [link]=\"link\" linkClass=\"btn btn-lg btn-outline-success\"></ui-link>\n    </div>\n  </div>\n</div>\n<div class=\"row\" *ngIf=\"cards.length\">\n  <ng-container *ngFor=\"let card of cards\">\n    <div\n      class=\"col-12 col-sm-12\"\n      [class.col-md-12]=\"cards?.length === 1\"\n      [class.col-md-6]=\"cards?.length === 2\"\n      [class.col-md-4]=\"cards?.length === 3\"\n    >\n      <ui-card>\n        <ui-card-header *ngIf=\"card.title\" [cardTitle]=\"card.title\"></ui-card-header>\n        <ui-card-body *ngIf=\"card.content\">\n          {{ card.content }}\n        </ui-card-body>\n        <ui-card-footer *ngIf=\"card?.links?.length\">\n          <div class=\"text-right\">\n            <ui-link *ngFor=\"let link of card.links\" [link]=\"link\" linkClass=\"mr-2\"></ui-link>\n          </div>\n        </ui-card-footer>\n      </ui-card>\n    </div>\n  </ng-container>\n</div>\n",
+      "template": "<div class=\"jumbotron mb-0\" [class.text-center]=\"centered\">\n  <div class=\"my-3 mb-5\">\n    <div class=\"mb-3\">\n      <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" [size]=\"avatarSize\"></ui-avatar>\n      <ui-brand *ngIf=\"brand\" [brand]=\"brand\" [size]=\"brandSize\"></ui-brand>\n      <h1 *ngIf=\"title\" class=\"display-4 my-2\">{{ title }}</h1>\n    </div>\n    <p class=\"lead mt-2\">\n      {{ description }}\n    </p>\n    <div *ngIf=\"link\" class=\"mt-4 my-3\">\n      <ui-link [link]=\"link\" linkClass=\"btn btn-lg btn-outline-success\"></ui-link>\n    </div>\n  </div>\n</div>\n<div class=\"row\" *ngIf=\"cards.length\">\n  <ng-container *ngFor=\"let card of cards\">\n    <div\n      class=\"col-12 col-sm-12\"\n      [class.col-md-12]=\"cards?.length === 1\"\n      [class.col-md-6]=\"cards?.length === 2\"\n      [class.col-md-4]=\"cards?.length === 3\"\n    >\n      <ui-card>\n        <ui-card-header *ngIf=\"card.title\" [cardTitle]=\"card.title\"></ui-card-header>\n        <ui-card-body *ngIf=\"card.content\">\n          {{ card.content }}\n        </ui-card-body>\n        <ui-card-footer *ngIf=\"card?.links?.length\">\n          <div class=\"text-right\">\n            <ui-link *ngFor=\"let link of card.links\" [link]=\"link\" linkClass=\"mr-2\"></ui-link>\n          </div>\n        </ui-card-footer>\n      </ui-card>\n    </div>\n  </ng-container>\n</div>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
+          "name": "avatar",
+          "line": 58,
+          "type": "string"
+        },
+        {
+          "name": "avatarSize",
+          "defaultValue": "'xl'",
+          "line": 59,
+          "type": "UiAvatarSizes"
+        },
+        {
           "name": "brand",
-          "line": 55,
+          "line": 60,
           "type": "UiBrand"
         },
         {
           "name": "brandSize",
           "defaultValue": "'lg'",
-          "line": 56,
-          "type": "\"sm\" | \"lg\""
+          "line": 61,
+          "type": "UiBrandSizes"
         },
         {
           "name": "cards",
           "defaultValue": "[]",
-          "line": 61,
+          "line": 66,
           "type": "UiCard[]"
         },
         {
           "name": "centered",
           "defaultValue": "true",
-          "line": 57
+          "line": 62
         },
         {
           "name": "description",
-          "line": 60,
+          "line": 65,
           "type": "string"
         },
         {
           "name": "link",
-          "line": 58,
+          "line": 63,
           "type": "UiLink"
         },
         {
           "name": "title",
-          "line": 59,
+          "line": 64,
           "type": "string"
         }
       ],
@@ -3067,7 +3084,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiCard } from '../interfaces/ui-card'\nimport { UiLink } from '../interfaces/ui-link'\nimport { UiBrand } from '../interfaces/ui-brand'\n\n@Component({\n  selector: 'ui-hero',\n  template: `\n    <div class=\"jumbotron mb-0\" [class.text-center]=\"centered\">\n      <div class=\"my-3 mb-5\">\n        <div class=\"mb-3\">\n          <ui-brand *ngIf=\"brand\" [brand]=\"brand\" [size]=\"brandSize\"></ui-brand>\n          <h1 *ngIf=\"title\" class=\"display-4 my-2\">{{ title }}</h1>\n        </div>\n        <p class=\"lead mt-2\">\n          {{ description }}\n        </p>\n        <div *ngIf=\"link\" class=\"mt-4 my-3\">\n          <ui-link [link]=\"link\" linkClass=\"btn btn-lg btn-outline-success\"></ui-link>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\" *ngIf=\"cards.length\">\n      <ng-container *ngFor=\"let card of cards\">\n        <div\n          class=\"col-12 col-sm-12\"\n          [class.col-md-12]=\"cards?.length === 1\"\n          [class.col-md-6]=\"cards?.length === 2\"\n          [class.col-md-4]=\"cards?.length === 3\"\n        >\n          <ui-card>\n            <ui-card-header *ngIf=\"card.title\" [cardTitle]=\"card.title\"></ui-card-header>\n            <ui-card-body *ngIf=\"card.content\">\n              {{ card.content }}\n            </ui-card-body>\n            <ui-card-footer *ngIf=\"card?.links?.length\">\n              <div class=\"text-right\">\n                <ui-link *ngFor=\"let link of card.links\" [link]=\"link\" linkClass=\"mr-2\"></ui-link>\n              </div>\n            </ui-card-footer>\n          </ui-card>\n        </div>\n      </ng-container>\n    </div>\n  `,\n  styles: [\n    `\n      .row {\n        margin: -48px 12px 0;\n      }\n    `,\n  ],\n})\nexport class UiHeroComponent {\n  @Input() brand: UiBrand\n  @Input() brandSize: 'sm' | 'lg' = 'lg'\n  @Input() centered = true\n  @Input() link: UiLink\n  @Input() title?: string\n  @Input() description?: string\n  @Input() cards: UiCard[] = []\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiCard } from '../interfaces/ui-card'\nimport { UiLink } from '../interfaces/ui-link'\nimport { UiBrand } from '../interfaces/ui-brand'\nimport { UiAvatarSizes } from './ui-avatar.component'\nimport { UiBrandSizes } from './ui-brand.component'\n\n@Component({\n  selector: 'ui-hero',\n  template: `\n    <div class=\"jumbotron mb-0\" [class.text-center]=\"centered\">\n      <div class=\"my-3 mb-5\">\n        <div class=\"mb-3\">\n          <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" [size]=\"avatarSize\"></ui-avatar>\n          <ui-brand *ngIf=\"brand\" [brand]=\"brand\" [size]=\"brandSize\"></ui-brand>\n          <h1 *ngIf=\"title\" class=\"display-4 my-2\">{{ title }}</h1>\n        </div>\n        <p class=\"lead mt-2\">\n          {{ description }}\n        </p>\n        <div *ngIf=\"link\" class=\"mt-4 my-3\">\n          <ui-link [link]=\"link\" linkClass=\"btn btn-lg btn-outline-success\"></ui-link>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\" *ngIf=\"cards.length\">\n      <ng-container *ngFor=\"let card of cards\">\n        <div\n          class=\"col-12 col-sm-12\"\n          [class.col-md-12]=\"cards?.length === 1\"\n          [class.col-md-6]=\"cards?.length === 2\"\n          [class.col-md-4]=\"cards?.length === 3\"\n        >\n          <ui-card>\n            <ui-card-header *ngIf=\"card.title\" [cardTitle]=\"card.title\"></ui-card-header>\n            <ui-card-body *ngIf=\"card.content\">\n              {{ card.content }}\n            </ui-card-body>\n            <ui-card-footer *ngIf=\"card?.links?.length\">\n              <div class=\"text-right\">\n                <ui-link *ngFor=\"let link of card.links\" [link]=\"link\" linkClass=\"mr-2\"></ui-link>\n              </div>\n            </ui-card-footer>\n          </ui-card>\n        </div>\n      </ng-container>\n    </div>\n  `,\n  styles: [\n    `\n      .row {\n        margin: -48px 12px 0;\n      }\n    `,\n  ],\n})\nexport class UiHeroComponent {\n  @Input() avatar: string\n  @Input() avatarSize: UiAvatarSizes = 'xl'\n  @Input() brand: UiBrand\n  @Input() brandSize: UiBrandSizes = 'lg'\n  @Input() centered = true\n  @Input() link: UiLink\n  @Input() title?: string\n  @Input() description?: string\n  @Input() cards: UiCard[] = []\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "\n      .row {\n        margin: -48px 12px 0;\n      }\n    \n"
@@ -3299,7 +3316,7 @@
     },
     {
       "name": "UiMarkdownComponent",
-      "id": "component-UiMarkdownComponent-88fe617be54b1bf154d362b413017e06",
+      "id": "component-UiMarkdownComponent-658eed478b435bc174bac19c09d829b6",
       "file": "projects/ui/src/lib/components/ui-markdown.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -3309,28 +3326,52 @@
       "selector": "ui-markdown",
       "styleUrls": [],
       "styles": [],
-      "template": "<markdown [data]=\"data\"></markdown>\n",
+      "template": "<showdown [value]=\"data\"></showdown>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
           "name": "data",
-          "line": 10,
+          "line": 12,
           "type": "string"
         }
       ],
       "outputsClass": [],
-      "propertiesClass": [],
-      "methodsClass": [],
+      "propertiesClass": [
+        {
+          "name": "showdownComponent",
+          "type": "ShowdownComponent",
+          "optional": false,
+          "description": "",
+          "line": 11,
+          "decorators": [
+            {
+              "name": "ViewChild",
+              "stringifiedArguments": "ShowdownComponent, {static: true}"
+            }
+          ]
+        }
+      ],
+      "methodsClass": [
+        {
+          "name": "ngOnInit",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 14
+        }
+      ],
       "hostBindings": [],
       "hostListeners": [],
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\n\n@Component({\n  selector: 'ui-markdown',\n  template: `\n    <markdown [data]=\"data\"></markdown>\n  `,\n})\nexport class UiMarkdownComponent {\n  @Input() public data: string\n}\n",
+      "sourceCode": "import { Component, Input, OnInit, ViewChild } from '@angular/core'\nimport { ShowdownComponent } from 'ngx-showdown'\n\n@Component({\n  selector: 'ui-markdown',\n  template: `\n    <showdown [value]=\"data\"></showdown>\n  `,\n})\nexport class UiMarkdownComponent implements OnInit {\n  @ViewChild(ShowdownComponent, { static: true }) showdownComponent: ShowdownComponent\n  @Input() public data: string\n\n  ngOnInit() {\n    this.showdownComponent.setOptions({ emoji: true })\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
-      "stylesData": ""
+      "stylesData": "",
+      "implements": ["OnInit"]
     },
     {
       "name": "UiPageSidebarComponent",
@@ -4307,7 +4348,26 @@
         ]
       }
     ],
-    "typealiases": [],
+    "typealiases": [
+      {
+        "name": "UiAvatarSizes",
+        "ctype": "miscellaneous",
+        "subtype": "typealias",
+        "rawtype": "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"xxl\"",
+        "file": "projects/ui/src/lib/components/ui-avatar.component.ts",
+        "description": "",
+        "kind": 168
+      },
+      {
+        "name": "UiBrandSizes",
+        "ctype": "miscellaneous",
+        "subtype": "typealias",
+        "rawtype": "\"sm\" | \"lg\"",
+        "file": "projects/ui/src/lib/components/ui-brand.component.ts",
+        "description": "",
+        "kind": 168
+      }
+    ],
     "enumerations": [
       {
         "name": "UiButtonActions",
@@ -4612,7 +4672,30 @@
         }
       ]
     },
-    "groupedTypeAliases": {}
+    "groupedTypeAliases": {
+      "projects/ui/src/lib/components/ui-avatar.component.ts": [
+        {
+          "name": "UiAvatarSizes",
+          "ctype": "miscellaneous",
+          "subtype": "typealias",
+          "rawtype": "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"xxl\"",
+          "file": "projects/ui/src/lib/components/ui-avatar.component.ts",
+          "description": "",
+          "kind": 168
+        }
+      ],
+      "projects/ui/src/lib/components/ui-brand.component.ts": [
+        {
+          "name": "UiBrandSizes",
+          "ctype": "miscellaneous",
+          "subtype": "typealias",
+          "rawtype": "\"sm\" | \"lg\"",
+          "file": "projects/ui/src/lib/components/ui-brand.component.ts",
+          "description": "",
+          "kind": 168
+        }
+      ]
+    }
   },
   "routes": [],
   "coverage": {
@@ -4625,7 +4708,7 @@
         "linktype": "component",
         "name": "UiAuthComponent",
         "coveragePercent": 5,
-        "coverageCount": "1/18",
+        "coverageCount": "1/19",
         "status": "low"
       },
       {
@@ -4814,7 +4897,7 @@
         "linktype": "component",
         "name": "UiHeroComponent",
         "coveragePercent": 0,
-        "coverageCount": "0/8",
+        "coverageCount": "0/10",
         "status": "low"
       },
       {
@@ -4877,7 +4960,7 @@
         "linktype": "component",
         "name": "UiMarkdownComponent",
         "coveragePercent": 0,
-        "coverageCount": "0/2",
+        "coverageCount": "0/4",
         "status": "low"
       },
       {
