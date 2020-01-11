@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: UiPageSidebarRouteComponent,
     data: {
-      title: 'Component Demos',
+      title: 'Demos',
       links: [
         { path: '/demos/ui-avatar', label: 'ui-avatar' },
         { path: '/demos/ui-brand', label: 'ui-brand' },
@@ -19,6 +19,7 @@ const routes: Routes = [
         { path: '/demos/ui-hero', label: 'ui-hero' },
         { path: '/demos/ui-markdown', label: 'ui-markdown' },
         { path: '/demos/ui-render', label: 'ui-render' },
+        { path: '/demos/ui-service', label: 'UiService' },
       ],
     },
     children: [
@@ -69,6 +70,11 @@ const routes: Routes = [
         path: 'ui-render',
         loadChildren: () =>
           import('./demos/ui-render/ui-render-demo.module').then(m => m.UiRenderDemoModule),
+      },
+      {
+        path: 'ui-service',
+        loadChildren: () =>
+          import('./demos/ui-service/ui-service-demo.module').then(m => m.UiServiceDemoModule),
       },
     ],
   },
