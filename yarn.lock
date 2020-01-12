@@ -8048,10 +8048,10 @@ ngx-showdown@5.0.0:
   dependencies:
     tslib "^1.9.0"
 
-ngx-timeago@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ngx-timeago/-/ngx-timeago-1.0.2.tgz#0899e3fe4a0d1b5fb1b5a5d6004ee709a1800363"
-  integrity sha512-EgLteIN4BwfMAzw0L06cpIg+2eC5zZv6qlZxTjRjvVxsSSZLPXTjV3fwrcR+UQKfOs6Dm8KkeK/TmYnY24ihPg==
+ngx-timeago@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ngx-timeago/-/ngx-timeago-1.0.3.tgz#07974828a3d83956ee378f9fe5b8ba5d7127bc9c"
+  integrity sha512-LRIceBwQtyIOfEyZ83oJLmD/x60SMwhoEsSpHN0FWb6mbMmz7Xen+V8bGXbo+2i2sk7q7DCqWkoy6DKZQraoEQ==
   dependencies:
     tslib "^1.9.0"
 
