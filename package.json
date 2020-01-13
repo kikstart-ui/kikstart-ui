@@ -69,7 +69,7 @@
     "lint-staged": "9.5.0",
     "ng-packagr": "5.7.1",
     "prettier": "1.19.1",
-    "prismjs": "1.18.0",
+    "prismjs": "1.19.0",
     "protractor": "5.4.2",
     "scss-bundle": "3.0.2",
     "semantic-release": "16.0.1",
