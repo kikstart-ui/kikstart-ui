@@ -6,7 +6,7 @@ import { UiButton } from '../interfaces/ui-button'
   template: `
     <a
       *ngIf="button?.path"
-      class="btn {{ button.className || buttonClass || 'btn-outline-primary' }}"
+      class="btn {{ button.className || buttonClass || 'btn-outline-info' }}"
       [routerLink]="button.path"
       [queryParams]="button.queryParams"
     >
@@ -21,7 +21,7 @@ import { UiButton } from '../interfaces/ui-button'
     <button
       *ngIf="button?.action"
       [disabled]="button.disabled"
-      class="btn {{ button.className || 'btn-outline-primary' }}"
+      class="btn {{ button.className || buttonClass || 'btn-outline-info' }}"
       (click)="action.emit({ type: button.action, payload: button.payload })"
     >
       <i *ngIf="button?.icon" class="fa fa-fw {{ button.icon }}" [class.mr-2]="button.label"></i
@@ -35,7 +35,7 @@ import { UiButton } from '../interfaces/ui-button'
     <button
       *ngIf="button?.handler"
       [disabled]="button.disabled"
-      class="btn {{ button.className || 'btn-outline-primary' }}"
+      class="btn {{ button.className || buttonClass || 'btn-outline-info' }}"
       (click)="button.handler({ type: button.action, payload: button.payload })"
     >
       <i *ngIf="button?.icon" class="fa fa-fw {{ button.icon }}" [class.mr-2]="button.label"></i
