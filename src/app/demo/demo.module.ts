@@ -8,10 +8,11 @@ const routes: Routes = [
     path: '',
     component: UiPageSidebarRouteComponent,
     data: {
-      title: 'Component Demos',
+      title: 'Demos',
       links: [
         { path: '/demos/ui-avatar', label: 'ui-avatar' },
         { path: '/demos/ui-brand', label: 'ui-brand' },
+        { path: '/demos/ui-button', label: 'ui-button' },
         { path: '/demos/ui-code', label: 'ui-code' },
         { path: '/demos/ui-comment', label: 'ui-comment' },
         { path: '/demos/ui-comment-form', label: 'ui-comment-form' },
@@ -19,6 +20,7 @@ const routes: Routes = [
         { path: '/demos/ui-hero', label: 'ui-hero' },
         { path: '/demos/ui-markdown', label: 'ui-markdown' },
         { path: '/demos/ui-render', label: 'ui-render' },
+        { path: '/demos/ui-service', label: 'UiService' },
       ],
     },
     children: [
@@ -32,6 +34,11 @@ const routes: Routes = [
         path: 'ui-brand',
         loadChildren: () =>
           import('./demos/ui-brand/ui-brand-demo.module').then(m => m.UiBrandDemoModule),
+      },
+      {
+        path: 'ui-button',
+        loadChildren: () =>
+          import('./demos/ui-button/ui-button-demo.module').then(m => m.UiButtonDemoModule),
       },
       {
         path: 'ui-code',
@@ -69,6 +76,11 @@ const routes: Routes = [
         path: 'ui-render',
         loadChildren: () =>
           import('./demos/ui-render/ui-render-demo.module').then(m => m.UiRenderDemoModule),
+      },
+      {
+        path: 'ui-service',
+        loadChildren: () =>
+          import('./demos/ui-service/ui-service-demo.module').then(m => m.UiServiceDemoModule),
       },
     ],
   },
