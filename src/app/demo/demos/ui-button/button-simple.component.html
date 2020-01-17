@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-6">
+    <div class="mb-3" *ngFor="let example of examples">
+      <p>{{ example.name }}</p>
+      <ng-container *ngFor="let button of example.buttons">
+        <span class="mr-3">
+          <ui-button [button]="button" (action)="handleAction($event)"></ui-button>
+        </span>
+      </ng-container>
+    </div>
+  </div>
+  <div class="col-6">
+    <pre>{{ result | json }}</pre>
+  </div>
+</div>

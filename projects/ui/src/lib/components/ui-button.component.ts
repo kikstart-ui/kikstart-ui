@@ -5,21 +5,46 @@ import { UiButton } from '../interfaces/ui-button'
   selector: 'ui-button',
   template: `
     <a
-      class="btn {{ buttonClass }}"
-      *ngIf="button.path"
+      *ngIf="button?.path"
+      class="btn {{ button.className || buttonClass || 'btn-outline-primary' }}"
       [routerLink]="button.path"
       [queryParams]="button.queryParams"
     >
-      <i class="{{ button.icon }} mr-1" *ngIf="button.icon"></i>{{ button.label
-      }}<i class="{{ button.iconAfter }} ml-1" *ngIf="button.iconAfter"></i>
+      <i *ngIf="button?.icon" class="fa fa-fw {{ button.icon }}" [class.mr-2]="button.label"></i
+      >{{ button.label
+      }}<i
+        *ngIf="button?.iconAfter"
+        class="fa fa-fw {{ button.iconAfter }}"
+        [class.ml-2]="button.label"
+      ></i>
     </a>
     <button
-      class="btn {{ buttonClass }}"
-      *ngIf="button.action"
+      *ngIf="button?.action"
+      [disabled]="button.disabled"
+      class="btn {{ button.className || 'btn-outline-primary' }}"
       (click)="action.emit({ type: button.action, payload: button.payload })"
     >
-      <i class="{{ button.icon }} mr-1" *ngIf="button.icon"></i>{{ button.label
-      }}<i class="{{ button.iconAfter }} ml-1" *ngIf="button.iconAfter"></i>
+      <i *ngIf="button?.icon" class="fa fa-fw {{ button.icon }}" [class.mr-2]="button.label"></i
+      >{{ button.label
+      }}<i
+        *ngIf="button?.iconAfter"
+        class="fa fa-fw {{ button.iconAfter }}"
+        [class.ml-2]="button.label"
+      ></i>
+    </button>
+    <button
+      *ngIf="button?.handler"
+      [disabled]="button.disabled"
+      class="btn {{ button.className || 'btn-outline-primary' }}"
+      (click)="button.handler({ type: button.action, payload: button.payload })"
+    >
+      <i *ngIf="button?.icon" class="fa fa-fw {{ button.icon }}" [class.mr-2]="button.label"></i
+      >{{ button.label
+      }}<i
+        *ngIf="button?.iconAfter"
+        class="fa fa-fw {{ button.iconAfter }}"
+        [class.ml-2]="button.label"
+      ></i>
     </button>
   `,
 })
