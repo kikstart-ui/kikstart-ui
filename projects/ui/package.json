@@ -19,7 +19,7 @@
     "prismjs": "^1.18.0"
   },
   "devDependencies": {
-    "semantic-release": "16.0.1"
+    "semantic-release": "16.0.2"
   },
   "repository": {
     "type": "git",

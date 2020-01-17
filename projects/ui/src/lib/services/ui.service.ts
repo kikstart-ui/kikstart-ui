@@ -4,7 +4,7 @@ import { Router } from '@angular/router'
 import { cloneDeep } from 'lodash'
 import { BehaviorSubject, Observable } from 'rxjs'
 
-import { ToastrService } from 'ngx-toastr'
+import { ToastrService, IndividualConfig } from 'ngx-toastr'
 import { BsModalService } from 'ngx-bootstrap'
 import { FormlyFieldConfig } from '@ngx-formly/core'
 
@@ -58,12 +58,24 @@ export class UiService {
     })
   }
 
-  toastSuccess(message = 'OK :)', title?: string) {
-    return this.toast.success(message, title)
+  toastSuccess(message = 'OK :)', title?: string, config?: Partial<IndividualConfig>) {
+    return this.toast.success(message, title, config)
   }
 
-  toastError(message = 'Something went wrong :(', title?: string) {
-    return this.toast.error(message, title)
+  toastError(
+    message = 'Something went wrong :(',
+    title?: string,
+    config?: Partial<IndividualConfig>,
+  ) {
+    return this.toast.error(message, title, config)
+  }
+
+  toastInfo(message, title?: string, config?: Partial<IndividualConfig>) {
+    return this.toast.info(message, title, config)
+  }
+
+  toastWarning(message, title?: string, config?: Partial<IndividualConfig>) {
+    return this.toast.warning(message, title, config)
   }
 
   isRouteActive(url: string, exact = false): boolean {
