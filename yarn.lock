@@ -1114,17 +1114,17 @@
     tree-kill "1.2.2"
     webpack-sources "1.4.3"
 
-"@ngx-formly/bootstrap@5.5.8":
-  version "5.5.8"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/bootstrap/-/bootstrap-5.5.8.tgz#1b2432f195d0763152bde59b9d52f80b28ae4c1a"
-  integrity sha512-rlTnQQ/rnfsaYOOJuCt7iTtICOEjefN2sXdMMLVFoURzu0wb4gT6p37vzAkJY9cxpHvu3jwJoc/gSiS9zatIfw==
+"@ngx-formly/bootstrap@5.5.9":
+  version "5.5.9"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/bootstrap/-/bootstrap-5.5.9.tgz#a64d2fcfaa4c0c6ae81aff657a50540f6ce699e7"
+  integrity sha512-RG8ZVl8ioZtzO2UvQ3KNtQucPa/JkMJEIMcRGbdteJEe272V0qErBy1umZv/eeFO12jpC0OMfTBOhow+u0089w==
   dependencies:
     tslib "^1.9.0"
 
-"@ngx-formly/core@5.5.8":
-  version "5.5.8"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.5.8.tgz#78748b0ffc3b62a4c258e6974ae10d9cacf511df"
-  integrity sha512-BkzElMPYeN363drleV2yz94le3k7YmOtaoAS/vw+ueZPZBO7ihQumz43WCfmQHkd+4hD6mx2HxOZBo1NKZ955g==
+"@ngx-formly/core@5.5.9":
+  version "5.5.9"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.5.9.tgz#98e55e9157c7dfc28ded9944217838dc3232778f"
+  integrity sha512-8TFqcdJD5juWC+Xv8HCiJSuVj2T/nJ0p86B/ln1IfL+1WSmdEkk2Z/EQfQ364NlJu3wWIt9Z8mE+9PpRwcHsKw==
   dependencies:
     tslib "^1.7.1"
 
@@ -8052,10 +8052,10 @@ ngx-showdown@5.0.0:
   dependencies:
     tslib "^1.9.0"
 
-ngx-timeago@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ngx-timeago/-/ngx-timeago-1.0.2.tgz#0899e3fe4a0d1b5fb1b5a5d6004ee709a1800363"
-  integrity sha512-EgLteIN4BwfMAzw0L06cpIg+2eC5zZv6qlZxTjRjvVxsSSZLPXTjV3fwrcR+UQKfOs6Dm8KkeK/TmYnY24ihPg==
+ngx-timeago@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ngx-timeago/-/ngx-timeago-1.0.3.tgz#07974828a3d83956ee378f9fe5b8ba5d7127bc9c"
+  integrity sha512-LRIceBwQtyIOfEyZ83oJLmD/x60SMwhoEsSpHN0FWb6mbMmz7Xen+V8bGXbo+2i2sk7q7DCqWkoy6DKZQraoEQ==
   dependencies:
     tslib "^1.9.0"
 
