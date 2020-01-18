@@ -4,40 +4,39 @@ import { UiButton } from '../interfaces/ui-button'
 @Component({
   selector: 'ui-button',
   template: `
-    <ng-container *ngIf="button?.path || button?.url">
-      <ui-link
-        linkClass="btn {{ button?.className || buttonClass || 'btn-outline-info' }}"
-        [link]="button"
-      ></ui-link>
+    <ng-container *ngIf="isLink">
+      <ui-link [linkClass]="btnClass" [link]="button"></ui-link>
     </ng-container>
-    <button
-      *ngIf="button?.action"
-      [disabled]="disabled || button?.disabled"
-      class="btn {{ button?.className || buttonClass || 'btn-outline-info' }}"
-      (click)="action.emit({ type: button.action, payload: button.payload })"
-    >
-      <ui-loading-icon *ngIf="loading" [class.mr-2]="loadingClass" [icon]="loadingIcon">
-      </ui-loading-icon>
-      <ui-label
-        [label]="button?.label"
-        [icon]="button?.icon"
-        [iconAfter]="button?.iconAfter"
-      ></ui-label>
-    </button>
-    <button
-      *ngIf="button?.handler"
-      [disabled]="disabled || button?.disabled"
-      class="btn {{ button?.className || buttonClass || 'btn-outline-info' }}"
-      (click)="button.handler({ type: button.action, payload: button.payload })"
-    >
-      <ui-loading-icon *ngIf="loading" [class.mr-2]="loadingClass" [icon]="loadingIcon">
-      </ui-loading-icon>
-      <ui-label
-        [label]="button?.label"
-        [icon]="button?.icon"
-        [iconAfter]="button?.iconAfter"
-      ></ui-label>
-    </button>
+    <ng-container *ngIf="isAction">
+      <button
+        [disabled]="disabled || button?.disabled"
+        [class]="btnClass"
+        (click)="action.emit(button)"
+      >
+        <ui-loading-icon *ngIf="loading" [class.mr-2]="loadingClass" [icon]="loadingIcon">
+        </ui-loading-icon>
+        <ui-label
+          [label]="button?.label"
+          [icon]="button?.icon"
+          [iconAfter]="button?.iconAfter"
+        ></ui-label>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="isHandler">
+      <button
+        [disabled]="disabled || button?.disabled"
+        [class]="btnClass"
+        (click)="button.handler({ type: button.action, payload: button.payload })"
+      >
+        <ui-loading-icon *ngIf="loading" [class.mr-2]="loadingClass" [icon]="loadingIcon">
+        </ui-loading-icon>
+        <ui-label
+          [label]="button?.label"
+          [icon]="button?.icon"
+          [iconAfter]="button?.iconAfter"
+        ></ui-label>
+      </button>
+    </ng-container>
   `,
 })
 export class UiButtonComponent {
@@ -50,5 +49,26 @@ export class UiButtonComponent {
 
   get loadingClass() {
     return this.button && (this.button.icon || this.button.iconAfter || this.button.label)
+  }
+  get btnClass() {
+    return [
+      'btn',
+      this.button.className
+        ? this.button.className
+        : this.buttonClass
+        ? this.buttonClass
+        : 'btn-outline-info',
+    ].join(' ')
+  }
+  get isAction() {
+    return !this.isHandler && !this.isLink
+  }
+
+  get isHandler() {
+    return this.button.handler
+  }
+
+  get isLink() {
+    return this.button.path || this.button.url
   }
 }

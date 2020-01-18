@@ -10,4 +10,5 @@ export interface UiButton {
   queryParams?: { [k: string]: any }
   payload?: any
   handler?: (...params) => void
+  [key: string]: any
 }

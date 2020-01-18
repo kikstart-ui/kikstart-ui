@@ -5,9 +5,11 @@ import { UiButton } from '@kikstart/ui'
   templateUrl: './button-simple.component.html',
 })
 export class ButtonSimpleComponent {
-  public result: any = {}
-  public loadingSpinner = false
-  public loadingRefresh = false
+  public result: any = {
+    _: 'Click a button to see some actions!',
+  }
+  public loading = {}
+  public threeIcons = ['fa-refresh', 'fa-chevron-down', 'fa-chevron-up'].map(icon => ({ icon }))
   public examples: { name: string; buttons: UiButton[] }[] = [
     {
       name: 'Simple button',
