@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { appLayout } from '../../app.config'
+import { config } from './app.config'
 
-import { UiCard, UiService } from '@kikstart/ui'
-import { UiLink } from '@kikstart/ui'
-import { UiBrand } from '@kikstart/ui'
+import { UiBrand, UiCard, UiLink, UiService } from '@kikstart/ui'
 
 @Component({
   template: `
@@ -15,8 +13,8 @@ import { UiBrand } from '@kikstart/ui'
     ></ui-hero>
   `,
 })
-export class HomeIndexComponent implements OnInit {
-  brand: UiBrand = appLayout.brand
+export class AppHomeComponent implements OnInit {
+  brand: UiBrand = config.layout.brand
   link: UiLink = {
     path: '/demos',
     label: 'Look at some demos',

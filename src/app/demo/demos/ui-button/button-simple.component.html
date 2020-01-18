@@ -11,15 +11,17 @@
       <p class="mt-3">With <code>ui-buttons</code>:</p>
       <ui-buttons [buttons]="example.buttons" (action)="handleAction($event)"></ui-buttons>
     </div>
+    <h5>Define the buttons inside the template</h5>
+    <ui-buttons
+      (action)="handleAction($event)"
+      [buttons]="[
+        { icon: 'fa-refresh', action: 'REFRESH' },
+        { icon: 'fa-info', action: 'INFO' },
+        { icon: 'fa-trash-o', action: 'DELETE' }
+      ]"
+    ></ui-buttons>
   </div>
   <div class="col-6">
-    <ui-button
-      [button]="{
-      icon: 'fa-info',
-      handler: (x) => {},
-      action: 'INFO'
-    }"
-    ></ui-button>
     <pre>{{ result | json }}</pre>
   </div>
 </div>
