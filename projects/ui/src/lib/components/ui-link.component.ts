@@ -5,16 +5,22 @@ import { UiLink } from '../interfaces/ui-link'
   selector: 'ui-link',
   template: `
     <a
-      class="{{ linkClass }}"
+      class="{{ link?.className || linkClass }}"
       *ngIf="path || link?.path"
       [routerLink]="path || link?.path"
       [queryParams]="link?.queryParams"
-      ><i class="{{ link?.icon }}" *ngIf="link?.icon"></i>{{ label || link?.label
-      }}<i class="{{ link?.iconAfter }}" *ngIf="link?.iconAfter"></i
+      ><ui-label
+        [label]="label || link?.label"
+        [icon]="link?.icon"
+        [iconAfter]="link?.iconAfter"
+      ></ui-label
     ></a>
-    <a class="{{ linkClass }}" *ngIf="link?.url" [attr.href]="link?.url"
-      ><i class="{{ link?.icon }}" *ngIf="link?.icon"></i>{{ label || link?.label
-      }}<i class="{{ link?.iconAfter }}" *ngIf="link?.iconAfter"></i
+    <a class="{{ link?.className || linkClass }}" *ngIf="link?.url" [attr.href]="link?.url"
+      ><ui-label
+        [label]="label || link?.label"
+        [icon]="link?.icon"
+        [iconAfter]="link?.iconAfter"
+      ></ui-label
     ></a>
   `,
 })

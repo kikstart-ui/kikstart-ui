@@ -33,6 +33,7 @@ import { UiFormComponent } from './components/ui-form.component'
 import { UiFooterComponent } from './components/ui-footer.component'
 import { UiHeaderComponent } from './components/ui-header.component'
 import { UiHeroComponent } from './components/ui-hero.component'
+import { UiLabelComponent } from './components/ui-label.component'
 import { UiLayoutComponent } from './components/ui-layout.component'
 import { UiLinkComponent } from './components/ui-link.component'
 import { UiLinksComponent } from './components/ui-links.component'
@@ -70,6 +71,7 @@ const COMPONENTS = [
   UiFooterComponent,
   UiHeaderComponent,
   UiHeroComponent,
+  UiLabelComponent,
   UiLayoutComponent,
   UiLinkComponent,
   UiLinksComponent,
