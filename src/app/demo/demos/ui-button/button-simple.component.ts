@@ -5,6 +5,9 @@ import { UiButton } from '@kikstart/ui'
   templateUrl: './button-simple.component.html',
 })
 export class ButtonSimpleComponent {
+  public result: any = {}
+  public loadingSpinner = false
+  public loadingRefresh = false
   public examples: { name: string; buttons: UiButton[] }[] = [
     {
       name: 'Simple button',
@@ -72,8 +75,10 @@ export class ButtonSimpleComponent {
       ],
     },
   ]
-  public result: any = {}
   handleAction($event) {
-    this.result = $event
+    this.result = {
+      time: new Date(),
+      event: $event,
+    }
   }
 }

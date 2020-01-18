@@ -20,6 +20,20 @@
         { icon: 'fa-trash-o', action: 'DELETE' }
       ]"
     ></ui-buttons>
+    <h5 class="mt-5">Loading State</h5>
+    <ui-button
+      class="mr-3"
+      [loading]="loadingSpinner"
+      (action)="loadingSpinner = !loadingSpinner"
+      [button]="{ label: loadingSpinner ? 'Stop' : 'Start', action: 'TOGGLE' }"
+    ></ui-button>
+    <ui-button
+      class="mr-3"
+      [loading]="loadingRefresh"
+      loadingIcon="fa-refresh"
+      (action)="loadingRefresh = !loadingRefresh"
+      [button]="{ label: loadingRefresh ? 'Stop' : 'Start', action: 'TOGGLE' }"
+    ></ui-button>
   </div>
   <div class="col-6">
     <pre>{{ result | json }}</pre>

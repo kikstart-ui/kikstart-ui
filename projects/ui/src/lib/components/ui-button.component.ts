@@ -16,6 +16,8 @@ import { UiButton } from '../interfaces/ui-button'
       class="btn {{ button.className || buttonClass || 'btn-outline-info' }}"
       (click)="action.emit({ type: button.action, payload: button.payload })"
     >
+      <ui-loading-icon *ngIf="loading" [class.mr-2]="loadingClass" [icon]="loadingIcon">
+      </ui-loading-icon>
       <ui-label
         [label]="button?.label"
         [icon]="button?.icon"
@@ -28,6 +30,8 @@ import { UiButton } from '../interfaces/ui-button'
       class="btn {{ button.className || buttonClass || 'btn-outline-info' }}"
       (click)="button.handler({ type: button.action, payload: button.payload })"
     >
+      <ui-loading-icon *ngIf="loading" [class.mr-2]="loadingClass" [icon]="loadingIcon">
+      </ui-loading-icon>
       <ui-label
         [label]="button?.label"
         [icon]="button?.icon"
@@ -37,7 +41,13 @@ import { UiButton } from '../interfaces/ui-button'
   `,
 })
 export class UiButtonComponent {
+  @Input() loading = false
+  @Input() loadingIcon = 'fa-spinner'
   @Input() button: UiButton
   @Input() buttonClass: string
   @Output() action = new EventEmitter()
+
+  get loadingClass() {
+    return this.button && (this.button.icon || this.button.iconAfter || this.button.label)
+  }
 }
