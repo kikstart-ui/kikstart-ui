@@ -13,6 +13,7 @@ const routes: Routes = [
         { path: '/demos/ui-avatar', label: 'ui-avatar' },
         { path: '/demos/ui-brand', label: 'ui-brand' },
         { path: '/demos/ui-button', label: 'ui-button' },
+        { path: '/demos/ui-card', label: 'ui-card' },
         { path: '/demos/ui-code', label: 'ui-code' },
         { path: '/demos/ui-comment', label: 'ui-comment' },
         { path: '/demos/ui-comment-form', label: 'ui-comment-form' },
@@ -39,6 +40,11 @@ const routes: Routes = [
         path: 'ui-button',
         loadChildren: () =>
           import('./demos/ui-button/ui-button-demo.module').then(m => m.UiButtonDemoModule),
+      },
+      {
+        path: 'ui-card',
+        loadChildren: () =>
+          import('./demos/ui-card/ui-card-demo.module').then(m => m.UiCardDemoModule),
       },
       {
         path: 'ui-code',

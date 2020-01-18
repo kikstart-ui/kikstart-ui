@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router'
 import { DemoSharedModule } from '../../demo-shared.module'
 import { DemoComponent } from '../../demo.component'
 
-import { components, config } from './ui-markdown-demo.config'
+import { components, config } from './ui-card-demo.config'
 
 @NgModule({
   imports: [
@@ -14,4 +14,4 @@ import { components, config } from './ui-markdown-demo.config'
   declarations: [...components],
   entryComponents: [...components],
 })
-export class UiMarkdownDemoModule {}
+export class UiCardDemoModule {}

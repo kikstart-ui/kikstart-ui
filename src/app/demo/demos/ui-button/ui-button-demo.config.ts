@@ -10,7 +10,7 @@ export const config = {
     DemoHelper.config({
       title: 'Button Demos',
       description:
-        'The <code>ui-button</code> component can be used to render an button in various ways.',
+        'The <code>ui-button</code> and <code>ui-buttons</code> components can be used to render an button or button group in various ways.',
       component: ButtonSimpleComponent,
       path: 'demos/ui-button',
       files: ['button-simple.component.ts', 'button-simple.component.html'],
