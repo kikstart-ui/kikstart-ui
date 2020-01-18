@@ -7,6 +7,7 @@ import { ShowdownModule } from 'ngx-showdown'
 import { TimeagoModule } from 'ngx-timeago'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { ModalModule } from 'ngx-bootstrap/modal'
+import { TabsModule } from 'ngx-bootstrap/tabs'
 import { ToastrModule } from 'ngx-toastr'
 
 import { UiFormsModule } from './ui-forms.module'
@@ -16,6 +17,7 @@ import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
 import { UiAvatarComponent } from './components/ui-avatar.component'
 import { UiBrandComponent } from './components/ui-brand.component'
 import { UiButtonComponent } from './components/ui-button.component'
+import { UiButtonsComponent } from './components/ui-buttons.component'
 import { UiCardComponent } from './components/ui-card.component'
 import { UiCardBodyComponent } from './components/ui-card-body.component'
 import { UiCardFooterComponent } from './components/ui-card-footer.component'
@@ -54,6 +56,7 @@ const COMPONENTS = [
   UiAvatarComponent,
   UiBrandComponent,
   UiButtonComponent,
+  UiButtonsComponent,
   UiCardComponent,
   UiCardBodyComponent,
   UiCardFooterComponent,
@@ -88,17 +91,24 @@ const COMPONENTS = [
   UiUserComponent,
 ]
 
-const MODULES = [CommonModule, BsDropdownModule, ModalModule, NumberedCodeblockModule]
+const EXPORT_MODULES = [
+  CommonModule,
+  BsDropdownModule,
+  ModalModule,
+  TabsModule,
+  NumberedCodeblockModule,
+]
 
 @NgModule({
   entryComponents: [UiDialogFormComponent, UiDialogProgressComponent],
   declarations: [TruncatePipe, ...COMPONENTS],
   imports: [
-    ...MODULES,
+    ...EXPORT_MODULES,
     UiFormsModule,
     RouterModule.forChild([]),
-    ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
+    TabsModule.forRoot(),
     ShowdownModule,
     TimeagoModule.forRoot(),
     ToastrModule.forRoot({
@@ -108,6 +118,13 @@ const MODULES = [CommonModule, BsDropdownModule, ModalModule, NumberedCodeblockM
       timeOut: 3000,
     }),
   ],
-  exports: [...MODULES, UiFormsModule, TimeagoModule, ...COMPONENTS, TruncatePipe, ToastrModule],
+  exports: [
+    ...EXPORT_MODULES,
+    UiFormsModule,
+    TimeagoModule,
+    ...COMPONENTS,
+    TruncatePipe,
+    ToastrModule,
+  ],
 })
 export class UiModule {}

@@ -5,7 +5,7 @@ import { cloneDeep } from 'lodash'
 import { BehaviorSubject, Observable } from 'rxjs'
 
 import { ToastrService, IndividualConfig } from 'ngx-toastr'
-import { BsModalService } from 'ngx-bootstrap'
+import { BsModalService } from 'ngx-bootstrap/modal'
 import { FormlyFieldConfig } from '@ngx-formly/core'
 
 import { UiDialogFormComponent } from '../components/ui-dialog-form.component'
