@@ -5,27 +5,22 @@ import { UiButton } from '../interfaces/ui-button'
 @Component({
   selector: 'ui-card-header',
   template: `
-    <ng-container>
-      <div class="pull-right p-1 mr-2">
+    <h5 class="card-header d-flex justify-content-between">
+      <div class="align-self-center" *ngIf="cardTitle || cardSubTitle || icon || iconAfter">
+        <ui-label [icon]="icon" [iconAfter]="iconAfter" [label]="cardTitle"></ui-label>
+        <small class="text-muted ml-2" *ngIf="cardSubTitle">{{ cardSubTitle }}</small>
+      </div>
+      <ng-content></ng-content>
+      <div *ngIf="buttons?.length">
         <ng-container *ngFor="let button of buttons">
-          <ui-link *ngIf="!button.action" [link]="button" linkClass="btn btn-sm"></ui-link>
           <ui-button
-            *ngIf="button.action"
             (action)="action.emit($event)"
+            buttonClass="btn-sm p-0 ml-2"
             [button]="button"
           ></ui-button>
         </ng-container>
       </div>
-      <ng-container>
-        <h5 class="card-header">
-          <i *ngIf="icon" class="mr-2 {{ icon }}"></i>
-          {{ cardTitle }}
-          <i *ngIf="iconAfter" class="ml-2 {{ iconAfter }}"></i>
-          <small class="text-muted ml-2" *ngIf="cardSubTitle">{{ cardSubTitle }}</small>
-          <ng-content></ng-content>
-        </h5>
-      </ng-container>
-    </ng-container>
+    </h5>
   `,
 })
 export class UiCardHeaderComponent {
