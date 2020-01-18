@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core'
   selector: 'ui-code',
   template: `
     <ngx-numbered-codeblock
-      [code]="code"
+      [code]="code || data"
       [languague]="language"
       [lineNumbers]="numbers"
     ></ngx-numbered-codeblock>
@@ -12,6 +12,7 @@ import { Component, Input } from '@angular/core'
 })
 export class UiCodeComponent {
   @Input() code = ''
+  @Input() data = ''
   @Input() numbers = false
-  @Input() language = 'typescript'
+  @Input() language = 'json'
 }

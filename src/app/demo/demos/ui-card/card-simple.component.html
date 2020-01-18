@@ -1,0 +1,31 @@
+<ui-card>
+  <ui-card-header cardTitle="Card Header" iconAfter="fa-lock text-muted" icon="fa-cubes">
+    I can sit inside the header
+  </ui-card-header>
+  <ui-card-body>
+    In here we can do whatever we please!
+  </ui-card-body>
+  <ui-card-footer class="text-center">
+    <div class="text-muted">This is some nice summary</div>
+  </ui-card-footer>
+</ui-card>
+
+<ui-card>
+  <ui-card-header
+    cardTitle="Card Header"
+    iconAfter="fa-lock text-muted"
+    icon="fa-cubes"
+    [buttons]="[
+      { action: 'REFRESH', icon: 'fa-refresh' },
+      { action: 'DELETE', icon: 'fa-trash-o text-danger' }
+    ]"
+  >
+    I can sit inside the header
+  </ui-card-header>
+  <ui-card-body>
+    In here we can do whatever we please!
+  </ui-card-body>
+  <ui-card-footer class="text-center">
+    <div class="text-muted">This is some nice summary</div>
+  </ui-card-footer>
+</ui-card>

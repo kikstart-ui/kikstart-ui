@@ -2,18 +2,14 @@ import { Component } from '@angular/core'
 import { UiButton } from '@kikstart/ui'
 
 @Component({
-  templateUrl: './button-simple.component.html',
+  templateUrl: './card-simple.component.html',
 })
-export class ButtonSimpleComponent {
-  public result: any = {
-    _: 'Click a button to see some actions!',
-  }
-  public loading = {}
-  public threeIcons = ['fa-refresh', 'fa-chevron-down', 'fa-chevron-up'].map(icon => ({ icon }))
-  public examples: { name: string; buttons: UiButton[] }[] = [
+export class CardSimpleComponent {
+  public card = 'assets/logo.png'
+  public examples: { name: string; cards: UiButton[] }[] = [
     {
-      name: 'Simple button',
-      buttons: [
+      name: 'Simple card',
+      cards: [
         {
           label: 'Save',
           action: 'SAVE',
@@ -28,8 +24,8 @@ export class ButtonSimpleComponent {
       ],
     },
     {
-      name: 'Button with icon and color',
-      buttons: [
+      name: 'Card with icon and color',
+      cards: [
         {
           icon: 'fa-trash',
           label: 'Delete',
@@ -45,42 +41,23 @@ export class ButtonSimpleComponent {
       ],
     },
     {
-      name: 'Button with custom handler',
-      buttons: [
+      name: 'Card with custom handler',
+      cards: [
         {
           icon: 'fa-refresh',
           className: 'btn-sm btn-outline-info',
           handler: $event => {
             this.result = {
               ...$event,
-              inline: ['Handle Button Actions'],
+              inline: ['Handle Card Actions'],
             }
           },
         },
       ],
     },
-    {
-      name: 'Combine links and buttons',
-      buttons: [
-        {
-          icon: 'fa-home',
-          path: '/home',
-        },
-        {
-          icon: 'fa-github',
-          url: 'https://github.com/beeman/kikstart-ui',
-        },
-        {
-          icon: 'fa-refresh',
-          action: 'REFRESH',
-        },
-      ],
-    },
   ]
+  public result: any = {}
   handleAction($event) {
-    this.result = {
-      time: new Date(),
-      event: $event,
-    }
+    this.result = $event
   }
 }

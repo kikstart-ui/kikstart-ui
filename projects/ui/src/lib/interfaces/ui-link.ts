@@ -1,9 +1,10 @@
 export interface UiLink {
   label?: string
-  path?: string
-  url?: string
   icon?: string
   iconAfter?: string
+  className?: string
+  path?: string
+  url?: string
   queryParams?: any
   children?: UiLink[]
 }

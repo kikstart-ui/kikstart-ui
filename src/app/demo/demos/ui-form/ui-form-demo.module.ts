@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 
 import { DemoSharedModule } from '../../demo-shared.module'
-import { DemoComponent } from '../../components/demo.component'
+import { DemoComponent } from '../../demo.component'
 
 import { components, config } from './ui-form-demo.config'
 

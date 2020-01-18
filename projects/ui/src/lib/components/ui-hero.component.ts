@@ -12,14 +12,19 @@ import { UiBrandSizes } from './ui-brand.component'
       <div class="my-3 mb-5">
         <div class="mb-3">
           <ui-avatar *ngIf="avatar" [avatar]="avatar" [size]="avatarSize"></ui-avatar>
-          <ui-brand *ngIf="brand" [brand]="brand" [size]="brandSize"></ui-brand>
+          <ui-brand
+            *ngIf="brand"
+            class="d-block mb-5"
+            [brand]="brand"
+            [size]="brandSize"
+          ></ui-brand>
           <h1 *ngIf="title" class="display-4 my-2">{{ title }}</h1>
         </div>
         <p class="lead mt-2">
           {{ description }}
         </p>
-        <div *ngIf="link" class="mt-4 my-3">
-          <ui-link [link]="link" linkClass="btn btn-lg btn-outline-success"></ui-link>
+        <div *ngIf="link" class="my-5">
+          <ui-link [link]="link" [linkClass]="linkClass"></ui-link>
         </div>
       </div>
     </div>
@@ -61,6 +66,7 @@ export class UiHeroComponent {
   @Input() brandSize: UiBrandSizes = 'lg'
   @Input() centered = true
   @Input() link: UiLink
+  @Input() linkClass = 'btn btn-lg btn-outline-success'
   @Input() title?: string
   @Input() description?: string
   @Input() cards: UiCard[] = []

@@ -1,12 +1,14 @@
 export interface UiButton {
   label?: string
-  className?: string
-  disabled?: boolean
-  path?: string
-  queryParams?: { [k: string]: any }
-  action?: string
-  payload?: any
   icon?: string
   iconAfter?: string
+  className?: string
+  path?: string
+  url?: string
+  action?: string
+  disabled?: boolean
+  queryParams?: { [k: string]: any }
+  payload?: any
   handler?: (...params) => void
+  [key: string]: any
 }
