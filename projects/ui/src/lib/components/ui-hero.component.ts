@@ -12,7 +12,12 @@ import { UiBrandSizes } from './ui-brand.component'
       <div class="my-3 mb-5">
         <div class="mb-3">
           <ui-avatar *ngIf="avatar" [avatar]="avatar" [size]="avatarSize"></ui-avatar>
-          <ui-brand *ngIf="brand" [brand]="brand" [size]="brandSize"></ui-brand>
+          <ui-brand
+            *ngIf="brand"
+            class="d-block mb-5"
+            [brand]="brand"
+            [size]="brandSize"
+          ></ui-brand>
           <h1 *ngIf="title" class="display-4 my-2">{{ title }}</h1>
         </div>
         <p class="lead mt-2">
