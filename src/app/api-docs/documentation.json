@@ -103,36 +103,57 @@
     },
     {
       "name": "UiButton",
-      "id": "interface-UiButton-0b3056960568772cc32b6f8b337c1697",
+      "id": "interface-UiButton-f687f47934c94eed0580dbc7613defc4",
       "file": "projects/ui/src/lib/interfaces/ui-button.ts",
       "type": "interface",
-      "sourceCode": "export interface UiButton {\n  label: string\n  path?: string\n  queryParams?: { [k: string]: any }\n  action?: string\n  payload?: any\n  icon?: string\n  iconAfter?: string\n}\n",
+      "sourceCode": "export interface UiButton {\n  label?: string\n  icon?: string\n  iconAfter?: string\n  className?: string\n  path?: string\n  url?: string\n  action?: string\n  disabled?: boolean\n  queryParams?: { [k: string]: any }\n  payload?: any\n  handler?: (...params) => void\n}\n",
       "properties": [
         {
           "name": "action",
           "type": "string",
           "optional": true,
           "description": "",
+          "line": 8
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "optional": true,
+          "description": "",
           "line": 5
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": true,
+          "description": "",
+          "line": 9
+        },
+        {
+          "name": "handler",
+          "type": "function",
+          "optional": true,
+          "description": "",
+          "line": 12
         },
         {
           "name": "icon",
           "type": "string",
           "optional": true,
           "description": "",
-          "line": 7
+          "line": 3
         },
         {
           "name": "iconAfter",
           "type": "string",
           "optional": true,
           "description": "",
-          "line": 8
+          "line": 4
         },
         {
           "name": "label",
           "type": "string",
-          "optional": false,
+          "optional": true,
           "description": "",
           "line": 2
         },
@@ -141,21 +162,28 @@
           "type": "string",
           "optional": true,
           "description": "",
-          "line": 3
+          "line": 6
         },
         {
           "name": "payload",
           "type": "any",
           "optional": true,
           "description": "",
-          "line": 6
+          "line": 11
         },
         {
           "name": "queryParams",
           "type": "literal type",
           "optional": true,
           "description": "",
-          "line": 4
+          "line": 10
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "optional": true,
+          "description": "",
+          "line": 7
         }
       ],
       "indexSignatures": [],
@@ -310,10 +338,10 @@
     },
     {
       "name": "UiDialogFormParams",
-      "id": "interface-UiDialogFormParams-2f700ac10d57baa09446863dedd43b37",
+      "id": "interface-UiDialogFormParams-cb46627b84bbd034d726bafd4fce678d",
       "file": "projects/ui/src/lib/services/ui.service.ts",
       "type": "interface",
-      "sourceCode": "import { Meta, Title } from '@angular/platform-browser'\nimport { Injectable } from '@angular/core'\nimport { Router } from '@angular/router'\nimport { cloneDeep } from 'lodash'\nimport { BehaviorSubject, Observable } from 'rxjs'\n\nimport { ToastrService } from 'ngx-toastr'\nimport { BsModalService } from 'ngx-bootstrap'\nimport { FormlyFieldConfig } from '@ngx-formly/core'\n\nimport { UiDialogFormComponent } from '../components/ui-dialog-form.component'\nimport { UiDialogProgressComponent } from '../components/ui-dialog-progress.component'\nimport { UiLayout } from '../interfaces/ui-layout'\n\ninterface UiDialogFormParams {\n  handler?: (data) => Observable<any>\n  fields: FormlyFieldConfig[]\n  model?: any\n  title?: string\n}\n\n@Injectable({ providedIn: 'root' })\nexport class UiService {\n  private layoutSubject = new BehaviorSubject<UiLayout>(null)\n\n  set layout(layout: UiLayout) {\n    this.layoutSubject.next(layout)\n  }\n\n  get layout(): UiLayout {\n    return this.layoutSubject.getValue()\n  }\n\n  constructor(\n    private meta: Meta,\n    private modal: BsModalService,\n    private router: Router,\n    private title: Title,\n    private toast: ToastrService,\n  ) {}\n\n  openForm({ model, title, handler, fields }: UiDialogFormParams) {\n    this.modal.show(UiDialogFormComponent, {\n      initialState: {\n        model: cloneDeep(model),\n        fields: cloneDeep(fields),\n        title,\n        handler,\n      },\n    })\n  }\n\n  openProgress() {\n    return this.modal.show(UiDialogProgressComponent, {\n      initialState: {\n        title: 'Loading...',\n      },\n    })\n  }\n\n  toastSuccess(message = 'OK :)', title?: string) {\n    return this.toast.success(message, title)\n  }\n\n  toastError(message = 'Something went wrong :(', title?: string) {\n    return this.toast.error(message, title)\n  }\n\n  isRouteActive(url: string, exact = false): boolean {\n    return this.router.isActive(url, exact)\n  }\n\n  setMetaData(config?: { description?: string; image?: string; title?: string }) {\n    config = config || {}\n    const brand = this.layout.brand || null\n    const appTitle =\n      [brand.name, brand.product].join(` ${brand.separator} `) + ' - ' + brand.description\n\n    // Get the description from the config, or use the default App Description\n    const description = config.description || brand.description\n\n    // Get the image from the config or use the App Image;\n    const image = config.image || brand.logo\n\n    // Get the title from the config and append the App Title, or just use the App Title\n    const title = config.title ? `${config.title} - ${appTitle}` : appTitle\n\n    // Set the Application Title\n    this.title.setTitle(title)\n\n    const tags = [\n      { name: 'description', content: description },\n      { name: 'theme-color', content: brand.color || '#333333' },\n      { name: 'twitter:card', content: 'summary' },\n      { name: 'twitter:image', content: image },\n      { name: 'twitter:title', content: title },\n      { name: 'twitter:description', content: description },\n      { name: 'apple-mobile-web-app-capable', content: 'yes' },\n      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },\n      { name: 'apple-mobile-web-app-title', content: title },\n      { name: 'apple-touch-startup-image', content: image },\n      { property: 'og:title', content: title },\n      { property: 'og:description', content: description },\n      { property: 'og:image', content: image },\n    ]\n\n    tags.forEach(tag => this.meta.updateTag(tag))\n  }\n}\n",
+      "sourceCode": "import { Meta, Title } from '@angular/platform-browser'\nimport { Injectable } from '@angular/core'\nimport { Router } from '@angular/router'\nimport { cloneDeep } from 'lodash'\nimport { BehaviorSubject, Observable } from 'rxjs'\n\nimport { ToastrService, IndividualConfig } from 'ngx-toastr'\nimport { BsModalService } from 'ngx-bootstrap/modal'\nimport { FormlyFieldConfig } from '@ngx-formly/core'\n\nimport { UiDialogFormComponent } from '../components/ui-dialog-form.component'\nimport { UiDialogProgressComponent } from '../components/ui-dialog-progress.component'\nimport { UiLayout } from '../interfaces/ui-layout'\n\ninterface UiDialogFormParams {\n  handler?: (data) => Observable<any>\n  fields: FormlyFieldConfig[]\n  model?: any\n  title?: string\n}\n\n@Injectable({ providedIn: 'root' })\nexport class UiService {\n  private layoutSubject = new BehaviorSubject<UiLayout>(null)\n\n  set layout(layout: UiLayout) {\n    this.layoutSubject.next(layout)\n  }\n\n  get layout(): UiLayout {\n    return this.layoutSubject.getValue()\n  }\n\n  constructor(\n    private meta: Meta,\n    private modal: BsModalService,\n    private router: Router,\n    private title: Title,\n    private toast: ToastrService,\n  ) {}\n\n  openForm({ model, title, handler, fields }: UiDialogFormParams) {\n    this.modal.show(UiDialogFormComponent, {\n      initialState: {\n        model: cloneDeep(model),\n        fields: cloneDeep(fields),\n        title,\n        handler,\n      },\n    })\n  }\n\n  openProgress() {\n    return this.modal.show(UiDialogProgressComponent, {\n      initialState: {\n        title: 'Loading...',\n      },\n    })\n  }\n\n  toastSuccess(message = 'OK :)', title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.success(message, title, config)\n  }\n\n  toastError(\n    message = 'Something went wrong :(',\n    title?: string,\n    config?: Partial<IndividualConfig>,\n  ) {\n    return this.toast.error(message, title, config)\n  }\n\n  toastInfo(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.info(message, title, config)\n  }\n\n  toastWarning(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.warning(message, title, config)\n  }\n\n  isRouteActive(url: string, exact = false): boolean {\n    return this.router.isActive(url, exact)\n  }\n\n  setMetaData(config?: { description?: string; image?: string; title?: string }) {\n    config = config || {}\n    const brand = this.layout.brand || null\n    const appTitle =\n      [brand.name, brand.product].join(` ${brand.separator} `) + ' - ' + brand.description\n\n    // Get the description from the config, or use the default App Description\n    const description = config.description || brand.description\n\n    // Get the image from the config or use the App Image;\n    const image = config.image || brand.logo\n\n    // Get the title from the config and append the App Title, or just use the App Title\n    const title = config.title ? `${config.title} - ${appTitle}` : appTitle\n\n    // Set the Application Title\n    this.title.setTitle(title)\n\n    const tags = [\n      { name: 'description', content: description },\n      { name: 'theme-color', content: brand.color || '#333333' },\n      { name: 'twitter:card', content: 'summary' },\n      { name: 'twitter:image', content: image },\n      { name: 'twitter:title', content: title },\n      { name: 'twitter:description', content: description },\n      { name: 'apple-mobile-web-app-capable', content: 'yes' },\n      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },\n      { name: 'apple-mobile-web-app-title', content: title },\n      { name: 'apple-touch-startup-image', content: image },\n      { property: 'og:title', content: title },\n      { property: 'og:description', content: description },\n      { property: 'og:image', content: image },\n    ]\n\n    tags.forEach(tag => this.meta.updateTag(tag))\n  }\n}\n",
       "properties": [
         {
           "name": "fields",
@@ -390,31 +418,38 @@
     },
     {
       "name": "UiLink",
-      "id": "interface-UiLink-a1e6060e7915469307c7a8e2961ad51e",
+      "id": "interface-UiLink-f94b6153a349d34cc1540dacce7ed632",
       "file": "projects/ui/src/lib/interfaces/ui-link.ts",
       "type": "interface",
-      "sourceCode": "export interface UiLink {\n  label?: string\n  path?: string\n  url?: string\n  icon?: string\n  iconAfter?: string\n  queryParams?: any\n  children?: UiLink[]\n}\n",
+      "sourceCode": "export interface UiLink {\n  label?: string\n  icon?: string\n  iconAfter?: string\n  className?: string\n  path?: string\n  url?: string\n  queryParams?: any\n  children?: UiLink[]\n}\n",
       "properties": [
         {
           "name": "children",
           "type": "UiLink[]",
           "optional": true,
           "description": "",
-          "line": 8
+          "line": 9
         },
         {
-          "name": "icon",
+          "name": "className",
           "type": "string",
           "optional": true,
           "description": "",
           "line": 5
         },
         {
+          "name": "icon",
+          "type": "string",
+          "optional": true,
+          "description": "",
+          "line": 3
+        },
+        {
           "name": "iconAfter",
           "type": "string",
           "optional": true,
           "description": "",
-          "line": 6
+          "line": 4
         },
         {
           "name": "label",
@@ -428,21 +463,21 @@
           "type": "string",
           "optional": true,
           "description": "",
-          "line": 3
+          "line": 6
         },
         {
           "name": "queryParams",
           "type": "any",
           "optional": true,
           "description": "",
-          "line": 7
+          "line": 8
         },
         {
           "name": "url",
           "type": "string",
           "optional": true,
           "description": "",
-          "line": 4
+          "line": 7
         }
       ],
       "indexSignatures": [],
@@ -545,7 +580,7 @@
   "injectables": [
     {
       "name": "UiService",
-      "id": "injectable-UiService-2f700ac10d57baa09446863dedd43b37",
+      "id": "injectable-UiService-cb46627b84bbd034d726bafd4fce678d",
       "file": "projects/ui/src/lib/services/ui.service.ts",
       "properties": [
         {
@@ -575,7 +610,7 @@
           "optional": false,
           "returnType": "boolean",
           "typeParameters": [],
-          "line": 69,
+          "line": 81,
           "jsdoctags": [
             {
               "name": "url",
@@ -634,7 +669,7 @@
           "optional": false,
           "returnType": "void",
           "typeParameters": [],
-          "line": 73,
+          "line": 85,
           "jsdoctags": [
             {
               "name": "config",
@@ -658,6 +693,11 @@
               "name": "title",
               "type": "string",
               "optional": true
+            },
+            {
+              "name": "config",
+              "type": "Partial<IndividualConfig>",
+              "optional": true
             }
           ],
           "optional": false,
@@ -680,6 +720,62 @@
               "tagName": {
                 "text": "param"
               }
+            },
+            {
+              "name": "config",
+              "type": "Partial<IndividualConfig>",
+              "optional": true,
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        },
+        {
+          "name": "toastInfo",
+          "args": [
+            {
+              "name": "message",
+              "type": ""
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "config",
+              "type": "Partial<IndividualConfig>",
+              "optional": true
+            }
+          ],
+          "optional": false,
+          "returnType": "any",
+          "typeParameters": [],
+          "line": 73,
+          "jsdoctags": [
+            {
+              "name": "message",
+              "type": "",
+              "tagName": {
+                "text": "param"
+              }
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "optional": true,
+              "tagName": {
+                "text": "param"
+              }
+            },
+            {
+              "name": "config",
+              "type": "Partial<IndividualConfig>",
+              "optional": true,
+              "tagName": {
+                "text": "param"
+              }
             }
           ]
         },
@@ -694,6 +790,11 @@
             {
               "name": "title",
               "type": "string",
+              "optional": true
+            },
+            {
+              "name": "config",
+              "type": "Partial<IndividualConfig>",
               "optional": true
             }
           ],
@@ -717,12 +818,68 @@
               "tagName": {
                 "text": "param"
               }
+            },
+            {
+              "name": "config",
+              "type": "Partial<IndividualConfig>",
+              "optional": true,
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        },
+        {
+          "name": "toastWarning",
+          "args": [
+            {
+              "name": "message",
+              "type": ""
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "config",
+              "type": "Partial<IndividualConfig>",
+              "optional": true
+            }
+          ],
+          "optional": false,
+          "returnType": "any",
+          "typeParameters": [],
+          "line": 77,
+          "jsdoctags": [
+            {
+              "name": "message",
+              "type": "",
+              "tagName": {
+                "text": "param"
+              }
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "optional": true,
+              "tagName": {
+                "text": "param"
+              }
+            },
+            {
+              "name": "config",
+              "type": "Partial<IndividualConfig>",
+              "optional": true,
+              "tagName": {
+                "text": "param"
+              }
             }
           ]
         }
       ],
       "description": "",
-      "sourceCode": "import { Meta, Title } from '@angular/platform-browser'\nimport { Injectable } from '@angular/core'\nimport { Router } from '@angular/router'\nimport { cloneDeep } from 'lodash'\nimport { BehaviorSubject, Observable } from 'rxjs'\n\nimport { ToastrService } from 'ngx-toastr'\nimport { BsModalService } from 'ngx-bootstrap'\nimport { FormlyFieldConfig } from '@ngx-formly/core'\n\nimport { UiDialogFormComponent } from '../components/ui-dialog-form.component'\nimport { UiDialogProgressComponent } from '../components/ui-dialog-progress.component'\nimport { UiLayout } from '../interfaces/ui-layout'\n\ninterface UiDialogFormParams {\n  handler?: (data) => Observable<any>\n  fields: FormlyFieldConfig[]\n  model?: any\n  title?: string\n}\n\n@Injectable({ providedIn: 'root' })\nexport class UiService {\n  private layoutSubject = new BehaviorSubject<UiLayout>(null)\n\n  set layout(layout: UiLayout) {\n    this.layoutSubject.next(layout)\n  }\n\n  get layout(): UiLayout {\n    return this.layoutSubject.getValue()\n  }\n\n  constructor(\n    private meta: Meta,\n    private modal: BsModalService,\n    private router: Router,\n    private title: Title,\n    private toast: ToastrService,\n  ) {}\n\n  openForm({ model, title, handler, fields }: UiDialogFormParams) {\n    this.modal.show(UiDialogFormComponent, {\n      initialState: {\n        model: cloneDeep(model),\n        fields: cloneDeep(fields),\n        title,\n        handler,\n      },\n    })\n  }\n\n  openProgress() {\n    return this.modal.show(UiDialogProgressComponent, {\n      initialState: {\n        title: 'Loading...',\n      },\n    })\n  }\n\n  toastSuccess(message = 'OK :)', title?: string) {\n    return this.toast.success(message, title)\n  }\n\n  toastError(message = 'Something went wrong :(', title?: string) {\n    return this.toast.error(message, title)\n  }\n\n  isRouteActive(url: string, exact = false): boolean {\n    return this.router.isActive(url, exact)\n  }\n\n  setMetaData(config?: { description?: string; image?: string; title?: string }) {\n    config = config || {}\n    const brand = this.layout.brand || null\n    const appTitle =\n      [brand.name, brand.product].join(` ${brand.separator} `) + ' - ' + brand.description\n\n    // Get the description from the config, or use the default App Description\n    const description = config.description || brand.description\n\n    // Get the image from the config or use the App Image;\n    const image = config.image || brand.logo\n\n    // Get the title from the config and append the App Title, or just use the App Title\n    const title = config.title ? `${config.title} - ${appTitle}` : appTitle\n\n    // Set the Application Title\n    this.title.setTitle(title)\n\n    const tags = [\n      { name: 'description', content: description },\n      { name: 'theme-color', content: brand.color || '#333333' },\n      { name: 'twitter:card', content: 'summary' },\n      { name: 'twitter:image', content: image },\n      { name: 'twitter:title', content: title },\n      { name: 'twitter:description', content: description },\n      { name: 'apple-mobile-web-app-capable', content: 'yes' },\n      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },\n      { name: 'apple-mobile-web-app-title', content: title },\n      { name: 'apple-touch-startup-image', content: image },\n      { property: 'og:title', content: title },\n      { property: 'og:description', content: description },\n      { property: 'og:image', content: image },\n    ]\n\n    tags.forEach(tag => this.meta.updateTag(tag))\n  }\n}\n",
+      "sourceCode": "import { Meta, Title } from '@angular/platform-browser'\nimport { Injectable } from '@angular/core'\nimport { Router } from '@angular/router'\nimport { cloneDeep } from 'lodash'\nimport { BehaviorSubject, Observable } from 'rxjs'\n\nimport { ToastrService, IndividualConfig } from 'ngx-toastr'\nimport { BsModalService } from 'ngx-bootstrap/modal'\nimport { FormlyFieldConfig } from '@ngx-formly/core'\n\nimport { UiDialogFormComponent } from '../components/ui-dialog-form.component'\nimport { UiDialogProgressComponent } from '../components/ui-dialog-progress.component'\nimport { UiLayout } from '../interfaces/ui-layout'\n\ninterface UiDialogFormParams {\n  handler?: (data) => Observable<any>\n  fields: FormlyFieldConfig[]\n  model?: any\n  title?: string\n}\n\n@Injectable({ providedIn: 'root' })\nexport class UiService {\n  private layoutSubject = new BehaviorSubject<UiLayout>(null)\n\n  set layout(layout: UiLayout) {\n    this.layoutSubject.next(layout)\n  }\n\n  get layout(): UiLayout {\n    return this.layoutSubject.getValue()\n  }\n\n  constructor(\n    private meta: Meta,\n    private modal: BsModalService,\n    private router: Router,\n    private title: Title,\n    private toast: ToastrService,\n  ) {}\n\n  openForm({ model, title, handler, fields }: UiDialogFormParams) {\n    this.modal.show(UiDialogFormComponent, {\n      initialState: {\n        model: cloneDeep(model),\n        fields: cloneDeep(fields),\n        title,\n        handler,\n      },\n    })\n  }\n\n  openProgress() {\n    return this.modal.show(UiDialogProgressComponent, {\n      initialState: {\n        title: 'Loading...',\n      },\n    })\n  }\n\n  toastSuccess(message = 'OK :)', title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.success(message, title, config)\n  }\n\n  toastError(\n    message = 'Something went wrong :(',\n    title?: string,\n    config?: Partial<IndividualConfig>,\n  ) {\n    return this.toast.error(message, title, config)\n  }\n\n  toastInfo(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.info(message, title, config)\n  }\n\n  toastWarning(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.warning(message, title, config)\n  }\n\n  isRouteActive(url: string, exact = false): boolean {\n    return this.router.isActive(url, exact)\n  }\n\n  setMetaData(config?: { description?: string; image?: string; title?: string }) {\n    config = config || {}\n    const brand = this.layout.brand || null\n    const appTitle =\n      [brand.name, brand.product].join(` ${brand.separator} `) + ' - ' + brand.description\n\n    // Get the description from the config, or use the default App Description\n    const description = config.description || brand.description\n\n    // Get the image from the config or use the App Image;\n    const image = config.image || brand.logo\n\n    // Get the title from the config and append the App Title, or just use the App Title\n    const title = config.title ? `${config.title} - ${appTitle}` : appTitle\n\n    // Set the Application Title\n    this.title.setTitle(title)\n\n    const tags = [\n      { name: 'description', content: description },\n      { name: 'theme-color', content: brand.color || '#333333' },\n      { name: 'twitter:card', content: 'summary' },\n      { name: 'twitter:image', content: image },\n      { name: 'twitter:title', content: title },\n      { name: 'twitter:description', content: description },\n      { name: 'apple-mobile-web-app-capable', content: 'yes' },\n      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },\n      { name: 'apple-mobile-web-app-title', content: title },\n      { name: 'apple-touch-startup-image', content: image },\n      { property: 'og:title', content: title },\n      { property: 'og:description', content: description },\n      { property: 'og:image', content: image },\n    ]\n\n    tags.forEach(tag => this.meta.updateTag(tag))\n  }\n}\n",
       "constructorObj": {
         "name": "constructor",
         "description": "",
@@ -1938,7 +2095,7 @@
     },
     {
       "name": "UiButtonComponent",
-      "id": "component-UiButtonComponent-0d3d0314e7cc7222cc89055a6086434e",
+      "id": "component-UiButtonComponent-9bada1db45b7e7dcf928f80f6994dfb4",
       "file": "projects/ui/src/lib/components/ui-button.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -1948,18 +2105,18 @@
       "selector": "ui-button",
       "styleUrls": [],
       "styles": [],
-      "template": "<a\n  class=\"btn {{ buttonClass }}\"\n  *ngIf=\"button.path\"\n  [routerLink]=\"button.path\"\n  [queryParams]=\"button.queryParams\"\n>\n  <i class=\"{{ button.icon }} mr-1\" *ngIf=\"button.icon\"></i>{{ button.label\n  }}<i class=\"{{ button.iconAfter }} ml-1\" *ngIf=\"button.iconAfter\"></i>\n</a>\n<button\n  class=\"btn {{ buttonClass }}\"\n  *ngIf=\"button.action\"\n  (click)=\"action.emit({ type: button.action, payload: button.payload })\"\n>\n  <i class=\"{{ button.icon }} mr-1\" *ngIf=\"button.icon\"></i>{{ button.label\n  }}<i class=\"{{ button.iconAfter }} ml-1\" *ngIf=\"button.iconAfter\"></i>\n</button>\n",
+      "template": "<ng-container *ngIf=\"button?.path || button?.url\">\n  <ui-link\n    linkClass=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n    [link]=\"button\"\n  ></ui-link>\n</ng-container>\n<button\n  *ngIf=\"button?.action\"\n  [disabled]=\"button.disabled\"\n  class=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n  (click)=\"action.emit({ type: button.action, payload: button.payload })\"\n>\n  <ui-label\n    [label]=\"button?.label\"\n    [icon]=\"button?.icon\"\n    [iconAfter]=\"button?.iconAfter\"\n  ></ui-label>\n</button>\n<button\n  *ngIf=\"button?.handler\"\n  [disabled]=\"button.disabled\"\n  class=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n  (click)=\"button.handler({ type: button.action, payload: button.payload })\"\n>\n  <ui-label\n    [label]=\"button?.label\"\n    [icon]=\"button?.icon\"\n    [iconAfter]=\"button?.iconAfter\"\n  ></ui-label>\n</button>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
           "name": "button",
-          "line": 27,
+          "line": 40,
           "type": "UiButton"
         },
         {
           "name": "buttonClass",
-          "line": 28,
+          "line": 41,
           "type": "string"
         }
       ],
@@ -1967,7 +2124,7 @@
         {
           "name": "action",
           "defaultValue": "new EventEmitter()",
-          "line": 29,
+          "line": 42,
           "type": "EventEmitter"
         }
       ],
@@ -1978,10 +2135,59 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiButton } from '../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-button',\n  template: `\n    <a\n      class=\"btn {{ buttonClass }}\"\n      *ngIf=\"button.path\"\n      [routerLink]=\"button.path\"\n      [queryParams]=\"button.queryParams\"\n    >\n      <i class=\"{{ button.icon }} mr-1\" *ngIf=\"button.icon\"></i>{{ button.label\n      }}<i class=\"{{ button.iconAfter }} ml-1\" *ngIf=\"button.iconAfter\"></i>\n    </a>\n    <button\n      class=\"btn {{ buttonClass }}\"\n      *ngIf=\"button.action\"\n      (click)=\"action.emit({ type: button.action, payload: button.payload })\"\n    >\n      <i class=\"{{ button.icon }} mr-1\" *ngIf=\"button.icon\"></i>{{ button.label\n      }}<i class=\"{{ button.iconAfter }} ml-1\" *ngIf=\"button.iconAfter\"></i>\n    </button>\n  `,\n})\nexport class UiButtonComponent {\n  @Input() button: UiButton\n  @Input() buttonClass: string\n  @Output() action = new EventEmitter()\n}\n",
+      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiButton } from '../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-button',\n  template: `\n    <ng-container *ngIf=\"button?.path || button?.url\">\n      <ui-link\n        linkClass=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n        [link]=\"button\"\n      ></ui-link>\n    </ng-container>\n    <button\n      *ngIf=\"button?.action\"\n      [disabled]=\"button.disabled\"\n      class=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n      (click)=\"action.emit({ type: button.action, payload: button.payload })\"\n    >\n      <ui-label\n        [label]=\"button?.label\"\n        [icon]=\"button?.icon\"\n        [iconAfter]=\"button?.iconAfter\"\n      ></ui-label>\n    </button>\n    <button\n      *ngIf=\"button?.handler\"\n      [disabled]=\"button.disabled\"\n      class=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n      (click)=\"button.handler({ type: button.action, payload: button.payload })\"\n    >\n      <ui-label\n        [label]=\"button?.label\"\n        [icon]=\"button?.icon\"\n        [iconAfter]=\"button?.iconAfter\"\n      ></ui-label>\n    </button>\n  `,\n})\nexport class UiButtonComponent {\n  @Input() button: UiButton\n  @Input() buttonClass: string\n  @Output() action = new EventEmitter()\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": ""
+    },
+    {
+      "name": "UiButtonsComponent",
+      "id": "component-UiButtonsComponent-723fecf2657582395d7a3e821bfca244",
+      "file": "projects/ui/src/lib/components/ui-buttons.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "ui-buttons",
+      "styleUrls": [],
+      "styles": [
+        "\n      ::ng-deep .first .btn {\n        border-top-right-radius: 0;\n        border-bottom-right-radius: 0;\n      }\n      ::ng-deep .middle .btn {\n        border-left: 0;\n        border-radius: 0;\n      }\n      ::ng-deep .last .btn {\n        border-left: 0;\n        border-top-left-radius: 0;\n        border-bottom-left-radius: 0;\n      }\n    "
+      ],
+      "template": "<ng-container *ngFor=\"let button of buttons; let first = first; let last = last\">\n  <ui-button\n    class=\"btn-group\"\n    [class.first]=\"first && !last\"\n    [class.middle]=\"!first && !last\"\n    [class.last]=\"last && !first\"\n    (action)=\"action.emit($event)\"\n    [button]=\"button\"\n    [buttonClass]=\"buttonClass\"\n  ></ui-button>\n</ng-container>\n",
+      "templateUrl": [],
+      "viewProviders": [],
+      "inputsClass": [
+        {
+          "name": "buttonClass",
+          "line": 39,
+          "type": "string"
+        },
+        {
+          "name": "buttons",
+          "line": 38,
+          "type": "UiButton[]"
+        }
+      ],
+      "outputsClass": [
+        {
+          "name": "action",
+          "defaultValue": "new EventEmitter()",
+          "line": 40,
+          "type": "EventEmitter"
+        }
+      ],
+      "propertiesClass": [],
+      "methodsClass": [],
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "",
+      "type": "component",
+      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiButton } from '../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-buttons',\n  template: `\n    <ng-container *ngFor=\"let button of buttons; let first = first; let last = last\">\n      <ui-button\n        class=\"btn-group\"\n        [class.first]=\"first && !last\"\n        [class.middle]=\"!first && !last\"\n        [class.last]=\"last && !first\"\n        (action)=\"action.emit($event)\"\n        [button]=\"button\"\n        [buttonClass]=\"buttonClass\"\n      ></ui-button>\n    </ng-container>\n  `,\n  styles: [\n    `\n      ::ng-deep .first .btn {\n        border-top-right-radius: 0;\n        border-bottom-right-radius: 0;\n      }\n      ::ng-deep .middle .btn {\n        border-left: 0;\n        border-radius: 0;\n      }\n      ::ng-deep .last .btn {\n        border-left: 0;\n        border-top-left-radius: 0;\n        border-bottom-left-radius: 0;\n      }\n    `,\n  ],\n})\nexport class UiButtonsComponent {\n  @Input() buttons: UiButton[]\n  @Input() buttonClass: string\n  @Output() action = new EventEmitter()\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": "",
+      "stylesData": "\n      ::ng-deep .first .btn {\n        border-top-right-radius: 0;\n        border-bottom-right-radius: 0;\n      }\n      ::ng-deep .middle .btn {\n        border-left: 0;\n        border-radius: 0;\n      }\n      ::ng-deep .last .btn {\n        border-left: 0;\n        border-top-left-radius: 0;\n        border-bottom-left-radius: 0;\n      }\n    \n"
     },
     {
       "name": "UiCardBodyComponent",
@@ -2072,7 +2278,7 @@
     },
     {
       "name": "UiCardHeaderComponent",
-      "id": "component-UiCardHeaderComponent-b6de0ec67e69771ab390dcdd1ad79412",
+      "id": "component-UiCardHeaderComponent-836fa82de8559ed7cd28c22aeb161d58",
       "file": "projects/ui/src/lib/components/ui-card-header.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -2082,17 +2288,44 @@
       "selector": "ui-card-header",
       "styleUrls": [],
       "styles": [],
-      "template": "<div class=\"card-header\">\n  <ng-container *ngIf=\"cardTitle\">\n    <h5 class=\"my-0\">{{ cardTitle }}</h5>\n  </ng-container>\n  <ng-content></ng-content>\n</div>\n",
+      "template": "<h5 class=\"card-header d-flex justify-content-between\">\n  <div class=\"align-self-center\" *ngIf=\"cardTitle || cardSubTitle || icon || iconAfter\">\n    <ui-label [icon]=\"icon\" [iconAfter]=\"iconAfter\" [label]=\"cardTitle\"></ui-label>\n    <small class=\"text-muted ml-2\" *ngIf=\"cardSubTitle\">{{ cardSubTitle }}</small>\n  </div>\n  <ng-content></ng-content>\n  <div *ngIf=\"buttons?.length\">\n    <ng-container *ngFor=\"let button of buttons\">\n      <ui-button\n        (action)=\"action.emit($event)\"\n        buttonClass=\"btn-sm p-0 ml-2\"\n        [button]=\"button\"\n      ></ui-button>\n    </ng-container>\n  </div>\n</h5>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
+          "name": "buttons",
+          "line": 31,
+          "type": "UiButton[] | UiLink[]"
+        },
+        {
+          "name": "cardSubTitle",
+          "line": 30,
+          "type": "string"
+        },
+        {
           "name": "cardTitle",
-          "line": 15,
+          "line": 29,
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "line": 27,
+          "type": "string"
+        },
+        {
+          "name": "iconAfter",
+          "line": 28,
           "type": "string"
         }
       ],
-      "outputsClass": [],
+      "outputsClass": [
+        {
+          "name": "action",
+          "defaultValue": "new EventEmitter()",
+          "line": 32,
+          "type": "EventEmitter"
+        }
+      ],
       "propertiesClass": [],
       "methodsClass": [],
       "hostBindings": [],
@@ -2100,7 +2333,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\n\n@Component({\n  selector: 'ui-card-header',\n  template: `\n    <div class=\"card-header\">\n      <ng-container *ngIf=\"cardTitle\">\n        <h5 class=\"my-0\">{{ cardTitle }}</h5>\n      </ng-container>\n      <ng-content></ng-content>\n    </div>\n  `,\n})\nexport class UiCardHeaderComponent {\n  @Input() cardTitle: string\n}\n",
+      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiLink } from '../interfaces/ui-link'\nimport { UiButton } from '../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-card-header',\n  template: `\n    <h5 class=\"card-header d-flex justify-content-between\">\n      <div class=\"align-self-center\" *ngIf=\"cardTitle || cardSubTitle || icon || iconAfter\">\n        <ui-label [icon]=\"icon\" [iconAfter]=\"iconAfter\" [label]=\"cardTitle\"></ui-label>\n        <small class=\"text-muted ml-2\" *ngIf=\"cardSubTitle\">{{ cardSubTitle }}</small>\n      </div>\n      <ng-content></ng-content>\n      <div *ngIf=\"buttons?.length\">\n        <ng-container *ngFor=\"let button of buttons\">\n          <ui-button\n            (action)=\"action.emit($event)\"\n            buttonClass=\"btn-sm p-0 ml-2\"\n            [button]=\"button\"\n          ></ui-button>\n        </ng-container>\n      </div>\n    </h5>\n  `,\n})\nexport class UiCardHeaderComponent {\n  @Input() icon?: string\n  @Input() iconAfter?: string\n  @Input() cardTitle: string\n  @Input() cardSubTitle?: string\n  @Input() buttons: UiButton[] | UiLink[]\n  @Output() action = new EventEmitter()\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": ""
@@ -2494,7 +2727,7 @@
     },
     {
       "name": "UiDialogFormComponent",
-      "id": "component-UiDialogFormComponent-8bda4dee3b1d0faad39302048b79c9f6",
+      "id": "component-UiDialogFormComponent-40636025a46e87653da8d5aaa4fb84b8",
       "file": "projects/ui/src/lib/components/ui-dialog-form.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -2503,7 +2736,7 @@
       "providers": [],
       "styleUrls": [],
       "styles": ["\n      .card {\n        min-width: 400px;\n      }\n    "],
-      "template": "<div class=\"card\">\n  <div class=\"card-header\" *ngIf=\"title\">{{ title }}</div>\n  <div class=\"alert alert-info\" *ngIf=\"loading\">Submitting data...</div>\n  <div class=\"alert alert-danger\" *ngIf=\"error\">{{ error }}</div>\n  <div class=\"alert alert-success\" *ngIf=\"success\">{{ success }}</div>\n  <div class=\"card-body\">\n    <ui-form [form]=\"form\" [fields]=\"fields\" [model]=\"model\"></ui-form>\n  </div>\n  <div class=\"card-footer text-right\">\n    <button class=\"mr-2 btn btn-danger\" (click)=\"cancel()\">Cancel</button>\n    <button [disabled]=\"!form.valid\" class=\"btn btn-success\" (click)=\"submit()\">Submit</button>\n  </div>\n</div>\n",
+      "template": "<div class=\"card\">\n  <div class=\"card-header\" *ngIf=\"title\">{{ title }}</div>\n  <div class=\"alert alert-info\" *ngIf=\"loading\">Submitting data...</div>\n  <div class=\"alert alert-danger\" *ngIf=\"error\">{{ error }}</div>\n  <div class=\"alert alert-success\" *ngIf=\"success\">{{ success }}</div>\n  <div class=\"card-body\">\n    <ui-form [submitButton]=\"false\" [form]=\"form\" [fields]=\"fields\" [model]=\"model\"></ui-form>\n  </div>\n  <div class=\"card-footer text-right\">\n    <button class=\"mr-2 btn btn-danger\" (click)=\"cancel()\">Cancel</button>\n    <button [disabled]=\"!form.valid\" class=\"btn btn-success\" (click)=\"submit()\">Submit</button>\n  </div>\n</div>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
@@ -2591,7 +2824,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { FormlyFieldConfig } from '@ngx-formly/core'\nimport { FormGroup } from '@angular/forms'\nimport { BsModalRef } from 'ngx-bootstrap/modal'\n\nimport { Observable, of } from 'rxjs'\n\n@Component({\n  template: `\n    <div class=\"card\">\n      <div class=\"card-header\" *ngIf=\"title\">{{ title }}</div>\n      <div class=\"alert alert-info\" *ngIf=\"loading\">Submitting data...</div>\n      <div class=\"alert alert-danger\" *ngIf=\"error\">{{ error }}</div>\n      <div class=\"alert alert-success\" *ngIf=\"success\">{{ success }}</div>\n      <div class=\"card-body\">\n        <ui-form [form]=\"form\" [fields]=\"fields\" [model]=\"model\"></ui-form>\n      </div>\n      <div class=\"card-footer text-right\">\n        <button class=\"mr-2 btn btn-danger\" (click)=\"cancel()\">Cancel</button>\n        <button [disabled]=\"!form.valid\" class=\"btn btn-success\" (click)=\"submit()\">Submit</button>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      .card {\n        min-width: 400px;\n      }\n    `,\n  ],\n})\nexport class UiDialogFormComponent {\n  loading: boolean\n  error: string\n  success: string\n\n  @Input() fields: FormlyFieldConfig[]\n  @Input() form = new FormGroup({})\n  @Input() model: any = {}\n  @Input() title: string\n  @Input() handler: (data: any) => Observable<any> = data => of(data)\n\n  constructor(public ref: BsModalRef) {}\n\n  cancel() {\n    this.ref.hide()\n  }\n\n  submit() {\n    this.error = null\n    this.loading = true\n    this.form.disable()\n    this.handler(this.model).subscribe(\n      () => {\n        this.loading = false\n        this.success = 'Success!'\n        setTimeout(() => this.ref.hide(), 500)\n      },\n      err => {\n        this.error = err\n        this.loading = false\n        this.form.enable()\n        console.log(err)\n      },\n    )\n  }\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { FormlyFieldConfig } from '@ngx-formly/core'\nimport { FormGroup } from '@angular/forms'\nimport { BsModalRef } from 'ngx-bootstrap/modal'\n\nimport { Observable, of } from 'rxjs'\n\n@Component({\n  template: `\n    <div class=\"card\">\n      <div class=\"card-header\" *ngIf=\"title\">{{ title }}</div>\n      <div class=\"alert alert-info\" *ngIf=\"loading\">Submitting data...</div>\n      <div class=\"alert alert-danger\" *ngIf=\"error\">{{ error }}</div>\n      <div class=\"alert alert-success\" *ngIf=\"success\">{{ success }}</div>\n      <div class=\"card-body\">\n        <ui-form [submitButton]=\"false\" [form]=\"form\" [fields]=\"fields\" [model]=\"model\"></ui-form>\n      </div>\n      <div class=\"card-footer text-right\">\n        <button class=\"mr-2 btn btn-danger\" (click)=\"cancel()\">Cancel</button>\n        <button [disabled]=\"!form.valid\" class=\"btn btn-success\" (click)=\"submit()\">Submit</button>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      .card {\n        min-width: 400px;\n      }\n    `,\n  ],\n})\nexport class UiDialogFormComponent {\n  loading: boolean\n  error: string\n  success: string\n\n  @Input() fields: FormlyFieldConfig[]\n  @Input() form = new FormGroup({})\n  @Input() model: any = {}\n  @Input() title: string\n  @Input() handler: (data: any) => Observable<any> = data => of(data)\n\n  constructor(public ref: BsModalRef) {}\n\n  cancel() {\n    this.ref.hide()\n  }\n\n  submit() {\n    this.error = null\n    this.loading = true\n    this.form.disable()\n    this.handler(this.model).subscribe(\n      () => {\n        this.loading = false\n        this.success = 'Success!'\n        setTimeout(() => this.ref.hide(), 500)\n      },\n      err => {\n        this.error = err\n        this.loading = false\n        this.form.enable()\n        console.log(err)\n      },\n    )\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "\n      .card {\n        min-width: 400px;\n      }\n    \n",
@@ -3013,7 +3246,7 @@
     },
     {
       "name": "UiHeroComponent",
-      "id": "component-UiHeroComponent-63069a657fd6f4908e18b4c8e921568b",
+      "id": "component-UiHeroComponent-29d80508ebf023f9ef26bedcd47d0b19",
       "file": "projects/ui/src/lib/components/ui-hero.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -3023,56 +3256,61 @@
       "selector": "ui-hero",
       "styleUrls": [],
       "styles": ["\n      .row {\n        margin: -48px 12px 0;\n      }\n    "],
-      "template": "<div class=\"jumbotron mb-0\" [class.text-center]=\"centered\">\n  <div class=\"my-3 mb-5\">\n    <div class=\"mb-3\">\n      <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" [size]=\"avatarSize\"></ui-avatar>\n      <ui-brand *ngIf=\"brand\" [brand]=\"brand\" [size]=\"brandSize\"></ui-brand>\n      <h1 *ngIf=\"title\" class=\"display-4 my-2\">{{ title }}</h1>\n    </div>\n    <p class=\"lead mt-2\">\n      {{ description }}\n    </p>\n    <div *ngIf=\"link\" class=\"mt-4 my-3\">\n      <ui-link [link]=\"link\" linkClass=\"btn btn-lg btn-outline-success\"></ui-link>\n    </div>\n  </div>\n</div>\n<div class=\"row\" *ngIf=\"cards.length\">\n  <ng-container *ngFor=\"let card of cards\">\n    <div\n      class=\"col-12 col-sm-12\"\n      [class.col-md-12]=\"cards?.length === 1\"\n      [class.col-md-6]=\"cards?.length === 2\"\n      [class.col-md-4]=\"cards?.length === 3\"\n    >\n      <ui-card>\n        <ui-card-header *ngIf=\"card.title\" [cardTitle]=\"card.title\"></ui-card-header>\n        <ui-card-body *ngIf=\"card.content\">\n          {{ card.content }}\n        </ui-card-body>\n        <ui-card-footer *ngIf=\"card?.links?.length\">\n          <div class=\"text-right\">\n            <ui-link *ngFor=\"let link of card.links\" [link]=\"link\" linkClass=\"mr-2\"></ui-link>\n          </div>\n        </ui-card-footer>\n      </ui-card>\n    </div>\n  </ng-container>\n</div>\n",
+      "template": "<div class=\"jumbotron mb-0\" [class.text-center]=\"centered\">\n  <div class=\"my-3 mb-5\">\n    <div class=\"mb-3\">\n      <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" [size]=\"avatarSize\"></ui-avatar>\n      <ui-brand\n        *ngIf=\"brand\"\n        class=\"d-block mb-5\"\n        [brand]=\"brand\"\n        [size]=\"brandSize\"\n      ></ui-brand>\n      <h1 *ngIf=\"title\" class=\"display-4 my-2\">{{ title }}</h1>\n    </div>\n    <p class=\"lead mt-2\">\n      {{ description }}\n    </p>\n    <div *ngIf=\"link\" class=\"my-5\">\n      <ui-link [link]=\"link\" [linkClass]=\"linkClass\"></ui-link>\n    </div>\n  </div>\n</div>\n<div class=\"row\" *ngIf=\"cards.length\">\n  <ng-container *ngFor=\"let card of cards\">\n    <div\n      class=\"col-12 col-sm-12\"\n      [class.col-md-12]=\"cards?.length === 1\"\n      [class.col-md-6]=\"cards?.length === 2\"\n      [class.col-md-4]=\"cards?.length === 3\"\n    >\n      <ui-card>\n        <ui-card-header *ngIf=\"card.title\" [cardTitle]=\"card.title\"></ui-card-header>\n        <ui-card-body *ngIf=\"card.content\">\n          {{ card.content }}\n        </ui-card-body>\n        <ui-card-footer *ngIf=\"card?.links?.length\">\n          <div class=\"text-right\">\n            <ui-link *ngFor=\"let link of card.links\" [link]=\"link\" linkClass=\"mr-2\"></ui-link>\n          </div>\n        </ui-card-footer>\n      </ui-card>\n    </div>\n  </ng-container>\n</div>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
           "name": "avatar",
-          "line": 58,
+          "line": 63,
           "type": "string"
         },
         {
           "name": "avatarSize",
           "defaultValue": "'xl'",
-          "line": 59,
+          "line": 64,
           "type": "UiAvatarSizes"
         },
         {
           "name": "brand",
-          "line": 60,
+          "line": 65,
           "type": "UiBrand"
         },
         {
           "name": "brandSize",
           "defaultValue": "'lg'",
-          "line": 61,
+          "line": 66,
           "type": "UiBrandSizes"
         },
         {
           "name": "cards",
           "defaultValue": "[]",
-          "line": 66,
+          "line": 72,
           "type": "UiCard[]"
         },
         {
           "name": "centered",
           "defaultValue": "true",
-          "line": 62
+          "line": 67
         },
         {
           "name": "description",
-          "line": 65,
+          "line": 71,
           "type": "string"
         },
         {
           "name": "link",
-          "line": 63,
+          "line": 68,
           "type": "UiLink"
         },
         {
+          "name": "linkClass",
+          "defaultValue": "'btn btn-lg btn-outline-success'",
+          "line": 69
+        },
+        {
           "name": "title",
-          "line": 64,
+          "line": 70,
           "type": "string"
         }
       ],
@@ -3084,10 +3322,80 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiCard } from '../interfaces/ui-card'\nimport { UiLink } from '../interfaces/ui-link'\nimport { UiBrand } from '../interfaces/ui-brand'\nimport { UiAvatarSizes } from './ui-avatar.component'\nimport { UiBrandSizes } from './ui-brand.component'\n\n@Component({\n  selector: 'ui-hero',\n  template: `\n    <div class=\"jumbotron mb-0\" [class.text-center]=\"centered\">\n      <div class=\"my-3 mb-5\">\n        <div class=\"mb-3\">\n          <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" [size]=\"avatarSize\"></ui-avatar>\n          <ui-brand *ngIf=\"brand\" [brand]=\"brand\" [size]=\"brandSize\"></ui-brand>\n          <h1 *ngIf=\"title\" class=\"display-4 my-2\">{{ title }}</h1>\n        </div>\n        <p class=\"lead mt-2\">\n          {{ description }}\n        </p>\n        <div *ngIf=\"link\" class=\"mt-4 my-3\">\n          <ui-link [link]=\"link\" linkClass=\"btn btn-lg btn-outline-success\"></ui-link>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\" *ngIf=\"cards.length\">\n      <ng-container *ngFor=\"let card of cards\">\n        <div\n          class=\"col-12 col-sm-12\"\n          [class.col-md-12]=\"cards?.length === 1\"\n          [class.col-md-6]=\"cards?.length === 2\"\n          [class.col-md-4]=\"cards?.length === 3\"\n        >\n          <ui-card>\n            <ui-card-header *ngIf=\"card.title\" [cardTitle]=\"card.title\"></ui-card-header>\n            <ui-card-body *ngIf=\"card.content\">\n              {{ card.content }}\n            </ui-card-body>\n            <ui-card-footer *ngIf=\"card?.links?.length\">\n              <div class=\"text-right\">\n                <ui-link *ngFor=\"let link of card.links\" [link]=\"link\" linkClass=\"mr-2\"></ui-link>\n              </div>\n            </ui-card-footer>\n          </ui-card>\n        </div>\n      </ng-container>\n    </div>\n  `,\n  styles: [\n    `\n      .row {\n        margin: -48px 12px 0;\n      }\n    `,\n  ],\n})\nexport class UiHeroComponent {\n  @Input() avatar: string\n  @Input() avatarSize: UiAvatarSizes = 'xl'\n  @Input() brand: UiBrand\n  @Input() brandSize: UiBrandSizes = 'lg'\n  @Input() centered = true\n  @Input() link: UiLink\n  @Input() title?: string\n  @Input() description?: string\n  @Input() cards: UiCard[] = []\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiCard } from '../interfaces/ui-card'\nimport { UiLink } from '../interfaces/ui-link'\nimport { UiBrand } from '../interfaces/ui-brand'\nimport { UiAvatarSizes } from './ui-avatar.component'\nimport { UiBrandSizes } from './ui-brand.component'\n\n@Component({\n  selector: 'ui-hero',\n  template: `\n    <div class=\"jumbotron mb-0\" [class.text-center]=\"centered\">\n      <div class=\"my-3 mb-5\">\n        <div class=\"mb-3\">\n          <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" [size]=\"avatarSize\"></ui-avatar>\n          <ui-brand\n            *ngIf=\"brand\"\n            class=\"d-block mb-5\"\n            [brand]=\"brand\"\n            [size]=\"brandSize\"\n          ></ui-brand>\n          <h1 *ngIf=\"title\" class=\"display-4 my-2\">{{ title }}</h1>\n        </div>\n        <p class=\"lead mt-2\">\n          {{ description }}\n        </p>\n        <div *ngIf=\"link\" class=\"my-5\">\n          <ui-link [link]=\"link\" [linkClass]=\"linkClass\"></ui-link>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\" *ngIf=\"cards.length\">\n      <ng-container *ngFor=\"let card of cards\">\n        <div\n          class=\"col-12 col-sm-12\"\n          [class.col-md-12]=\"cards?.length === 1\"\n          [class.col-md-6]=\"cards?.length === 2\"\n          [class.col-md-4]=\"cards?.length === 3\"\n        >\n          <ui-card>\n            <ui-card-header *ngIf=\"card.title\" [cardTitle]=\"card.title\"></ui-card-header>\n            <ui-card-body *ngIf=\"card.content\">\n              {{ card.content }}\n            </ui-card-body>\n            <ui-card-footer *ngIf=\"card?.links?.length\">\n              <div class=\"text-right\">\n                <ui-link *ngFor=\"let link of card.links\" [link]=\"link\" linkClass=\"mr-2\"></ui-link>\n              </div>\n            </ui-card-footer>\n          </ui-card>\n        </div>\n      </ng-container>\n    </div>\n  `,\n  styles: [\n    `\n      .row {\n        margin: -48px 12px 0;\n      }\n    `,\n  ],\n})\nexport class UiHeroComponent {\n  @Input() avatar: string\n  @Input() avatarSize: UiAvatarSizes = 'xl'\n  @Input() brand: UiBrand\n  @Input() brandSize: UiBrandSizes = 'lg'\n  @Input() centered = true\n  @Input() link: UiLink\n  @Input() linkClass = 'btn btn-lg btn-outline-success'\n  @Input() title?: string\n  @Input() description?: string\n  @Input() cards: UiCard[] = []\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "\n      .row {\n        margin: -48px 12px 0;\n      }\n    \n"
+    },
+    {
+      "name": "UiLabelComponent",
+      "id": "component-UiLabelComponent-3cbb4c0f865bcb6787836ec501d92bdd",
+      "file": "projects/ui/src/lib/components/ui-label.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "ui-label",
+      "styleUrls": [],
+      "styles": [],
+      "template": "<i *ngIf=\"icon\" [class]=\"iconLeft\"></i>{{ label }}<i *ngIf=\"iconAfter\" [class]=\"iconRight\"></i>\n",
+      "templateUrl": [],
+      "viewProviders": [],
+      "inputsClass": [
+        {
+          "name": "icon",
+          "line": 11,
+          "type": "string"
+        },
+        {
+          "name": "iconAfter",
+          "line": 12,
+          "type": "string"
+        },
+        {
+          "name": "iconClass",
+          "defaultValue": "'fa fa-fw'",
+          "line": 10
+        },
+        {
+          "name": "label",
+          "line": 13,
+          "type": "string"
+        }
+      ],
+      "outputsClass": [],
+      "propertiesClass": [],
+      "methodsClass": [],
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "",
+      "type": "component",
+      "sourceCode": "import { Component, Input } from '@angular/core'\n\n@Component({\n  selector: 'ui-label',\n  template: `\n    <i *ngIf=\"icon\" [class]=\"iconLeft\"></i>{{ label }}<i *ngIf=\"iconAfter\" [class]=\"iconRight\"></i>\n  `,\n})\nexport class UiLabelComponent {\n  @Input() iconClass = 'fa fa-fw'\n  @Input() icon: string\n  @Input() iconAfter: string\n  @Input() label: string\n\n  get iconLeft(): string {\n    return [this.iconClass, this.icon, this.label ? 'mr-2' : ''].join(' ')\n  }\n  get iconRight(): string {\n    return [this.iconClass, this.iconAfter, this.label ? 'ml-2' : ''].join(' ')\n  }\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": "",
+      "stylesData": "",
+      "accessors": {
+        "iconLeft": {
+          "name": "iconLeft",
+          "getSignature": {
+            "name": "iconLeft",
+            "type": "string",
+            "returnType": "string",
+            "line": 15
+          }
+        },
+        "iconRight": {
+          "name": "iconRight",
+          "getSignature": {
+            "name": "iconRight",
+            "type": "string",
+            "returnType": "string",
+            "line": 18
+          }
+        }
+      }
     },
     {
       "name": "UiLayoutComponent",
@@ -3126,7 +3434,7 @@
     },
     {
       "name": "UiLinkComponent",
-      "id": "component-UiLinkComponent-c3ef165f296cbd62ea0fce9c7c1d0fb6",
+      "id": "component-UiLinkComponent-3181212cf40b46e0483beb0297151165",
       "file": "projects/ui/src/lib/components/ui-link.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -3136,28 +3444,28 @@
       "selector": "ui-link",
       "styleUrls": [],
       "styles": [],
-      "template": "<a\n  class=\"{{ linkClass }}\"\n  *ngIf=\"path || link?.path\"\n  [routerLink]=\"path || link?.path\"\n  [queryParams]=\"link?.queryParams\"\n  ><i class=\"{{ link?.icon }}\" *ngIf=\"link?.icon\"></i>{{ label || link?.label\n  }}<i class=\"{{ link?.iconAfter }}\" *ngIf=\"link?.iconAfter\"></i\n></a>\n<a class=\"{{ linkClass }}\" *ngIf=\"link?.url\" [attr.href]=\"link?.url\"\n  ><i class=\"{{ link?.icon }}\" *ngIf=\"link?.icon\"></i>{{ label || link?.label\n  }}<i class=\"{{ link?.iconAfter }}\" *ngIf=\"link?.iconAfter\"></i\n></a>\n",
+      "template": "<a\n  class=\"{{ link?.className || linkClass }}\"\n  *ngIf=\"path || link?.path\"\n  [routerLink]=\"path || link?.path\"\n  [queryParams]=\"link?.queryParams\"\n  ><ui-label\n    [label]=\"label || link?.label\"\n    [icon]=\"link?.icon\"\n    [iconAfter]=\"link?.iconAfter\"\n  ></ui-label\n></a>\n<a class=\"{{ link?.className || linkClass }}\" *ngIf=\"link?.url\" [attr.href]=\"link?.url\"\n  ><ui-label\n    [label]=\"label || link?.label\"\n    [icon]=\"link?.icon\"\n    [iconAfter]=\"link?.iconAfter\"\n  ></ui-label\n></a>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
           "name": "label",
-          "line": 24,
+          "line": 30,
           "type": "string"
         },
         {
           "name": "link",
-          "line": 22,
+          "line": 28,
           "type": "UiLink"
         },
         {
           "name": "linkClass",
-          "line": 25,
+          "line": 31,
           "type": "string"
         },
         {
           "name": "path",
-          "line": 23,
+          "line": 29,
           "type": "string"
         }
       ],
@@ -3169,7 +3477,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiLink } from '../interfaces/ui-link'\n\n@Component({\n  selector: 'ui-link',\n  template: `\n    <a\n      class=\"{{ linkClass }}\"\n      *ngIf=\"path || link?.path\"\n      [routerLink]=\"path || link?.path\"\n      [queryParams]=\"link?.queryParams\"\n      ><i class=\"{{ link?.icon }}\" *ngIf=\"link?.icon\"></i>{{ label || link?.label\n      }}<i class=\"{{ link?.iconAfter }}\" *ngIf=\"link?.iconAfter\"></i\n    ></a>\n    <a class=\"{{ linkClass }}\" *ngIf=\"link?.url\" [attr.href]=\"link?.url\"\n      ><i class=\"{{ link?.icon }}\" *ngIf=\"link?.icon\"></i>{{ label || link?.label\n      }}<i class=\"{{ link?.iconAfter }}\" *ngIf=\"link?.iconAfter\"></i\n    ></a>\n  `,\n})\nexport class UiLinkComponent {\n  @Input() link: UiLink\n  @Input() path?: string\n  @Input() label?: string\n  @Input() linkClass?: string\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiLink } from '../interfaces/ui-link'\n\n@Component({\n  selector: 'ui-link',\n  template: `\n    <a\n      class=\"{{ link?.className || linkClass }}\"\n      *ngIf=\"path || link?.path\"\n      [routerLink]=\"path || link?.path\"\n      [queryParams]=\"link?.queryParams\"\n      ><ui-label\n        [label]=\"label || link?.label\"\n        [icon]=\"link?.icon\"\n        [iconAfter]=\"link?.iconAfter\"\n      ></ui-label\n    ></a>\n    <a class=\"{{ link?.className || linkClass }}\" *ngIf=\"link?.url\" [attr.href]=\"link?.url\"\n      ><ui-label\n        [label]=\"label || link?.label\"\n        [icon]=\"link?.icon\"\n        [iconAfter]=\"link?.iconAfter\"\n      ></ui-label\n    ></a>\n  `,\n})\nexport class UiLinkComponent {\n  @Input() link: UiLink\n  @Input() path?: string\n  @Input() label?: string\n  @Input() linkClass?: string\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": ""
@@ -3896,6 +4204,9 @@
               "name": "UiButtonComponent"
             },
             {
+              "name": "UiButtonsComponent"
+            },
+            {
               "name": "UiCardBodyComponent"
             },
             {
@@ -3945,6 +4256,9 @@
             },
             {
               "name": "UiHeroComponent"
+            },
+            {
+              "name": "UiLabelComponent"
             },
             {
               "name": "UiLayoutComponent"
@@ -4017,6 +4331,9 @@
               "name": "UiButtonComponent"
             },
             {
+              "name": "UiButtonsComponent"
+            },
+            {
               "name": "UiCardBodyComponent"
             },
             {
@@ -4069,6 +4386,9 @@
             },
             {
               "name": "UiHeroComponent"
+            },
+            {
+              "name": "UiLabelComponent"
             },
             {
               "name": "UiLayoutComponent"
@@ -4133,7 +4453,7 @@
         "subtype": "variable",
         "file": "projects/ui/src/lib/ui.module.ts",
         "type": "[]",
-        "defaultValue": "[\n  UiAuthComponent,\n  UiAvatarComponent,\n  UiBrandComponent,\n  UiButtonComponent,\n  UiCardComponent,\n  UiCardBodyComponent,\n  UiCardFooterComponent,\n  UiCardHeaderComponent,\n  UiCodeComponent,\n  UiCommentComponent,\n  UiCommentFormComponent,\n  UiContentComponent,\n  UiDataComponent,\n  UiDebugComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiFormComponent,\n  UiFooterComponent,\n  UiHeaderComponent,\n  UiHeroComponent,\n  UiLayoutComponent,\n  UiLinkComponent,\n  UiLinksComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiMarkdownComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
+        "defaultValue": "[\n  UiAuthComponent,\n  UiAvatarComponent,\n  UiBrandComponent,\n  UiButtonComponent,\n  UiButtonsComponent,\n  UiCardComponent,\n  UiCardBodyComponent,\n  UiCardFooterComponent,\n  UiCardHeaderComponent,\n  UiCodeComponent,\n  UiCommentComponent,\n  UiCommentFormComponent,\n  UiContentComponent,\n  UiDataComponent,\n  UiDebugComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiFormComponent,\n  UiFooterComponent,\n  UiHeaderComponent,\n  UiHeroComponent,\n  UiLabelComponent,\n  UiLayoutComponent,\n  UiLinkComponent,\n  UiLinksComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiMarkdownComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
       },
       {
         "name": "config",
@@ -4144,12 +4464,12 @@
         "defaultValue": "{\n  types: [],\n  validationMessages: [\n    { name: 'required', message: 'This field is required' },\n    { name: 'minlength', message: minlengthValidationMessage },\n    { name: 'maxlength', message: maxlengthValidationMessage },\n    { name: 'min', message: minValidationMessage },\n    { name: 'max', message: maxValidationMessage },\n    { name: 'email', message: emailValidatorMessage },\n  ],\n  validators: [{ name: 'email', validation: emailValidator }],\n}"
       },
       {
-        "name": "MODULES",
+        "name": "EXPORT_MODULES",
         "ctype": "miscellaneous",
         "subtype": "variable",
         "file": "projects/ui/src/lib/ui.module.ts",
         "type": "[]",
-        "defaultValue": "[CommonModule, BsDropdownModule, ModalModule, NumberedCodeblockModule]"
+        "defaultValue": "[\n  CommonModule,\n  BsDropdownModule,\n  ModalModule,\n  TabsModule,\n  NumberedCodeblockModule,\n]"
       },
       {
         "name": "randInt",
@@ -4412,15 +4732,15 @@
           "subtype": "variable",
           "file": "projects/ui/src/lib/ui.module.ts",
           "type": "[]",
-          "defaultValue": "[\n  UiAuthComponent,\n  UiAvatarComponent,\n  UiBrandComponent,\n  UiButtonComponent,\n  UiCardComponent,\n  UiCardBodyComponent,\n  UiCardFooterComponent,\n  UiCardHeaderComponent,\n  UiCodeComponent,\n  UiCommentComponent,\n  UiCommentFormComponent,\n  UiContentComponent,\n  UiDataComponent,\n  UiDebugComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiFormComponent,\n  UiFooterComponent,\n  UiHeaderComponent,\n  UiHeroComponent,\n  UiLayoutComponent,\n  UiLinkComponent,\n  UiLinksComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiMarkdownComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
+          "defaultValue": "[\n  UiAuthComponent,\n  UiAvatarComponent,\n  UiBrandComponent,\n  UiButtonComponent,\n  UiButtonsComponent,\n  UiCardComponent,\n  UiCardBodyComponent,\n  UiCardFooterComponent,\n  UiCardHeaderComponent,\n  UiCodeComponent,\n  UiCommentComponent,\n  UiCommentFormComponent,\n  UiContentComponent,\n  UiDataComponent,\n  UiDebugComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiFormComponent,\n  UiFooterComponent,\n  UiHeaderComponent,\n  UiHeroComponent,\n  UiLabelComponent,\n  UiLayoutComponent,\n  UiLinkComponent,\n  UiLinksComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiMarkdownComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
         },
         {
-          "name": "MODULES",
+          "name": "EXPORT_MODULES",
           "ctype": "miscellaneous",
           "subtype": "variable",
           "file": "projects/ui/src/lib/ui.module.ts",
           "type": "[]",
-          "defaultValue": "[CommonModule, BsDropdownModule, ModalModule, NumberedCodeblockModule]"
+          "defaultValue": "[\n  CommonModule,\n  BsDropdownModule,\n  ModalModule,\n  TabsModule,\n  NumberedCodeblockModule,\n]"
         }
       ],
       "projects/ui/src/lib/ui-forms.module.ts": [
@@ -4739,6 +5059,15 @@
         "status": "low"
       },
       {
+        "filePath": "projects/ui/src/lib/components/ui-buttons.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "UiButtonsComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/4",
+        "status": "low"
+      },
+      {
         "filePath": "projects/ui/src/lib/components/ui-card-body.component.ts",
         "type": "component",
         "linktype": "component",
@@ -4762,7 +5091,7 @@
         "linktype": "component",
         "name": "UiCardHeaderComponent",
         "coveragePercent": 0,
-        "coverageCount": "0/2",
+        "coverageCount": "0/7",
         "status": "low"
       },
       {
@@ -4897,7 +5226,16 @@
         "linktype": "component",
         "name": "UiHeroComponent",
         "coveragePercent": 0,
-        "coverageCount": "0/10",
+        "coverageCount": "0/11",
+        "status": "low"
+      },
+      {
+        "filePath": "projects/ui/src/lib/components/ui-label.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "UiLabelComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/5",
         "status": "low"
       },
       {
@@ -5069,7 +5407,7 @@
         "linktype": "interface",
         "name": "UiButton",
         "coveragePercent": 0,
-        "coverageCount": "0/8",
+        "coverageCount": "0/12",
         "status": "low"
       },
       {
@@ -5105,7 +5443,7 @@
         "linktype": "interface",
         "name": "UiLink",
         "coveragePercent": 0,
-        "coverageCount": "0/8",
+        "coverageCount": "0/9",
         "status": "low"
       },
       {
@@ -5141,7 +5479,7 @@
         "linktype": "injectable",
         "name": "UiService",
         "coveragePercent": 0,
-        "coverageCount": "0/9",
+        "coverageCount": "0/11",
         "status": "low"
       },
       {
@@ -5178,7 +5516,7 @@
         "type": "variable",
         "linktype": "miscellaneous",
         "linksubtype": "variable",
-        "name": "MODULES",
+        "name": "EXPORT_MODULES",
         "coveragePercent": 0,
         "coverageCount": "0/1",
         "status": "low"
