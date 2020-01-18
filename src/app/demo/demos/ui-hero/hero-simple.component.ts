@@ -5,5 +5,5 @@ import { Component } from '@angular/core'
 })
 export class HeroSimpleComponent {
   public title = 'This is ui-hero'
-  public description = 'A great component to use for headers or the homepage'
+  public description = `A great component to use for headers or the homepage`
 }
