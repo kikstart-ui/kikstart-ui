@@ -102,7 +102,7 @@ const MODULES = [CommonModule, BsDropdownModule, ModalModule, NumberedCodeblockM
     ToastrModule.forRoot({
       progressBar: true,
       closeButton: true,
-      positionClass: 'toast-bottom-right',
+      positionClass: 'toast-top-center',
       timeOut: 3000,
     }),
   ],
