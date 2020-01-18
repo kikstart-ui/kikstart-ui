@@ -6,14 +6,14 @@ import { UiButton } from '../interfaces/ui-button'
   template: `
     <ng-container *ngIf="button?.path || button?.url">
       <ui-link
-        linkClass="btn {{ button.className || buttonClass || 'btn-outline-info' }}"
+        linkClass="btn {{ button?.className || buttonClass || 'btn-outline-info' }}"
         [link]="button"
       ></ui-link>
     </ng-container>
     <button
       *ngIf="button?.action"
-      [disabled]="button.disabled"
-      class="btn {{ button.className || buttonClass || 'btn-outline-info' }}"
+      [disabled]="disabled || button?.disabled"
+      class="btn {{ button?.className || buttonClass || 'btn-outline-info' }}"
       (click)="action.emit({ type: button.action, payload: button.payload })"
     >
       <ui-loading-icon *ngIf="loading" [class.mr-2]="loadingClass" [icon]="loadingIcon">
@@ -26,8 +26,8 @@ import { UiButton } from '../interfaces/ui-button'
     </button>
     <button
       *ngIf="button?.handler"
-      [disabled]="button.disabled"
-      class="btn {{ button.className || buttonClass || 'btn-outline-info' }}"
+      [disabled]="disabled || button?.disabled"
+      class="btn {{ button?.className || buttonClass || 'btn-outline-info' }}"
       (click)="button.handler({ type: button.action, payload: button.payload })"
     >
       <ui-loading-icon *ngIf="loading" [class.mr-2]="loadingClass" [icon]="loadingIcon">
@@ -41,6 +41,7 @@ import { UiButton } from '../interfaces/ui-button'
   `,
 })
 export class UiButtonComponent {
+  @Input() disabled = false
   @Input() loading = false
   @Input() loadingIcon = 'fa-spinner'
   @Input() button: UiButton
