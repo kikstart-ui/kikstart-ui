@@ -14,7 +14,7 @@ import { FormlyTemplateOptions } from '@ngx-formly/core'
         <ng-container *ngIf="fields.length">
           <div>
             <ui-form
-              #formEl
+              #f
               [submitButton]="false"
               [form]="form"
               [model]="model"
@@ -23,18 +23,19 @@ import { FormlyTemplateOptions } from '@ngx-formly/core'
             >
             </ui-form>
           </div>
-          <div class="mt-3">
-            <div class="float-left" *ngIf="maxLength">
-              <button disabled="true" class="btn btn-sm px-0">
-                {{ textCount }} / {{ maxLength }}
-              </button>
-            </div>
-            <div class="float-right" *ngIf="submitButton">
-              <button [disabled]="!form.valid" (click)="formEl.submit()" class="btn btn-success">
-                <i class="fa fa-spin fa-spinner mr-1" *ngIf="form.disabled"></i>
-                {{ submitButton }}
-              </button>
-            </div>
+          <div class="mt-3 d-flex justify-content-between">
+            <button [disabled]="true" class="btn btn-sm px-0" *ngIf="maxLength">
+              {{ textCount }} / {{ maxLength }}
+            </button>
+            <button
+              *ngIf="submitButton"
+              [disabled]="!form.valid"
+              [class]="submitButtonClass"
+              (click)="f.submit()"
+            >
+              <i class="fa fa-spin fa-spinner mr-1" *ngIf="form.disabled"></i>
+              {{ submitButton }}
+            </button>
           </div>
         </ng-container>
       </div>
@@ -63,6 +64,7 @@ export class UiCommentFormComponent implements OnInit {
   @Input() rows: boolean | number = 3
   @Input() required = true
   @Input() submitButton: boolean | string = 'Submit'
+  @Input() submitButtonClass = 'btn btn-outline-success'
   @Input() placeholder = 'Enter your comment'
   @Input() avatar?: string
   @Input() form = new FormGroup({})
