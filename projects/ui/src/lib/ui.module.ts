@@ -42,6 +42,7 @@ import { UiLinksComponent } from './components/ui-links.component'
 import { UiListComponent } from './components/ui-list.component'
 import { UiListItemComponent } from './components/ui-list-item.component'
 import { UiLoadingComponent } from './components/ui-loading.component'
+import { UiLoadingIconComponent } from './components/ui-loading-icon.component'
 import { UiMarkdownComponent } from './components/ui-markdown.component'
 import { UiPageSidebarComponent } from './components/ui-page-sidebar.component'
 import { UiPageSidebarRouteComponent } from './components/ui-page-sidebar-route.component'
@@ -81,6 +82,7 @@ const COMPONENTS = [
   UiListComponent,
   UiListItemComponent,
   UiLoadingComponent,
+  UiLoadingIconComponent,
   UiMarkdownComponent,
   UiPageSidebarComponent,
   UiPageSidebarRouteComponent,
