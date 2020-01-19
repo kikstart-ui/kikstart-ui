@@ -103,10 +103,10 @@
     },
     {
       "name": "UiButton",
-      "id": "interface-UiButton-f687f47934c94eed0580dbc7613defc4",
+      "id": "interface-UiButton-9186dba089da06a4fe1da07099d15bf9",
       "file": "projects/ui/src/lib/interfaces/ui-button.ts",
       "type": "interface",
-      "sourceCode": "export interface UiButton {\n  label?: string\n  icon?: string\n  iconAfter?: string\n  className?: string\n  path?: string\n  url?: string\n  action?: string\n  disabled?: boolean\n  queryParams?: { [k: string]: any }\n  payload?: any\n  handler?: (...params) => void\n}\n",
+      "sourceCode": "export interface UiButton {\n  label?: string\n  icon?: string\n  iconAfter?: string\n  className?: string\n  path?: string\n  url?: string\n  action?: string\n  disabled?: boolean\n  queryParams?: { [k: string]: any }\n  payload?: any\n  handler?: (...params) => void\n  [key: string]: any\n}\n",
       "properties": [
         {
           "name": "action",
@@ -186,8 +186,20 @@
           "line": 7
         }
       ],
-      "indexSignatures": [],
-      "kind": 150,
+      "indexSignatures": [
+        {
+          "id": "index-declaration-9186dba089da06a4fe1da07099d15bf9",
+          "args": [
+            {
+              "name": "key",
+              "type": "string"
+            }
+          ],
+          "returnType": "any",
+          "line": 12
+        }
+      ],
+      "kind": 159,
       "methods": []
     },
     {
@@ -2095,7 +2107,7 @@
     },
     {
       "name": "UiButtonComponent",
-      "id": "component-UiButtonComponent-9bada1db45b7e7dcf928f80f6994dfb4",
+      "id": "component-UiButtonComponent-c7c52757183a6c77c6713c6d9c4add40",
       "file": "projects/ui/src/lib/components/ui-button.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -2105,26 +2117,41 @@
       "selector": "ui-button",
       "styleUrls": [],
       "styles": [],
-      "template": "<ng-container *ngIf=\"button?.path || button?.url\">\n  <ui-link\n    linkClass=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n    [link]=\"button\"\n  ></ui-link>\n</ng-container>\n<button\n  *ngIf=\"button?.action\"\n  [disabled]=\"button.disabled\"\n  class=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n  (click)=\"action.emit({ type: button.action, payload: button.payload })\"\n>\n  <ui-label\n    [label]=\"button?.label\"\n    [icon]=\"button?.icon\"\n    [iconAfter]=\"button?.iconAfter\"\n  ></ui-label>\n</button>\n<button\n  *ngIf=\"button?.handler\"\n  [disabled]=\"button.disabled\"\n  class=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n  (click)=\"button.handler({ type: button.action, payload: button.payload })\"\n>\n  <ui-label\n    [label]=\"button?.label\"\n    [icon]=\"button?.icon\"\n    [iconAfter]=\"button?.iconAfter\"\n  ></ui-label>\n</button>\n",
+      "template": "<ng-container *ngIf=\"isLink\">\n  <ui-link [linkClass]=\"btnClass\" [link]=\"button\"></ui-link>\n</ng-container>\n<ng-container *ngIf=\"isAction\">\n  <button\n    [disabled]=\"disabled || button?.disabled\"\n    [class]=\"btnClass\"\n    (click)=\"action.emit(button)\"\n  >\n    <ui-loading-icon *ngIf=\"loading\" [class.mr-2]=\"loadingClass\" [icon]=\"loadingIcon\">\n    </ui-loading-icon>\n    <ui-label\n      [label]=\"button?.label\"\n      [icon]=\"button?.icon\"\n      [iconAfter]=\"button?.iconAfter\"\n    ></ui-label>\n  </button>\n</ng-container>\n<ng-container *ngIf=\"isHandler\">\n  <button\n    [disabled]=\"disabled || button?.disabled\"\n    [class]=\"btnClass\"\n    (click)=\"button.handler({ type: button.action, payload: button.payload })\"\n  >\n    <ui-loading-icon *ngIf=\"loading\" [class.mr-2]=\"loadingClass\" [icon]=\"loadingIcon\">\n    </ui-loading-icon>\n    <ui-label\n      [label]=\"button?.label\"\n      [icon]=\"button?.icon\"\n      [iconAfter]=\"button?.iconAfter\"\n    ></ui-label>\n  </button>\n</ng-container>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
           "name": "button",
-          "line": 40,
+          "line": 46,
           "type": "UiButton"
         },
         {
           "name": "buttonClass",
-          "line": 41,
+          "line": 47,
           "type": "string"
+        },
+        {
+          "name": "disabled",
+          "defaultValue": "false",
+          "line": 43
+        },
+        {
+          "name": "loading",
+          "defaultValue": "false",
+          "line": 44
+        },
+        {
+          "name": "loadingIcon",
+          "defaultValue": "'fa-spinner'",
+          "line": 45
         }
       ],
       "outputsClass": [
         {
           "name": "action",
           "defaultValue": "new EventEmitter()",
-          "line": 42,
+          "line": 48,
           "type": "EventEmitter"
         }
       ],
@@ -2135,10 +2162,57 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiButton } from '../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-button',\n  template: `\n    <ng-container *ngIf=\"button?.path || button?.url\">\n      <ui-link\n        linkClass=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n        [link]=\"button\"\n      ></ui-link>\n    </ng-container>\n    <button\n      *ngIf=\"button?.action\"\n      [disabled]=\"button.disabled\"\n      class=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n      (click)=\"action.emit({ type: button.action, payload: button.payload })\"\n    >\n      <ui-label\n        [label]=\"button?.label\"\n        [icon]=\"button?.icon\"\n        [iconAfter]=\"button?.iconAfter\"\n      ></ui-label>\n    </button>\n    <button\n      *ngIf=\"button?.handler\"\n      [disabled]=\"button.disabled\"\n      class=\"btn {{ button.className || buttonClass || 'btn-outline-info' }}\"\n      (click)=\"button.handler({ type: button.action, payload: button.payload })\"\n    >\n      <ui-label\n        [label]=\"button?.label\"\n        [icon]=\"button?.icon\"\n        [iconAfter]=\"button?.iconAfter\"\n      ></ui-label>\n    </button>\n  `,\n})\nexport class UiButtonComponent {\n  @Input() button: UiButton\n  @Input() buttonClass: string\n  @Output() action = new EventEmitter()\n}\n",
+      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiButton } from '../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-button',\n  template: `\n    <ng-container *ngIf=\"isLink\">\n      <ui-link [linkClass]=\"btnClass\" [link]=\"button\"></ui-link>\n    </ng-container>\n    <ng-container *ngIf=\"isAction\">\n      <button\n        [disabled]=\"disabled || button?.disabled\"\n        [class]=\"btnClass\"\n        (click)=\"action.emit(button)\"\n      >\n        <ui-loading-icon *ngIf=\"loading\" [class.mr-2]=\"loadingClass\" [icon]=\"loadingIcon\">\n        </ui-loading-icon>\n        <ui-label\n          [label]=\"button?.label\"\n          [icon]=\"button?.icon\"\n          [iconAfter]=\"button?.iconAfter\"\n        ></ui-label>\n      </button>\n    </ng-container>\n    <ng-container *ngIf=\"isHandler\">\n      <button\n        [disabled]=\"disabled || button?.disabled\"\n        [class]=\"btnClass\"\n        (click)=\"button.handler({ type: button.action, payload: button.payload })\"\n      >\n        <ui-loading-icon *ngIf=\"loading\" [class.mr-2]=\"loadingClass\" [icon]=\"loadingIcon\">\n        </ui-loading-icon>\n        <ui-label\n          [label]=\"button?.label\"\n          [icon]=\"button?.icon\"\n          [iconAfter]=\"button?.iconAfter\"\n        ></ui-label>\n      </button>\n    </ng-container>\n  `,\n})\nexport class UiButtonComponent {\n  @Input() disabled = false\n  @Input() loading = false\n  @Input() loadingIcon = 'fa-spinner'\n  @Input() button: UiButton\n  @Input() buttonClass: string\n  @Output() action = new EventEmitter()\n\n  get loadingClass() {\n    return this.button && (this.button.icon || this.button.iconAfter || this.button.label)\n  }\n  get btnClass() {\n    return [\n      'btn',\n      this.button.className\n        ? this.button.className\n        : this.buttonClass\n        ? this.buttonClass\n        : 'btn-outline-info',\n    ].join(' ')\n  }\n  get isAction() {\n    return !this.isHandler && !this.isLink\n  }\n\n  get isHandler() {\n    return this.button.handler\n  }\n\n  get isLink() {\n    return this.button.path || this.button.url\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
-      "stylesData": ""
+      "stylesData": "",
+      "accessors": {
+        "loadingClass": {
+          "name": "loadingClass",
+          "getSignature": {
+            "name": "loadingClass",
+            "type": "",
+            "returnType": "",
+            "line": 50
+          }
+        },
+        "btnClass": {
+          "name": "btnClass",
+          "getSignature": {
+            "name": "btnClass",
+            "type": "",
+            "returnType": "",
+            "line": 53
+          }
+        },
+        "isAction": {
+          "name": "isAction",
+          "getSignature": {
+            "name": "isAction",
+            "type": "",
+            "returnType": "",
+            "line": 63
+          }
+        },
+        "isHandler": {
+          "name": "isHandler",
+          "getSignature": {
+            "name": "isHandler",
+            "type": "",
+            "returnType": "",
+            "line": 67
+          }
+        },
+        "isLink": {
+          "name": "isLink",
+          "getSignature": {
+            "name": "isLink",
+            "type": "",
+            "returnType": "",
+            "line": 71
+          }
+        }
+      }
     },
     {
       "name": "UiButtonsComponent",
@@ -2340,7 +2414,7 @@
     },
     {
       "name": "UiCodeComponent",
-      "id": "component-UiCodeComponent-cb7dce103a04b8396c2b7963c9f659c2",
+      "id": "component-UiCodeComponent-60871557b6fcbfb672ac2b90b87fcbfb",
       "file": "projects/ui/src/lib/components/ui-code.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -2350,7 +2424,7 @@
       "selector": "ui-code",
       "styleUrls": [],
       "styles": [],
-      "template": "<ngx-numbered-codeblock\n  [code]=\"code\"\n  [languague]=\"language\"\n  [lineNumbers]=\"numbers\"\n></ngx-numbered-codeblock>\n",
+      "template": "<ngx-numbered-codeblock\n  [code]=\"code || data\"\n  [languague]=\"language\"\n  [lineNumbers]=\"numbers\"\n></ngx-numbered-codeblock>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
@@ -2360,14 +2434,19 @@
           "line": 14
         },
         {
+          "name": "data",
+          "defaultValue": "''",
+          "line": 15
+        },
+        {
           "name": "language",
-          "defaultValue": "'typescript'",
-          "line": 16
+          "defaultValue": "'json'",
+          "line": 17
         },
         {
           "name": "numbers",
           "defaultValue": "false",
-          "line": 15
+          "line": 16
         }
       ],
       "outputsClass": [],
@@ -2378,7 +2457,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\n\n@Component({\n  selector: 'ui-code',\n  template: `\n    <ngx-numbered-codeblock\n      [code]=\"code\"\n      [languague]=\"language\"\n      [lineNumbers]=\"numbers\"\n    ></ngx-numbered-codeblock>\n  `,\n})\nexport class UiCodeComponent {\n  @Input() code = ''\n  @Input() numbers = false\n  @Input() language = 'typescript'\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\n\n@Component({\n  selector: 'ui-code',\n  template: `\n    <ngx-numbered-codeblock\n      [code]=\"code || data\"\n      [languague]=\"language\"\n      [lineNumbers]=\"numbers\"\n    ></ngx-numbered-codeblock>\n  `,\n})\nexport class UiCodeComponent {\n  @Input() code = ''\n  @Input() data = ''\n  @Input() numbers = false\n  @Input() language = 'json'\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": ""
@@ -2432,7 +2511,7 @@
     },
     {
       "name": "UiCommentFormComponent",
-      "id": "component-UiCommentFormComponent-959a5543e01e6b61478b869cc3ed451c",
+      "id": "component-UiCommentFormComponent-1473e8f15bc4b49b4973581b8d715b3c",
       "file": "projects/ui/src/lib/components/ui-comment-form.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -2444,77 +2523,82 @@
       "styles": [
         "\n      :host {\n        display: block;\n      }\n      ::ng-deep textarea.form-control {\n        background-color: inherit !important;\n        color: inherit !important;\n        border: 1px solid #444 !important;\n      }\n      ::ng-deep textarea.form-control:disabled {\n        color: #999 !important;\n      }\n    "
       ],
-      "template": "<div class=\"media\">\n  <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" class=\"mr-3\"></ui-avatar>\n  <div class=\"media-body\">\n    <ng-container *ngIf=\"fields.length\">\n      <div>\n        <ui-form\n          #formEl\n          [submitButton]=\"false\"\n          [form]=\"form\"\n          [model]=\"model\"\n          [fields]=\"fields\"\n          (action)=\"submit($event)\"\n        >\n        </ui-form>\n      </div>\n      <div class=\"mt-3\">\n        <div class=\"float-left\" *ngIf=\"maxLength\">\n          <button disabled=\"true\" class=\"btn btn-sm px-0\">\n            {{ textCount }} / {{ maxLength }}\n          </button>\n        </div>\n        <div class=\"float-right\" *ngIf=\"submitButton\">\n          <button [disabled]=\"!form.valid\" (click)=\"formEl.submit()\" class=\"btn btn-success\">\n            <i class=\"fa fa-spin fa-spinner mr-1\" *ngIf=\"form.disabled\"></i>\n            {{ submitButton }}\n          </button>\n        </div>\n      </div>\n    </ng-container>\n  </div>\n</div>\n",
+      "template": "<div class=\"media\">\n  <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" class=\"mr-3\"></ui-avatar>\n  <div class=\"media-body\">\n    <ng-container *ngIf=\"fields.length\">\n      <div>\n        <ui-form\n          #f\n          [submitButton]=\"false\"\n          [form]=\"form\"\n          [model]=\"model\"\n          [fields]=\"fields\"\n          (action)=\"submit($event)\"\n        >\n        </ui-form>\n      </div>\n      <div class=\"mt-3 d-flex justify-content-between\">\n        <button [disabled]=\"true\" class=\"btn btn-sm px-0\" *ngIf=\"maxLength\">\n          {{ textCount }} / {{ maxLength }}\n        </button>\n        <button\n          *ngIf=\"submitButton\"\n          [disabled]=\"!form.valid\"\n          [class]=\"submitButtonClass\"\n          (click)=\"f.submit()\"\n        >\n          <i class=\"fa fa-spin fa-spinner mr-1\" *ngIf=\"form.disabled\"></i>\n          {{ submitButton }}\n        </button>\n      </div>\n    </ng-container>\n  </div>\n</div>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
           "name": "avatar",
-          "line": 67,
+          "line": 69,
           "type": "string"
         },
         {
           "name": "fields",
           "defaultValue": "[]",
-          "line": 70,
+          "line": 72,
           "type": "FormHelper[]"
         },
         {
           "name": "form",
           "defaultValue": "new FormGroup({})",
-          "line": 68,
+          "line": 70,
           "type": "FormGroup"
         },
         {
           "name": "maxLength",
           "defaultValue": "280",
-          "line": 62,
+          "line": 63,
           "type": "boolean | number"
         },
         {
           "name": "minLength",
           "defaultValue": "1",
-          "line": 61,
+          "line": 62,
           "type": "boolean | number"
         },
         {
           "name": "model",
           "defaultValue": "{ text: null }",
-          "line": 69
+          "line": 71
         },
         {
           "name": "placeholder",
           "defaultValue": "'Enter your comment'",
-          "line": 66
+          "line": 68
         },
         {
           "name": "required",
           "defaultValue": "true",
-          "line": 64
+          "line": 65
         },
         {
           "name": "reset$",
-          "line": 60,
+          "line": 61,
           "type": "Observable<boolean>"
         },
         {
           "name": "rows",
           "defaultValue": "3",
-          "line": 63,
+          "line": 64,
           "type": "boolean | number"
         },
         {
           "name": "submitButton",
           "defaultValue": "'Submit'",
-          "line": 65,
+          "line": 66,
           "type": "boolean | string"
+        },
+        {
+          "name": "submitButtonClass",
+          "defaultValue": "'btn btn-outline-success'",
+          "line": 67
         }
       ],
       "outputsClass": [
         {
           "name": "action",
           "defaultValue": "new EventEmitter(true)",
-          "line": 72,
+          "line": 74,
           "type": "EventEmitter"
         }
       ],
@@ -2526,7 +2610,7 @@
           "optional": false,
           "returnType": "any",
           "typeParameters": [],
-          "line": 87
+          "line": 89
         },
         {
           "name": "ngOnInit",
@@ -2534,7 +2618,7 @@
           "optional": false,
           "returnType": "void",
           "typeParameters": [],
-          "line": 74
+          "line": 76
         },
         {
           "name": "resetForm",
@@ -2542,7 +2626,7 @@
           "optional": false,
           "returnType": "void",
           "typeParameters": [],
-          "line": 109
+          "line": 111
         },
         {
           "name": "submit",
@@ -2555,7 +2639,7 @@
           "optional": false,
           "returnType": "void",
           "typeParameters": [],
-          "line": 115,
+          "line": 117,
           "jsdoctags": [
             {
               "name": "$event",
@@ -2572,7 +2656,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'\nimport { FormGroup } from '@angular/forms'\nimport { Observable } from 'rxjs'\n\nimport { FormHelper } from '../helpers/form.helper'\nimport { FormlyTemplateOptions } from '@ngx-formly/core'\n\n@Component({\n  selector: 'ui-comment-form',\n  template: `\n    <div class=\"media\">\n      <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" class=\"mr-3\"></ui-avatar>\n      <div class=\"media-body\">\n        <ng-container *ngIf=\"fields.length\">\n          <div>\n            <ui-form\n              #formEl\n              [submitButton]=\"false\"\n              [form]=\"form\"\n              [model]=\"model\"\n              [fields]=\"fields\"\n              (action)=\"submit($event)\"\n            >\n            </ui-form>\n          </div>\n          <div class=\"mt-3\">\n            <div class=\"float-left\" *ngIf=\"maxLength\">\n              <button disabled=\"true\" class=\"btn btn-sm px-0\">\n                {{ textCount }} / {{ maxLength }}\n              </button>\n            </div>\n            <div class=\"float-right\" *ngIf=\"submitButton\">\n              <button [disabled]=\"!form.valid\" (click)=\"formEl.submit()\" class=\"btn btn-success\">\n                <i class=\"fa fa-spin fa-spinner mr-1\" *ngIf=\"form.disabled\"></i>\n                {{ submitButton }}\n              </button>\n            </div>\n          </div>\n        </ng-container>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      :host {\n        display: block;\n      }\n      ::ng-deep textarea.form-control {\n        background-color: inherit !important;\n        color: inherit !important;\n        border: 1px solid #444 !important;\n      }\n      ::ng-deep textarea.form-control:disabled {\n        color: #999 !important;\n      }\n    `,\n  ],\n})\nexport class UiCommentFormComponent implements OnInit {\n  @Input() reset$: Observable<boolean>\n  @Input() minLength: boolean | number = 1\n  @Input() maxLength: boolean | number = 280\n  @Input() rows: boolean | number = 3\n  @Input() required = true\n  @Input() submitButton: boolean | string = 'Submit'\n  @Input() placeholder = 'Enter your comment'\n  @Input() avatar?: string\n  @Input() form = new FormGroup({})\n  @Input() model = { text: null }\n  @Input() fields: FormHelper[] = []\n\n  @Output() action = new EventEmitter(true)\n\n  ngOnInit() {\n    this.fields = [this.createCommentField()]\n    if (this.reset$) {\n      this.reset$.subscribe(val => {\n        this.resetForm()\n      })\n    }\n  }\n\n  get textCount() {\n    return this.model.text ? this.model.text.length : 0\n  }\n\n  createCommentField() {\n    const fieldOptions: FormlyTemplateOptions = {\n      placeholder: this.placeholder,\n      required: this.required,\n      blur: f => {\n        if (!f.formControl.value) {\n          f.formControl.markAsUntouched()\n        }\n      },\n    }\n    if (this.minLength && typeof this.minLength === 'number') {\n      fieldOptions.minLength = this.minLength\n    }\n    if (this.maxLength && typeof this.maxLength === 'number') {\n      fieldOptions.maxLength = this.maxLength\n    }\n    if (this.rows && typeof this.rows === 'number') {\n      fieldOptions.rows = this.rows\n    }\n    return FormHelper.textarea('text', fieldOptions)\n  }\n\n  resetForm() {\n    this.model = { text: null }\n    this.form.enable()\n    this.form.reset()\n  }\n\n  submit($event) {\n    if (this.reset$) {\n      this.form.disable()\n    } else {\n      this.resetForm()\n    }\n    this.action.emit($event)\n  }\n}\n",
+      "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'\nimport { FormGroup } from '@angular/forms'\nimport { Observable } from 'rxjs'\n\nimport { FormHelper } from '../helpers/form.helper'\nimport { FormlyTemplateOptions } from '@ngx-formly/core'\n\n@Component({\n  selector: 'ui-comment-form',\n  template: `\n    <div class=\"media\">\n      <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" class=\"mr-3\"></ui-avatar>\n      <div class=\"media-body\">\n        <ng-container *ngIf=\"fields.length\">\n          <div>\n            <ui-form\n              #f\n              [submitButton]=\"false\"\n              [form]=\"form\"\n              [model]=\"model\"\n              [fields]=\"fields\"\n              (action)=\"submit($event)\"\n            >\n            </ui-form>\n          </div>\n          <div class=\"mt-3 d-flex justify-content-between\">\n            <button [disabled]=\"true\" class=\"btn btn-sm px-0\" *ngIf=\"maxLength\">\n              {{ textCount }} / {{ maxLength }}\n            </button>\n            <button\n              *ngIf=\"submitButton\"\n              [disabled]=\"!form.valid\"\n              [class]=\"submitButtonClass\"\n              (click)=\"f.submit()\"\n            >\n              <i class=\"fa fa-spin fa-spinner mr-1\" *ngIf=\"form.disabled\"></i>\n              {{ submitButton }}\n            </button>\n          </div>\n        </ng-container>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      :host {\n        display: block;\n      }\n      ::ng-deep textarea.form-control {\n        background-color: inherit !important;\n        color: inherit !important;\n        border: 1px solid #444 !important;\n      }\n      ::ng-deep textarea.form-control:disabled {\n        color: #999 !important;\n      }\n    `,\n  ],\n})\nexport class UiCommentFormComponent implements OnInit {\n  @Input() reset$: Observable<boolean>\n  @Input() minLength: boolean | number = 1\n  @Input() maxLength: boolean | number = 280\n  @Input() rows: boolean | number = 3\n  @Input() required = true\n  @Input() submitButton: boolean | string = 'Submit'\n  @Input() submitButtonClass = 'btn btn-outline-success'\n  @Input() placeholder = 'Enter your comment'\n  @Input() avatar?: string\n  @Input() form = new FormGroup({})\n  @Input() model = { text: null }\n  @Input() fields: FormHelper[] = []\n\n  @Output() action = new EventEmitter(true)\n\n  ngOnInit() {\n    this.fields = [this.createCommentField()]\n    if (this.reset$) {\n      this.reset$.subscribe(val => {\n        this.resetForm()\n      })\n    }\n  }\n\n  get textCount() {\n    return this.model.text ? this.model.text.length : 0\n  }\n\n  createCommentField() {\n    const fieldOptions: FormlyTemplateOptions = {\n      placeholder: this.placeholder,\n      required: this.required,\n      blur: f => {\n        if (!f.formControl.value) {\n          f.formControl.markAsUntouched()\n        }\n      },\n    }\n    if (this.minLength && typeof this.minLength === 'number') {\n      fieldOptions.minLength = this.minLength\n    }\n    if (this.maxLength && typeof this.maxLength === 'number') {\n      fieldOptions.maxLength = this.maxLength\n    }\n    if (this.rows && typeof this.rows === 'number') {\n      fieldOptions.rows = this.rows\n    }\n    return FormHelper.textarea('text', fieldOptions)\n  }\n\n  resetForm() {\n    this.model = { text: null }\n    this.form.enable()\n    this.form.reset()\n  }\n\n  submit($event) {\n    if (this.reset$) {\n      this.form.disable()\n    } else {\n      this.resetForm()\n    }\n    this.action.emit($event)\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "\n      :host {\n        display: block;\n      }\n      ::ng-deep textarea.form-control {\n        background-color: inherit !important;\n        color: inherit !important;\n        border: 1px solid #444 !important;\n      }\n      ::ng-deep textarea.form-control:disabled {\n        color: #999 !important;\n      }\n    \n",
@@ -2584,7 +2668,7 @@
             "name": "textCount",
             "type": "",
             "returnType": "",
-            "line": 83
+            "line": 85
           }
         }
       }
@@ -3623,9 +3707,49 @@
       "stylesData": ""
     },
     {
+      "name": "UiLoadingIconComponent",
+      "id": "component-UiLoadingIconComponent-ec5a60623b05a4cfec97692c6966c816",
+      "file": "projects/ui/src/lib/components/ui-loading-icon.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "ui-loading-icon",
+      "styleUrls": [],
+      "styles": [],
+      "template": "<ng-container *ngIf=\"loading\" class=\"p-0\">\n  <i class=\"fa fa-spin {{ icon }}\"></i>\n</ng-container>\n",
+      "templateUrl": [],
+      "viewProviders": [],
+      "inputsClass": [
+        {
+          "name": "icon",
+          "defaultValue": "'fa-spinner'",
+          "line": 13
+        },
+        {
+          "name": "loading",
+          "defaultValue": "true",
+          "line": 12
+        }
+      ],
+      "outputsClass": [],
+      "propertiesClass": [],
+      "methodsClass": [],
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "",
+      "type": "component",
+      "sourceCode": "import { Component, Input } from '@angular/core'\n\n@Component({\n  selector: 'ui-loading-icon',\n  template: `\n    <ng-container *ngIf=\"loading\" class=\"p-0\">\n      <i class=\"fa fa-spin {{ icon }}\"></i>\n    </ng-container>\n  `,\n})\nexport class UiLoadingIconComponent {\n  @Input() public loading = true\n  @Input() public icon = 'fa-spinner'\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": "",
+      "stylesData": ""
+    },
+    {
       "name": "UiMarkdownComponent",
-      "id": "component-UiMarkdownComponent-658eed478b435bc174bac19c09d829b6",
-      "file": "projects/ui/src/lib/components/ui-markdown.component.ts",
+      "id": "component-UiMarkdownComponent-88fe617be54b1bf154d362b413017e06",
+      "file": "projects/ui/src/lib/components/ui-markdown/ui-markdown.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -3634,52 +3758,28 @@
       "selector": "ui-markdown",
       "styleUrls": [],
       "styles": [],
-      "template": "<showdown [value]=\"data\"></showdown>\n",
+      "template": "<markdown [data]=\"data\"></markdown>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
           "name": "data",
-          "line": 12,
+          "line": 10,
           "type": "string"
         }
       ],
       "outputsClass": [],
-      "propertiesClass": [
-        {
-          "name": "showdownComponent",
-          "type": "ShowdownComponent",
-          "optional": false,
-          "description": "",
-          "line": 11,
-          "decorators": [
-            {
-              "name": "ViewChild",
-              "stringifiedArguments": "ShowdownComponent, {static: true}"
-            }
-          ]
-        }
-      ],
-      "methodsClass": [
-        {
-          "name": "ngOnInit",
-          "args": [],
-          "optional": false,
-          "returnType": "void",
-          "typeParameters": [],
-          "line": 14
-        }
-      ],
+      "propertiesClass": [],
+      "methodsClass": [],
       "hostBindings": [],
       "hostListeners": [],
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input, OnInit, ViewChild } from '@angular/core'\nimport { ShowdownComponent } from 'ngx-showdown'\n\n@Component({\n  selector: 'ui-markdown',\n  template: `\n    <showdown [value]=\"data\"></showdown>\n  `,\n})\nexport class UiMarkdownComponent implements OnInit {\n  @ViewChild(ShowdownComponent, { static: true }) showdownComponent: ShowdownComponent\n  @Input() public data: string\n\n  ngOnInit() {\n    this.showdownComponent.setOptions({ emoji: true })\n  }\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\n\n@Component({\n  selector: 'ui-markdown',\n  template: `\n    <markdown [data]=\"data\"></markdown>\n  `,\n})\nexport class UiMarkdownComponent {\n  @Input() public data: string\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
-      "stylesData": "",
-      "implements": ["OnInit"]
+      "stylesData": ""
     },
     {
       "name": "UiPageSidebarComponent",
@@ -4179,6 +4279,43 @@
       ]
     },
     {
+      "name": "UiMarkdownModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiMarkdownComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": []
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiMarkdownComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
       "name": "UiModule",
       "children": [
         {
@@ -4279,7 +4416,7 @@
               "name": "UiLoadingComponent"
             },
             {
-              "name": "UiMarkdownComponent"
+              "name": "UiLoadingIconComponent"
             },
             {
               "name": "UiPageSidebarComponent"
@@ -4409,7 +4546,7 @@
               "name": "UiLoadingComponent"
             },
             {
-              "name": "UiMarkdownComponent"
+              "name": "UiLoadingIconComponent"
             },
             {
               "name": "UiPageSidebarComponent"
@@ -4453,7 +4590,7 @@
         "subtype": "variable",
         "file": "projects/ui/src/lib/ui.module.ts",
         "type": "[]",
-        "defaultValue": "[\n  UiAuthComponent,\n  UiAvatarComponent,\n  UiBrandComponent,\n  UiButtonComponent,\n  UiButtonsComponent,\n  UiCardComponent,\n  UiCardBodyComponent,\n  UiCardFooterComponent,\n  UiCardHeaderComponent,\n  UiCodeComponent,\n  UiCommentComponent,\n  UiCommentFormComponent,\n  UiContentComponent,\n  UiDataComponent,\n  UiDebugComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiFormComponent,\n  UiFooterComponent,\n  UiHeaderComponent,\n  UiHeroComponent,\n  UiLabelComponent,\n  UiLayoutComponent,\n  UiLinkComponent,\n  UiLinksComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiMarkdownComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
+        "defaultValue": "[\n  UiAuthComponent,\n  UiAvatarComponent,\n  UiBrandComponent,\n  UiButtonComponent,\n  UiButtonsComponent,\n  UiCardComponent,\n  UiCardBodyComponent,\n  UiCardFooterComponent,\n  UiCardHeaderComponent,\n  UiCodeComponent,\n  UiCommentComponent,\n  UiCommentFormComponent,\n  UiContentComponent,\n  UiDataComponent,\n  UiDebugComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiFormComponent,\n  UiFooterComponent,\n  UiHeaderComponent,\n  UiHeroComponent,\n  UiLabelComponent,\n  UiLayoutComponent,\n  UiLinkComponent,\n  UiLinksComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiLoadingIconComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
       },
       {
         "name": "config",
@@ -4732,7 +4869,7 @@
           "subtype": "variable",
           "file": "projects/ui/src/lib/ui.module.ts",
           "type": "[]",
-          "defaultValue": "[\n  UiAuthComponent,\n  UiAvatarComponent,\n  UiBrandComponent,\n  UiButtonComponent,\n  UiButtonsComponent,\n  UiCardComponent,\n  UiCardBodyComponent,\n  UiCardFooterComponent,\n  UiCardHeaderComponent,\n  UiCodeComponent,\n  UiCommentComponent,\n  UiCommentFormComponent,\n  UiContentComponent,\n  UiDataComponent,\n  UiDebugComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiFormComponent,\n  UiFooterComponent,\n  UiHeaderComponent,\n  UiHeroComponent,\n  UiLabelComponent,\n  UiLayoutComponent,\n  UiLinkComponent,\n  UiLinksComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiMarkdownComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
+          "defaultValue": "[\n  UiAuthComponent,\n  UiAvatarComponent,\n  UiBrandComponent,\n  UiButtonComponent,\n  UiButtonsComponent,\n  UiCardComponent,\n  UiCardBodyComponent,\n  UiCardFooterComponent,\n  UiCardHeaderComponent,\n  UiCodeComponent,\n  UiCommentComponent,\n  UiCommentFormComponent,\n  UiContentComponent,\n  UiDataComponent,\n  UiDebugComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiFormComponent,\n  UiFooterComponent,\n  UiHeaderComponent,\n  UiHeroComponent,\n  UiLabelComponent,\n  UiLayoutComponent,\n  UiLinkComponent,\n  UiLinksComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiLoadingIconComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
         },
         {
           "name": "EXPORT_MODULES",
@@ -5055,7 +5192,7 @@
         "linktype": "component",
         "name": "UiButtonComponent",
         "coveragePercent": 0,
-        "coverageCount": "0/4",
+        "coverageCount": "0/7",
         "status": "low"
       },
       {
@@ -5109,7 +5246,7 @@
         "linktype": "component",
         "name": "UiCodeComponent",
         "coveragePercent": 0,
-        "coverageCount": "0/4",
+        "coverageCount": "0/5",
         "status": "low"
       },
       {
@@ -5118,7 +5255,7 @@
         "linktype": "component",
         "name": "UiCommentFormComponent",
         "coveragePercent": 0,
-        "coverageCount": "0/17",
+        "coverageCount": "0/18",
         "status": "low"
       },
       {
@@ -5284,6 +5421,15 @@
         "status": "low"
       },
       {
+        "filePath": "projects/ui/src/lib/components/ui-loading-icon.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "UiLoadingIconComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/3",
+        "status": "low"
+      },
+      {
         "filePath": "projects/ui/src/lib/components/ui-loading.component.ts",
         "type": "component",
         "linktype": "component",
@@ -5293,12 +5439,12 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-markdown.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-markdown/ui-markdown.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiMarkdownComponent",
         "coveragePercent": 0,
-        "coverageCount": "0/4",
+        "coverageCount": "0/2",
         "status": "low"
       },
       {

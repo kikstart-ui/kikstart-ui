@@ -1,17 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core'
-import { ShowdownComponent } from 'ngx-showdown'
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'ui-markdown',
   template: `
-    <showdown [value]="data"></showdown>
+    <markdown [data]="data"></markdown>
   `,
 })
-export class UiMarkdownComponent implements OnInit {
-  @ViewChild(ShowdownComponent, { static: true }) showdownComponent: ShowdownComponent
+export class UiMarkdownComponent {
   @Input() public data: string
-
-  ngOnInit() {
-    this.showdownComponent.setOptions({ emoji: true })
-  }
 }
