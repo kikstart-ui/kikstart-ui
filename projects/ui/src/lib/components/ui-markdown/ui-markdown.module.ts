@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core'
-import { ShowdownModule } from 'ngx-showdown'
+import { MarkdownModule } from 'ngx-markdown'
 
 import { UiMarkdownComponent } from './ui-markdown.component'
 
 @NgModule({
-  imports: [ShowdownModule],
+  imports: [MarkdownModule.forRoot()],
   declarations: [UiMarkdownComponent],
   exports: [UiMarkdownComponent],
 })

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 
 import { NumberedCodeblockModule } from '@ctrl/ngx-numbered-codeblock'
-import { ShowdownModule } from 'ngx-showdown'
 import { TimeagoModule } from 'ngx-timeago'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { ModalModule } from 'ngx-bootstrap/modal'
