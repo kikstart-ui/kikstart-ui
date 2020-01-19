@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 
 import { NumberedCodeblockModule } from '@ctrl/ngx-numbered-codeblock'
-import { ShowdownModule } from 'ngx-showdown'
 import { TimeagoModule } from 'ngx-timeago'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { ModalModule } from 'ngx-bootstrap/modal'
@@ -43,7 +42,6 @@ import { UiListComponent } from './components/ui-list.component'
 import { UiListItemComponent } from './components/ui-list-item.component'
 import { UiLoadingComponent } from './components/ui-loading.component'
 import { UiLoadingIconComponent } from './components/ui-loading-icon.component'
-import { UiMarkdownComponent } from './components/ui-markdown.component'
 import { UiPageSidebarComponent } from './components/ui-page-sidebar.component'
 import { UiPageSidebarRouteComponent } from './components/ui-page-sidebar-route.component'
 import { UiRenderComponent } from './components/ui-render.component'
@@ -83,7 +81,6 @@ const COMPONENTS = [
   UiListItemComponent,
   UiLoadingComponent,
   UiLoadingIconComponent,
-  UiMarkdownComponent,
   UiPageSidebarComponent,
   UiPageSidebarRouteComponent,
   UiRenderComponent,
@@ -111,7 +108,6 @@ const EXPORT_MODULES = [
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     TabsModule.forRoot(),
-    ShowdownModule,
     TimeagoModule.forRoot(),
     ToastrModule.forRoot({
       progressBar: true,
