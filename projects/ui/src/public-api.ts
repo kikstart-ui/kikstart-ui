@@ -2,7 +2,8 @@
  * Public API Surface of ui
  */
 export { UiAuthComponent } from './lib/components/ui-auth/ui-auth.component'
-export { UiAvatarComponent, UiAvatarSizes } from './lib/components/ui-avatar.component'
+export { UiAvatarSizes } from './lib/components/ui-avatar/ui-avatar.component'
+export { UiAvatarModule } from './lib/components/ui-avatar/ui-avatar.module'
 export { UiBrandComponent, UiBrandSizes } from './lib/components/ui-brand.component'
 export { UiButtonComponent } from './lib/components/ui-button.component'
 export { UiCardComponent } from './lib/components/ui-card.component'
