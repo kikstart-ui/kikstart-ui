@@ -9,11 +9,12 @@ import { ModalModule } from 'ngx-bootstrap/modal'
 import { TabsModule } from 'ngx-bootstrap/tabs'
 import { ToastrModule } from 'ngx-toastr'
 
+import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
+
 import { UiFormsModule } from './ui-forms.module'
 import { TruncatePipe } from './pipes/truncate.pipe'
 
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
-import { UiAvatarComponent } from './components/ui-avatar.component'
 import { UiBrandComponent } from './components/ui-brand.component'
 import { UiButtonComponent } from './components/ui-button.component'
 import { UiButtonsComponent } from './components/ui-buttons.component'
@@ -52,7 +53,6 @@ import { UiUserComponent } from './components/ui-user.component'
 
 const COMPONENTS = [
   UiAuthComponent,
-  UiAvatarComponent,
   UiBrandComponent,
   UiButtonComponent,
   UiButtonsComponent,
@@ -115,6 +115,8 @@ const EXPORT_MODULES = [
       positionClass: 'toast-top-center',
       timeOut: 3000,
     }),
+    // Temporary Imports
+    UiAvatarModule,
   ],
   exports: [
     ...EXPORT_MODULES,
