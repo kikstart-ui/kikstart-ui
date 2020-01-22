@@ -10,6 +10,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs'
 import { ToastrModule } from 'ngx-toastr'
 
 import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
+import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
 
 import { UiFormsModule } from './ui-forms.module'
@@ -27,7 +28,6 @@ import { UiCodeComponent } from './components/ui-code.component'
 import { UiCommentComponent } from './components/ui-comment.component'
 import { UiCommentFormComponent } from './components/ui-comment-form.component'
 import { UiContentComponent } from './components/ui-content.component'
-import { UiDataComponent } from './components/ui-data.component'
 import { UiDialogFormComponent } from './components/ui-dialog-form.component'
 import { UiDialogProgressComponent } from './components/ui-dialog-progress.component'
 import { UiDropdownComponent } from './components/ui-dropdown.component'
@@ -64,7 +64,6 @@ const COMPONENTS = [
   UiCommentComponent,
   UiCommentFormComponent,
   UiContentComponent,
-  UiDataComponent,
   UiDialogFormComponent,
   UiDialogProgressComponent,
   UiDropdownComponent,
@@ -125,6 +124,7 @@ const EXPORT_MODULES = [
     ...COMPONENTS,
     TruncatePipe,
     ToastrModule,
+    UiDataModule,
   ],
 })
 export class UiModule {}
