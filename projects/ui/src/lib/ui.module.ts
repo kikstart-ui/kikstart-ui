@@ -10,6 +10,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs'
 import { ToastrModule } from 'ngx-toastr'
 
 import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
+import { UiDebugModule } from './components/ui-debug/ui-debug.module'
 
 import { UiFormsModule } from './ui-forms.module'
 import { TruncatePipe } from './pipes/truncate.pipe'
@@ -27,7 +28,6 @@ import { UiCommentComponent } from './components/ui-comment.component'
 import { UiCommentFormComponent } from './components/ui-comment-form.component'
 import { UiContentComponent } from './components/ui-content.component'
 import { UiDataComponent } from './components/ui-data.component'
-import { UiDebugComponent } from './components/ui-debug.component'
 import { UiDialogFormComponent } from './components/ui-dialog-form.component'
 import { UiDialogProgressComponent } from './components/ui-dialog-progress.component'
 import { UiDropdownComponent } from './components/ui-dropdown.component'
@@ -65,7 +65,6 @@ const COMPONENTS = [
   UiCommentFormComponent,
   UiContentComponent,
   UiDataComponent,
-  UiDebugComponent,
   UiDialogFormComponent,
   UiDialogProgressComponent,
   UiDropdownComponent,
@@ -117,6 +116,7 @@ const EXPORT_MODULES = [
     }),
     // Temporary Imports
     UiAvatarModule,
+    UiDebugModule,
   ],
   exports: [
     ...EXPORT_MODULES,

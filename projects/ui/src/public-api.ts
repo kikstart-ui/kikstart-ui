@@ -13,7 +13,7 @@ export { UiCardHeaderComponent } from './lib/components/ui-card-header.component
 export { UiCommentComponent } from './lib/components/ui-comment.component'
 export { UiContentComponent } from './lib/components/ui-content.component'
 export { UiDataComponent, UiDataShape } from './lib/components/ui-data.component'
-export { UiDebugComponent } from './lib/components/ui-debug.component'
+export { UiDebugModule } from './lib/components/ui-debug/ui-debug.module'
 export { UiDialogFormComponent } from './lib/components/ui-dialog-form.component'
 export { UiDialogProgressComponent } from './lib/components/ui-dialog-progress.component'
 export { UiDropdownComponent } from './lib/components/ui-dropdown.component'
