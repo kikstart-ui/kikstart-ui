@@ -54,7 +54,7 @@
     "@ctrl/ngx-numbered-codeblock": "2.0.0",
     "@types/jasmine": "3.5.1",
     "@types/jasminewd2": "2.0.8",
-    "@types/node": "13.1.8",
+    "@types/node": "13.5.0",
     "codelyzer": "5.2.1",
     "husky": "4.2.0",
     "jasmine-core": "3.5.0",
