@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr'
 import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
 import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
+import { UiLabelModule } from './components/ui-label/ui-label.module'
 
 import { UiFormsModule } from './ui-forms.module'
 import { TruncatePipe } from './pipes/truncate.pipe'
@@ -35,7 +36,6 @@ import { UiFormComponent } from './components/ui-form.component'
 import { UiFooterComponent } from './components/ui-footer.component'
 import { UiHeaderComponent } from './components/ui-header.component'
 import { UiHeroComponent } from './components/ui-hero.component'
-import { UiLabelComponent } from './components/ui-label.component'
 import { UiLayoutComponent } from './components/ui-layout.component'
 import { UiLinkComponent } from './components/ui-link.component'
 import { UiLinksComponent } from './components/ui-links.component'
@@ -71,7 +71,6 @@ const COMPONENTS = [
   UiFooterComponent,
   UiHeaderComponent,
   UiHeroComponent,
-  UiLabelComponent,
   UiLayoutComponent,
   UiLinkComponent,
   UiLinksComponent,
@@ -116,6 +115,7 @@ const EXPORT_MODULES = [
     // Temporary Imports
     UiAvatarModule,
     UiDebugModule,
+    UiLabelModule,
   ],
   exports: [
     ...EXPORT_MODULES,
