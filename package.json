@@ -87,12 +87,10 @@
   },
   "lint-staged": {
     "*.{js,json,css,scss,less,md,ts,html,component.html}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "projects/ui/*.{js,json,css,scss,less,md,ts,html,component.html}": [
-      "yarn compodoc",
-      "git add"
+      "yarn compodoc"
     ]
   },
   "repository": {
