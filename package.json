@@ -31,7 +31,7 @@
     "@angular/platform-browser": "8.2.14",
     "@angular/platform-browser-dynamic": "8.2.14",
     "@angular/router": "8.2.14",
-    "@ngx-formly/bootstrap": "5.5.9",
+    "@ngx-formly/bootstrap": "5.5.10",
     "@ngx-formly/core": "5.5.10",
     "bootstrap": "4.4.1",
     "bootswatch": "4.4.1",
