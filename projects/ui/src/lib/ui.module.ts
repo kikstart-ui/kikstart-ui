@@ -13,6 +13,7 @@ import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
 import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
 import { UiLabelModule } from './components/ui-label/ui-label.module'
+import { UiLoadingIconModule } from './components/ui-loading-icon/ui-loading-icon.module'
 
 import { UiFormsModule } from './ui-forms.module'
 import { TruncatePipe } from './pipes/truncate.pipe'
@@ -42,7 +43,6 @@ import { UiLinksComponent } from './components/ui-links.component'
 import { UiListComponent } from './components/ui-list.component'
 import { UiListItemComponent } from './components/ui-list-item.component'
 import { UiLoadingComponent } from './components/ui-loading.component'
-import { UiLoadingIconComponent } from './components/ui-loading-icon.component'
 import { UiPageSidebarComponent } from './components/ui-page-sidebar.component'
 import { UiPageSidebarRouteComponent } from './components/ui-page-sidebar-route.component'
 import { UiRenderComponent } from './components/ui-render.component'
@@ -77,7 +77,6 @@ const COMPONENTS = [
   UiListComponent,
   UiListItemComponent,
   UiLoadingComponent,
-  UiLoadingIconComponent,
   UiPageSidebarComponent,
   UiPageSidebarRouteComponent,
   UiRenderComponent,
@@ -116,6 +115,7 @@ const EXPORT_MODULES = [
     UiAvatarModule,
     UiDebugModule,
     UiLabelModule,
+    UiLoadingIconModule,
   ],
   exports: [
     ...EXPORT_MODULES,
