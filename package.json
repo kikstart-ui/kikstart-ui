@@ -52,7 +52,7 @@
     "@angular/language-service": "8.2.14",
     "@compodoc/compodoc": "1.1.11",
     "@ctrl/ngx-numbered-codeblock": "2.0.0",
-    "@types/jasmine": "3.5.1",
+    "@types/jasmine": "3.5.2",
     "@types/jasminewd2": "2.0.8",
     "@types/node": "13.5.0",
     "codelyzer": "5.2.1",
