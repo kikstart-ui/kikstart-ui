@@ -14,6 +14,7 @@ import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
 import { UiLabelModule } from './components/ui-label/ui-label.module'
 import { UiLinkModule } from './components/ui-link/ui-link.module'
+import { UiLinksModule } from './components/ui-links/ui-links.module'
 import { UiLoadingIconModule } from './components/ui-loading-icon/ui-loading-icon.module'
 
 import { UiFormsModule } from './ui-forms.module'
@@ -39,7 +40,6 @@ import { UiFooterComponent } from './components/ui-footer.component'
 import { UiHeaderComponent } from './components/ui-header.component'
 import { UiHeroComponent } from './components/ui-hero.component'
 import { UiLayoutComponent } from './components/ui-layout.component'
-import { UiLinksComponent } from './components/ui-links.component'
 import { UiListComponent } from './components/ui-list.component'
 import { UiListItemComponent } from './components/ui-list-item.component'
 import { UiLoadingComponent } from './components/ui-loading.component'
@@ -72,7 +72,6 @@ const COMPONENTS = [
   UiHeaderComponent,
   UiHeroComponent,
   UiLayoutComponent,
-  UiLinksComponent,
   UiListComponent,
   UiListItemComponent,
   UiLoadingComponent,
@@ -115,6 +114,7 @@ const EXPORT_MODULES = [
     UiDebugModule,
     UiLabelModule,
     UiLinkModule,
+    UiLinksModule,
     UiLoadingIconModule,
   ],
   exports: [
