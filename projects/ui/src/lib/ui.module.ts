@@ -15,6 +15,7 @@ import { UiDebugModule } from './components/ui-debug/ui-debug.module'
 import { UiLabelModule } from './components/ui-label/ui-label.module'
 import { UiLinkModule } from './components/ui-link/ui-link.module'
 import { UiLoadingIconModule } from './components/ui-loading-icon/ui-loading-icon.module'
+import { UiNoDataModule } from './components/ui-no-data/ui-no-data.module'
 
 import { UiFormsModule } from './ui-forms.module'
 import { TruncatePipe } from './pipes/truncate.pipe'
@@ -116,6 +117,7 @@ const EXPORT_MODULES = [
     UiLabelModule,
     UiLinkModule,
     UiLoadingIconModule,
+    UiNoDataModule,
   ],
   exports: [
     ...EXPORT_MODULES,
