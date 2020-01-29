@@ -48,10 +48,6 @@ export { UiUser } from './lib/interfaces/ui-user'
 export { UiService } from './lib/services/ui.service'
 
 export { TruncatePipe } from './lib/pipes/truncate.pipe'
-export { TruncatePipe } from './lib/pipes/truncate.pipe'
-export { UiService } from './lib/services/ui.service'
-export { UiModule } from './lib/ui.module'
-export { UiFormsModule } from './lib/ui-forms.module'
 
 export { UiModule } from './lib/ui.module'
 export { UiFormsModule } from './lib/ui-forms.module'
