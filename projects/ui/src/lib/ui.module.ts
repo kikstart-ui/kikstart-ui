@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr'
 import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
 import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
+import { UiFooterModule } from './components/ui-footer/ui-footer.module'
 import { UiLabelModule } from './components/ui-label/ui-label.module'
 import { UiLinkModule } from './components/ui-link/ui-link.module'
 import { UiLinksModule } from './components/ui-links/ui-links.module'
@@ -37,7 +38,6 @@ import { UiDialogFormComponent } from './components/ui-dialog-form.component'
 import { UiDialogProgressComponent } from './components/ui-dialog-progress.component'
 import { UiDropdownComponent } from './components/ui-dropdown.component'
 import { UiFormComponent } from './components/ui-form.component'
-import { UiFooterComponent } from './components/ui-footer.component'
 import { UiHeaderComponent } from './components/ui-header.component'
 import { UiHeroComponent } from './components/ui-hero.component'
 import { UiLayoutComponent } from './components/ui-layout.component'
@@ -69,7 +69,6 @@ const COMPONENTS = [
   UiDialogProgressComponent,
   UiDropdownComponent,
   UiFormComponent,
-  UiFooterComponent,
   UiHeaderComponent,
   UiHeroComponent,
   UiLayoutComponent,
@@ -113,6 +112,7 @@ const EXPORT_MODULES = [
     // Temporary Imports
     UiAvatarModule,
     UiDebugModule,
+    UiFooterModule,
     UiLabelModule,
     UiLinkModule,
     UiLinksModule,
