@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { UiLink } from '../interfaces/ui-link'
+import { UiLink } from '../../interfaces/ui-link'
 
 @Component({
   selector: 'ui-footer',
