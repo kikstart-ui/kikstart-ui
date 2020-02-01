@@ -10,6 +10,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs'
 import { ToastrModule } from 'ngx-toastr'
 
 import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
+import { UiButtonModule } from './components/ui-button/ui-button.module'
 import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
 import { UiFooterModule } from './components/ui-footer/ui-footer.module'
@@ -24,7 +25,6 @@ import { TruncatePipe } from './pipes/truncate.pipe'
 
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
 import { UiBrandComponent } from './components/ui-brand.component'
-import { UiButtonComponent } from './components/ui-button.component'
 import { UiButtonsComponent } from './components/ui-buttons.component'
 import { UiCardComponent } from './components/ui-card.component'
 import { UiCardBodyComponent } from './components/ui-card-body.component'
@@ -55,7 +55,6 @@ import { UiUserComponent } from './components/ui-user.component'
 const COMPONENTS = [
   UiAuthComponent,
   UiBrandComponent,
-  UiButtonComponent,
   UiButtonsComponent,
   UiCardComponent,
   UiCardBodyComponent,
@@ -111,6 +110,7 @@ const EXPORT_MODULES = [
     }),
     // Temporary Imports
     UiAvatarModule,
+    UiButtonModule,
     UiDebugModule,
     UiFooterModule,
     UiLabelModule,
