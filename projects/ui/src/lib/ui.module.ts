@@ -9,23 +9,10 @@ import { ModalModule } from 'ngx-bootstrap/modal'
 import { TabsModule } from 'ngx-bootstrap/tabs'
 import { ToastrModule } from 'ngx-toastr'
 
-import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
-import { UiButtonModule } from './components/ui-button/ui-button.module'
-import { UiDataModule } from './components/ui-data/ui-data.module'
-import { UiDebugModule } from './components/ui-debug/ui-debug.module'
-import { UiFooterModule } from './components/ui-footer/ui-footer.module'
-import { UiLabelModule } from './components/ui-label/ui-label.module'
-import { UiLinkModule } from './components/ui-link/ui-link.module'
-import { UiLinksModule } from './components/ui-links/ui-links.module'
-import { UiLoadingIconModule } from './components/ui-loading-icon/ui-loading-icon.module'
-import { UiNoDataModule } from './components/ui-no-data/ui-no-data.module'
-
-import { UiFormsModule } from './ui-forms.module'
 import { TruncatePipe } from './pipes/truncate.pipe'
 
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
 import { UiBrandComponent } from './components/ui-brand.component'
-import { UiButtonsComponent } from './components/ui-buttons.component'
 import { UiCardComponent } from './components/ui-card.component'
 import { UiCardBodyComponent } from './components/ui-card-body.component'
 import { UiCardFooterComponent } from './components/ui-card-footer.component'
@@ -52,10 +39,21 @@ import { UiSidebarItemComponent } from './components/ui-sidebar-item.component'
 import { UiTabsComponent } from './components/ui-tabs.component'
 import { UiUserComponent } from './components/ui-user.component'
 
+import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
+import { UiButtonModule } from './components/ui-button/ui-button.module'
+import { UiDataModule } from './components/ui-data/ui-data.module'
+import { UiDebugModule } from './components/ui-debug/ui-debug.module'
+import { UiFooterModule } from './components/ui-footer/ui-footer.module'
+import { UiFormsModule } from './ui-forms.module'
+import { UiLabelModule } from './components/ui-label/ui-label.module'
+import { UiLinkModule } from './components/ui-link/ui-link.module'
+import { UiLinksModule } from './components/ui-links/ui-links.module'
+import { UiLoadingIconModule } from './components/ui-loading-icon/ui-loading-icon.module'
+import { UiNoDataModule } from './components/ui-no-data/ui-no-data.module'
+
 const COMPONENTS = [
   UiAuthComponent,
   UiBrandComponent,
-  UiButtonsComponent,
   UiCardComponent,
   UiCardBodyComponent,
   UiCardFooterComponent,
@@ -89,6 +87,17 @@ const EXPORT_MODULES = [
   ModalModule,
   TabsModule,
   NumberedCodeblockModule,
+  // Ui Modules will be exported until version 2
+  UiAvatarModule,
+  UiButtonModule,
+  UiDebugModule,
+  UiFooterModule,
+  UiFormsModule,
+  UiLabelModule,
+  UiLinkModule,
+  UiLinksModule,
+  UiLoadingIconModule,
+  UiNoDataModule,
 ]
 
 @NgModule({
@@ -96,7 +105,6 @@ const EXPORT_MODULES = [
   declarations: [TruncatePipe, ...COMPONENTS],
   imports: [
     ...EXPORT_MODULES,
-    UiFormsModule,
     RouterModule.forChild([]),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
@@ -108,22 +116,12 @@ const EXPORT_MODULES = [
       positionClass: 'toast-top-center',
       timeOut: 3000,
     }),
-    // Temporary Imports
-    UiAvatarModule,
-    UiButtonModule,
-    UiDebugModule,
-    UiFooterModule,
-    UiLabelModule,
-    UiLinkModule,
-    UiLinksModule,
-    UiLoadingIconModule,
-    UiNoDataModule,
   ],
   exports: [
     ...EXPORT_MODULES,
+    ...COMPONENTS,
     UiFormsModule,
     TimeagoModule,
-    ...COMPONENTS,
     TruncatePipe,
     ToastrModule,
     UiDataModule,
