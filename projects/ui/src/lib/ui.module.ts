@@ -12,7 +12,6 @@ import { ToastrModule } from 'ngx-toastr'
 import { TruncatePipe } from './pipes/truncate.pipe'
 
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
-import { UiBrandComponent } from './components/ui-brand.component'
 import { UiCardComponent } from './components/ui-card.component'
 import { UiCardBodyComponent } from './components/ui-card-body.component'
 import { UiCardFooterComponent } from './components/ui-card-footer.component'
@@ -40,6 +39,7 @@ import { UiTabsComponent } from './components/ui-tabs.component'
 import { UiUserComponent } from './components/ui-user.component'
 
 import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
+import { UiBrandModule } from './components/ui-brand/ui-brand.module'
 import { UiButtonModule } from './components/ui-button/ui-button.module'
 import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
@@ -53,7 +53,6 @@ import { UiNoDataModule } from './components/ui-no-data/ui-no-data.module'
 
 const COMPONENTS = [
   UiAuthComponent,
-  UiBrandComponent,
   UiCardComponent,
   UiCardBodyComponent,
   UiCardFooterComponent,
@@ -89,6 +88,7 @@ const EXPORT_MODULES = [
   NumberedCodeblockModule,
   // Ui Modules will be exported until version 2
   UiAvatarModule,
+  UiBrandModule,
   UiButtonModule,
   UiDebugModule,
   UiFooterModule,

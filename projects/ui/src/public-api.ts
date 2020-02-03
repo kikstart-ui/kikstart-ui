@@ -3,7 +3,8 @@
  */
 export { UiAuthComponent } from './lib/components/ui-auth/ui-auth.component'
 export { UiAvatarSizes } from './lib/components/ui-avatar/ui-avatar.component'
-export { UiBrandComponent, UiBrandSizes } from './lib/components/ui-brand.component'
+export { UiBrandSizes } from './lib/components/ui-brand/ui-brand.component'
+export { UiButtonComponent } from './lib/components/ui-button/ui-button.component'
 export { UiCardComponent } from './lib/components/ui-card.component'
 export { UiCardBodyComponent } from './lib/components/ui-card-body.component'
 export { UiCardFooterComponent } from './lib/components/ui-card-footer.component'
@@ -51,6 +52,7 @@ export { UiModule } from './lib/ui.module'
 export { UiFormsModule } from './lib/ui-forms.module'
 
 export { UiAvatarModule } from './lib/components/ui-avatar/ui-avatar.module'
+export { UiBrandModule } from './lib/components/ui-brand/ui-brand.module'
 export { UiButtonModule } from './lib/components/ui-button/ui-button.module'
 export { UiDataModule } from './lib/components/ui-data/ui-data.module'
 export { UiDebugModule } from './lib/components/ui-debug/ui-debug.module'
