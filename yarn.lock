@@ -8091,10 +8091,10 @@ ngx-markdown@8.2.2:
     prismjs "^1.16.0"
     tslib "^1.9.0"
 
-ngx-timeago@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/ngx-timeago/-/ngx-timeago-1.0.3.tgz#07974828a3d83956ee378f9fe5b8ba5d7127bc9c"
-  integrity sha512-LRIceBwQtyIOfEyZ83oJLmD/x60SMwhoEsSpHN0FWb6mbMmz7Xen+V8bGXbo+2i2sk7q7DCqWkoy6DKZQraoEQ==
+ngx-timeago@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/ngx-timeago/-/ngx-timeago-1.0.4.tgz#351514242c1ad637f8d76693a1dba720cc699285"
+  integrity sha512-/UkF2ETQBRdJ2k3xFoI8uNXNqrzWll2gZB17Ear1pvKyQ0bJczYY4qPa5IzSqurLLTmNxOK447+RMxeuXX+mrQ==
   dependencies:
     tslib "^1.9.0"
 
