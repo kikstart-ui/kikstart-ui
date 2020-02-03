@@ -5,7 +5,7 @@ import { UiBrand } from '../../interfaces/ui-brand'
 import { UiTab } from '../../interfaces/ui-tab'
 import { FormHelper } from '../../helpers/form.helper'
 import { UiLink } from '../../interfaces/ui-link'
-import { UiBrandSizes } from '../../components/ui-brand.component'
+import { UiBrandSizes } from '../ui-brand/ui-brand.component'
 
 /**
  * The ui-auth component can be used to create authentication pages by defining them.
