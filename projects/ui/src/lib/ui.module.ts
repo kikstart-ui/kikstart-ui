@@ -12,10 +12,6 @@ import { ToastrModule } from 'ngx-toastr'
 import { TruncatePipe } from './pipes/truncate.pipe'
 
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
-import { UiCardComponent } from './components/ui-card.component'
-import { UiCardBodyComponent } from './components/ui-card-body.component'
-import { UiCardFooterComponent } from './components/ui-card-footer.component'
-import { UiCardHeaderComponent } from './components/ui-card-header.component'
 import { UiCodeComponent } from './components/ui-code.component'
 import { UiCommentComponent } from './components/ui-comment.component'
 import { UiCommentFormComponent } from './components/ui-comment-form.component'
@@ -41,6 +37,7 @@ import { UiUserComponent } from './components/ui-user.component'
 import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
 import { UiBrandModule } from './components/ui-brand/ui-brand.module'
 import { UiButtonModule } from './components/ui-button/ui-button.module'
+import { UiCardModule } from './components/ui-card/ui-card.module'
 import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
 import { UiFooterModule } from './components/ui-footer/ui-footer.module'
@@ -53,10 +50,6 @@ import { UiNoDataModule } from './components/ui-no-data/ui-no-data.module'
 
 const COMPONENTS = [
   UiAuthComponent,
-  UiCardComponent,
-  UiCardBodyComponent,
-  UiCardFooterComponent,
-  UiCardHeaderComponent,
   UiCodeComponent,
   UiCommentComponent,
   UiCommentFormComponent,
@@ -90,6 +83,7 @@ const EXPORT_MODULES = [
   UiAvatarModule,
   UiBrandModule,
   UiButtonModule,
+  UiCardModule,
   UiDebugModule,
   UiFooterModule,
   UiFormsModule,
