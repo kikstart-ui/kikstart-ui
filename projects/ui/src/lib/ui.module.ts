@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 
-import { NumberedCodeblockModule } from '@ctrl/ngx-numbered-codeblock'
 import { TimeagoModule } from 'ngx-timeago'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { ModalModule } from 'ngx-bootstrap/modal'
@@ -12,7 +11,6 @@ import { ToastrModule } from 'ngx-toastr'
 import { TruncatePipe } from './pipes/truncate.pipe'
 
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
-import { UiCodeComponent } from './components/ui-code.component'
 import { UiCommentComponent } from './components/ui-comment.component'
 import { UiCommentFormComponent } from './components/ui-comment-form.component'
 import { UiContentComponent } from './components/ui-content.component'
@@ -37,6 +35,7 @@ import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
 import { UiBrandModule } from './components/ui-brand/ui-brand.module'
 import { UiButtonModule } from './components/ui-button/ui-button.module'
 import { UiCardModule } from './components/ui-card/ui-card.module'
+import { UiCodeModule } from './components/ui-code/ui-code.module'
 import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
 import { UiFooterModule } from './components/ui-footer/ui-footer.module'
@@ -50,7 +49,6 @@ import { UiNoDataModule } from './components/ui-no-data/ui-no-data.module'
 
 const COMPONENTS = [
   UiAuthComponent,
-  UiCodeComponent,
   UiCommentComponent,
   UiCommentFormComponent,
   UiContentComponent,
@@ -77,12 +75,12 @@ const EXPORT_MODULES = [
   BsDropdownModule,
   ModalModule,
   TabsModule,
-  NumberedCodeblockModule,
   // Ui Modules will be exported until version 2
   UiAvatarModule,
   UiBrandModule,
   UiButtonModule,
   UiCardModule,
+  UiCodeModule,
   UiDebugModule,
   UiFooterModule,
   UiFormsModule,
