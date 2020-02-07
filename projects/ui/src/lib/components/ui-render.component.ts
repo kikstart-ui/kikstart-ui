@@ -16,7 +16,7 @@ import {
   `,
 })
 export class UiRenderComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('target', { read: ViewContainerRef, static: false }) ref: ViewContainerRef
+  @ViewChild('target', { read: ViewContainerRef }) ref: ViewContainerRef
   @Input() public component: any
   @Input() public inputs: any[]
   @Input() public outputs: any[]
