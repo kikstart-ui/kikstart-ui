@@ -13,6 +13,7 @@ import {
   minlengthValidationMessage,
   minValidationMessage,
 } from './validators'
+import { UiFormComponent } from './ui-form.component'
 
 const config: ConfigOption = {
   types: [],
@@ -35,6 +36,7 @@ const config: ConfigOption = {
     FormlyModule.forRoot(config),
     FormlyBootstrapModule,
   ],
-  exports: [FormsModule, ReactiveFormsModule, FormlyModule, FormlyBootstrapModule],
+  exports: [FormsModule, ReactiveFormsModule, FormlyModule, FormlyBootstrapModule, UiFormComponent],
+  declarations: [UiFormComponent],
 })
-export class UiFormsModule {}
+export class UiFormModule {}
