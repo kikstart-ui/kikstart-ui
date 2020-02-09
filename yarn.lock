@@ -10,7 +10,7 @@
     "@angular-devkit/core" "9.0.1"
     rxjs "6.5.3"
 
-"@angular-devkit/build-angular@~0.900.1":
+"@angular-devkit/build-angular@0.900.1":
   version "0.900.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-0.900.1.tgz#84e989e98d25b87c06c5fb852fa6a3f4fc723db1"
   integrity sha512-e1/EiNI9UAKJxI9+7KA59A15Rkx2QA86evb9iUuwxWGvIsTsN/sg/oXUZA//nTUQTAht+qWJp3I2amd/nyQZLQ==
@@ -77,7 +77,7 @@
     webpack-subresource-integrity "1.3.4"
     worker-plugin "3.2.0"
 
-"@angular-devkit/build-ng-packagr@~0.900.1":
+"@angular-devkit/build-ng-packagr@0.900.1":
   version "0.900.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-ng-packagr/-/build-ng-packagr-0.900.1.tgz#43eb41fba926aea7c46e3b4c497cb4d63f361e4e"
   integrity sha512-4gUbQUot8WaqWcUX+FOJiAHoFgD+oyKL5Y2p+3DI0qJHcFPmI9z210Fk4az1Ifp00g9TFxf0YJW3YmZP0oi10A==
@@ -1473,7 +1473,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.14.tgz#1c1d6e3c75dba466e0326948d56e8bd72a1903d2"
   integrity sha512-u/SJDyXwuihpwjXy7hOOghagLEV1KdAST6syfnOk6QZAMzZuWZqXy5aYYZbh8Jdpd4escVFP0MvftHNDb9pruA==
 
-"@types/node@^12.11.1":
+"@types/node@12.12.26":
   version "12.12.26"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.26.tgz#213e153babac0ed169d44a6d919501e68f59dea9"
   integrity sha512-UmUm94/QZvU5xLcUlNR8hA7Ac+fGpO1EG/a8bcWVz0P0LqtxFmun9Y2bbtuckwGboWJIT70DoWq1r3hb56n3DA==
@@ -3220,7 +3220,7 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-codelyzer@^5.1.2:
+codelyzer@5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/codelyzer/-/codelyzer-5.2.1.tgz#44fd431e128009f38c761828c33ebacba9549d32"
   integrity sha512-awBZXFcJUyC5HMYXiHzjr3D24tww2l1D1OqtfA9vUhEtYr32a65A+Gblm/OvsO+HuKLYzn8EDMw1inSM3VbxWA==
@@ -8314,7 +8314,7 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-ng-packagr@^9.0.0:
+ng-packagr@9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-9.0.0.tgz#a91d2092f95e51e6746f78a2c9b4fc9badb80d45"
   integrity sha512-uK9sdOmjAQJgKh/3UN0/3XmV5IRTmdQt3vRElwbmd+rAl8Z/g/h2CMLIXqhLOfWcLnYzepkhoXlQPbiwpxAw0w==

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
 
-import { UiComment } from '../interfaces/ui-comment'
+import { UiComment } from '../../interfaces/ui-comment'
 
 @Component({
   selector: 'ui-comment',

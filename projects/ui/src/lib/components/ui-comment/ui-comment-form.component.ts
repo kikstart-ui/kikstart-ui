@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormGroup } from '@angular/forms'
 import { Observable } from 'rxjs'
 
-import { FormHelper } from '../helpers/form.helper'
+import { FormHelper } from '../../helpers/form.helper'
 import { FormlyTemplateOptions } from '@ngx-formly/core'
 
 @Component({
