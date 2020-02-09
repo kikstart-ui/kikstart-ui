@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 
-import { UiCardBodyComponent } from '..//ui-card/ui-card-body.component'
+import { UiCardBodyComponent } from './ui-card-body.component'
 import { UiCardComponent } from './ui-card.component'
-import { UiCardFooterComponent } from '..//ui-card/ui-card-footer.component'
-import { UiCardHeaderComponent } from '..//ui-card/ui-card-header.component'
+import { UiCardFooterComponent } from './ui-card-footer.component'
+import { UiCardHeaderComponent } from './ui-card-header.component'
 
 import { UiButtonModule } from '../ui-button/ui-button.module'
 import { UiLabelModule } from '../ui-label/ui-label.module'

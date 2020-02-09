@@ -17,7 +17,6 @@ import { UiContentComponent } from './components/ui-content.component'
 import { UiDialogFormComponent } from './components/ui-dialog-form.component'
 import { UiDialogProgressComponent } from './components/ui-dialog-progress.component'
 import { UiDropdownComponent } from './components/ui-dropdown.component'
-import { UiFormComponent } from './components/ui-form.component'
 import { UiHeaderComponent } from './components/ui-header.component'
 import { UiLayoutComponent } from './components/ui-layout.component'
 import { UiListComponent } from './components/ui-list.component'
@@ -39,7 +38,7 @@ import { UiCodeModule } from './components/ui-code/ui-code.module'
 import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
 import { UiFooterModule } from './components/ui-footer/ui-footer.module'
-import { UiFormsModule } from './ui-forms.module'
+import { UiFormModule } from './components/ui-form/ui-form.module'
 import { UiHeroModule } from './components/ui-hero/ui-hero.module'
 import { UiLabelModule } from './components/ui-label/ui-label.module'
 import { UiLinkModule } from './components/ui-link/ui-link.module'
@@ -55,7 +54,6 @@ const COMPONENTS = [
   UiDialogFormComponent,
   UiDialogProgressComponent,
   UiDropdownComponent,
-  UiFormComponent,
   UiHeaderComponent,
   UiLayoutComponent,
   UiListComponent,
@@ -83,7 +81,7 @@ const EXPORT_MODULES = [
   UiCodeModule,
   UiDebugModule,
   UiFooterModule,
-  UiFormsModule,
+  UiFormModule,
   UiHeroModule,
   UiLabelModule,
   UiLinkModule,
@@ -112,7 +110,6 @@ const EXPORT_MODULES = [
   exports: [
     ...EXPORT_MODULES,
     ...COMPONENTS,
-    UiFormsModule,
     TimeagoModule,
     TruncatePipe,
     ToastrModule,
