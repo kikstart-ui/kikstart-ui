@@ -21,7 +21,15 @@ interface UiDialogFormParams {
 
 @Injectable({ providedIn: 'root' })
 export class UiService {
-  private layoutSubject = new BehaviorSubject<UiLayout>(null)
+  private layoutSubject = new BehaviorSubject<UiLayout>({
+    brand: {
+      logo: 'assets/logo.svg',
+      name: 'kikstart',
+      product: 'ui',
+      separator: '|',
+      description: 'Set of ready to use declarative Angular UI components.',
+    },
+  })
 
   set layout(layout: UiLayout) {
     this.layoutSubject.next(layout)
