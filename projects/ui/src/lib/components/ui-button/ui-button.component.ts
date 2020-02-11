@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
-import { UiButton } from '../interfaces/ui-button'
+import { UiButton } from '../../interfaces/ui-button'
 
 @Component({
   selector: 'ui-button',

@@ -318,7 +318,7 @@
     {
       "name": "UiDataShape",
       "id": "interface-UiDataShape-a0b19243e281a33bfb67af474053dabb",
-      "file": "projects/ui/src/lib/components/ui-data.component.ts",
+      "file": "projects/ui/src/lib/components/ui-data/ui-data.component.ts",
       "type": "interface",
       "sourceCode": "import { Component, Input, TemplateRef } from '@angular/core'\n\nexport interface UiDataShape {\n  data: { [key: string]: any }\n  errors?: []\n  loading?: boolean\n}\n\n@Component({\n  selector: 'ui-data',\n  template: `\n    <ng-container *ngIf=\"data as res\">\n      <ng-template\n        [ngTemplateOutlet]=\"outlet\"\n        [ngTemplateOutletContext]=\"{\n          data: select ? res.data[select] : res.data,\n          errors: res.errors,\n          loading: res.loading\n        }\"\n      >\n      </ng-template>\n      <ng-container *ngIf=\"debug && res\">\n        <ui-debug label=\"ui-data\" [data]=\"res\"></ui-debug>\n      </ng-container>\n    </ng-container>\n  `,\n})\nexport class UiDataComponent {\n  @Input() data: UiDataShape = { data: [] }\n  @Input() debug = false\n  @Input() outlet: TemplateRef<any>\n  @Input() select: string\n}\n",
       "properties": [
@@ -350,10 +350,10 @@
     },
     {
       "name": "UiDialogFormParams",
-      "id": "interface-UiDialogFormParams-cb46627b84bbd034d726bafd4fce678d",
+      "id": "interface-UiDialogFormParams-94b1fa648e85d0d71870982644ae0413",
       "file": "projects/ui/src/lib/services/ui.service.ts",
       "type": "interface",
-      "sourceCode": "import { Meta, Title } from '@angular/platform-browser'\nimport { Injectable } from '@angular/core'\nimport { Router } from '@angular/router'\nimport { cloneDeep } from 'lodash'\nimport { BehaviorSubject, Observable } from 'rxjs'\n\nimport { ToastrService, IndividualConfig } from 'ngx-toastr'\nimport { BsModalService } from 'ngx-bootstrap/modal'\nimport { FormlyFieldConfig } from '@ngx-formly/core'\n\nimport { UiDialogFormComponent } from '../components/ui-dialog-form.component'\nimport { UiDialogProgressComponent } from '../components/ui-dialog-progress.component'\nimport { UiLayout } from '../interfaces/ui-layout'\n\ninterface UiDialogFormParams {\n  handler?: (data) => Observable<any>\n  fields: FormlyFieldConfig[]\n  model?: any\n  title?: string\n}\n\n@Injectable({ providedIn: 'root' })\nexport class UiService {\n  private layoutSubject = new BehaviorSubject<UiLayout>(null)\n\n  set layout(layout: UiLayout) {\n    this.layoutSubject.next(layout)\n  }\n\n  get layout(): UiLayout {\n    return this.layoutSubject.getValue()\n  }\n\n  constructor(\n    private meta: Meta,\n    private modal: BsModalService,\n    private router: Router,\n    private title: Title,\n    private toast: ToastrService,\n  ) {}\n\n  openForm({ model, title, handler, fields }: UiDialogFormParams) {\n    this.modal.show(UiDialogFormComponent, {\n      initialState: {\n        model: cloneDeep(model),\n        fields: cloneDeep(fields),\n        title,\n        handler,\n      },\n    })\n  }\n\n  openProgress() {\n    return this.modal.show(UiDialogProgressComponent, {\n      initialState: {\n        title: 'Loading...',\n      },\n    })\n  }\n\n  toastSuccess(message = 'OK :)', title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.success(message, title, config)\n  }\n\n  toastError(\n    message = 'Something went wrong :(',\n    title?: string,\n    config?: Partial<IndividualConfig>,\n  ) {\n    return this.toast.error(message, title, config)\n  }\n\n  toastInfo(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.info(message, title, config)\n  }\n\n  toastWarning(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.warning(message, title, config)\n  }\n\n  isRouteActive(url: string, exact = false): boolean {\n    return this.router.isActive(url, exact)\n  }\n\n  setMetaData(config?: { description?: string; image?: string; title?: string }) {\n    config = config || {}\n    const brand = this.layout.brand || null\n    const appTitle =\n      [brand.name, brand.product].join(` ${brand.separator} `) + ' - ' + brand.description\n\n    // Get the description from the config, or use the default App Description\n    const description = config.description || brand.description\n\n    // Get the image from the config or use the App Image;\n    const image = config.image || brand.logo\n\n    // Get the title from the config and append the App Title, or just use the App Title\n    const title = config.title ? `${config.title} - ${appTitle}` : appTitle\n\n    // Set the Application Title\n    this.title.setTitle(title)\n\n    const tags = [\n      { name: 'description', content: description },\n      { name: 'theme-color', content: brand.color || '#333333' },\n      { name: 'twitter:card', content: 'summary' },\n      { name: 'twitter:image', content: image },\n      { name: 'twitter:title', content: title },\n      { name: 'twitter:description', content: description },\n      { name: 'apple-mobile-web-app-capable', content: 'yes' },\n      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },\n      { name: 'apple-mobile-web-app-title', content: title },\n      { name: 'apple-touch-startup-image', content: image },\n      { property: 'og:title', content: title },\n      { property: 'og:description', content: description },\n      { property: 'og:image', content: image },\n    ]\n\n    tags.forEach(tag => this.meta.updateTag(tag))\n  }\n}\n",
+      "sourceCode": "import { Meta, Title } from '@angular/platform-browser'\nimport { Injectable } from '@angular/core'\nimport { Router } from '@angular/router'\nimport { cloneDeep } from 'lodash'\nimport { BehaviorSubject, Observable } from 'rxjs'\n\nimport { ToastrService, IndividualConfig } from 'ngx-toastr'\nimport { BsModalService } from 'ngx-bootstrap/modal'\nimport { FormlyFieldConfig } from '@ngx-formly/core'\n\nimport { UiDialogFormComponent } from '../components/ui-dialog-form.component'\nimport { UiDialogProgressComponent } from '../components/ui-dialog-progress.component'\nimport { UiLayout } from '../interfaces/ui-layout'\n\ninterface UiDialogFormParams {\n  handler?: (data) => Observable<any>\n  fields: FormlyFieldConfig[]\n  model?: any\n  title?: string\n}\n\n@Injectable({ providedIn: 'root' })\nexport class UiService {\n  private layoutSubject = new BehaviorSubject<UiLayout>({\n    brand: {\n      logo: 'assets/logo.svg',\n      name: 'kikstart',\n      product: 'ui',\n      separator: '|',\n      description: 'Set of ready to use declarative Angular UI components.',\n    },\n  })\n\n  set layout(layout: UiLayout) {\n    this.layoutSubject.next(layout)\n  }\n\n  get layout(): UiLayout {\n    return this.layoutSubject.getValue()\n  }\n\n  constructor(\n    private meta: Meta,\n    private modal: BsModalService,\n    private router: Router,\n    private title: Title,\n    private toast: ToastrService,\n  ) {}\n\n  openForm({ model, title, handler, fields }: UiDialogFormParams) {\n    this.modal.show(UiDialogFormComponent, {\n      initialState: {\n        model: cloneDeep(model),\n        fields: cloneDeep(fields),\n        title,\n        handler,\n      },\n    })\n  }\n\n  openProgress() {\n    return this.modal.show(UiDialogProgressComponent, {\n      initialState: {\n        title: 'Loading...',\n      },\n    })\n  }\n\n  toastSuccess(message = 'OK :)', title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.success(message, title, config)\n  }\n\n  toastError(\n    message = 'Something went wrong :(',\n    title?: string,\n    config?: Partial<IndividualConfig>,\n  ) {\n    return this.toast.error(message, title, config)\n  }\n\n  toastInfo(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.info(message, title, config)\n  }\n\n  toastWarning(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.warning(message, title, config)\n  }\n\n  isRouteActive(url: string, exact = false): boolean {\n    return this.router.isActive(url, exact)\n  }\n\n  setMetaData(config?: { description?: string; image?: string; title?: string }) {\n    config = config || {}\n    const brand = this.layout.brand || null\n    const appTitle =\n      [brand.name, brand.product].join(` ${brand.separator} `) + ' - ' + brand.description\n\n    // Get the description from the config, or use the default App Description\n    const description = config.description || brand.description\n\n    // Get the image from the config or use the App Image;\n    const image = config.image || brand.logo\n\n    // Get the title from the config and append the App Title, or just use the App Title\n    const title = config.title ? `${config.title} - ${appTitle}` : appTitle\n\n    // Set the Application Title\n    this.title.setTitle(title)\n\n    const tags = [\n      { name: 'description', content: description },\n      { name: 'theme-color', content: brand.color || '#333333' },\n      { name: 'twitter:card', content: 'summary' },\n      { name: 'twitter:image', content: image },\n      { name: 'twitter:title', content: title },\n      { name: 'twitter:description', content: description },\n      { name: 'apple-mobile-web-app-capable', content: 'yes' },\n      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },\n      { name: 'apple-mobile-web-app-title', content: title },\n      { name: 'apple-touch-startup-image', content: image },\n      { property: 'og:title', content: title },\n      { property: 'og:description', content: description },\n      { property: 'og:image', content: image },\n    ]\n\n    tags.forEach(tag => this.meta.updateTag(tag))\n  }\n}\n",
       "properties": [
         {
           "name": "fields",
@@ -592,12 +592,12 @@
   "injectables": [
     {
       "name": "UiService",
-      "id": "injectable-UiService-cb46627b84bbd034d726bafd4fce678d",
+      "id": "injectable-UiService-94b1fa648e85d0d71870982644ae0413",
       "file": "projects/ui/src/lib/services/ui.service.ts",
       "properties": [
         {
           "name": "layoutSubject",
-          "defaultValue": "new BehaviorSubject<UiLayout>(null)",
+          "defaultValue": "new BehaviorSubject<UiLayout>({\n    brand: {\n      logo: 'assets/logo.svg',\n      name: 'kikstart',\n      product: 'ui',\n      separator: '|',\n      description: 'Set of ready to use declarative Angular UI components.',\n    },\n  })",
           "type": "",
           "optional": false,
           "description": "",
@@ -622,7 +622,7 @@
           "optional": false,
           "returnType": "boolean",
           "typeParameters": [],
-          "line": 81,
+          "line": 89,
           "jsdoctags": [
             {
               "name": "url",
@@ -651,7 +651,7 @@
           "optional": false,
           "returnType": "void",
           "typeParameters": [],
-          "line": 42,
+          "line": 50,
           "jsdoctags": [
             {
               "type": "UiDialogFormParams",
@@ -667,7 +667,7 @@
           "optional": false,
           "returnType": "any",
           "typeParameters": [],
-          "line": 53
+          "line": 61
         },
         {
           "name": "setMetaData",
@@ -681,7 +681,7 @@
           "optional": false,
           "returnType": "void",
           "typeParameters": [],
-          "line": 85,
+          "line": 93,
           "jsdoctags": [
             {
               "name": "config",
@@ -715,7 +715,7 @@
           "optional": false,
           "returnType": "any",
           "typeParameters": [],
-          "line": 65,
+          "line": 73,
           "jsdoctags": [
             {
               "name": "message",
@@ -764,7 +764,7 @@
           "optional": false,
           "returnType": "any",
           "typeParameters": [],
-          "line": 73,
+          "line": 81,
           "jsdoctags": [
             {
               "name": "message",
@@ -813,7 +813,7 @@
           "optional": false,
           "returnType": "any",
           "typeParameters": [],
-          "line": 61,
+          "line": 69,
           "jsdoctags": [
             {
               "name": "message",
@@ -862,7 +862,7 @@
           "optional": false,
           "returnType": "any",
           "typeParameters": [],
-          "line": 77,
+          "line": 85,
           "jsdoctags": [
             {
               "name": "message",
@@ -891,7 +891,7 @@
         }
       ],
       "description": "",
-      "sourceCode": "import { Meta, Title } from '@angular/platform-browser'\nimport { Injectable } from '@angular/core'\nimport { Router } from '@angular/router'\nimport { cloneDeep } from 'lodash'\nimport { BehaviorSubject, Observable } from 'rxjs'\n\nimport { ToastrService, IndividualConfig } from 'ngx-toastr'\nimport { BsModalService } from 'ngx-bootstrap/modal'\nimport { FormlyFieldConfig } from '@ngx-formly/core'\n\nimport { UiDialogFormComponent } from '../components/ui-dialog-form.component'\nimport { UiDialogProgressComponent } from '../components/ui-dialog-progress.component'\nimport { UiLayout } from '../interfaces/ui-layout'\n\ninterface UiDialogFormParams {\n  handler?: (data) => Observable<any>\n  fields: FormlyFieldConfig[]\n  model?: any\n  title?: string\n}\n\n@Injectable({ providedIn: 'root' })\nexport class UiService {\n  private layoutSubject = new BehaviorSubject<UiLayout>(null)\n\n  set layout(layout: UiLayout) {\n    this.layoutSubject.next(layout)\n  }\n\n  get layout(): UiLayout {\n    return this.layoutSubject.getValue()\n  }\n\n  constructor(\n    private meta: Meta,\n    private modal: BsModalService,\n    private router: Router,\n    private title: Title,\n    private toast: ToastrService,\n  ) {}\n\n  openForm({ model, title, handler, fields }: UiDialogFormParams) {\n    this.modal.show(UiDialogFormComponent, {\n      initialState: {\n        model: cloneDeep(model),\n        fields: cloneDeep(fields),\n        title,\n        handler,\n      },\n    })\n  }\n\n  openProgress() {\n    return this.modal.show(UiDialogProgressComponent, {\n      initialState: {\n        title: 'Loading...',\n      },\n    })\n  }\n\n  toastSuccess(message = 'OK :)', title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.success(message, title, config)\n  }\n\n  toastError(\n    message = 'Something went wrong :(',\n    title?: string,\n    config?: Partial<IndividualConfig>,\n  ) {\n    return this.toast.error(message, title, config)\n  }\n\n  toastInfo(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.info(message, title, config)\n  }\n\n  toastWarning(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.warning(message, title, config)\n  }\n\n  isRouteActive(url: string, exact = false): boolean {\n    return this.router.isActive(url, exact)\n  }\n\n  setMetaData(config?: { description?: string; image?: string; title?: string }) {\n    config = config || {}\n    const brand = this.layout.brand || null\n    const appTitle =\n      [brand.name, brand.product].join(` ${brand.separator} `) + ' - ' + brand.description\n\n    // Get the description from the config, or use the default App Description\n    const description = config.description || brand.description\n\n    // Get the image from the config or use the App Image;\n    const image = config.image || brand.logo\n\n    // Get the title from the config and append the App Title, or just use the App Title\n    const title = config.title ? `${config.title} - ${appTitle}` : appTitle\n\n    // Set the Application Title\n    this.title.setTitle(title)\n\n    const tags = [\n      { name: 'description', content: description },\n      { name: 'theme-color', content: brand.color || '#333333' },\n      { name: 'twitter:card', content: 'summary' },\n      { name: 'twitter:image', content: image },\n      { name: 'twitter:title', content: title },\n      { name: 'twitter:description', content: description },\n      { name: 'apple-mobile-web-app-capable', content: 'yes' },\n      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },\n      { name: 'apple-mobile-web-app-title', content: title },\n      { name: 'apple-touch-startup-image', content: image },\n      { property: 'og:title', content: title },\n      { property: 'og:description', content: description },\n      { property: 'og:image', content: image },\n    ]\n\n    tags.forEach(tag => this.meta.updateTag(tag))\n  }\n}\n",
+      "sourceCode": "import { Meta, Title } from '@angular/platform-browser'\nimport { Injectable } from '@angular/core'\nimport { Router } from '@angular/router'\nimport { cloneDeep } from 'lodash'\nimport { BehaviorSubject, Observable } from 'rxjs'\n\nimport { ToastrService, IndividualConfig } from 'ngx-toastr'\nimport { BsModalService } from 'ngx-bootstrap/modal'\nimport { FormlyFieldConfig } from '@ngx-formly/core'\n\nimport { UiDialogFormComponent } from '../components/ui-dialog-form.component'\nimport { UiDialogProgressComponent } from '../components/ui-dialog-progress.component'\nimport { UiLayout } from '../interfaces/ui-layout'\n\ninterface UiDialogFormParams {\n  handler?: (data) => Observable<any>\n  fields: FormlyFieldConfig[]\n  model?: any\n  title?: string\n}\n\n@Injectable({ providedIn: 'root' })\nexport class UiService {\n  private layoutSubject = new BehaviorSubject<UiLayout>({\n    brand: {\n      logo: 'assets/logo.svg',\n      name: 'kikstart',\n      product: 'ui',\n      separator: '|',\n      description: 'Set of ready to use declarative Angular UI components.',\n    },\n  })\n\n  set layout(layout: UiLayout) {\n    this.layoutSubject.next(layout)\n  }\n\n  get layout(): UiLayout {\n    return this.layoutSubject.getValue()\n  }\n\n  constructor(\n    private meta: Meta,\n    private modal: BsModalService,\n    private router: Router,\n    private title: Title,\n    private toast: ToastrService,\n  ) {}\n\n  openForm({ model, title, handler, fields }: UiDialogFormParams) {\n    this.modal.show(UiDialogFormComponent, {\n      initialState: {\n        model: cloneDeep(model),\n        fields: cloneDeep(fields),\n        title,\n        handler,\n      },\n    })\n  }\n\n  openProgress() {\n    return this.modal.show(UiDialogProgressComponent, {\n      initialState: {\n        title: 'Loading...',\n      },\n    })\n  }\n\n  toastSuccess(message = 'OK :)', title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.success(message, title, config)\n  }\n\n  toastError(\n    message = 'Something went wrong :(',\n    title?: string,\n    config?: Partial<IndividualConfig>,\n  ) {\n    return this.toast.error(message, title, config)\n  }\n\n  toastInfo(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.info(message, title, config)\n  }\n\n  toastWarning(message, title?: string, config?: Partial<IndividualConfig>) {\n    return this.toast.warning(message, title, config)\n  }\n\n  isRouteActive(url: string, exact = false): boolean {\n    return this.router.isActive(url, exact)\n  }\n\n  setMetaData(config?: { description?: string; image?: string; title?: string }) {\n    config = config || {}\n    const brand = this.layout.brand || null\n    const appTitle =\n      [brand.name, brand.product].join(` ${brand.separator} `) + ' - ' + brand.description\n\n    // Get the description from the config, or use the default App Description\n    const description = config.description || brand.description\n\n    // Get the image from the config or use the App Image;\n    const image = config.image || brand.logo\n\n    // Get the title from the config and append the App Title, or just use the App Title\n    const title = config.title ? `${config.title} - ${appTitle}` : appTitle\n\n    // Set the Application Title\n    this.title.setTitle(title)\n\n    const tags = [\n      { name: 'description', content: description },\n      { name: 'theme-color', content: brand.color || '#333333' },\n      { name: 'twitter:card', content: 'summary' },\n      { name: 'twitter:image', content: image },\n      { name: 'twitter:title', content: title },\n      { name: 'twitter:description', content: description },\n      { name: 'apple-mobile-web-app-capable', content: 'yes' },\n      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },\n      { name: 'apple-mobile-web-app-title', content: title },\n      { name: 'apple-touch-startup-image', content: image },\n      { property: 'og:title', content: title },\n      { property: 'og:description', content: description },\n      { property: 'og:image', content: image },\n    ]\n\n    tags.forEach(tag => this.meta.updateTag(tag))\n  }\n}\n",
       "constructorObj": {
         "name": "constructor",
         "description": "",
@@ -917,7 +917,7 @@
             "type": "ToastrService"
           }
         ],
-        "line": 32,
+        "line": 40,
         "jsdoctags": [
           {
             "name": "meta",
@@ -969,7 +969,7 @@
               }
             ],
             "returnType": "void",
-            "line": 26,
+            "line": 34,
             "jsdoctags": [
               {
                 "name": "layout",
@@ -984,7 +984,7 @@
             "name": "layout",
             "type": "",
             "returnType": "UiLayout",
-            "line": 30
+            "line": 38
           }
         }
       },
@@ -1874,7 +1874,7 @@
   "components": [
     {
       "name": "UiAuthComponent",
-      "id": "component-UiAuthComponent-c0187f767490f80d1f07349e1f71d83d",
+      "id": "component-UiAuthComponent-8d74142d4378bca170b70f4cebed2a30",
       "file": "projects/ui/src/lib/components/ui-auth/ui-auth.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -1997,7 +1997,7 @@
       "description": "<p>The ui-auth component can be used to create authentication pages by defining them.</p>\n",
       "rawdescription": "The ui-auth component can be used to create authentication pages by defining them.",
       "type": "component",
-      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { FormGroup } from '@angular/forms'\n\nimport { UiBrand } from '../../interfaces/ui-brand'\nimport { UiTab } from '../../interfaces/ui-tab'\nimport { FormHelper } from '../../helpers/form.helper'\nimport { UiLink } from '../../interfaces/ui-link'\nimport { UiBrandSizes } from '../../components/ui-brand.component'\n\n/**\n * The ui-auth component can be used to create authentication pages by defining them.\n */\n@Component({\n  selector: 'ui-auth',\n  templateUrl: './ui-auth.component.html',\n  styleUrls: ['./ui-auth.component.scss'],\n})\nexport class UiAuthComponent {\n  @Input() brand: UiBrand\n  @Input() brandSize: UiBrandSizes = 'lg'\n  @Input() footer?: { html?: string; text?: string; links?: UiLink[] }\n  @Input() bottomLink: { path: string; label: string }\n  @Input() links: UiTab[] = []\n  @Input() name = 'kikstart.dev'\n  @Input() label: string\n  @Input() loading = false\n  @Input() form = new FormGroup({})\n  @Input() model = {}\n  @Input() fields: FormHelper[] = []\n  @Input() navigation = true\n  @Input() socialButtons = false\n  @Output() action = new EventEmitter()\n  selectedSocial: 'github' | 'google'\n\n  constructor() {}\n\n  signInGithub() {\n    this.loading = true\n    this.selectedSocial = 'github'\n    return this.action.emit({ type: 'SOCIAL', payload: 'github' })\n  }\n\n  signInGoogle() {\n    this.loading = true\n    this.selectedSocial = 'google'\n    return this.action.emit({ type: 'SOCIAL', payload: 'google' })\n  }\n}\n",
+      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { FormGroup } from '@angular/forms'\n\nimport { UiBrand } from '../../interfaces/ui-brand'\nimport { UiTab } from '../../interfaces/ui-tab'\nimport { FormHelper } from '../../helpers/form.helper'\nimport { UiLink } from '../../interfaces/ui-link'\nimport { UiBrandSizes } from '../ui-brand/ui-brand.component'\n\n/**\n * The ui-auth component can be used to create authentication pages by defining them.\n */\n@Component({\n  selector: 'ui-auth',\n  templateUrl: './ui-auth.component.html',\n  styleUrls: ['./ui-auth.component.scss'],\n})\nexport class UiAuthComponent {\n  @Input() brand: UiBrand\n  @Input() brandSize: UiBrandSizes = 'lg'\n  @Input() footer?: { html?: string; text?: string; links?: UiLink[] }\n  @Input() bottomLink: { path: string; label: string }\n  @Input() links: UiTab[] = []\n  @Input() name = 'kikstart.dev'\n  @Input() label: string\n  @Input() loading = false\n  @Input() form = new FormGroup({})\n  @Input() model = {}\n  @Input() fields: FormHelper[] = []\n  @Input() navigation = true\n  @Input() socialButtons = false\n  @Output() action = new EventEmitter()\n  selectedSocial: 'github' | 'google'\n\n  constructor() {}\n\n  signInGithub() {\n    this.loading = true\n    this.selectedSocial = 'github'\n    return this.action.emit({ type: 'SOCIAL', payload: 'github' })\n  }\n\n  signInGoogle() {\n    this.loading = true\n    this.selectedSocial = 'google'\n    return this.action.emit({ type: 'SOCIAL', payload: 'google' })\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": [
         {
@@ -2017,7 +2017,7 @@
     {
       "name": "UiAvatarComponent",
       "id": "component-UiAvatarComponent-5d863cc4acf03951a2da5769e8427cc4",
-      "file": "projects/ui/src/lib/components/ui-avatar.component.ts",
+      "file": "projects/ui/src/lib/components/ui-avatar/ui-avatar.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2064,8 +2064,8 @@
     },
     {
       "name": "UiBrandComponent",
-      "id": "component-UiBrandComponent-dba1c5125e0777d95f34772a1c55c413",
-      "file": "projects/ui/src/lib/components/ui-brand.component.ts",
+      "id": "component-UiBrandComponent-0244d2e108f86105158147ca2602da43",
+      "file": "projects/ui/src/lib/components/ui-brand/ui-brand.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2100,15 +2100,15 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiBrand } from '../interfaces/ui-brand'\n\nexport type UiBrandSizes = 'sm' | 'lg'\n\n@Component({\n  selector: 'ui-brand',\n  template: `\n    <span [class.brand-sm]=\"size === 'sm'\" [class.brand-lg]=\"size === 'lg'\">\n      <img\n        *ngIf=\"brand?.logo\"\n        [attr.src]=\"brand?.logo\"\n        class=\"brand-logo d-inline-block align-top\"\n        alt=\"brand logo\"\n      />\n      <span *ngIf=\"brand?.name\" class=\"brand-name\">{{ brand?.name }}</span>\n      <span *ngIf=\"brand?.separator\" class=\"brand-separator\">{{ brand?.separator }}</span>\n      <span *ngIf=\"brand?.product\" class=\"brand-product\">{{ brand?.product }}</span>\n    </span>\n  `,\n  styles: [\n    `\n      .brand-logo {\n        height: 30px;\n        width: 30px;\n        margin-right: 10px;\n      }\n      .brand-name {\n        font-weight: 700;\n        letter-spacing: 4px;\n      }\n      .brand-product {\n        color: #bdbdbd;\n        margin-left: 5px;\n        font-weight: 400;\n        letter-spacing: 4px;\n      }\n      .brand-separator {\n        margin-left: 2px;\n        color: #555;\n        font-weight: 200;\n      }\n      .brand-sm {\n        line-height: 30px;\n      }\n      .brand-lg {\n        font-size: 24px;\n      }\n      .brand-lg .brand-logo {\n        height: 40px;\n        width: 40px;\n        margin-right: 10px;\n      }\n    `,\n  ],\n})\nexport class UiBrandComponent {\n  @Input() brand: UiBrand\n  @Input() size: UiBrandSizes = 'sm'\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiBrand } from '../../interfaces/ui-brand'\n\nexport type UiBrandSizes = 'sm' | 'lg'\n\n@Component({\n  selector: 'ui-brand',\n  template: `\n    <span [class.brand-sm]=\"size === 'sm'\" [class.brand-lg]=\"size === 'lg'\">\n      <img\n        *ngIf=\"brand?.logo\"\n        [attr.src]=\"brand?.logo\"\n        class=\"brand-logo d-inline-block align-top\"\n        alt=\"brand logo\"\n      />\n      <span *ngIf=\"brand?.name\" class=\"brand-name\">{{ brand?.name }}</span>\n      <span *ngIf=\"brand?.separator\" class=\"brand-separator\">{{ brand?.separator }}</span>\n      <span *ngIf=\"brand?.product\" class=\"brand-product\">{{ brand?.product }}</span>\n    </span>\n  `,\n  styles: [\n    `\n      .brand-logo {\n        height: 30px;\n        width: 30px;\n        margin-right: 10px;\n      }\n      .brand-name {\n        font-weight: 700;\n        letter-spacing: 4px;\n      }\n      .brand-product {\n        color: #bdbdbd;\n        margin-left: 5px;\n        font-weight: 400;\n        letter-spacing: 4px;\n      }\n      .brand-separator {\n        margin-left: 2px;\n        color: #555;\n        font-weight: 200;\n      }\n      .brand-sm {\n        line-height: 30px;\n      }\n      .brand-lg {\n        font-size: 24px;\n      }\n      .brand-lg .brand-logo {\n        height: 40px;\n        width: 40px;\n        margin-right: 10px;\n      }\n    `,\n  ],\n})\nexport class UiBrandComponent {\n  @Input() brand: UiBrand\n  @Input() size: UiBrandSizes = 'sm'\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "\n      .brand-logo {\n        height: 30px;\n        width: 30px;\n        margin-right: 10px;\n      }\n      .brand-name {\n        font-weight: 700;\n        letter-spacing: 4px;\n      }\n      .brand-product {\n        color: #bdbdbd;\n        margin-left: 5px;\n        font-weight: 400;\n        letter-spacing: 4px;\n      }\n      .brand-separator {\n        margin-left: 2px;\n        color: #555;\n        font-weight: 200;\n      }\n      .brand-sm {\n        line-height: 30px;\n      }\n      .brand-lg {\n        font-size: 24px;\n      }\n      .brand-lg .brand-logo {\n        height: 40px;\n        width: 40px;\n        margin-right: 10px;\n      }\n    \n"
     },
     {
       "name": "UiButtonComponent",
-      "id": "component-UiButtonComponent-c7c52757183a6c77c6713c6d9c4add40",
-      "file": "projects/ui/src/lib/components/ui-button.component.ts",
+      "id": "component-UiButtonComponent-c1d90b704a6bc7f643937830d7e7d894",
+      "file": "projects/ui/src/lib/components/ui-button/ui-button.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2162,7 +2162,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiButton } from '../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-button',\n  template: `\n    <ng-container *ngIf=\"isLink\">\n      <ui-link [linkClass]=\"btnClass\" [link]=\"button\"></ui-link>\n    </ng-container>\n    <ng-container *ngIf=\"isAction\">\n      <button\n        [disabled]=\"disabled || button?.disabled\"\n        [class]=\"btnClass\"\n        (click)=\"action.emit(button)\"\n      >\n        <ui-loading-icon *ngIf=\"loading\" [class.mr-2]=\"loadingClass\" [icon]=\"loadingIcon\">\n        </ui-loading-icon>\n        <ui-label\n          [label]=\"button?.label\"\n          [icon]=\"button?.icon\"\n          [iconAfter]=\"button?.iconAfter\"\n        ></ui-label>\n      </button>\n    </ng-container>\n    <ng-container *ngIf=\"isHandler\">\n      <button\n        [disabled]=\"disabled || button?.disabled\"\n        [class]=\"btnClass\"\n        (click)=\"button.handler({ type: button.action, payload: button.payload })\"\n      >\n        <ui-loading-icon *ngIf=\"loading\" [class.mr-2]=\"loadingClass\" [icon]=\"loadingIcon\">\n        </ui-loading-icon>\n        <ui-label\n          [label]=\"button?.label\"\n          [icon]=\"button?.icon\"\n          [iconAfter]=\"button?.iconAfter\"\n        ></ui-label>\n      </button>\n    </ng-container>\n  `,\n})\nexport class UiButtonComponent {\n  @Input() disabled = false\n  @Input() loading = false\n  @Input() loadingIcon = 'fa-spinner'\n  @Input() button: UiButton\n  @Input() buttonClass: string\n  @Output() action = new EventEmitter()\n\n  get loadingClass() {\n    return this.button && (this.button.icon || this.button.iconAfter || this.button.label)\n  }\n  get btnClass() {\n    return [\n      'btn',\n      this.button.className\n        ? this.button.className\n        : this.buttonClass\n        ? this.buttonClass\n        : 'btn-outline-info',\n    ].join(' ')\n  }\n  get isAction() {\n    return !this.isHandler && !this.isLink\n  }\n\n  get isHandler() {\n    return this.button.handler\n  }\n\n  get isLink() {\n    return this.button.path || this.button.url\n  }\n}\n",
+      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiButton } from '../../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-button',\n  template: `\n    <ng-container *ngIf=\"isLink\">\n      <ui-link [linkClass]=\"btnClass\" [link]=\"button\"></ui-link>\n    </ng-container>\n    <ng-container *ngIf=\"isAction\">\n      <button\n        [disabled]=\"disabled || button?.disabled\"\n        [class]=\"btnClass\"\n        (click)=\"action.emit(button)\"\n      >\n        <ui-loading-icon *ngIf=\"loading\" [class.mr-2]=\"loadingClass\" [icon]=\"loadingIcon\">\n        </ui-loading-icon>\n        <ui-label\n          [label]=\"button?.label\"\n          [icon]=\"button?.icon\"\n          [iconAfter]=\"button?.iconAfter\"\n        ></ui-label>\n      </button>\n    </ng-container>\n    <ng-container *ngIf=\"isHandler\">\n      <button\n        [disabled]=\"disabled || button?.disabled\"\n        [class]=\"btnClass\"\n        (click)=\"button.handler({ type: button.action, payload: button.payload })\"\n      >\n        <ui-loading-icon *ngIf=\"loading\" [class.mr-2]=\"loadingClass\" [icon]=\"loadingIcon\">\n        </ui-loading-icon>\n        <ui-label\n          [label]=\"button?.label\"\n          [icon]=\"button?.icon\"\n          [iconAfter]=\"button?.iconAfter\"\n        ></ui-label>\n      </button>\n    </ng-container>\n  `,\n})\nexport class UiButtonComponent {\n  @Input() disabled = false\n  @Input() loading = false\n  @Input() loadingIcon = 'fa-spinner'\n  @Input() button: UiButton\n  @Input() buttonClass: string\n  @Output() action = new EventEmitter()\n\n  get loadingClass() {\n    return this.button && (this.button.icon || this.button.iconAfter || this.button.label)\n  }\n  get btnClass() {\n    return [\n      'btn',\n      this.button.className\n        ? this.button.className\n        : this.buttonClass\n        ? this.buttonClass\n        : 'btn-outline-info',\n    ].join(' ')\n  }\n  get isAction() {\n    return !this.isHandler && !this.isLink\n  }\n\n  get isHandler() {\n    return this.button.handler\n  }\n\n  get isLink() {\n    return this.button.path || this.button.url\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "",
@@ -2216,8 +2216,8 @@
     },
     {
       "name": "UiButtonsComponent",
-      "id": "component-UiButtonsComponent-723fecf2657582395d7a3e821bfca244",
-      "file": "projects/ui/src/lib/components/ui-buttons.component.ts",
+      "id": "component-UiButtonsComponent-52eb7d6a1f52b236cf896ea2f4c8431a",
+      "file": "projects/ui/src/lib/components/ui-button/ui-buttons.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2258,7 +2258,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiButton } from '../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-buttons',\n  template: `\n    <ng-container *ngFor=\"let button of buttons; let first = first; let last = last\">\n      <ui-button\n        class=\"btn-group\"\n        [class.first]=\"first && !last\"\n        [class.middle]=\"!first && !last\"\n        [class.last]=\"last && !first\"\n        (action)=\"action.emit($event)\"\n        [button]=\"button\"\n        [buttonClass]=\"buttonClass\"\n      ></ui-button>\n    </ng-container>\n  `,\n  styles: [\n    `\n      ::ng-deep .first .btn {\n        border-top-right-radius: 0;\n        border-bottom-right-radius: 0;\n      }\n      ::ng-deep .middle .btn {\n        border-left: 0;\n        border-radius: 0;\n      }\n      ::ng-deep .last .btn {\n        border-left: 0;\n        border-top-left-radius: 0;\n        border-bottom-left-radius: 0;\n      }\n    `,\n  ],\n})\nexport class UiButtonsComponent {\n  @Input() buttons: UiButton[]\n  @Input() buttonClass: string\n  @Output() action = new EventEmitter()\n}\n",
+      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiButton } from '../../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-buttons',\n  template: `\n    <ng-container *ngFor=\"let button of buttons; let first = first; let last = last\">\n      <ui-button\n        class=\"btn-group\"\n        [class.first]=\"first && !last\"\n        [class.middle]=\"!first && !last\"\n        [class.last]=\"last && !first\"\n        (action)=\"action.emit($event)\"\n        [button]=\"button\"\n        [buttonClass]=\"buttonClass\"\n      ></ui-button>\n    </ng-container>\n  `,\n  styles: [\n    `\n      ::ng-deep .first .btn {\n        border-top-right-radius: 0;\n        border-bottom-right-radius: 0;\n      }\n      ::ng-deep .middle .btn {\n        border-left: 0;\n        border-radius: 0;\n      }\n      ::ng-deep .last .btn {\n        border-left: 0;\n        border-top-left-radius: 0;\n        border-bottom-left-radius: 0;\n      }\n    `,\n  ],\n})\nexport class UiButtonsComponent {\n  @Input() buttons: UiButton[]\n  @Input() buttonClass: string\n  @Output() action = new EventEmitter()\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "\n      ::ng-deep .first .btn {\n        border-top-right-radius: 0;\n        border-bottom-right-radius: 0;\n      }\n      ::ng-deep .middle .btn {\n        border-left: 0;\n        border-radius: 0;\n      }\n      ::ng-deep .last .btn {\n        border-left: 0;\n        border-top-left-radius: 0;\n        border-bottom-left-radius: 0;\n      }\n    \n"
@@ -2266,7 +2266,7 @@
     {
       "name": "UiCardBodyComponent",
       "id": "component-UiCardBodyComponent-f1a027c67f0ad1a13f38c22b7673bd37",
-      "file": "projects/ui/src/lib/components/ui-card-body.component.ts",
+      "file": "projects/ui/src/lib/components/ui-card/ui-card-body.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2295,7 +2295,7 @@
     {
       "name": "UiCardComponent",
       "id": "component-UiCardComponent-52dc5414a22be80f58118a12fad4c17a",
-      "file": "projects/ui/src/lib/components/ui-card.component.ts",
+      "file": "projects/ui/src/lib/components/ui-card/ui-card.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2324,7 +2324,7 @@
     {
       "name": "UiCardFooterComponent",
       "id": "component-UiCardFooterComponent-91e45924a694825a8ffe94aedbe9d394",
-      "file": "projects/ui/src/lib/components/ui-card-footer.component.ts",
+      "file": "projects/ui/src/lib/components/ui-card/ui-card-footer.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2352,8 +2352,8 @@
     },
     {
       "name": "UiCardHeaderComponent",
-      "id": "component-UiCardHeaderComponent-836fa82de8559ed7cd28c22aeb161d58",
-      "file": "projects/ui/src/lib/components/ui-card-header.component.ts",
+      "id": "component-UiCardHeaderComponent-669e158f3d7a7b40572997141100666d",
+      "file": "projects/ui/src/lib/components/ui-card/ui-card-header.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2407,7 +2407,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiLink } from '../interfaces/ui-link'\nimport { UiButton } from '../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-card-header',\n  template: `\n    <h5 class=\"card-header d-flex justify-content-between\">\n      <div class=\"align-self-center\" *ngIf=\"cardTitle || cardSubTitle || icon || iconAfter\">\n        <ui-label [icon]=\"icon\" [iconAfter]=\"iconAfter\" [label]=\"cardTitle\"></ui-label>\n        <small class=\"text-muted ml-2\" *ngIf=\"cardSubTitle\">{{ cardSubTitle }}</small>\n      </div>\n      <ng-content></ng-content>\n      <div *ngIf=\"buttons?.length\">\n        <ng-container *ngFor=\"let button of buttons\">\n          <ui-button\n            (action)=\"action.emit($event)\"\n            buttonClass=\"btn-sm p-0 ml-2\"\n            [button]=\"button\"\n          ></ui-button>\n        </ng-container>\n      </div>\n    </h5>\n  `,\n})\nexport class UiCardHeaderComponent {\n  @Input() icon?: string\n  @Input() iconAfter?: string\n  @Input() cardTitle: string\n  @Input() cardSubTitle?: string\n  @Input() buttons: UiButton[] | UiLink[]\n  @Output() action = new EventEmitter()\n}\n",
+      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\nimport { UiLink } from '../../interfaces/ui-link'\nimport { UiButton } from '../../interfaces/ui-button'\n\n@Component({\n  selector: 'ui-card-header',\n  template: `\n    <h5 class=\"card-header d-flex justify-content-between\">\n      <div class=\"align-self-center\" *ngIf=\"cardTitle || cardSubTitle || icon || iconAfter\">\n        <ui-label [icon]=\"icon\" [iconAfter]=\"iconAfter\" [label]=\"cardTitle\"></ui-label>\n        <small class=\"text-muted ml-2\" *ngIf=\"cardSubTitle\">{{ cardSubTitle }}</small>\n      </div>\n      <ng-content></ng-content>\n      <div *ngIf=\"buttons?.length\">\n        <ng-container *ngFor=\"let button of buttons\">\n          <ui-button\n            (action)=\"action.emit($event)\"\n            buttonClass=\"btn-sm p-0 ml-2\"\n            [button]=\"button\"\n          ></ui-button>\n        </ng-container>\n      </div>\n    </h5>\n  `,\n})\nexport class UiCardHeaderComponent {\n  @Input() icon?: string\n  @Input() iconAfter?: string\n  @Input() cardTitle: string\n  @Input() cardSubTitle?: string\n  @Input() buttons: UiButton[] | UiLink[]\n  @Output() action = new EventEmitter()\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": ""
@@ -2415,7 +2415,7 @@
     {
       "name": "UiCodeComponent",
       "id": "component-UiCodeComponent-60871557b6fcbfb672ac2b90b87fcbfb",
-      "file": "projects/ui/src/lib/components/ui-code.component.ts",
+      "file": "projects/ui/src/lib/components/ui-code/ui-code.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2464,8 +2464,8 @@
     },
     {
       "name": "UiCommentComponent",
-      "id": "component-UiCommentComponent-2c2b464014727a075fd81e779e3e1d4d",
-      "file": "projects/ui/src/lib/components/ui-comment.component.ts",
+      "id": "component-UiCommentComponent-26bf3a0080c333ffe961437f603c2aba",
+      "file": "projects/ui/src/lib/components/ui-comment/ui-comment.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2504,15 +2504,15 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\n\nimport { UiComment } from '../interfaces/ui-comment'\n\n@Component({\n  selector: 'ui-comment',\n  template: `\n    <div class=\"media\">\n      <ui-avatar\n        *ngIf=\"comment?.author?.avatar\"\n        [avatar]=\"comment?.author?.avatar\"\n        [alt]=\"comment?.author?.username\"\n        class=\"mr-3\"\n      >\n      </ui-avatar>\n      <div class=\"media-body\">\n        <div class=\"mt-0\">\n          <div class=\"pull-right\" *ngIf=\"deleteButton\">\n            <button\n              class=\"btn btn-sm text-muted\"\n              (click)=\"action.emit({ type: 'DELETE', payload: comment })\"\n            >\n              <i class=\"fa fa-times\"></i>\n            </button>\n          </div>\n          <strong *ngIf=\"comment?.author?.name\" class=\"mr-1\">\n            <ui-link\n              *ngIf=\"comment?.author?.path\"\n              [path]=\"comment?.author?.path\"\n              [label]=\"comment?.author?.name\"\n            ></ui-link>\n            <span *ngIf=\"!comment?.author?.path\">{{ comment?.author?.name }}</span>\n          </strong>\n          <small class=\"text-muted\">\n            <span *ngIf=\"comment?.author?.username\"> {{ comment?.author?.username }} </span>\n            <span *ngIf=\"comment?.author?.username && comment?.created\" class=\"mx-1\"> · </span>\n            <span *ngIf=\"comment?.created\">\n              <ui-link\n                *ngIf=\"comment?.path\"\n                [path]=\"comment?.path\"\n                [label]=\"comment?.created | timeago\"\n              ></ui-link>\n              <span *ngIf=\"!comment?.path\">{{ comment?.created | timeago }}</span>\n            </span>\n          </small>\n        </div>\n        <div class=\"mt-1\" *ngIf=\"comment?.text\">\n          {{ comment?.text }}\n        </div>\n        <div *ngIf=\"comment?.buttons && comment?.buttons?.length\" class=\"mt-1\">\n          <ui-button\n            (action)=\"action.emit({ type: $event.type, payload: comment })\"\n            [button]=\"button\"\n            buttonClass=\"btn-sm text-muted px-0 mr-3\"\n            *ngFor=\"let button of comment?.buttons\"\n          ></ui-button>\n        </div>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      :host {\n        display: block;\n      }\n    `,\n  ],\n})\nexport class UiCommentComponent {\n  @Input() comment?: UiComment\n  @Input() deleteButton = false\n  @Output() action = new EventEmitter()\n}\n",
+      "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core'\n\nimport { UiComment } from '../../interfaces/ui-comment'\n\n@Component({\n  selector: 'ui-comment',\n  template: `\n    <div class=\"media\">\n      <ui-avatar\n        *ngIf=\"comment?.author?.avatar\"\n        [avatar]=\"comment?.author?.avatar\"\n        [alt]=\"comment?.author?.username\"\n        class=\"mr-3\"\n      >\n      </ui-avatar>\n      <div class=\"media-body\">\n        <div class=\"mt-0\">\n          <div class=\"pull-right\" *ngIf=\"deleteButton\">\n            <button\n              class=\"btn btn-sm text-muted\"\n              (click)=\"action.emit({ type: 'DELETE', payload: comment })\"\n            >\n              <i class=\"fa fa-times\"></i>\n            </button>\n          </div>\n          <strong *ngIf=\"comment?.author?.name\" class=\"mr-1\">\n            <ui-link\n              *ngIf=\"comment?.author?.path\"\n              [path]=\"comment?.author?.path\"\n              [label]=\"comment?.author?.name\"\n            ></ui-link>\n            <span *ngIf=\"!comment?.author?.path\">{{ comment?.author?.name }}</span>\n          </strong>\n          <small class=\"text-muted\">\n            <span *ngIf=\"comment?.author?.username\"> {{ comment?.author?.username }} </span>\n            <span *ngIf=\"comment?.author?.username && comment?.created\" class=\"mx-1\"> · </span>\n            <span *ngIf=\"comment?.created\">\n              <ui-link\n                *ngIf=\"comment?.path\"\n                [path]=\"comment?.path\"\n                [label]=\"comment?.created | timeago\"\n              ></ui-link>\n              <span *ngIf=\"!comment?.path\">{{ comment?.created | timeago }}</span>\n            </span>\n          </small>\n        </div>\n        <div class=\"mt-1\" *ngIf=\"comment?.text\">\n          {{ comment?.text }}\n        </div>\n        <div *ngIf=\"comment?.buttons && comment?.buttons?.length\" class=\"mt-1\">\n          <ui-button\n            (action)=\"action.emit({ type: $event.type, payload: comment })\"\n            [button]=\"button\"\n            buttonClass=\"btn-sm text-muted px-0 mr-3\"\n            *ngFor=\"let button of comment?.buttons\"\n          ></ui-button>\n        </div>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      :host {\n        display: block;\n      }\n    `,\n  ],\n})\nexport class UiCommentComponent {\n  @Input() comment?: UiComment\n  @Input() deleteButton = false\n  @Output() action = new EventEmitter()\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "\n      :host {\n        display: block;\n      }\n    \n"
     },
     {
       "name": "UiCommentFormComponent",
-      "id": "component-UiCommentFormComponent-1473e8f15bc4b49b4973581b8d715b3c",
-      "file": "projects/ui/src/lib/components/ui-comment-form.component.ts",
+      "id": "component-UiCommentFormComponent-91d17a88b9155c299b2ca829c223b97a",
+      "file": "projects/ui/src/lib/components/ui-comment/ui-comment-form.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2656,7 +2656,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'\nimport { FormGroup } from '@angular/forms'\nimport { Observable } from 'rxjs'\n\nimport { FormHelper } from '../helpers/form.helper'\nimport { FormlyTemplateOptions } from '@ngx-formly/core'\n\n@Component({\n  selector: 'ui-comment-form',\n  template: `\n    <div class=\"media\">\n      <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" class=\"mr-3\"></ui-avatar>\n      <div class=\"media-body\">\n        <ng-container *ngIf=\"fields.length\">\n          <div>\n            <ui-form\n              #f\n              [submitButton]=\"false\"\n              [form]=\"form\"\n              [model]=\"model\"\n              [fields]=\"fields\"\n              (action)=\"submit($event)\"\n            >\n            </ui-form>\n          </div>\n          <div class=\"mt-3 d-flex justify-content-between\">\n            <button [disabled]=\"true\" class=\"btn btn-sm px-0\" *ngIf=\"maxLength\">\n              {{ textCount }} / {{ maxLength }}\n            </button>\n            <button\n              *ngIf=\"submitButton\"\n              [disabled]=\"!form.valid\"\n              [class]=\"submitButtonClass\"\n              (click)=\"f.submit()\"\n            >\n              <i class=\"fa fa-spin fa-spinner mr-1\" *ngIf=\"form.disabled\"></i>\n              {{ submitButton }}\n            </button>\n          </div>\n        </ng-container>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      :host {\n        display: block;\n      }\n      ::ng-deep textarea.form-control {\n        background-color: inherit !important;\n        color: inherit !important;\n        border: 1px solid #444 !important;\n      }\n      ::ng-deep textarea.form-control:disabled {\n        color: #999 !important;\n      }\n    `,\n  ],\n})\nexport class UiCommentFormComponent implements OnInit {\n  @Input() reset$: Observable<boolean>\n  @Input() minLength: boolean | number = 1\n  @Input() maxLength: boolean | number = 280\n  @Input() rows: boolean | number = 3\n  @Input() required = true\n  @Input() submitButton: boolean | string = 'Submit'\n  @Input() submitButtonClass = 'btn btn-outline-success'\n  @Input() placeholder = 'Enter your comment'\n  @Input() avatar?: string\n  @Input() form = new FormGroup({})\n  @Input() model = { text: null }\n  @Input() fields: FormHelper[] = []\n\n  @Output() action = new EventEmitter(true)\n\n  ngOnInit() {\n    this.fields = [this.createCommentField()]\n    if (this.reset$) {\n      this.reset$.subscribe(val => {\n        this.resetForm()\n      })\n    }\n  }\n\n  get textCount() {\n    return this.model.text ? this.model.text.length : 0\n  }\n\n  createCommentField() {\n    const fieldOptions: FormlyTemplateOptions = {\n      placeholder: this.placeholder,\n      required: this.required,\n      blur: f => {\n        if (!f.formControl.value) {\n          f.formControl.markAsUntouched()\n        }\n      },\n    }\n    if (this.minLength && typeof this.minLength === 'number') {\n      fieldOptions.minLength = this.minLength\n    }\n    if (this.maxLength && typeof this.maxLength === 'number') {\n      fieldOptions.maxLength = this.maxLength\n    }\n    if (this.rows && typeof this.rows === 'number') {\n      fieldOptions.rows = this.rows\n    }\n    return FormHelper.textarea('text', fieldOptions)\n  }\n\n  resetForm() {\n    this.model = { text: null }\n    this.form.enable()\n    this.form.reset()\n  }\n\n  submit($event) {\n    if (this.reset$) {\n      this.form.disable()\n    } else {\n      this.resetForm()\n    }\n    this.action.emit($event)\n  }\n}\n",
+      "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'\nimport { FormGroup } from '@angular/forms'\nimport { Observable } from 'rxjs'\n\nimport { FormHelper } from '../../helpers/form.helper'\nimport { FormlyTemplateOptions } from '@ngx-formly/core'\n\n@Component({\n  selector: 'ui-comment-form',\n  template: `\n    <div class=\"media\">\n      <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" class=\"mr-3\"></ui-avatar>\n      <div class=\"media-body\">\n        <ng-container *ngIf=\"fields.length\">\n          <div>\n            <ui-form\n              #f\n              [submitButton]=\"false\"\n              [form]=\"form\"\n              [model]=\"model\"\n              [fields]=\"fields\"\n              (action)=\"submit($event)\"\n            >\n            </ui-form>\n          </div>\n          <div class=\"mt-3 d-flex justify-content-between\">\n            <button [disabled]=\"true\" class=\"btn btn-sm px-0\" *ngIf=\"maxLength\">\n              {{ textCount }} / {{ maxLength }}\n            </button>\n            <button\n              *ngIf=\"submitButton\"\n              [disabled]=\"!form.valid\"\n              [class]=\"submitButtonClass\"\n              (click)=\"f.submit()\"\n            >\n              <i class=\"fa fa-spin fa-spinner mr-1\" *ngIf=\"form.disabled\"></i>\n              {{ submitButton }}\n            </button>\n          </div>\n        </ng-container>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      :host {\n        display: block;\n      }\n      ::ng-deep textarea.form-control {\n        background-color: inherit !important;\n        color: inherit !important;\n        border: 1px solid #444 !important;\n      }\n      ::ng-deep textarea.form-control:disabled {\n        color: #999 !important;\n      }\n    `,\n  ],\n})\nexport class UiCommentFormComponent implements OnInit {\n  @Input() reset$: Observable<boolean>\n  @Input() minLength: boolean | number = 1\n  @Input() maxLength: boolean | number = 280\n  @Input() rows: boolean | number = 3\n  @Input() required = true\n  @Input() submitButton: boolean | string = 'Submit'\n  @Input() submitButtonClass = 'btn btn-outline-success'\n  @Input() placeholder = 'Enter your comment'\n  @Input() avatar?: string\n  @Input() form = new FormGroup({})\n  @Input() model = { text: null }\n  @Input() fields: FormHelper[] = []\n\n  @Output() action = new EventEmitter(true)\n\n  ngOnInit() {\n    this.fields = [this.createCommentField()]\n    if (this.reset$) {\n      this.reset$.subscribe(val => {\n        this.resetForm()\n      })\n    }\n  }\n\n  get textCount() {\n    return this.model.text ? this.model.text.length : 0\n  }\n\n  createCommentField() {\n    const fieldOptions: FormlyTemplateOptions = {\n      placeholder: this.placeholder,\n      required: this.required,\n      blur: f => {\n        if (!f.formControl.value) {\n          f.formControl.markAsUntouched()\n        }\n      },\n    }\n    if (this.minLength && typeof this.minLength === 'number') {\n      fieldOptions.minLength = this.minLength\n    }\n    if (this.maxLength && typeof this.maxLength === 'number') {\n      fieldOptions.maxLength = this.maxLength\n    }\n    if (this.rows && typeof this.rows === 'number') {\n      fieldOptions.rows = this.rows\n    }\n    return FormHelper.textarea('text', fieldOptions)\n  }\n\n  resetForm() {\n    this.model = { text: null }\n    this.form.enable()\n    this.form.reset()\n  }\n\n  submit($event) {\n    if (this.reset$) {\n      this.form.disable()\n    } else {\n      this.resetForm()\n    }\n    this.action.emit($event)\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "\n      :host {\n        display: block;\n      }\n      ::ng-deep textarea.form-control {\n        background-color: inherit !important;\n        color: inherit !important;\n        border: 1px solid #444 !important;\n      }\n      ::ng-deep textarea.form-control:disabled {\n        color: #999 !important;\n      }\n    \n",
@@ -2716,7 +2716,7 @@
     {
       "name": "UiDataComponent",
       "id": "component-UiDataComponent-a0b19243e281a33bfb67af474053dabb",
-      "file": "projects/ui/src/lib/components/ui-data.component.ts",
+      "file": "projects/ui/src/lib/components/ui-data/ui-data.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -2767,7 +2767,7 @@
     {
       "name": "UiDebugComponent",
       "id": "component-UiDebugComponent-2c4b18fae962fa56b361a58abd5137f0",
-      "file": "projects/ui/src/lib/components/ui-debug.component.ts",
+      "file": "projects/ui/src/lib/components/ui-debug/ui-debug.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -3106,8 +3106,8 @@
     },
     {
       "name": "UiFooterComponent",
-      "id": "component-UiFooterComponent-bb2ac8ed119ee6832f26df28fafb4618",
-      "file": "projects/ui/src/lib/components/ui-footer.component.ts",
+      "id": "component-UiFooterComponent-de9d07ffc216721116550ff7df07487d",
+      "file": "projects/ui/src/lib/components/ui-footer/ui-footer.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -3150,7 +3150,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiLink } from '../interfaces/ui-link'\n\n@Component({\n  selector: 'ui-footer',\n  template: `\n    <footer class=\"footer\">\n      <div class=\"container-xl\">\n        <ng-container *ngIf=\"centered\">\n          <div class=\"text-center\">\n            <div *ngIf=\"html\" [innerHTML]=\"html\"></div>\n            <div *ngIf=\"text\">{{ text }}</div>\n            <div class=\"my-2\">\n              <ui-links\n                *ngIf=\"links && links.length\"\n                [links]=\"links\"\n                linkClass=\"text-muted\"\n              ></ui-links>\n            </div>\n          </div>\n        </ng-container>\n        <ng-container *ngIf=\"!centered\">\n          <div class=\"float-right\">\n            <ui-links\n              *ngIf=\"links && links.length\"\n              [links]=\"links\"\n              linkClass=\"text-muted\"\n            ></ui-links>\n          </div>\n          <div>\n            <div *ngIf=\"html\" [innerHTML]=\"html\"></div>\n            <div *ngIf=\"text\">{{ text }}</div>\n          </div>\n        </ng-container>\n      </div>\n    </footer>\n  `,\n})\nexport class UiFooterComponent {\n  @Input() centered = false\n  @Input() html: string\n  @Input() text: string\n  @Input() links: UiLink[] = []\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiLink } from '../../interfaces/ui-link'\n\n@Component({\n  selector: 'ui-footer',\n  template: `\n    <footer class=\"footer\">\n      <div class=\"container-xl\">\n        <ng-container *ngIf=\"centered\">\n          <div class=\"text-center\">\n            <div *ngIf=\"html\" [innerHTML]=\"html\"></div>\n            <div *ngIf=\"text\">{{ text }}</div>\n            <div class=\"my-2\">\n              <ui-links\n                *ngIf=\"links && links.length\"\n                [links]=\"links\"\n                linkClass=\"text-muted\"\n              ></ui-links>\n            </div>\n          </div>\n        </ng-container>\n        <ng-container *ngIf=\"!centered\">\n          <div class=\"float-right\">\n            <ui-links\n              *ngIf=\"links && links.length\"\n              [links]=\"links\"\n              linkClass=\"text-muted\"\n            ></ui-links>\n          </div>\n          <div>\n            <div *ngIf=\"html\" [innerHTML]=\"html\"></div>\n            <div *ngIf=\"text\">{{ text }}</div>\n          </div>\n        </ng-container>\n      </div>\n    </footer>\n  `,\n})\nexport class UiFooterComponent {\n  @Input() centered = false\n  @Input() html: string\n  @Input() text: string\n  @Input() links: UiLink[] = []\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": ""
@@ -3158,7 +3158,7 @@
     {
       "name": "UiFormComponent",
       "id": "component-UiFormComponent-d390be0461445a04db3dfd18383b402d",
-      "file": "projects/ui/src/lib/components/ui-form.component.ts",
+      "file": "projects/ui/src/lib/components/ui-form/ui-form.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -3330,8 +3330,8 @@
     },
     {
       "name": "UiHeroComponent",
-      "id": "component-UiHeroComponent-29d80508ebf023f9ef26bedcd47d0b19",
-      "file": "projects/ui/src/lib/components/ui-hero.component.ts",
+      "id": "component-UiHeroComponent-9966ee89ff9d17a61bc1ca60ac36f70b",
+      "file": "projects/ui/src/lib/components/ui-hero/ui-hero.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -3406,7 +3406,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiCard } from '../interfaces/ui-card'\nimport { UiLink } from '../interfaces/ui-link'\nimport { UiBrand } from '../interfaces/ui-brand'\nimport { UiAvatarSizes } from './ui-avatar.component'\nimport { UiBrandSizes } from './ui-brand.component'\n\n@Component({\n  selector: 'ui-hero',\n  template: `\n    <div class=\"jumbotron mb-0\" [class.text-center]=\"centered\">\n      <div class=\"my-3 mb-5\">\n        <div class=\"mb-3\">\n          <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" [size]=\"avatarSize\"></ui-avatar>\n          <ui-brand\n            *ngIf=\"brand\"\n            class=\"d-block mb-5\"\n            [brand]=\"brand\"\n            [size]=\"brandSize\"\n          ></ui-brand>\n          <h1 *ngIf=\"title\" class=\"display-4 my-2\">{{ title }}</h1>\n        </div>\n        <p class=\"lead mt-2\">\n          {{ description }}\n        </p>\n        <div *ngIf=\"link\" class=\"my-5\">\n          <ui-link [link]=\"link\" [linkClass]=\"linkClass\"></ui-link>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\" *ngIf=\"cards.length\">\n      <ng-container *ngFor=\"let card of cards\">\n        <div\n          class=\"col-12 col-sm-12\"\n          [class.col-md-12]=\"cards?.length === 1\"\n          [class.col-md-6]=\"cards?.length === 2\"\n          [class.col-md-4]=\"cards?.length === 3\"\n        >\n          <ui-card>\n            <ui-card-header *ngIf=\"card.title\" [cardTitle]=\"card.title\"></ui-card-header>\n            <ui-card-body *ngIf=\"card.content\">\n              {{ card.content }}\n            </ui-card-body>\n            <ui-card-footer *ngIf=\"card?.links?.length\">\n              <div class=\"text-right\">\n                <ui-link *ngFor=\"let link of card.links\" [link]=\"link\" linkClass=\"mr-2\"></ui-link>\n              </div>\n            </ui-card-footer>\n          </ui-card>\n        </div>\n      </ng-container>\n    </div>\n  `,\n  styles: [\n    `\n      .row {\n        margin: -48px 12px 0;\n      }\n    `,\n  ],\n})\nexport class UiHeroComponent {\n  @Input() avatar: string\n  @Input() avatarSize: UiAvatarSizes = 'xl'\n  @Input() brand: UiBrand\n  @Input() brandSize: UiBrandSizes = 'lg'\n  @Input() centered = true\n  @Input() link: UiLink\n  @Input() linkClass = 'btn btn-lg btn-outline-success'\n  @Input() title?: string\n  @Input() description?: string\n  @Input() cards: UiCard[] = []\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiCard } from '../../interfaces/ui-card'\nimport { UiLink } from '../../interfaces/ui-link'\nimport { UiBrand } from '../../interfaces/ui-brand'\nimport { UiAvatarSizes } from '../ui-avatar/ui-avatar.component'\nimport { UiBrandSizes } from '../ui-brand/ui-brand.component'\n\n@Component({\n  selector: 'ui-hero',\n  template: `\n    <div class=\"jumbotron mb-0\" [class.text-center]=\"centered\">\n      <div class=\"my-3 mb-5\">\n        <div class=\"mb-3\">\n          <ui-avatar *ngIf=\"avatar\" [avatar]=\"avatar\" [size]=\"avatarSize\"></ui-avatar>\n          <ui-brand\n            *ngIf=\"brand\"\n            class=\"d-block mb-5\"\n            [brand]=\"brand\"\n            [size]=\"brandSize\"\n          ></ui-brand>\n          <h1 *ngIf=\"title\" class=\"display-4 my-2\">{{ title }}</h1>\n        </div>\n        <p class=\"lead mt-2\">\n          {{ description }}\n        </p>\n        <div *ngIf=\"link\" class=\"my-5\">\n          <ui-link [link]=\"link\" [linkClass]=\"linkClass\"></ui-link>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\" *ngIf=\"cards.length\">\n      <ng-container *ngFor=\"let card of cards\">\n        <div\n          class=\"col-12 col-sm-12\"\n          [class.col-md-12]=\"cards?.length === 1\"\n          [class.col-md-6]=\"cards?.length === 2\"\n          [class.col-md-4]=\"cards?.length === 3\"\n        >\n          <ui-card>\n            <ui-card-header *ngIf=\"card.title\" [cardTitle]=\"card.title\"></ui-card-header>\n            <ui-card-body *ngIf=\"card.content\">\n              {{ card.content }}\n            </ui-card-body>\n            <ui-card-footer *ngIf=\"card?.links?.length\">\n              <div class=\"text-right\">\n                <ui-link *ngFor=\"let link of card.links\" [link]=\"link\" linkClass=\"mr-2\"></ui-link>\n              </div>\n            </ui-card-footer>\n          </ui-card>\n        </div>\n      </ng-container>\n    </div>\n  `,\n  styles: [\n    `\n      .row {\n        margin: -48px 12px 0;\n      }\n    `,\n  ],\n})\nexport class UiHeroComponent {\n  @Input() avatar: string\n  @Input() avatarSize: UiAvatarSizes = 'xl'\n  @Input() brand: UiBrand\n  @Input() brandSize: UiBrandSizes = 'lg'\n  @Input() centered = true\n  @Input() link: UiLink\n  @Input() linkClass = 'btn btn-lg btn-outline-success'\n  @Input() title?: string\n  @Input() description?: string\n  @Input() cards: UiCard[] = []\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "\n      .row {\n        margin: -48px 12px 0;\n      }\n    \n"
@@ -3414,7 +3414,7 @@
     {
       "name": "UiLabelComponent",
       "id": "component-UiLabelComponent-3cbb4c0f865bcb6787836ec501d92bdd",
-      "file": "projects/ui/src/lib/components/ui-label.component.ts",
+      "file": "projects/ui/src/lib/components/ui-label/ui-label.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -3518,8 +3518,8 @@
     },
     {
       "name": "UiLinkComponent",
-      "id": "component-UiLinkComponent-3181212cf40b46e0483beb0297151165",
-      "file": "projects/ui/src/lib/components/ui-link.component.ts",
+      "id": "component-UiLinkComponent-328efa68e8789fa9e52bdb9024f2cc32",
+      "file": "projects/ui/src/lib/components/ui-link/ui-link.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -3561,15 +3561,15 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiLink } from '../interfaces/ui-link'\n\n@Component({\n  selector: 'ui-link',\n  template: `\n    <a\n      class=\"{{ link?.className || linkClass }}\"\n      *ngIf=\"path || link?.path\"\n      [routerLink]=\"path || link?.path\"\n      [queryParams]=\"link?.queryParams\"\n      ><ui-label\n        [label]=\"label || link?.label\"\n        [icon]=\"link?.icon\"\n        [iconAfter]=\"link?.iconAfter\"\n      ></ui-label\n    ></a>\n    <a class=\"{{ link?.className || linkClass }}\" *ngIf=\"link?.url\" [attr.href]=\"link?.url\"\n      ><ui-label\n        [label]=\"label || link?.label\"\n        [icon]=\"link?.icon\"\n        [iconAfter]=\"link?.iconAfter\"\n      ></ui-label\n    ></a>\n  `,\n})\nexport class UiLinkComponent {\n  @Input() link: UiLink\n  @Input() path?: string\n  @Input() label?: string\n  @Input() linkClass?: string\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiLink } from '../../interfaces/ui-link'\n\n@Component({\n  selector: 'ui-link',\n  template: `\n    <a\n      class=\"{{ link?.className || linkClass }}\"\n      *ngIf=\"path || link?.path\"\n      [routerLink]=\"path || link?.path\"\n      [queryParams]=\"link?.queryParams\"\n      ><ui-label\n        [label]=\"label || link?.label\"\n        [icon]=\"link?.icon\"\n        [iconAfter]=\"link?.iconAfter\"\n      ></ui-label\n    ></a>\n    <a class=\"{{ link?.className || linkClass }}\" *ngIf=\"link?.url\" [attr.href]=\"link?.url\"\n      ><ui-label\n        [label]=\"label || link?.label\"\n        [icon]=\"link?.icon\"\n        [iconAfter]=\"link?.iconAfter\"\n      ></ui-label\n    ></a>\n  `,\n})\nexport class UiLinkComponent {\n  @Input() link: UiLink\n  @Input() path?: string\n  @Input() label?: string\n  @Input() linkClass?: string\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": ""
     },
     {
       "name": "UiLinksComponent",
-      "id": "component-UiLinksComponent-12f995a9f3cebcdf3ba120baec885cef",
-      "file": "projects/ui/src/lib/components/ui-links.component.ts",
+      "id": "component-UiLinksComponent-268afc0c5372723a26ef5a6a732e25cd",
+      "file": "projects/ui/src/lib/components/ui-links/ui-links.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -3602,7 +3602,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiLink } from '../interfaces/ui-link'\n\n@Component({\n  selector: 'ui-links',\n  template: `\n    <ng-container *ngIf=\"links.length\">\n      <ui-link *ngFor=\"let link of links\" [link]=\"link\" [linkClass]=\"linkClass\"></ui-link>\n    </ng-container>\n  `,\n})\nexport class UiLinksComponent {\n  @Input() links: UiLink[] = []\n  @Input() linkClass: string\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core'\nimport { UiLink } from '../../interfaces/ui-link'\n\n@Component({\n  selector: 'ui-links',\n  template: `\n    <ng-container *ngIf=\"links.length\">\n      <ui-link *ngFor=\"let link of links\" [link]=\"link\" [linkClass]=\"linkClass\"></ui-link>\n    </ng-container>\n  `,\n})\nexport class UiLinksComponent {\n  @Input() links: UiLink[] = []\n  @Input() linkClass: string\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": ""
@@ -3709,7 +3709,7 @@
     {
       "name": "UiLoadingIconComponent",
       "id": "component-UiLoadingIconComponent-ec5a60623b05a4cfec97692c6966c816",
-      "file": "projects/ui/src/lib/components/ui-loading-icon.component.ts",
+      "file": "projects/ui/src/lib/components/ui-loading-icon/ui-loading-icon.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -3777,6 +3777,51 @@
       "rawdescription": "",
       "type": "component",
       "sourceCode": "import { Component, Input } from '@angular/core'\n\n@Component({\n  selector: 'ui-markdown',\n  template: `\n    <markdown [data]=\"data\"></markdown>\n  `,\n})\nexport class UiMarkdownComponent {\n  @Input() public data: string\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": "",
+      "stylesData": ""
+    },
+    {
+      "name": "UiNoDataComponent",
+      "id": "component-UiNoDataComponent-d7b89ae9cc429e384b1f4e07e9940178",
+      "file": "projects/ui/src/lib/components/ui-no-data/ui-no-data.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "ui-no-data",
+      "styleUrls": [],
+      "styles": [],
+      "template": "<div>\n  <div class=\"text-center my-5\">\n    <i class=\"fa {{ icon }} fa-5x mb-5 text-muted\"></i>\n    <h3>{{ label }}</h3>\n    <p *ngIf=\"description\">{{ description }}</p>\n    <ng-content></ng-content>\n  </div>\n</div>\n",
+      "templateUrl": [],
+      "viewProviders": [],
+      "inputsClass": [
+        {
+          "name": "description",
+          "line": 17,
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "defaultValue": "'fa-warning'",
+          "line": 18
+        },
+        {
+          "name": "label",
+          "defaultValue": "'No data'",
+          "line": 19
+        }
+      ],
+      "outputsClass": [],
+      "propertiesClass": [],
+      "methodsClass": [],
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "",
+      "type": "component",
+      "sourceCode": "import { Component, Input } from '@angular/core'\n\n@Component({\n  selector: 'ui-no-data',\n  template: `\n    <div>\n      <div class=\"text-center my-5\">\n        <i class=\"fa {{ icon }} fa-5x mb-5 text-muted\"></i>\n        <h3>{{ label }}</h3>\n        <p *ngIf=\"description\">{{ description }}</p>\n        <ng-content></ng-content>\n      </div>\n    </div>\n  `,\n})\nexport class UiNoDataComponent {\n  @Input() public description: string\n  @Input() public icon = 'fa-warning'\n  @Input() public label = 'No data'\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": ""
@@ -3889,7 +3934,7 @@
     },
     {
       "name": "UiRenderComponent",
-      "id": "component-UiRenderComponent-8c44a88f2e2de801c364791dfa38ec6e",
+      "id": "component-UiRenderComponent-c1d28056f2e9114eef3fbc68e1026641",
       "file": "projects/ui/src/lib/components/ui-render.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -3938,7 +3983,7 @@
           "decorators": [
             {
               "name": "ViewChild",
-              "stringifiedArguments": "'target', {read: ViewContainerRef, static: false}"
+              "stringifiedArguments": "'target', {read: ViewContainerRef}"
             }
           ]
         }
@@ -3974,7 +4019,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ComponentFactoryResolver,\n  ComponentRef,\n  Input,\n  OnDestroy,\n  ViewChild,\n  ViewContainerRef,\n} from '@angular/core'\n\n@Component({\n  selector: 'ui-render',\n  template: `\n    <ng-template #target></ng-template>\n  `,\n})\nexport class UiRenderComponent implements AfterViewInit, OnDestroy {\n  @ViewChild('target', { read: ViewContainerRef, static: false }) ref: ViewContainerRef\n  @Input() public component: any\n  @Input() public inputs: any[]\n  @Input() public outputs: any[]\n\n  private componentRef: ComponentRef<any>\n\n  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}\n\n  ngAfterViewInit() {\n    Promise.resolve(null).then(() => this.renderDemoComponent())\n  }\n\n  ngOnDestroy() {\n    if (this.componentRef) {\n      this.componentRef.destroy()\n    }\n  }\n\n  renderDemoComponent() {\n    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.component)\n    this.componentRef = this.ref.createComponent(componentFactory)\n\n    if (this.componentRef.instance) {\n      // Wire up the inputs\n      if (this.inputs && Object.keys(this.inputs).length) {\n        Object.keys(this.inputs).forEach(input => {\n          this.componentRef.instance[input] = this.inputs[input]\n        })\n      }\n      // Wire up the outputs\n      if (this.outputs && Object.keys(this.outputs).length) {\n        Object.keys(this.outputs).forEach(output => {\n          this.componentRef.instance.action.subscribe(res => this.outputs[output](res))\n        })\n      }\n    }\n  }\n}\n",
+      "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ComponentFactoryResolver,\n  ComponentRef,\n  Input,\n  OnDestroy,\n  ViewChild,\n  ViewContainerRef,\n} from '@angular/core'\n\n@Component({\n  selector: 'ui-render',\n  template: `\n    <ng-template #target></ng-template>\n  `,\n})\nexport class UiRenderComponent implements AfterViewInit, OnDestroy {\n  @ViewChild('target', { read: ViewContainerRef }) ref: ViewContainerRef\n  @Input() public component: any\n  @Input() public inputs: any[]\n  @Input() public outputs: any[]\n\n  private componentRef: ComponentRef<any>\n\n  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}\n\n  ngAfterViewInit() {\n    Promise.resolve(null).then(() => this.renderDemoComponent())\n  }\n\n  ngOnDestroy() {\n    if (this.componentRef) {\n      this.componentRef.destroy()\n    }\n  }\n\n  renderDemoComponent() {\n    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.component)\n    this.componentRef = this.ref.createComponent(componentFactory)\n\n    if (this.componentRef.instance) {\n      // Wire up the inputs\n      if (this.inputs && Object.keys(this.inputs).length) {\n        Object.keys(this.inputs).forEach(input => {\n          this.componentRef.instance[input] = this.inputs[input]\n        })\n      }\n      // Wire up the outputs\n      if (this.outputs && Object.keys(this.outputs).length) {\n        Object.keys(this.outputs).forEach(output => {\n          this.componentRef.instance.action.subscribe(res => this.outputs[output](res))\n        })\n      }\n    }\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "",
@@ -4250,7 +4295,7 @@
   ],
   "modules": [
     {
-      "name": "UiFormsModule",
+      "name": "UiAvatarModule",
       "children": [
         {
           "type": "providers",
@@ -4258,7 +4303,11 @@
         },
         {
           "type": "declarations",
-          "elements": []
+          "elements": [
+            {
+              "name": "UiAvatarComponent"
+            }
+          ]
         },
         {
           "type": "imports",
@@ -4266,7 +4315,621 @@
         },
         {
           "type": "exports",
+          "elements": [
+            {
+              "name": "UiAvatarComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
           "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiBrandModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiBrandComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": []
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiBrandComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiButtonModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiButtonComponent"
+            },
+            {
+              "name": "UiButtonsComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "UiLabelModule"
+            },
+            {
+              "name": "UiLinkModule"
+            },
+            {
+              "name": "UiLoadingIconModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiButtonComponent"
+            },
+            {
+              "name": "UiButtonsComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiCardModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiCardBodyComponent"
+            },
+            {
+              "name": "UiCardComponent"
+            },
+            {
+              "name": "UiCardFooterComponent"
+            },
+            {
+              "name": "UiCardHeaderComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "UiButtonModule"
+            },
+            {
+              "name": "UiLabelModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiCardBodyComponent"
+            },
+            {
+              "name": "UiCardComponent"
+            },
+            {
+              "name": "UiCardFooterComponent"
+            },
+            {
+              "name": "UiCardHeaderComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiCodeModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiCodeComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": []
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiCodeComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiCommentModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiCommentComponent"
+            },
+            {
+              "name": "UiCommentFormComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "UiAvatarModule"
+            },
+            {
+              "name": "UiButtonModule"
+            },
+            {
+              "name": "UiFormModule"
+            },
+            {
+              "name": "UiLinkModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiCommentComponent"
+            },
+            {
+              "name": "UiCommentFormComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiDataModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiDataComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "UiDebugModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiDataComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiDebugModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiDebugComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": []
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiDebugComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiFooterModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiFooterComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "UiLinksModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiFooterComponent"
+            },
+            {
+              "name": "UiFooterComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiFormModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiFormComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": []
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiFormComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiHeroModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiHeroComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "UiAvatarModule"
+            },
+            {
+              "name": "UiBrandModule"
+            },
+            {
+              "name": "UiCardModule"
+            },
+            {
+              "name": "UiLinkModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiHeroComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiLabelModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiLabelComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": []
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiLabelComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiLinkModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiLinkComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "UiLabelModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiLinkComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiLinksModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiLinksComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "UiLinkModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiLinksComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "UiLoadingIconModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiLoadingIconComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": []
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiLoadingIconComponent"
+            }
+          ]
         },
         {
           "type": "bootstrap",
@@ -4332,46 +4995,7 @@
               "name": "UiAuthComponent"
             },
             {
-              "name": "UiAvatarComponent"
-            },
-            {
-              "name": "UiBrandComponent"
-            },
-            {
-              "name": "UiButtonComponent"
-            },
-            {
-              "name": "UiButtonsComponent"
-            },
-            {
-              "name": "UiCardBodyComponent"
-            },
-            {
-              "name": "UiCardComponent"
-            },
-            {
-              "name": "UiCardFooterComponent"
-            },
-            {
-              "name": "UiCardHeaderComponent"
-            },
-            {
-              "name": "UiCodeComponent"
-            },
-            {
-              "name": "UiCommentComponent"
-            },
-            {
-              "name": "UiCommentFormComponent"
-            },
-            {
               "name": "UiContentComponent"
-            },
-            {
-              "name": "UiDataComponent"
-            },
-            {
-              "name": "UiDebugComponent"
             },
             {
               "name": "UiDialogFormComponent"
@@ -4383,28 +5007,10 @@
               "name": "UiDropdownComponent"
             },
             {
-              "name": "UiFooterComponent"
-            },
-            {
-              "name": "UiFormComponent"
-            },
-            {
               "name": "UiHeaderComponent"
             },
             {
-              "name": "UiHeroComponent"
-            },
-            {
-              "name": "UiLabelComponent"
-            },
-            {
               "name": "UiLayoutComponent"
-            },
-            {
-              "name": "UiLinkComponent"
-            },
-            {
-              "name": "UiLinksComponent"
             },
             {
               "name": "UiListComponent"
@@ -4414,9 +5020,6 @@
             },
             {
               "name": "UiLoadingComponent"
-            },
-            {
-              "name": "UiLoadingIconComponent"
             },
             {
               "name": "UiPageSidebarComponent"
@@ -4445,7 +5048,49 @@
           "type": "imports",
           "elements": [
             {
-              "name": "UiFormsModule"
+              "name": "UiAvatarModule"
+            },
+            {
+              "name": "UiBrandModule"
+            },
+            {
+              "name": "UiButtonModule"
+            },
+            {
+              "name": "UiCardModule"
+            },
+            {
+              "name": "UiCodeModule"
+            },
+            {
+              "name": "UiCommentModule"
+            },
+            {
+              "name": "UiDebugModule"
+            },
+            {
+              "name": "UiFooterModule"
+            },
+            {
+              "name": "UiFormModule"
+            },
+            {
+              "name": "UiHeroModule"
+            },
+            {
+              "name": "UiLabelModule"
+            },
+            {
+              "name": "UiLinkModule"
+            },
+            {
+              "name": "UiLinksModule"
+            },
+            {
+              "name": "UiLoadingIconModule"
+            },
+            {
+              "name": "UiNoDataModule"
             }
           ]
         },
@@ -4459,46 +5104,31 @@
               "name": "UiAuthComponent"
             },
             {
-              "name": "UiAvatarComponent"
+              "name": "UiAvatarModule"
             },
             {
-              "name": "UiBrandComponent"
+              "name": "UiBrandModule"
             },
             {
-              "name": "UiButtonComponent"
+              "name": "UiButtonModule"
             },
             {
-              "name": "UiButtonsComponent"
+              "name": "UiCardModule"
             },
             {
-              "name": "UiCardBodyComponent"
+              "name": "UiCodeModule"
             },
             {
-              "name": "UiCardComponent"
-            },
-            {
-              "name": "UiCardFooterComponent"
-            },
-            {
-              "name": "UiCardHeaderComponent"
-            },
-            {
-              "name": "UiCodeComponent"
-            },
-            {
-              "name": "UiCommentComponent"
-            },
-            {
-              "name": "UiCommentFormComponent"
+              "name": "UiCommentModule"
             },
             {
               "name": "UiContentComponent"
             },
             {
-              "name": "UiDataComponent"
+              "name": "UiDataModule"
             },
             {
-              "name": "UiDebugComponent"
+              "name": "UiDebugModule"
             },
             {
               "name": "UiDialogFormComponent"
@@ -4510,31 +5140,28 @@
               "name": "UiDropdownComponent"
             },
             {
-              "name": "UiFooterComponent"
+              "name": "UiFooterModule"
             },
             {
-              "name": "UiFormComponent"
-            },
-            {
-              "name": "UiFormsModule"
+              "name": "UiFormModule"
             },
             {
               "name": "UiHeaderComponent"
             },
             {
-              "name": "UiHeroComponent"
+              "name": "UiHeroModule"
             },
             {
-              "name": "UiLabelComponent"
+              "name": "UiLabelModule"
             },
             {
               "name": "UiLayoutComponent"
             },
             {
-              "name": "UiLinkComponent"
+              "name": "UiLinkModule"
             },
             {
-              "name": "UiLinksComponent"
+              "name": "UiLinksModule"
             },
             {
               "name": "UiListComponent"
@@ -4546,7 +5173,10 @@
               "name": "UiLoadingComponent"
             },
             {
-              "name": "UiLoadingIconComponent"
+              "name": "UiLoadingIconModule"
+            },
+            {
+              "name": "UiNoDataModule"
             },
             {
               "name": "UiPageSidebarComponent"
@@ -4580,6 +5210,43 @@
           "elements": []
         }
       ]
+    },
+    {
+      "name": "UiNoDataModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiNoDataComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": []
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiNoDataComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
     }
   ],
   "miscellaneous": {
@@ -4590,13 +5257,13 @@
         "subtype": "variable",
         "file": "projects/ui/src/lib/ui.module.ts",
         "type": "[]",
-        "defaultValue": "[\n  UiAuthComponent,\n  UiAvatarComponent,\n  UiBrandComponent,\n  UiButtonComponent,\n  UiButtonsComponent,\n  UiCardComponent,\n  UiCardBodyComponent,\n  UiCardFooterComponent,\n  UiCardHeaderComponent,\n  UiCodeComponent,\n  UiCommentComponent,\n  UiCommentFormComponent,\n  UiContentComponent,\n  UiDataComponent,\n  UiDebugComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiFormComponent,\n  UiFooterComponent,\n  UiHeaderComponent,\n  UiHeroComponent,\n  UiLabelComponent,\n  UiLayoutComponent,\n  UiLinkComponent,\n  UiLinksComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiLoadingIconComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
+        "defaultValue": "[\n  UiAuthComponent,\n  UiContentComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiHeaderComponent,\n  UiLayoutComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
       },
       {
         "name": "config",
         "ctype": "miscellaneous",
         "subtype": "variable",
-        "file": "projects/ui/src/lib/ui-forms.module.ts",
+        "file": "projects/ui/src/lib/components/ui-form/ui-form.module.ts",
         "type": "ConfigOption",
         "defaultValue": "{\n  types: [],\n  validationMessages: [\n    { name: 'required', message: 'This field is required' },\n    { name: 'minlength', message: minlengthValidationMessage },\n    { name: 'maxlength', message: maxlengthValidationMessage },\n    { name: 'min', message: minValidationMessage },\n    { name: 'max', message: maxValidationMessage },\n    { name: 'email', message: emailValidatorMessage },\n  ],\n  validators: [{ name: 'email', validation: emailValidator }],\n}"
       },
@@ -4606,7 +5273,7 @@
         "subtype": "variable",
         "file": "projects/ui/src/lib/ui.module.ts",
         "type": "[]",
-        "defaultValue": "[\n  CommonModule,\n  BsDropdownModule,\n  ModalModule,\n  TabsModule,\n  NumberedCodeblockModule,\n]"
+        "defaultValue": "[\n  CommonModule,\n  BsDropdownModule,\n  ModalModule,\n  TabsModule,\n  // Ui Modules will be exported until version 2\n  UiAvatarModule,\n  UiBrandModule,\n  UiButtonModule,\n  UiCardModule,\n  UiCodeModule,\n  UiCommentModule,\n  UiDebugModule,\n  UiFooterModule,\n  UiFormModule,\n  UiHeroModule,\n  UiLabelModule,\n  UiLinkModule,\n  UiLinksModule,\n  UiLoadingIconModule,\n  UiNoDataModule,\n]"
       },
       {
         "name": "randInt",
@@ -4620,7 +5287,7 @@
     "functions": [
       {
         "name": "emailValidator",
-        "file": "projects/ui/src/lib/validators/index.ts",
+        "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
         "ctype": "miscellaneous",
         "subtype": "function",
         "description": "",
@@ -4641,7 +5308,7 @@
       },
       {
         "name": "emailValidatorMessage",
-        "file": "projects/ui/src/lib/validators/index.ts",
+        "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
         "ctype": "miscellaneous",
         "subtype": "function",
         "description": "",
@@ -4674,7 +5341,7 @@
       },
       {
         "name": "maxlengthValidationMessage",
-        "file": "projects/ui/src/lib/validators/index.ts",
+        "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
         "ctype": "miscellaneous",
         "subtype": "function",
         "description": "",
@@ -4707,7 +5374,7 @@
       },
       {
         "name": "maxValidationMessage",
-        "file": "projects/ui/src/lib/validators/index.ts",
+        "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
         "ctype": "miscellaneous",
         "subtype": "function",
         "description": "",
@@ -4740,7 +5407,7 @@
       },
       {
         "name": "minlengthValidationMessage",
-        "file": "projects/ui/src/lib/validators/index.ts",
+        "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
         "ctype": "miscellaneous",
         "subtype": "function",
         "description": "",
@@ -4773,7 +5440,7 @@
       },
       {
         "name": "minValidationMessage",
-        "file": "projects/ui/src/lib/validators/index.ts",
+        "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
         "ctype": "miscellaneous",
         "subtype": "function",
         "description": "",
@@ -4811,7 +5478,7 @@
         "ctype": "miscellaneous",
         "subtype": "typealias",
         "rawtype": "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"xxl\"",
-        "file": "projects/ui/src/lib/components/ui-avatar.component.ts",
+        "file": "projects/ui/src/lib/components/ui-avatar/ui-avatar.component.ts",
         "description": "",
         "kind": 168
       },
@@ -4820,7 +5487,7 @@
         "ctype": "miscellaneous",
         "subtype": "typealias",
         "rawtype": "\"sm\" | \"lg\"",
-        "file": "projects/ui/src/lib/components/ui-brand.component.ts",
+        "file": "projects/ui/src/lib/components/ui-brand/ui-brand.component.ts",
         "description": "",
         "kind": 168
       }
@@ -4869,7 +5536,7 @@
           "subtype": "variable",
           "file": "projects/ui/src/lib/ui.module.ts",
           "type": "[]",
-          "defaultValue": "[\n  UiAuthComponent,\n  UiAvatarComponent,\n  UiBrandComponent,\n  UiButtonComponent,\n  UiButtonsComponent,\n  UiCardComponent,\n  UiCardBodyComponent,\n  UiCardFooterComponent,\n  UiCardHeaderComponent,\n  UiCodeComponent,\n  UiCommentComponent,\n  UiCommentFormComponent,\n  UiContentComponent,\n  UiDataComponent,\n  UiDebugComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiFormComponent,\n  UiFooterComponent,\n  UiHeaderComponent,\n  UiHeroComponent,\n  UiLabelComponent,\n  UiLayoutComponent,\n  UiLinkComponent,\n  UiLinksComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiLoadingIconComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
+          "defaultValue": "[\n  UiAuthComponent,\n  UiContentComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiHeaderComponent,\n  UiLayoutComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
         },
         {
           "name": "EXPORT_MODULES",
@@ -4877,15 +5544,15 @@
           "subtype": "variable",
           "file": "projects/ui/src/lib/ui.module.ts",
           "type": "[]",
-          "defaultValue": "[\n  CommonModule,\n  BsDropdownModule,\n  ModalModule,\n  TabsModule,\n  NumberedCodeblockModule,\n]"
+          "defaultValue": "[\n  CommonModule,\n  BsDropdownModule,\n  ModalModule,\n  TabsModule,\n  // Ui Modules will be exported until version 2\n  UiAvatarModule,\n  UiBrandModule,\n  UiButtonModule,\n  UiCardModule,\n  UiCodeModule,\n  UiCommentModule,\n  UiDebugModule,\n  UiFooterModule,\n  UiFormModule,\n  UiHeroModule,\n  UiLabelModule,\n  UiLinkModule,\n  UiLinksModule,\n  UiLoadingIconModule,\n  UiNoDataModule,\n]"
         }
       ],
-      "projects/ui/src/lib/ui-forms.module.ts": [
+      "projects/ui/src/lib/components/ui-form/ui-form.module.ts": [
         {
           "name": "config",
           "ctype": "miscellaneous",
           "subtype": "variable",
-          "file": "projects/ui/src/lib/ui-forms.module.ts",
+          "file": "projects/ui/src/lib/components/ui-form/ui-form.module.ts",
           "type": "ConfigOption",
           "defaultValue": "{\n  types: [],\n  validationMessages: [\n    { name: 'required', message: 'This field is required' },\n    { name: 'minlength', message: minlengthValidationMessage },\n    { name: 'maxlength', message: maxlengthValidationMessage },\n    { name: 'min', message: minValidationMessage },\n    { name: 'max', message: maxValidationMessage },\n    { name: 'email', message: emailValidatorMessage },\n  ],\n  validators: [{ name: 'email', validation: emailValidator }],\n}"
         }
@@ -4902,10 +5569,10 @@
       ]
     },
     "groupedFunctions": {
-      "projects/ui/src/lib/validators/index.ts": [
+      "projects/ui/src/lib/components/ui-form/validators/index.ts": [
         {
           "name": "emailValidator",
-          "file": "projects/ui/src/lib/validators/index.ts",
+          "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
           "ctype": "miscellaneous",
           "subtype": "function",
           "description": "",
@@ -4926,7 +5593,7 @@
         },
         {
           "name": "emailValidatorMessage",
-          "file": "projects/ui/src/lib/validators/index.ts",
+          "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
           "ctype": "miscellaneous",
           "subtype": "function",
           "description": "",
@@ -4959,7 +5626,7 @@
         },
         {
           "name": "maxlengthValidationMessage",
-          "file": "projects/ui/src/lib/validators/index.ts",
+          "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
           "ctype": "miscellaneous",
           "subtype": "function",
           "description": "",
@@ -4992,7 +5659,7 @@
         },
         {
           "name": "maxValidationMessage",
-          "file": "projects/ui/src/lib/validators/index.ts",
+          "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
           "ctype": "miscellaneous",
           "subtype": "function",
           "description": "",
@@ -5025,7 +5692,7 @@
         },
         {
           "name": "minlengthValidationMessage",
-          "file": "projects/ui/src/lib/validators/index.ts",
+          "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
           "ctype": "miscellaneous",
           "subtype": "function",
           "description": "",
@@ -5058,7 +5725,7 @@
         },
         {
           "name": "minValidationMessage",
-          "file": "projects/ui/src/lib/validators/index.ts",
+          "file": "projects/ui/src/lib/components/ui-form/validators/index.ts",
           "ctype": "miscellaneous",
           "subtype": "function",
           "description": "",
@@ -5130,24 +5797,24 @@
       ]
     },
     "groupedTypeAliases": {
-      "projects/ui/src/lib/components/ui-avatar.component.ts": [
+      "projects/ui/src/lib/components/ui-avatar/ui-avatar.component.ts": [
         {
           "name": "UiAvatarSizes",
           "ctype": "miscellaneous",
           "subtype": "typealias",
           "rawtype": "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"xxl\"",
-          "file": "projects/ui/src/lib/components/ui-avatar.component.ts",
+          "file": "projects/ui/src/lib/components/ui-avatar/ui-avatar.component.ts",
           "description": "",
           "kind": 168
         }
       ],
-      "projects/ui/src/lib/components/ui-brand.component.ts": [
+      "projects/ui/src/lib/components/ui-brand/ui-brand.component.ts": [
         {
           "name": "UiBrandSizes",
           "ctype": "miscellaneous",
           "subtype": "typealias",
           "rawtype": "\"sm\" | \"lg\"",
-          "file": "projects/ui/src/lib/components/ui-brand.component.ts",
+          "file": "projects/ui/src/lib/components/ui-brand/ui-brand.component.ts",
           "description": "",
           "kind": 168
         }
@@ -5169,7 +5836,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-avatar.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-avatar/ui-avatar.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiAvatarComponent",
@@ -5178,7 +5845,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-brand.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-brand/ui-brand.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiBrandComponent",
@@ -5187,7 +5854,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-button.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-button/ui-button.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiButtonComponent",
@@ -5196,7 +5863,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-buttons.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-button/ui-buttons.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiButtonsComponent",
@@ -5205,7 +5872,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-card-body.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-card/ui-card-body.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiCardBodyComponent",
@@ -5214,7 +5881,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-card-footer.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-card/ui-card-footer.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiCardFooterComponent",
@@ -5223,7 +5890,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-card-header.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-card/ui-card-header.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiCardHeaderComponent",
@@ -5232,7 +5899,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-card.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-card/ui-card.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiCardComponent",
@@ -5241,7 +5908,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-code.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-code/ui-code.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiCodeComponent",
@@ -5250,7 +5917,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-comment-form.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-comment/ui-comment-form.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiCommentFormComponent",
@@ -5259,7 +5926,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-comment.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-comment/ui-comment.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiCommentComponent",
@@ -5277,7 +5944,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-data.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-data/ui-data.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiDataComponent",
@@ -5286,7 +5953,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-data.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-data/ui-data.component.ts",
         "type": "interface",
         "linktype": "interface",
         "name": "UiDataShape",
@@ -5295,7 +5962,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-debug.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-debug/ui-debug.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiDebugComponent",
@@ -5331,7 +5998,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-footer.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-footer/ui-footer.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiFooterComponent",
@@ -5340,12 +6007,76 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-form.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-form/ui-form.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiFormComponent",
         "coveragePercent": 0,
         "coverageCount": "0/10",
+        "status": "low"
+      },
+      {
+        "filePath": "projects/ui/src/lib/components/ui-form/ui-form.module.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "config",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "projects/ui/src/lib/components/ui-form/validators/index.ts",
+        "type": "function",
+        "linksubtype": "function",
+        "name": "emailValidator",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "projects/ui/src/lib/components/ui-form/validators/index.ts",
+        "type": "function",
+        "linksubtype": "function",
+        "name": "emailValidatorMessage",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "projects/ui/src/lib/components/ui-form/validators/index.ts",
+        "type": "function",
+        "linksubtype": "function",
+        "name": "maxlengthValidationMessage",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "projects/ui/src/lib/components/ui-form/validators/index.ts",
+        "type": "function",
+        "linksubtype": "function",
+        "name": "maxValidationMessage",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "projects/ui/src/lib/components/ui-form/validators/index.ts",
+        "type": "function",
+        "linksubtype": "function",
+        "name": "minlengthValidationMessage",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "projects/ui/src/lib/components/ui-form/validators/index.ts",
+        "type": "function",
+        "linksubtype": "function",
+        "name": "minValidationMessage",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
         "status": "low"
       },
       {
@@ -5358,7 +6089,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-hero.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-hero/ui-hero.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiHeroComponent",
@@ -5367,7 +6098,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-label.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-label/ui-label.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiLabelComponent",
@@ -5385,7 +6116,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-link.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-link/ui-link.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiLinkComponent",
@@ -5394,7 +6125,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-links.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-links/ui-links.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiLinksComponent",
@@ -5421,7 +6152,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-loading-icon.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-loading-icon/ui-loading-icon.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiLoadingIconComponent",
@@ -5445,6 +6176,15 @@
         "name": "UiMarkdownComponent",
         "coveragePercent": 0,
         "coverageCount": "0/2",
+        "status": "low"
+      },
+      {
+        "filePath": "projects/ui/src/lib/components/ui-no-data/ui-no-data.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "UiNoDataComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/4",
         "status": "low"
       },
       {
@@ -5638,16 +6378,6 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/ui-forms.module.ts",
-        "type": "variable",
-        "linktype": "miscellaneous",
-        "linksubtype": "variable",
-        "name": "config",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
         "filePath": "projects/ui/src/lib/ui.module.ts",
         "type": "variable",
         "linktype": "miscellaneous",
@@ -5663,60 +6393,6 @@
         "linktype": "miscellaneous",
         "linksubtype": "variable",
         "name": "EXPORT_MODULES",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "projects/ui/src/lib/validators/index.ts",
-        "type": "function",
-        "linksubtype": "function",
-        "name": "emailValidator",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "projects/ui/src/lib/validators/index.ts",
-        "type": "function",
-        "linksubtype": "function",
-        "name": "emailValidatorMessage",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "projects/ui/src/lib/validators/index.ts",
-        "type": "function",
-        "linksubtype": "function",
-        "name": "maxlengthValidationMessage",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "projects/ui/src/lib/validators/index.ts",
-        "type": "function",
-        "linksubtype": "function",
-        "name": "maxValidationMessage",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "projects/ui/src/lib/validators/index.ts",
-        "type": "function",
-        "linksubtype": "function",
-        "name": "minlengthValidationMessage",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "projects/ui/src/lib/validators/index.ts",
-        "type": "function",
-        "linksubtype": "function",
-        "name": "minValidationMessage",
         "coveragePercent": 0,
         "coverageCount": "0/1",
         "status": "low"

@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core'
-import { UiCard } from '../interfaces/ui-card'
-import { UiLink } from '../interfaces/ui-link'
-import { UiBrand } from '../interfaces/ui-brand'
-import { UiAvatarSizes } from './ui-avatar.component'
-import { UiBrandSizes } from './ui-brand.component'
+import { UiCard } from '../../interfaces/ui-card'
+import { UiLink } from '../../interfaces/ui-link'
+import { UiBrand } from '../../interfaces/ui-brand'
+import { UiAvatarSizes } from '../ui-avatar/ui-avatar.component'
+import { UiBrandSizes } from '../ui-brand/ui-brand.component'
 
 @Component({
   selector: 'ui-hero',

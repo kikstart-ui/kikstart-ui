@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { UiBrand } from '../interfaces/ui-brand'
+import { UiBrand } from '../../interfaces/ui-brand'
 
 export type UiBrandSizes = 'sm' | 'lg'
 

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
-import { UiLink } from '../interfaces/ui-link'
-import { UiButton } from '../interfaces/ui-button'
+import { UiLink } from '../../interfaces/ui-link'
+import { UiButton } from '../../interfaces/ui-button'
 
 @Component({
   selector: 'ui-card-header',
