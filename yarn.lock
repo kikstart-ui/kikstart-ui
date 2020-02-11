@@ -1094,10 +1094,10 @@
     fs-extra "^4.0.1"
     viz.js "^1.8.0"
 
-"@ctrl/ngx-numbered-codeblock@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@ctrl/ngx-numbered-codeblock/-/ngx-numbered-codeblock-2.0.0.tgz#0f0140016bc508d9d57149ad05a278234371f69f"
-  integrity sha512-/NOivtf8HEiJyEduccRv/if02+rV8fFbpGg3FHs9oPfAV+wPwZov1bq0D0megnbAF8Ki76TJ9TQ9IPuqqTHgdQ==
+"@ctrl/ngx-numbered-codeblock@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@ctrl/ngx-numbered-codeblock/-/ngx-numbered-codeblock-2.0.2.tgz#7bb9e4f5cf657fb56e571df56491e91b6225fc2e"
+  integrity sha512-FBwDCHZwfqMBJ1sAN9va/dRB7PHQSvgu801SnndGtc+yTrgJm1acueyj6cgGun1y1MOZQAbD/6UUWj8PcJ/EhA==
   dependencies:
     "@types/prismjs" "^1.16.0"
     tslib "^1.9.0"

@@ -51,7 +51,7 @@
     "@angular/compiler-cli": "9.0.0",
     "@angular/language-service": "9.0.0",
     "@compodoc/compodoc": "1.1.11",
-    "@ctrl/ngx-numbered-codeblock": "2.0.0",
+    "@ctrl/ngx-numbered-codeblock": "2.0.2",
     "@types/jasmine": "3.5.3",
     "@types/jasminewd2": "2.0.8",
     "@types/node": "12.12.26",
