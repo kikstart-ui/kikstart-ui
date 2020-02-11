@@ -41,6 +41,7 @@
     "ngx-markdown": "8.2.2",
     "ngx-timeago": "1.0.4",
     "ngx-toastr": "12.0.0",
+    "prismjs": "1.19.0",
     "rxjs": "6.5.4",
     "tslib": "1.10.0",
     "zone.js": "~0.10.2"
@@ -67,7 +68,6 @@
     "lint-staged": "10.0.7",
     "ng-packagr": "9.0.0",
     "prettier": "1.19.1",
-    "prismjs": "1.19.0",
     "protractor": "5.4.3",
     "scss-bundle": "3.0.2",
     "semantic-release": "17.0.2",
