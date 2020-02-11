@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
 import { UiModule } from '@kikstart/ui'
-import { TabsModule } from 'ngx-bootstrap'
+import { TabsModule } from 'ngx-bootstrap/tabs'
 import { ApiDocPropertiesComponent } from './components/api-doc-properties.component'
 import { ApiDocsIndexComponent } from './containers/api-docs-index.component'
 
