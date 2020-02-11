@@ -8,15 +8,15 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/common": ">= 8.0.0 =< 9.0.0 ",
-    "@angular/core": ">= 8.0.0 =< 9.0.0 ",
-    "@ctrl/ngx-numbered-codeblock": "^2.0.0",
-    "@ngx-formly/bootstrap": "^5.5.6",
-    "@ngx-formly/core": "^5.5.6",
-    "ngx-bootstrap": "^5.2.0",
-    "ngx-markdown": "^8.2.1",
-    "ngx-timeago": "^1.0.2",
-    "ngx-toastr": "^11.2.1",
+    "@angular/common": ">= 8.0.0 =< 9.0.0",
+    "@angular/core": ">= 8.0.0 =< 9.0.0",
+    "@ctrl/ngx-numbered-codeblock": "^2.0.1",
+    "@ngx-formly/bootstrap": "^5.5.11",
+    "@ngx-formly/core": "^5.5.11",
+    "ngx-bootstrap": "^5.3.2",
+    "ngx-markdown": "^8.2.2",
+    "ngx-timeago": "^1.0.4",
+    "ngx-toastr": "^12.0.0",
     "prismjs": "^1.18.0"
   },
   "devDependencies": {
