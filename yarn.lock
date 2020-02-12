@@ -1133,10 +1133,10 @@
     rxjs "6.5.3"
     webpack-sources "1.4.3"
 
-"@ngx-formly/bootstrap@5.5.11":
-  version "5.5.11"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/bootstrap/-/bootstrap-5.5.11.tgz#b880f018a39f569625432983b01adb40db159c39"
-  integrity sha512-M2A1tst/HM5QZAhL+ZEX8OCtYwxrWsQ9mhf8rnC1csBAp00x/I8bUuib5CqYELWfv5Uf8uxduSA1xUUbL9pv1A==
+"@ngx-formly/bootstrap@5.5.12":
+  version "5.5.12"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/bootstrap/-/bootstrap-5.5.12.tgz#0ac166d531a1790f297a55f14c8551ff946f54bb"
+  integrity sha512-oZIk+eATYufYrdyFm68pMyXr7YApWchnz2d5B9qXuLrydWRvDv5BuEMABM2b/b3EJLtRpcSrB8OafYuIYKQPmA==
   dependencies:
     tslib "^1.9.0"
 
