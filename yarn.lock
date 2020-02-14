@@ -1458,7 +1458,7 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
   integrity sha512-ijGqzZt/b7BfzcK9vTrS6MFljQRPn5BFWOx8oE0GYxribu6uV+aA9zZuXI1zc/etK9E8nrgdoF2+LgUw7+9tJQ==
 
-"@types/marked@^0.7.0":
+"@types/marked@^0.7.2":
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/@types/marked/-/marked-0.7.2.tgz#1393f076773b55cc7078c0fbeb86a497c69db97e"
   integrity sha512-A3EDyNaq6OCcpaOia2HQ/tu2QYt8DKuj4ExP21VU3cU3HTo2FLslvbqa2T1vux910RHvuSVqpwKnnykSFcRWOA==
@@ -8351,16 +8351,15 @@ ngx-bootstrap@5.3.2:
   resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-5.3.2.tgz#0668b01202610657e998b3ca87669645e0b31dc9"
   integrity sha512-gSMf8EXYl99Q3gqkq4RVhoTNSTYHz2Or6Cig2BJRbLJyqk15ZQE5qcq/ldHS8zzx/wgCA3HQeI63t2j2mEU9PA==
 
-ngx-markdown@8.2.2:
-  version "8.2.2"
-  resolved "https://registry.yarnpkg.com/ngx-markdown/-/ngx-markdown-8.2.2.tgz#fecd41d17b062bae1b16e9b1173d2142fc5bc026"
-  integrity sha512-wo2M2LIiLsuLqvmpeKwk8CDiT0qkxMdyNyCeypwJRcrfkzb6qjWEycA8i9VBBXwFze+8rS2BZn1YXrdezGi/3w==
+ngx-markdown@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-markdown/-/ngx-markdown-9.0.0.tgz#c01beb9aad75306164a430293ed63c1ba9fa9cd3"
+  integrity sha512-wcXMxA4Skgk9SzhfDRjihap/Kjq17jmMQiE/Ccp0bNibGaDgS5DbZiPBlMNLkp669UvjY9wVuxE4NuDtmQHS9w==
   dependencies:
-    "@types/marked" "^0.7.0"
+    "@types/marked" "^0.7.2"
     katex "^0.11.0"
-    marked "^0.7.0"
+    marked "^0.8.0"
     prismjs "^1.16.0"
-    tslib "^1.9.0"
 
 ngx-timeago@1.0.4:
   version "1.0.4"
