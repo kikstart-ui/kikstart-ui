@@ -11,7 +11,6 @@ import { ToastrModule } from 'ngx-toastr'
 import { TruncatePipe } from './pipes/truncate.pipe'
 
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
-import { UiContentComponent } from './components/ui-content.component'
 import { UiDialogFormComponent } from './components/ui-dialog-form.component'
 import { UiDialogProgressComponent } from './components/ui-dialog-progress.component'
 import { UiDropdownComponent } from './components/ui-dropdown.component'
@@ -34,6 +33,7 @@ import { UiButtonModule } from './components/ui-button/ui-button.module'
 import { UiCardModule } from './components/ui-card/ui-card.module'
 import { UiCodeModule } from './components/ui-code/ui-code.module'
 import { UiCommentModule } from './components/ui-comment/ui-comment.module'
+import { UiContentModule } from './components/ui-content/ui-content.module'
 import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
 import { UiFooterModule } from './components/ui-footer/ui-footer.module'
@@ -47,7 +47,6 @@ import { UiNoDataModule } from './components/ui-no-data/ui-no-data.module'
 
 const COMPONENTS = [
   UiAuthComponent,
-  UiContentComponent,
   UiDialogFormComponent,
   UiDialogProgressComponent,
   UiDropdownComponent,
@@ -77,6 +76,7 @@ const EXPORT_MODULES = [
   UiCardModule,
   UiCodeModule,
   UiCommentModule,
+  UiContentModule,
   UiDebugModule,
   UiFooterModule,
   UiFormModule,
