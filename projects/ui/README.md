@@ -19,13 +19,23 @@ cd my-app
 # Install library
 yarn add @kikstart/ui
 # Install dependencies
-yarn add bootswatch bootstrap font-awesome ngx-timeago ngx-bootstrap ngx-toastr @ngx-formly/core @ngx-formly/bootstrap
+yarn add bootswatch \
+         bootstrap \
+         font-awesome \
+         ngx-timeago \
+         ngx-bootstrap \
+         ngx-markdown \
+         ngx-toastr \
+         prismjs \
+         @ngx-formly/core \
+         @ngx-formly/bootstrap \
+         @ctrl/ngx-numbered-codeblock
 ```
 
 Update `src/styles.scss`:
 
 ```scss
-@import '~@kikstart/ui/_styles.scss';
+@import '~@kikstart/ui/styles';
 ```
 
 # MIT License
