@@ -2676,7 +2676,7 @@
     {
       "name": "UiContentComponent",
       "id": "component-UiContentComponent-9fd09bd68f2c120274d88a4da99b0d2a",
-      "file": "projects/ui/src/lib/components/ui-content.component.ts",
+      "file": "projects/ui/src/lib/components/ui-content/ui-content.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
@@ -4577,6 +4577,43 @@
       ]
     },
     {
+      "name": "UiContentModule",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "UiContentComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": []
+        },
+        {
+          "type": "exports",
+          "elements": [
+            {
+              "name": "UiContentComponent"
+            }
+          ]
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
       "name": "UiDataModule",
       "children": [
         {
@@ -4995,9 +5032,6 @@
               "name": "UiAuthComponent"
             },
             {
-              "name": "UiContentComponent"
-            },
-            {
               "name": "UiDialogFormComponent"
             },
             {
@@ -5066,6 +5100,9 @@
               "name": "UiCommentModule"
             },
             {
+              "name": "UiContentModule"
+            },
+            {
               "name": "UiDebugModule"
             },
             {
@@ -5122,7 +5159,7 @@
               "name": "UiCommentModule"
             },
             {
-              "name": "UiContentComponent"
+              "name": "UiContentModule"
             },
             {
               "name": "UiDataModule"
@@ -5257,7 +5294,7 @@
         "subtype": "variable",
         "file": "projects/ui/src/lib/ui.module.ts",
         "type": "[]",
-        "defaultValue": "[\n  UiAuthComponent,\n  UiContentComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiHeaderComponent,\n  UiLayoutComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
+        "defaultValue": "[\n  UiAuthComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiHeaderComponent,\n  UiLayoutComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
       },
       {
         "name": "config",
@@ -5273,7 +5310,7 @@
         "subtype": "variable",
         "file": "projects/ui/src/lib/ui.module.ts",
         "type": "[]",
-        "defaultValue": "[\n  CommonModule,\n  BsDropdownModule,\n  ModalModule,\n  TabsModule,\n  // Ui Modules will be exported until version 2\n  UiAvatarModule,\n  UiBrandModule,\n  UiButtonModule,\n  UiCardModule,\n  UiCodeModule,\n  UiCommentModule,\n  UiDebugModule,\n  UiFooterModule,\n  UiFormModule,\n  UiHeroModule,\n  UiLabelModule,\n  UiLinkModule,\n  UiLinksModule,\n  UiLoadingIconModule,\n  UiNoDataModule,\n]"
+        "defaultValue": "[\n  CommonModule,\n  BsDropdownModule,\n  ModalModule,\n  TabsModule,\n  // Ui Modules will be exported until version 2\n  UiAvatarModule,\n  UiBrandModule,\n  UiButtonModule,\n  UiCardModule,\n  UiCodeModule,\n  UiCommentModule,\n  UiContentModule,\n  UiDebugModule,\n  UiFooterModule,\n  UiFormModule,\n  UiHeroModule,\n  UiLabelModule,\n  UiLinkModule,\n  UiLinksModule,\n  UiLoadingIconModule,\n  UiNoDataModule,\n]"
       },
       {
         "name": "randInt",
@@ -5536,7 +5573,7 @@
           "subtype": "variable",
           "file": "projects/ui/src/lib/ui.module.ts",
           "type": "[]",
-          "defaultValue": "[\n  UiAuthComponent,\n  UiContentComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiHeaderComponent,\n  UiLayoutComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
+          "defaultValue": "[\n  UiAuthComponent,\n  UiDialogFormComponent,\n  UiDialogProgressComponent,\n  UiDropdownComponent,\n  UiHeaderComponent,\n  UiLayoutComponent,\n  UiListComponent,\n  UiListItemComponent,\n  UiLoadingComponent,\n  UiPageSidebarComponent,\n  UiPageSidebarRouteComponent,\n  UiRenderComponent,\n  UiSidebarComponent,\n  UiSidebarItemComponent,\n  UiTabsComponent,\n  UiUserComponent,\n]"
         },
         {
           "name": "EXPORT_MODULES",
@@ -5544,7 +5581,7 @@
           "subtype": "variable",
           "file": "projects/ui/src/lib/ui.module.ts",
           "type": "[]",
-          "defaultValue": "[\n  CommonModule,\n  BsDropdownModule,\n  ModalModule,\n  TabsModule,\n  // Ui Modules will be exported until version 2\n  UiAvatarModule,\n  UiBrandModule,\n  UiButtonModule,\n  UiCardModule,\n  UiCodeModule,\n  UiCommentModule,\n  UiDebugModule,\n  UiFooterModule,\n  UiFormModule,\n  UiHeroModule,\n  UiLabelModule,\n  UiLinkModule,\n  UiLinksModule,\n  UiLoadingIconModule,\n  UiNoDataModule,\n]"
+          "defaultValue": "[\n  CommonModule,\n  BsDropdownModule,\n  ModalModule,\n  TabsModule,\n  // Ui Modules will be exported until version 2\n  UiAvatarModule,\n  UiBrandModule,\n  UiButtonModule,\n  UiCardModule,\n  UiCodeModule,\n  UiCommentModule,\n  UiContentModule,\n  UiDebugModule,\n  UiFooterModule,\n  UiFormModule,\n  UiHeroModule,\n  UiLabelModule,\n  UiLinkModule,\n  UiLinksModule,\n  UiLoadingIconModule,\n  UiNoDataModule,\n]"
         }
       ],
       "projects/ui/src/lib/components/ui-form/ui-form.module.ts": [
@@ -5935,7 +5972,7 @@
         "status": "low"
       },
       {
-        "filePath": "projects/ui/src/lib/components/ui-content.component.ts",
+        "filePath": "projects/ui/src/lib/components/ui-content/ui-content.component.ts",
         "type": "component",
         "linktype": "component",
         "name": "UiContentComponent",
