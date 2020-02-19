@@ -125,10 +125,10 @@
     ora "4.0.2"
     rxjs "6.5.3"
 
-"@angular/animations@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-9.0.0.tgz#8d2b852c5273bcc161d13f82faaf3566ab562951"
-  integrity sha512-jB8+SC3vMztW5zt5UYVmtVwqIWE33UyEjbP5JPba3I3bLRK5E059LcJmN1rSdJHItgIAdG9Y1I0WJ6aiSFyp4Q==
+"@angular/animations@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-9.0.2.tgz#f20a5c93bd37a1e286722c58361bb8e9ac1af0f7"
+  integrity sha512-vj4N8nSLytQI45TtGy2tJb0Yc7uqlyap+qhghc+jdyG41w18KQUnIneEWKOfHWnp8VJEfzgzaY7zr/1QPlxWgA==
 
 "@angular/cli@9.0.2":
   version "9.0.2"
@@ -156,15 +156,15 @@
     universal-analytics "^0.4.20"
     uuid "^3.3.2"
 
-"@angular/common@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/common/-/common-9.0.0.tgz#0e3b2452d42f87d1825a448a31ad72c593ee0785"
-  integrity sha512-ZMmEClGtUNJwV5CBlqcSHPIsNyz6WU/GvKWFzJ5VZc68oeg1e7lqfNMNIC47TjyolNJ7VSpNlyrKjzfdBlmqVw==
+"@angular/common@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-9.0.2.tgz#767c659b4a34c478009a40373ca1ebb84091c0b4"
+  integrity sha512-KYOov8fg5WX/bAMkemlcAZxqiq/6ga1BoxjaiZXBj07KDq8i5Nwcm6RmNkeDByCuXd2UHVm1w5t897wEUi6fnw==
 
-"@angular/compiler-cli@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-9.0.0.tgz#ecce680820725885fed298af69946bdaa12d73d3"
-  integrity sha512-6L3swd3Z2ceAapmioml6z7yu3bYC2aVm3/rgK7eCoZtPcevuvTpGnXcFSVvNgByV51GntgInThPbMx0xY23Rvw==
+"@angular/compiler-cli@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-9.0.2.tgz#41868d23f2d062e072c9cff267c835151d237e8c"
+  integrity sha512-2AAZr1jX72OG9k1viVShiDGAwV9PZEcoDt80PXkUjLTUwWxicuSBKYauph47PzK/qzqWhdbvMbh8wCWHSLq0Qg==
   dependencies:
     canonical-path "1.0.0"
     chokidar "^3.0.0"
@@ -178,40 +178,40 @@
     source-map "^0.6.1"
     yargs "13.1.0"
 
-"@angular/compiler@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-9.0.0.tgz#87e0bef4c369b6cadae07e3a4295778fc93799d5"
-  integrity sha512-ctjwuntPfZZT2mNj2NDIVu51t9cvbhl/16epc5xEwyzyDt76pX9UgwvY+MbXrf/C/FWwdtmNtfP698BKI+9leQ==
+"@angular/compiler@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-9.0.2.tgz#be238eb2e575e2945f8e88c4ae09d99b280b797d"
+  integrity sha512-IWlKn5v3y7k1Z2K2wfNNzbn9xgA4fFlWyPe9QpdS8iy6/bPe5GfKhHbMYIza5eIhPXDN93zdEptiAIXGP3kLBQ==
 
-"@angular/core@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-9.0.0.tgz#227dc53e1ac81824f998c6e76000b7efc522641e"
-  integrity sha512-6Pxgsrf0qF9iFFqmIcWmjJGkkCaCm6V5QNnxMy2KloO3SDq6QuMVRbN9RtC8Urmo25LP+eZ6ZgYqFYpdD8Hd9w==
+"@angular/core@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-9.0.2.tgz#250093b6a4d3137e2cc30e73e6cee919f1386165"
+  integrity sha512-ccVPR6RZo2s9O9phO0TJ60QZ0WA7qfUMzo0xnpBW0XGcbTzLEn9upvs+0PX64f9UpnHz/MQo0wsqYvTLuoz7Yw==
 
-"@angular/forms@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-9.0.0.tgz#2017e4ddee101fa57dc5dc9ba1139b1f02499422"
-  integrity sha512-SIYJc0Rgaihow1t+iiwSFGEvvRgssgUuxwIYbMfCp1Sx513K+JX9nVFXqU+dcGj/eF1u5wwYwbvlVyuMQLzmXg==
+"@angular/forms@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-9.0.2.tgz#917e8f85a2f358bbcdf1b1946b7afa6f5460b5ed"
+  integrity sha512-qXEth7yeCd+5i6QyvllXnh/Rkzh16raFX5nfI7mgKHjWMik15Ua8wkVhDX9b5gizWeEyZtZcMGsTbbOQy0Ft3Q==
 
-"@angular/language-service@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-9.0.0.tgz#24ba63ae5db566b70f7c40bb148dc37a77aaa373"
-  integrity sha512-tOMtXY8DFpTWMF77BOTXZmMMtqvdy6fbyOkJSccn6VatcPrNXOs5rKur+KNwdSlK+djjss6Y+LA8fQAvjNvUqw==
+"@angular/language-service@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-9.0.2.tgz#5bc4b50e6cec95df660879f9f092774d5f2420c0"
+  integrity sha512-b+1g1FYG5MkSQtRqqUAN50N7fcEqA355dEHa2Vl03uBDZSYC/XSrR59IvgJfKLFuS4dopirvY9Eddbhk2FcAmg==
 
-"@angular/platform-browser-dynamic@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-9.0.0.tgz#1b87355c20d0b2a046c1914085701a3d5ced52da"
-  integrity sha512-F1kbEpmDottTemRPEOAz2Te5ABVJ7wypfzBllxqXbdxPHvYLfL8db2dXyiGqABQ3ZFHPLNilrkUTy0sbuuU4OA==
+"@angular/platform-browser-dynamic@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-9.0.2.tgz#1ed55756abd29830c2952f07c5fdea6be0b33acc"
+  integrity sha512-RJa+Y83hIFcf7pFcbbaCi7M5Y9nUUcQVuazWbQtiUe+BY5pikyug4RsF2B10pctcxb6LFLElfmkvatmmwEQ9aQ==
 
-"@angular/platform-browser@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-9.0.0.tgz#b9454f29d8edaf024668baa9e07083eef73deac2"
-  integrity sha512-2PR/o57HjZvKEnAF8ODeqxmeC90oth9dLTMrJNoI5MET0IeErKeI/9Sl5cLQuXC+lSVN5rOMCvDb74VWSno5yw==
+"@angular/platform-browser@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-9.0.2.tgz#159456404b35f4c86ecf64ecc2b427389ede057d"
+  integrity sha512-RMivdtJtspYLH/96AzLwLj3v0O9ck0sL6R1uh5JacfBkmedqJzmLn+AOxTdjaGdIpFtw9tisT+0Aw/nkG14vlA==
 
-"@angular/router@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-9.0.0.tgz#11784fc8ce9cb3314c7ec1083ff9be7c611181c2"
-  integrity sha512-yyOcStpgN5t8wGRNO85mo0jplXkntP+v2tmSxNx45pahqmofSFm+QCEFa2zHQuMr7NoiGERhd0Tae7NDCCjtjA==
+"@angular/router@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-9.0.2.tgz#f33a56b16966eabdb7b24ae484d9577d47fe117f"
+  integrity sha512-jDKq9K0pOgaMtocg7VCfIQX8jTyBSb+0hjOcj6kXQVCcmnxeBzGPRX2THQyFkyzG8owTBZlHIrJA3H2thDU2LQ==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.5.5"
