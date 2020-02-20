@@ -18,7 +18,6 @@ import { UiHeaderComponent } from './components/ui-header.component'
 import { UiLayoutComponent } from './components/ui-layout.component'
 import { UiListComponent } from './components/ui-list.component'
 import { UiListItemComponent } from './components/ui-list-item.component'
-import { UiLoadingComponent } from './components/ui-loading.component'
 import { UiPageSidebarComponent } from './components/ui-page-sidebar.component'
 import { UiPageSidebarRouteComponent } from './components/ui-page-sidebar-route.component'
 import { UiRenderComponent } from './components/ui-render.component'
@@ -42,7 +41,7 @@ import { UiHeroModule } from './components/ui-hero/ui-hero.module'
 import { UiLabelModule } from './components/ui-label/ui-label.module'
 import { UiLinkModule } from './components/ui-link/ui-link.module'
 import { UiLinksModule } from './components/ui-links/ui-links.module'
-import { UiLoadingIconModule } from './components/ui-loading-icon/ui-loading-icon.module'
+import { UiLoadingModule } from './components/ui-loading/ui-loading.module'
 import { UiNoDataModule } from './components/ui-no-data/ui-no-data.module'
 
 const COMPONENTS = [
@@ -54,7 +53,6 @@ const COMPONENTS = [
   UiLayoutComponent,
   UiListComponent,
   UiListItemComponent,
-  UiLoadingComponent,
   UiPageSidebarComponent,
   UiPageSidebarRouteComponent,
   UiRenderComponent,
@@ -84,7 +82,7 @@ const EXPORT_MODULES = [
   UiLabelModule,
   UiLinkModule,
   UiLinksModule,
-  UiLoadingIconModule,
+  UiLoadingModule,
   UiNoDataModule,
 ]
 
