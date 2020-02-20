@@ -13,7 +13,6 @@ import { TruncatePipe } from './pipes/truncate.pipe'
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
 import { UiDialogFormComponent } from './components/ui-dialog-form.component'
 import { UiDialogProgressComponent } from './components/ui-dialog-progress.component'
-import { UiDropdownComponent } from './components/ui-dropdown.component'
 import { UiHeaderComponent } from './components/ui-header.component'
 import { UiLayoutComponent } from './components/ui-layout.component'
 import { UiListComponent } from './components/ui-list.component'
@@ -35,6 +34,7 @@ import { UiCommentModule } from './components/ui-comment/ui-comment.module'
 import { UiContentModule } from './components/ui-content/ui-content.module'
 import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
+import { UiDropdownModule } from './components/ui-dropdown/ui-dropdown.module'
 import { UiFooterModule } from './components/ui-footer/ui-footer.module'
 import { UiFormModule } from './components/ui-form/ui-form.module'
 import { UiHeroModule } from './components/ui-hero/ui-hero.module'
@@ -48,7 +48,6 @@ const COMPONENTS = [
   UiAuthComponent,
   UiDialogFormComponent,
   UiDialogProgressComponent,
-  UiDropdownComponent,
   UiHeaderComponent,
   UiLayoutComponent,
   UiListComponent,
@@ -76,6 +75,7 @@ const EXPORT_MODULES = [
   UiCommentModule,
   UiContentModule,
   UiDebugModule,
+  UiDropdownModule,
   UiFooterModule,
   UiFormModule,
   UiHeroModule,
