@@ -33,7 +33,7 @@
     "@angular/router": "9.0.2",
     "@ctrl/ngx-numbered-codeblock": "3.0.0",
     "@ngx-formly/bootstrap": "5.5.12",
-    "@ngx-formly/core": "5.5.12",
+    "@ngx-formly/core": "5.5.13",
     "bootstrap": "4.4.1",
     "bootswatch": "4.4.1",
     "font-awesome": "4.7.0",

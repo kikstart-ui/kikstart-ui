@@ -1139,10 +1139,10 @@
   dependencies:
     tslib "^1.9.0"
 
-"@ngx-formly/core@5.5.12":
-  version "5.5.12"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.5.12.tgz#9b61048fce7b2afd085833687793a1fd494ac069"
-  integrity sha512-jE5I3EXwauh+GCfnz5mU/bacHxIDktJjvTIc7o+WhEgHdVvwo3qqBq3MbzJ5FSpfNQDoCufg05kw9XNQM0sDkw==
+"@ngx-formly/core@5.5.13":
+  version "5.5.13"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.5.13.tgz#f304cf398afc57dd1a06c142723ee958a423ec62"
+  integrity sha512-c5sGPU/ggoRGthW8SnN2PL10DBdwj+5aCz1ItEB3iLDcmtKDcIQox8XUoz4qXQk5ZY651wWAKc1MzLMf3VhGQw==
   dependencies:
     tslib "^1.7.1"
 
