@@ -2,27 +2,27 @@
 # yarn lockfile v1
 
 
-"@angular-devkit/architect@0.900.3":
-  version "0.900.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.900.3.tgz#9c396733abd12fbb1d5bbc4542b2ee52418adb02"
-  integrity sha512-4UHc58Dlc5XHY3eiYSX9gytLyPNYixGSRwLcc/LRwuPgrmUFKPzCN3nwgB+9kc03/HN89CsJ1rS1scid6N6vxQ==
+"@angular-devkit/architect@0.900.4":
+  version "0.900.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.900.4.tgz#6daf95b9c2ec51c38ca451c3ff7cf64e5404a04a"
+  integrity sha512-qbD7q+5lKgxpA+hGPfBLQRZukNO1Ok4YePevi7xt6pdfNatIqjxqYch7w/Ce0GvrOeimzSR1yC7STV5gjdoL3A==
   dependencies:
-    "@angular-devkit/core" "9.0.3"
+    "@angular-devkit/core" "9.0.4"
     rxjs "6.5.3"
 
-"@angular-devkit/build-angular@0.900.3":
-  version "0.900.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-0.900.3.tgz#8c68b2d98908685ec29b6eb61aa44739f004b247"
-  integrity sha512-QrtHbSJSQ9FlcwlndagYzolOepVKeBX+ZZJgCHDyJTUtZG/ah1N7lfmq+gp1IXdiVEk17H9YAk9iZd48lKBO9g==
+"@angular-devkit/build-angular@0.900.4":
+  version "0.900.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-0.900.4.tgz#571bf28478c9242ca652adda5308f7697eeb4038"
+  integrity sha512-azv4/duUFMPIgpWuKeQvx+8fb5qUZes4EauBfzYGbZcF0ljN0xjnpQF5kIuDA5FcCTA+JUKfanocR0EXa0klXQ==
   dependencies:
-    "@angular-devkit/architect" "0.900.3"
-    "@angular-devkit/build-optimizer" "0.900.3"
-    "@angular-devkit/build-webpack" "0.900.3"
-    "@angular-devkit/core" "9.0.3"
+    "@angular-devkit/architect" "0.900.4"
+    "@angular-devkit/build-optimizer" "0.900.4"
+    "@angular-devkit/build-webpack" "0.900.4"
+    "@angular-devkit/core" "9.0.4"
     "@babel/core" "7.7.7"
     "@babel/generator" "7.7.7"
     "@babel/preset-env" "7.7.7"
-    "@ngtools/webpack" "9.0.3"
+    "@ngtools/webpack" "9.0.4"
     ajv "6.10.2"
     autoprefixer "9.7.1"
     babel-loader "8.0.6"
@@ -31,7 +31,7 @@
     caniuse-lite "1.0.30001020"
     circular-dependency-plugin "5.2.0"
     copy-webpack-plugin "5.1.1"
-    core-js "3.6.0"
+    core-js "3.6.4"
     coverage-istanbul-loader "2.0.3"
     cssnano "4.1.10"
     file-loader "4.2.0"
@@ -77,18 +77,18 @@
     webpack-subresource-integrity "1.3.4"
     worker-plugin "3.2.0"
 
-"@angular-devkit/build-ng-packagr@0.900.3":
-  version "0.900.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-ng-packagr/-/build-ng-packagr-0.900.3.tgz#819b87cc8217f1fa14ac39cf47d0fca5d079f4f3"
-  integrity sha512-ZK/G+Vqale9NZZPu349D9DAZUBwqUobqIlakexlm3sDgSQbqA9VId6p0P4+xPUntVYJQ/JVarBowSpAcXsi6Rw==
+"@angular-devkit/build-ng-packagr@0.900.4":
+  version "0.900.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-ng-packagr/-/build-ng-packagr-0.900.4.tgz#3ce96a0c7134907d9852e4f63ebbb5636197104e"
+  integrity sha512-dR+s5/c7+5GtynupCc49l7TnapnP6DNoTQ+floWf9X5bcAs/xHKNLPxIX360cqh6zvXQMyQf6u/9Vwkdh0+tFw==
   dependencies:
-    "@angular-devkit/architect" "0.900.3"
+    "@angular-devkit/architect" "0.900.4"
     rxjs "6.5.3"
 
-"@angular-devkit/build-optimizer@0.900.3":
-  version "0.900.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-optimizer/-/build-optimizer-0.900.3.tgz#91f90c56affb0be9f7910dfc1d414f16c21c2c3f"
-  integrity sha512-VLAWtAXpOzOoYUJrN6sT90UdIdvrVIipkzGz7nfI1kscDvxUFwVZnsNNHtFinaY2SfZAunHhYQOA/B9FJ8WPdQ==
+"@angular-devkit/build-optimizer@0.900.4":
+  version "0.900.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-optimizer/-/build-optimizer-0.900.4.tgz#c3cad084f54cccfc9ef90dc8e24716de939b2eda"
+  integrity sha512-GimgBezfUpEmpAqmhTC6bFTmyYtGycK7meJPrrfiAU8cvtUJOaHFt7AwcbFBS8ORdOeSHbOCrIVy9CAQwA3nXw==
   dependencies:
     loader-utils "1.2.3"
     source-map "0.7.3"
@@ -96,19 +96,19 @@
     typescript "3.6.4"
     webpack-sources "1.4.3"
 
-"@angular-devkit/build-webpack@0.900.3":
-  version "0.900.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.900.3.tgz#4a2fd13cebe190c091606e18397a1f7cccfab6bb"
-  integrity sha512-9gSTLWf7yq/XBOec0CtZcjNMsC7L8IuVDProBQHps2SvTfr982DtHfEge95J2lc9BjRbqidv+phImFsQ1J3mFA==
+"@angular-devkit/build-webpack@0.900.4":
+  version "0.900.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.900.4.tgz#af99221fe4f50e8326978caae67312f46557a897"
+  integrity sha512-eGWK7jl1XC6OW2LRmUoX/6yqYT6N2dF1BuBrymwRx9I3BzWr64YyDIy5m3GomQVrSWpQ1uDSCpuPX2xWlwpeLw==
   dependencies:
-    "@angular-devkit/architect" "0.900.3"
-    "@angular-devkit/core" "9.0.3"
+    "@angular-devkit/architect" "0.900.4"
+    "@angular-devkit/core" "9.0.4"
     rxjs "6.5.3"
 
-"@angular-devkit/core@9.0.3":
-  version "9.0.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-9.0.3.tgz#a027862d2edd981afcc6245176e9f27768c631c9"
-  integrity sha512-3+abmv9K9d+BVgUAolYgoOqlGAA2Jb1pWo2biapSDG6KjUZHUCJdnsKigLtLorCdv0SrjTp56FFplkcqKsFQgA==
+"@angular-devkit/core@9.0.4":
+  version "9.0.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-9.0.4.tgz#e137052eea491f3bc0d50a2571c4449c620c2f80"
+  integrity sha512-7+/vDm+zh7wTJbBeSdTHGhE+TQj6JOriCPl8Pj8HZU1TtNLvIFR4vhClWavPvhb8xWSbndalvQyOWOsLmuDnEA==
   dependencies:
     ajv "6.10.2"
     fast-json-stable-stringify "2.0.0"
@@ -116,12 +116,12 @@
     rxjs "6.5.3"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@9.0.3":
-  version "9.0.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-9.0.3.tgz#e65fa1ce08a3d5ef0af594b623024439c1110a0d"
-  integrity sha512-BQnZtFQPLZZOijhuEndtzL6cOnhaE8nNxupkRHavWohOMStnLsRyvVJj6JVDkf37wvT5koqTNjHhbdMxcCRc6A==
+"@angular-devkit/schematics@9.0.4":
+  version "9.0.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-9.0.4.tgz#fc20fe40a575ee72ed6bee90608dbd0d0579f135"
+  integrity sha512-D6M77r8J/rrK86RQ1kvumSYAnlbOKxDDcwsac4mPAHYyOOmueheecjpTVTqSVpNjkI6jHb6haOVFEGMiDMA/Jg==
   dependencies:
-    "@angular-devkit/core" "9.0.3"
+    "@angular-devkit/core" "9.0.4"
     ora "4.0.2"
     rxjs "6.5.3"
 
@@ -130,16 +130,16 @@
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-9.0.2.tgz#f20a5c93bd37a1e286722c58361bb8e9ac1af0f7"
   integrity sha512-vj4N8nSLytQI45TtGy2tJb0Yc7uqlyap+qhghc+jdyG41w18KQUnIneEWKOfHWnp8VJEfzgzaY7zr/1QPlxWgA==
 
-"@angular/cli@9.0.3":
-  version "9.0.3"
-  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-9.0.3.tgz#114bf16fd00685d814840f6fece286e0f8f6f1e3"
-  integrity sha512-DYa2k6ihYmvfKgv2SE/OqP76D8EEHkIFcJ3ZgVdnxEyCmUXUD4zqOVDzDIK794BdditLF88g4Mezz142bn6XUA==
+"@angular/cli@9.0.4":
+  version "9.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-9.0.4.tgz#21aa041292a321e6cc3e7c2e4f0e40aead71322d"
+  integrity sha512-s+fJlHdyT29LGIt/54VN5sKMsN2RJh0Np9jk0/HChxJN/0KR3IDExVahl8KpJfyVSssCYImQckVP3NyprRWeeA==
   dependencies:
-    "@angular-devkit/architect" "0.900.3"
-    "@angular-devkit/core" "9.0.3"
-    "@angular-devkit/schematics" "9.0.3"
-    "@schematics/angular" "9.0.3"
-    "@schematics/update" "0.900.3"
+    "@angular-devkit/architect" "0.900.4"
+    "@angular-devkit/core" "9.0.4"
+    "@angular-devkit/schematics" "9.0.4"
+    "@schematics/angular" "9.0.4"
+    "@schematics/update" "0.900.4"
     "@yarnpkg/lockfile" "1.1.0"
     ansi-colors "4.1.1"
     debug "^4.1.1"
@@ -1122,12 +1122,12 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@ngtools/webpack@9.0.3":
-  version "9.0.3"
-  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-9.0.3.tgz#d05b5a15584909262a4db027919f03ccb074dc11"
-  integrity sha512-pMIXfq1IJLbvwmkPonGs7nrpuBCXrlZTf9A4OYsMBZcfU8JMn0pRdx7G2+bC9Q/f+uSw2uvPSv76xJXLBOntmA==
+"@ngtools/webpack@9.0.4":
+  version "9.0.4"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-9.0.4.tgz#edb6a89192f33fc639ba677a34f19faf7c3f4289"
+  integrity sha512-CMPrmocVjNII0C/eAFV0K/nOPR60Cj6is+aiOm+HAneBBkw/P05r0eds1zarGzyn42/PbeL3nh3RYMjWkt9mrQ==
   dependencies:
-    "@angular-devkit/core" "9.0.3"
+    "@angular-devkit/core" "9.0.4"
     enhanced-resolve "4.1.1"
     rxjs "6.5.3"
     webpack-sources "1.4.3"
@@ -1272,21 +1272,21 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@schematics/angular@9.0.3":
-  version "9.0.3"
-  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-9.0.3.tgz#8b0fb91fa18dd909001ac0d888479a96810aa640"
-  integrity sha512-6XSnPW4G7aoKXccg0FTpZ02y/yi9y/bj7swnSL9Z4RRPIvPVapDjB7uJPg8sm8+PTIpcMhEFQrchIqM3LXW4zA==
+"@schematics/angular@9.0.4":
+  version "9.0.4"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-9.0.4.tgz#e90e15abc512c310e3865717811fc3152f3462b1"
+  integrity sha512-JYkzMoEITWN+c+WcAieglGM6590kbDs+80HyHFiCWDMvGeYM0JEv98wsYq5fzFfhETMKe09CkaqB80YK4m4OKg==
   dependencies:
-    "@angular-devkit/core" "9.0.3"
-    "@angular-devkit/schematics" "9.0.3"
+    "@angular-devkit/core" "9.0.4"
+    "@angular-devkit/schematics" "9.0.4"
 
-"@schematics/update@0.900.3":
-  version "0.900.3"
-  resolved "https://registry.yarnpkg.com/@schematics/update/-/update-0.900.3.tgz#9141ee2e1b6356e66f6269b92c284c86e4faf065"
-  integrity sha512-mlRsm3/HM1f/10Wdz4xMYA+mpW3EDCB+whlV5cJ7PGMhjUMaxA9DuWvoP06h05le6XmgnjIEoxL6NJ7CgesHcA==
+"@schematics/update@0.900.4":
+  version "0.900.4"
+  resolved "https://registry.yarnpkg.com/@schematics/update/-/update-0.900.4.tgz#5a125f5dd359b5a21b87b346d6dc765ae93f0a32"
+  integrity sha512-0aR412gvpqm8KlpMn6jcewD9blovnD7fEoyP+yJPU8eYCFE7BIK6kw71ZSE1uG0tbHT8g+WXbfwZNcJyI1HUmg==
   dependencies:
-    "@angular-devkit/core" "9.0.3"
-    "@angular-devkit/schematics" "9.0.3"
+    "@angular-devkit/core" "9.0.4"
+    "@angular-devkit/schematics" "9.0.4"
     "@yarnpkg/lockfile" "1.1.0"
     ini "1.3.5"
     npm-package-arg "^7.0.0"
@@ -3594,10 +3594,10 @@ core-js-compat@^3.6.0:
     browserslist "^4.8.3"
     semver "7.0.0"
 
-core-js@3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.0.tgz#2b854e451de1967d1e29896025cdc13a2518d9ea"
-  integrity sha512-AHPTNKzyB+YwgDWoSOCaid9PUSEF6781vsfiK8qUz62zRR448/XgK2NtCbpiUGizbep8Lrpt0Du19PpGGZvw3Q==
+core-js@3.6.4:
+  version "3.6.4"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.4.tgz#440a83536b458114b9cb2ac1580ba377dc470647"
+  integrity sha512-4paDGScNgZP2IXXilaffL9X7968RuvwlkK3xWtZRVqgd8SYNiVKRJvkFd1aqqEuPfN7E68ZHEp9hDj6lHj4Hyw==
 
 core-js@^2.4.0:
   version "2.6.10"
