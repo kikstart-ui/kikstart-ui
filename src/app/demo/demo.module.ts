@@ -20,6 +20,7 @@ const routes: Routes = [
         { path: '/demos/ui-form', label: 'ui-form' },
         { path: '/demos/ui-hero', label: 'ui-hero' },
         { path: '/demos/ui-markdown', label: 'ui-markdown' },
+        { path: '/demos/ui-no-data', label: 'ui-no-data' },
         { path: '/demos/ui-render', label: 'ui-render' },
         { path: '/demos/ui-service', label: 'UiService' },
       ],
@@ -77,6 +78,11 @@ const routes: Routes = [
         path: 'ui-markdown',
         loadChildren: () =>
           import('./demos/ui-markdown/ui-markdown-demo.module').then(m => m.UiMarkdownDemoModule),
+      },
+      {
+        path: 'ui-no-data',
+        loadChildren: () =>
+          import('./demos/ui-no-data/ui-no-data-demo.module').then(m => m.UiNoDataDemoModule),
       },
       {
         path: 'ui-render',
