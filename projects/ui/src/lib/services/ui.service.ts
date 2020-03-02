@@ -17,6 +17,7 @@ interface UiDialogFormParams {
   fields: FormlyFieldConfig[]
   model?: any
   title?: string
+  className?: string
 }
 
 @Injectable({ providedIn: 'root' })
@@ -47,8 +48,9 @@ export class UiService {
     private toast: ToastrService,
   ) {}
 
-  openForm({ model, title, handler, fields }: UiDialogFormParams) {
+  openForm({ className, model, title, handler, fields }: UiDialogFormParams) {
     this.modal.show(UiDialogFormComponent, {
+      class: className || 'modal-dialog-centered',
       initialState: {
         model: cloneDeep(model),
         fields: cloneDeep(fields),
