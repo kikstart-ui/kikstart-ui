@@ -42,8 +42,8 @@ import { UiService } from '@kikstart/ui'
   styles: [
     `
       .tab-pane {
-        background-color: #222;
-        border: 1px solid #444;
+        background-color: var(--background-color);
+        border: 1px solid var(--border-color);
         border-top: 0;
       }
     `,

@@ -1,9 +1,9 @@
 {
   "bundlerOptions": {
     "entryFile": "./projects/ui/src/lib/styles/_styles.scss",
-    "rootDir": "./projects/ui/src/lib/",
+    "rootDir": ".",
     "outFile": "./dist/ui/_styles.scss",
     "ignoreImports": ["~@angular/.*"],
-    "logLevel": "silent"
+    "logLevel": "debug"
   }
 }

@@ -49,7 +49,7 @@ import { FormlyTemplateOptions } from '@ngx-formly/core'
       ::ng-deep textarea.form-control {
         background-color: inherit !important;
         color: inherit !important;
-        border: 1px solid #444 !important;
+        border: 1px solid var(--border-color) !important;
       }
       ::ng-deep textarea.form-control:disabled {
         color: #999 !important;

@@ -1,0 +1,10 @@
+@import '~bootswatch/dist/cosmo/_variables.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootswatch/dist/cosmo/_bootswatch.scss';
+
+:root {
+  --background-color: var(--white);
+  --border-color: rgba(0, 0, 0, 0.125);
+}
+
+@import 'common';

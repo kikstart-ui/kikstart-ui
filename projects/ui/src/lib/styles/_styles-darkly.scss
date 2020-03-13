@@ -1,0 +1,10 @@
+@import '~bootswatch/dist/darkly/_variables.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootswatch/dist/darkly/_bootswatch.scss';
+
+:root {
+  --background-color: #222;
+  --border-color: var(--secondary);
+}
+
+@import 'common';
