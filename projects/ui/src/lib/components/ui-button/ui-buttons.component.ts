@@ -13,6 +13,7 @@ import { UiButton } from '../../interfaces/ui-button'
         (action)="action.emit($event)"
         [button]="button"
         [buttonClass]="buttonClass"
+        [payload]="payload"
       ></ui-button>
     </ng-container>
   `,
@@ -37,5 +38,6 @@ import { UiButton } from '../../interfaces/ui-button'
 export class UiButtonsComponent {
   @Input() buttons: UiButton[]
   @Input() buttonClass: string
+  @Input() payload?: any
   @Output() action = new EventEmitter()
 }
