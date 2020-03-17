@@ -11,7 +11,7 @@ import { UiButton } from '../../interfaces/ui-button'
       <button
         [disabled]="disabled || button?.disabled"
         [class]="btnClass"
-        (click)="action.emit(button)"
+        (click)="emitAction(button, payload)"
       >
         <ui-loading-icon *ngIf="loading" [class.mr-2]="loadingClass" [icon]="loadingIcon">
         </ui-loading-icon>
@@ -26,7 +26,7 @@ import { UiButton } from '../../interfaces/ui-button'
       <button
         [disabled]="disabled || button?.disabled"
         [class]="btnClass"
-        (click)="button.handler({ type: button.action, payload: button.payload })"
+        (click)="emitHandler(button, payload)"
       >
         <ui-loading-icon *ngIf="loading" [class.mr-2]="loadingClass" [icon]="loadingIcon">
         </ui-loading-icon>
@@ -42,9 +42,10 @@ import { UiButton } from '../../interfaces/ui-button'
 export class UiButtonComponent {
   @Input() disabled = false
   @Input() loading = false
+  @Input() payload?: any
   @Input() loadingIcon = 'fa-spinner'
   @Input() button: UiButton
-  @Input() buttonClass: string
+  @Input() buttonClass?: string
   @Output() action = new EventEmitter()
 
   get loadingClass() {
@@ -70,5 +71,19 @@ export class UiButtonComponent {
 
   get isLink() {
     return this.button.path || this.button.url
+  }
+
+  emitAction(button: UiButton, payload: any) {
+    this.action.emit({
+      ...button,
+      payload,
+    })
+  }
+
+  emitHandler(button: UiButton, payload: any) {
+    button.handler({
+      ...button,
+      payload,
+    })
   }
 }

@@ -19,6 +19,7 @@ import { UiButton } from '../../interfaces/ui-button'
             <ui-button
               (action)="action.emit($event)"
               buttonClass="btn-sm p-0 ml-2"
+              [payload]="payload"
               [button]="button"
             ></ui-button>
           </ng-container>
@@ -32,6 +33,7 @@ export class UiCardHeaderComponent {
   @Input() iconAfter?: string
   @Input() title: string
   @Input() description?: string
+  @Input() payload?: any
   @Input() buttons: UiButton[] | UiLink[]
   @Output() action = new EventEmitter()
   @Input() set cardSubTitle(title: string) {
