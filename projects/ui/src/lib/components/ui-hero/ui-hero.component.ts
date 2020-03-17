@@ -41,11 +41,7 @@ import { UiBrandSizes } from '../ui-brand/ui-brand.component'
             <ui-card-body *ngIf="card.content">
               {{ card.content }}
             </ui-card-body>
-            <ui-card-footer *ngIf="card?.links?.length">
-              <div class="text-right">
-                <ui-link *ngFor="let link of card.links" [link]="link" linkClass="mr-2"></ui-link>
-              </div>
-            </ui-card-footer>
+            <ui-card-footer *ngIf="card?.links?.length" [buttons]="card.links"> </ui-card-footer>
           </ui-card>
         </div>
       </ng-container>

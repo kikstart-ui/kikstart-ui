@@ -14,7 +14,7 @@ import { UiButton } from '../../interfaces/ui-button'
       <ng-content></ng-content>
       <div class="align-self-start">
         <ng-content select=".right"></ng-content>
-        <div *ngIf="buttons?.length">
+        <ng-container *ngIf="buttons?.length">
           <ng-container *ngFor="let button of buttons">
             <ui-button
               (action)="action.emit($event)"
@@ -23,7 +23,7 @@ import { UiButton } from '../../interfaces/ui-button'
               [button]="button"
             ></ui-button>
           </ng-container>
-        </div>
+        </ng-container>
       </div>
     </h5>
   `,

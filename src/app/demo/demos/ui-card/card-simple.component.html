@@ -1,11 +1,14 @@
 <ui-card>
   <ui-card-header cardTitle="Card Header" iconAfter="fa-lock text-muted" icon="fa-cubes">
-    I can sit inside the header
+    <div class="right">
+      I can sit inside the header
+    </div>
   </ui-card-header>
   <ui-card-body>
     In here we can do whatever we please!
   </ui-card-body>
-  <ui-card-footer class="text-center">
+
+  <ui-card-footer class="text-center" icon="fa-loading fa-spin">
     <div class="text-muted">This is some nice summary</div>
   </ui-card-footer>
 </ui-card>
@@ -20,7 +23,9 @@
       { action: 'DELETE', icon: 'fa-trash-o text-danger' }
     ]"
   >
-    I can sit inside the header
+    <small class="right text-muted">
+      <ui-label icon="fa-github"></ui-label>
+    </small>
   </ui-card-header>
   <ui-card-body>
     In here we can do whatever we please!
