@@ -7,4 +7,5 @@ export interface UiLink {
   url?: string
   queryParams?: any
   children?: UiLink[]
+  [key: string]: any
 }
