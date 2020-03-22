@@ -11,8 +11,6 @@ import { ToastrModule } from 'ngx-toastr'
 import { TruncatePipe } from './pipes/truncate.pipe'
 
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
-import { UiDialogFormComponent } from './components/ui-dialog-form.component'
-import { UiDialogProgressComponent } from './components/ui-dialog-progress.component'
 import { UiHeaderComponent } from './components/ui-header.component'
 import { UiLayoutComponent } from './components/ui-layout.component'
 import { UiListComponent } from './components/ui-list.component'
@@ -34,6 +32,7 @@ import { UiCommentModule } from './components/ui-comment/ui-comment.module'
 import { UiContentModule } from './components/ui-content/ui-content.module'
 import { UiDataModule } from './components/ui-data/ui-data.module'
 import { UiDebugModule } from './components/ui-debug/ui-debug.module'
+import { UiDialogModule } from './components/ui-dialog/ui-dialog.module'
 import { UiDropdownModule } from './components/ui-dropdown/ui-dropdown.module'
 import { UiFooterModule } from './components/ui-footer/ui-footer.module'
 import { UiFormModule } from './components/ui-form/ui-form.module'
@@ -46,8 +45,6 @@ import { UiNoDataModule } from './components/ui-no-data/ui-no-data.module'
 
 const COMPONENTS = [
   UiAuthComponent,
-  UiDialogFormComponent,
-  UiDialogProgressComponent,
   UiHeaderComponent,
   UiLayoutComponent,
   UiListComponent,
@@ -75,6 +72,7 @@ const EXPORT_MODULES = [
   UiCommentModule,
   UiContentModule,
   UiDebugModule,
+  UiDialogModule,
   UiDropdownModule,
   UiFooterModule,
   UiFormModule,
@@ -87,7 +85,7 @@ const EXPORT_MODULES = [
 ]
 
 @NgModule({
-  entryComponents: [UiDialogFormComponent, UiDialogProgressComponent],
+  entryComponents: [],
   declarations: [TruncatePipe, ...COMPONENTS],
   imports: [
     ...EXPORT_MODULES,
