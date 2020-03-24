@@ -8,8 +8,8 @@ import { ToastrService, IndividualConfig } from 'ngx-toastr'
 import { BsModalService } from 'ngx-bootstrap/modal'
 import { FormlyFieldConfig } from '@ngx-formly/core'
 
-import { UiDialogFormComponent } from '../components/ui-dialog-form.component'
-import { UiDialogProgressComponent } from '../components/ui-dialog-progress.component'
+import { UiDialogFormComponent } from '../components/ui-dialog/ui-dialog-form.component'
+import { UiDialogProgressComponent } from '../components/ui-dialog/ui-dialog-progress.component'
 import { UiLayout } from '../interfaces/ui-layout'
 
 interface UiDialogFormParams {
