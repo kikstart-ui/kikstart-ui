@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 
-import { UiBrand } from '../interfaces/ui-brand'
-import { UiLink } from '../interfaces/ui-link'
+import { UiBrand } from '../../interfaces/ui-brand'
+import { UiLink } from '../../interfaces/ui-link'
 
 @Component({
   selector: 'ui-header',
