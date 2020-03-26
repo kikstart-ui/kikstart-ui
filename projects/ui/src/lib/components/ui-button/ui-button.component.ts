@@ -76,14 +76,14 @@ export class UiButtonComponent {
   emitAction(button: UiButton, payload: any) {
     this.action.emit({
       ...button,
-      payload,
+      payload: button.payload ? button.payload : payload,
     })
   }
 
   emitHandler(button: UiButton, payload: any) {
     button.handler({
       ...button,
-      payload,
+      payload: button.payload ? button.payload : payload,
     })
   }
 }
