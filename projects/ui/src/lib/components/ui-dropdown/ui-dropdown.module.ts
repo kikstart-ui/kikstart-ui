@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { TimeagoModule } from 'ngx-timeago'
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 
 import { UiDropdownComponent } from './ui-dropdown.component'
 
 @NgModule({
-  imports: [TimeagoModule, CommonModule],
+  imports: [BsDropdownModule.forRoot(), CommonModule],
   declarations: [UiDropdownComponent],
   exports: [UiDropdownComponent],
 })
