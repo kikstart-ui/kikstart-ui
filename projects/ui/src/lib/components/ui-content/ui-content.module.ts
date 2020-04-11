@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core'
-// import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common'
 
 import { UiContentComponent } from './ui-content.component'
 
 @NgModule({
-  imports: [],
+  imports: [CommonModule],
   declarations: [UiContentComponent],
   exports: [UiContentComponent],
 })
