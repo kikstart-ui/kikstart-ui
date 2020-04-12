@@ -11,9 +11,7 @@ import {
 
 @Component({
   selector: 'ui-render',
-  template: `
-    <ng-template #target></ng-template>
-  `,
+  template: ` <ng-template #target></ng-template> `,
 })
 export class UiRenderComponent implements AfterViewInit, OnDestroy {
   @ViewChild('target', { read: ViewContainerRef }) ref: ViewContainerRef
@@ -42,14 +40,14 @@ export class UiRenderComponent implements AfterViewInit, OnDestroy {
     if (this.componentRef.instance) {
       // Wire up the inputs
       if (this.inputs && Object.keys(this.inputs).length) {
-        Object.keys(this.inputs).forEach(input => {
+        Object.keys(this.inputs).forEach((input) => {
           this.componentRef.instance[input] = this.inputs[input]
         })
       }
       // Wire up the outputs
       if (this.outputs && Object.keys(this.outputs).length) {
-        Object.keys(this.outputs).forEach(output => {
-          this.componentRef.instance.action.subscribe(res => this.outputs[output](res))
+        Object.keys(this.outputs).forEach((output) => {
+          this.componentRef.instance.action.subscribe((res) => this.outputs[output](res))
         })
       }
     }
