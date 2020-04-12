@@ -11,7 +11,6 @@ import { ToastrModule } from 'ngx-toastr'
 import { TruncatePipe } from './pipes/truncate.pipe'
 
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
-import { UiTabsComponent } from './components/ui-tabs.component'
 import { UiUserComponent } from './components/ui-user.component'
 
 import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
@@ -39,8 +38,9 @@ import { UiNoDataModule } from './components/ui-no-data/ui-no-data.module'
 import { UiPageSidebarModule } from './components/ui-page-sidebar/ui-page-sidebar.module'
 import { UiRenderModule } from './components/ui-render/ui-render.module'
 import { UiSidebarModule } from './components/ui-sidebar/ui-sidebar.module'
+import { UiTabsModule } from './components/ui-tabs/ui-tabs.module'
 
-const COMPONENTS = [UiAuthComponent, UiTabsComponent, UiUserComponent]
+const COMPONENTS = [UiAuthComponent, UiUserComponent]
 
 const EXPORT_MODULES = [
   CommonModule,
@@ -72,6 +72,7 @@ const EXPORT_MODULES = [
   UiPageSidebarModule,
   UiRenderModule,
   UiSidebarModule,
+  UiTabsModule,
 ]
 
 @NgModule({
