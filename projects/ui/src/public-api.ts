@@ -12,8 +12,6 @@ export { UiCardHeaderComponent } from './lib/components/ui-card/ui-card-header.c
 export { UiDataComponent, UiDataShape } from './lib/components/ui-data/ui-data.component'
 export { UiLinkComponent } from './lib/components/ui-link/ui-link.component'
 export { UiPageSidebarRouteComponent } from './lib/components/ui-page-sidebar/ui-page-sidebar-route.component'
-export { UiSidebarComponent } from './lib/components/ui-sidebar.component'
-export { UiSidebarItemComponent } from './lib/components/ui-sidebar-item.component'
 export { UiTabsComponent } from './lib/components/ui-tabs.component'
 export { UiUserComponent } from './lib/components/ui-user.component'
 
@@ -61,3 +59,4 @@ export { UiMarkdownModule } from './lib/components/ui-markdown/ui-markdown.modul
 export { UiNoDataModule } from './lib/components/ui-no-data/ui-no-data.module'
 export { UiPageSidebarModule } from './lib/components/ui-page-sidebar/ui-page-sidebar.module'
 export { UiRenderModule } from './lib/components/ui-render/ui-render.module'
+export { UiSidebarModule } from './lib/components/ui-sidebar/ui-sidebar.module'

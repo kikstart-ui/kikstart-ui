@@ -7,7 +7,6 @@ import { UiPageSidebarRouteComponent } from './ui-page-sidebar-route.component'
 
 import { UiCardModule } from '..//ui-card/ui-card.module'
 import { UiListModule } from '../ui-list/ui-list.module'
-// import { UiListItemComponent } from '../ui-list/ui-list-item.component'
 
 @NgModule({
   imports: [CommonModule, RouterModule, UiCardModule, UiListModule],
