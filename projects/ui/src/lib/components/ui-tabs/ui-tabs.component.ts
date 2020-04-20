@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { UiTab } from '../interfaces/ui-tab'
+import { UiTab } from '../../interfaces/ui-tab'
 
 @Component({
   selector: 'ui-tabs',

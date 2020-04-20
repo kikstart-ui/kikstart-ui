@@ -11,14 +11,6 @@ import { ToastrModule } from 'ngx-toastr'
 import { TruncatePipe } from './pipes/truncate.pipe'
 
 import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
-import { UiListComponent } from './components/ui-list.component'
-import { UiListItemComponent } from './components/ui-list-item.component'
-import { UiPageSidebarComponent } from './components/ui-page-sidebar.component'
-import { UiPageSidebarRouteComponent } from './components/ui-page-sidebar-route.component'
-import { UiRenderComponent } from './components/ui-render.component'
-import { UiSidebarComponent } from './components/ui-sidebar.component'
-import { UiSidebarItemComponent } from './components/ui-sidebar-item.component'
-import { UiTabsComponent } from './components/ui-tabs.component'
 import { UiUserComponent } from './components/ui-user.component'
 
 import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
@@ -40,21 +32,15 @@ import { UiLabelModule } from './components/ui-label/ui-label.module'
 import { UiLayoutModule } from './components/ui-layout/ui-layout.module'
 import { UiLinkModule } from './components/ui-link/ui-link.module'
 import { UiLinksModule } from './components/ui-links/ui-links.module'
+import { UiListModule } from './components/ui-list/ui-list.module'
 import { UiLoadingModule } from './components/ui-loading/ui-loading.module'
 import { UiNoDataModule } from './components/ui-no-data/ui-no-data.module'
+import { UiPageSidebarModule } from './components/ui-page-sidebar/ui-page-sidebar.module'
+import { UiRenderModule } from './components/ui-render/ui-render.module'
+import { UiSidebarModule } from './components/ui-sidebar/ui-sidebar.module'
+import { UiTabsModule } from './components/ui-tabs/ui-tabs.module'
 
-const COMPONENTS = [
-  UiAuthComponent,
-  UiListComponent,
-  UiListItemComponent,
-  UiPageSidebarComponent,
-  UiPageSidebarRouteComponent,
-  UiRenderComponent,
-  UiSidebarComponent,
-  UiSidebarItemComponent,
-  UiTabsComponent,
-  UiUserComponent,
-]
+const COMPONENTS = [UiAuthComponent, UiUserComponent]
 
 const EXPORT_MODULES = [
   CommonModule,
@@ -80,8 +66,13 @@ const EXPORT_MODULES = [
   UiLayoutModule,
   UiLinkModule,
   UiLinksModule,
+  UiListModule,
   UiLoadingModule,
   UiNoDataModule,
+  UiPageSidebarModule,
+  UiRenderModule,
+  UiSidebarModule,
+  UiTabsModule,
 ]
 
 @NgModule({

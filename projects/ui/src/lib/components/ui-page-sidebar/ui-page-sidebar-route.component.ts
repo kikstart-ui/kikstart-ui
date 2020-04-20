@@ -15,7 +15,7 @@ export class UiPageSidebarRouteComponent {
   public links$: Observable<any[]>
 
   constructor(private route: ActivatedRoute) {
-    this.title$ = this.route.data.pipe(map(data => data.title || ''))
-    this.links$ = this.route.data.pipe(map(data => data.links || []))
+    this.title$ = this.route.data.pipe(map((data) => data.title || ''))
+    this.links$ = this.route.data.pipe(map((data) => data.links || []))
   }
 }

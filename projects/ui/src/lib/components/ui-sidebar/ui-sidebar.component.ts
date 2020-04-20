@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
-import { UiLink } from '../interfaces/ui-link'
-import { UiService } from '../services/ui.service'
+import { UiLink } from '../../interfaces/ui-link'
+import { UiService } from '../../services/ui.service'
 
 @Component({
   selector: 'ui-sidebar',
