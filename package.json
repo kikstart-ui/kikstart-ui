@@ -39,7 +39,7 @@
     "@angular/platform-browser": "9.1.2",
     "@angular/platform-browser-dynamic": "9.1.2",
     "@angular/router": "9.1.2",
-    "@ctrl/ngx-numbered-codeblock": "3.0.0",
+    "@ctrl/ngx-numbered-codeblock": "3.0.1",
     "@ngx-formly/bootstrap": "5.6.0",
     "@ngx-formly/core": "5.6.0",
     "bootstrap": "4.4.1",
