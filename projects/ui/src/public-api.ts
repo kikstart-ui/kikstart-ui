@@ -12,7 +12,6 @@ export { UiCardHeaderComponent } from './lib/components/ui-card/ui-card-header.c
 export { UiDataComponent, UiDataShape } from './lib/components/ui-data/ui-data.component'
 export { UiLinkComponent } from './lib/components/ui-link/ui-link.component'
 export { UiPageSidebarRouteComponent } from './lib/components/ui-page-sidebar/ui-page-sidebar-route.component'
-export { UiUserComponent } from './lib/components/ui-user.component'
 
 export { ButtonHelper } from './lib/helpers/button.helper'
 export { FormHelper } from './lib/helpers/form.helper'
