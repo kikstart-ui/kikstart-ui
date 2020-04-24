@@ -1,7 +1,7 @@
 /*
  * Public API Surface of ui
  */
-export { UiAuthComponent } from './lib/components/ui-auth/ui-auth.component'
+
 export { UiAvatarSizes } from './lib/components/ui-avatar/ui-avatar.component'
 export { UiBrandSizes } from './lib/components/ui-brand/ui-brand.component'
 export { UiButtonComponent } from './lib/components/ui-button/ui-button.component'
@@ -32,6 +32,7 @@ export { TruncatePipe } from './lib/pipes/truncate.pipe'
 
 export { UiModule } from './lib/ui.module'
 
+export { UiAuthModule } from './lib/components/ui-auth/ui-auth.module'
 export { UiAvatarModule } from './lib/components/ui-avatar/ui-avatar.module'
 export { UiBrandModule } from './lib/components/ui-brand/ui-brand.module'
 export { UiButtonModule } from './lib/components/ui-button/ui-button.module'

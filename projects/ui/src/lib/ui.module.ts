@@ -10,8 +10,7 @@ import { ToastrModule } from 'ngx-toastr'
 
 import { TruncatePipe } from './pipes/truncate.pipe'
 
-import { UiAuthComponent } from './components/ui-auth/ui-auth.component'
-
+import { UiAuthModule } from './components/ui-auth/ui-auth.module'
 import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
 import { UiBrandModule } from './components/ui-brand/ui-brand.module'
 import { UiButtonModule } from './components/ui-button/ui-button.module'
@@ -39,7 +38,7 @@ import { UiRenderModule } from './components/ui-render/ui-render.module'
 import { UiSidebarModule } from './components/ui-sidebar/ui-sidebar.module'
 import { UiTabsModule } from './components/ui-tabs/ui-tabs.module'
 
-const COMPONENTS = [UiAuthComponent]
+const COMPONENTS = []
 
 const EXPORT_MODULES = [
   CommonModule,
@@ -47,6 +46,7 @@ const EXPORT_MODULES = [
   ModalModule,
   TabsModule,
   // Ui Modules will be exported until version 2
+  UiAuthModule,
   UiAvatarModule,
   UiBrandModule,
   UiButtonModule,
