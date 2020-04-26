@@ -1,7 +1,7 @@
 /*
  * Public API Surface of ui
  */
-export { UiAuthComponent } from './lib/components/ui-auth/ui-auth.component'
+
 export { UiAvatarSizes } from './lib/components/ui-avatar/ui-avatar.component'
 export { UiBrandSizes } from './lib/components/ui-brand/ui-brand.component'
 export { UiButtonComponent } from './lib/components/ui-button/ui-button.component'
@@ -12,7 +12,6 @@ export { UiCardHeaderComponent } from './lib/components/ui-card/ui-card-header.c
 export { UiDataComponent, UiDataShape } from './lib/components/ui-data/ui-data.component'
 export { UiLinkComponent } from './lib/components/ui-link/ui-link.component'
 export { UiPageSidebarRouteComponent } from './lib/components/ui-page-sidebar/ui-page-sidebar-route.component'
-export { UiUserComponent } from './lib/components/ui-user.component'
 
 export { ButtonHelper } from './lib/helpers/button.helper'
 export { FormHelper } from './lib/helpers/form.helper'
@@ -33,6 +32,7 @@ export { TruncatePipe } from './lib/pipes/truncate.pipe'
 
 export { UiModule } from './lib/ui.module'
 
+export { UiAuthModule } from './lib/components/ui-auth/ui-auth.module'
 export { UiAvatarModule } from './lib/components/ui-avatar/ui-avatar.module'
 export { UiBrandModule } from './lib/components/ui-brand/ui-brand.module'
 export { UiButtonModule } from './lib/components/ui-button/ui-button.module'
@@ -60,3 +60,4 @@ export { UiPageSidebarModule } from './lib/components/ui-page-sidebar/ui-page-si
 export { UiRenderModule } from './lib/components/ui-render/ui-render.module'
 export { UiSidebarModule } from './lib/components/ui-sidebar/ui-sidebar.module'
 export { UiTabsModule } from './lib/components/ui-tabs/ui-tabs.module'
+export { UiUserModule } from './lib/components/ui-user/ui-user.module'
