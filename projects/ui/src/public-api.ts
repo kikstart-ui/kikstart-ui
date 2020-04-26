@@ -60,3 +60,4 @@ export { UiPageSidebarModule } from './lib/components/ui-page-sidebar/ui-page-si
 export { UiRenderModule } from './lib/components/ui-render/ui-render.module'
 export { UiSidebarModule } from './lib/components/ui-sidebar/ui-sidebar.module'
 export { UiTabsModule } from './lib/components/ui-tabs/ui-tabs.module'
+export { UiUserModule } from './lib/components/ui-user/ui-user.module'

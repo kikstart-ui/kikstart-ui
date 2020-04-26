@@ -37,6 +37,7 @@ import { UiPageSidebarModule } from './components/ui-page-sidebar/ui-page-sideba
 import { UiRenderModule } from './components/ui-render/ui-render.module'
 import { UiSidebarModule } from './components/ui-sidebar/ui-sidebar.module'
 import { UiTabsModule } from './components/ui-tabs/ui-tabs.module'
+import { UiUserModule } from './components/ui-user/ui-user.module'
 
 const COMPONENTS = []
 
@@ -72,6 +73,7 @@ const EXPORT_MODULES = [
   UiRenderModule,
   UiSidebarModule,
   UiTabsModule,
+  UiUserModule,
 ]
 
 @NgModule({
