@@ -156,5 +156,8 @@
       }
     }
   },
-  "defaultProject": "kikstart-ui"
+  "defaultProject": "kikstart-ui",
+  "cli": {
+    "analytics": "e7411fbe-d4c2-4565-80ab-0b2fd5809d0a"
+  }
 }
