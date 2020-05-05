@@ -15,6 +15,7 @@ import { UiAvatarModule } from './components/ui-avatar/ui-avatar.module'
 import { UiBrandModule } from './components/ui-brand/ui-brand.module'
 import { UiButtonModule } from './components/ui-button/ui-button.module'
 import { UiCardModule } from './components/ui-card/ui-card.module'
+import { UiCartIconModule } from './components/ui-cart-icon/ui-cart-icon.module'
 import { UiCodeModule } from './components/ui-code/ui-code.module'
 import { UiCommentModule } from './components/ui-comment/ui-comment.module'
 import { UiContentModule } from './components/ui-content/ui-content.module'
@@ -52,6 +53,7 @@ const EXPORT_MODULES = [
   UiBrandModule,
   UiButtonModule,
   UiCardModule,
+  UiCartIconModule,
   UiCodeModule,
   UiCommentModule,
   UiContentModule,
