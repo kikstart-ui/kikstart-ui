@@ -85,7 +85,7 @@
     "typescript": "~3.7.5"
   },
   "resolutions": {
-    "terser-webpack-plugin": "2.3.6"
+    "terser-webpack-plugin": "3.0.1"
   },
   "husky": {
     "hooks": {
