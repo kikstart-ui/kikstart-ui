@@ -36,9 +36,9 @@ export class UiCardHeaderComponent {
   @Input() payload?: any
   @Input() buttons: UiButton[] | UiLink[]
   @Output() action = new EventEmitter()
-  @Input() set cardSubTitle(title: string) {
+  @Input() set cardSubTitle(description: string) {
     console.warn(`ui-card-header: 'cardSubTitle' input is deprecated, use 'description' instead`)
-    this.title = title
+    this.description = description
   }
 
   @Input() set cardTitle(title: string) {
