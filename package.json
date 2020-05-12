@@ -42,7 +42,7 @@
     "@ctrl/ngx-numbered-codeblock": "3.0.1",
     "@ngx-formly/bootstrap": "5.6.1",
     "@ngx-formly/core": "5.6.1",
-    "bootstrap": "4.4.1",
+    "bootstrap": "4.5.0",
     "bootswatch": "4.4.1",
     "font-awesome": "4.7.0",
     "ngx-bootstrap": "5.6.1",
