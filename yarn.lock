@@ -10685,10 +10685,10 @@ scope-analyzer@^2.0.1:
     estree-is-function "^1.0.0"
     get-assigned-identifiers "^1.1.0"
 
-scss-bundle@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/scss-bundle/-/scss-bundle-3.1.1.tgz#b5785e94a3b83180699bb046b876b9ea8a942faf"
-  integrity sha512-9nE6gJJmclkjtEatPL++RxU7KITjkZRsKYqR9W5zu2vzT4krdFiuiJVxcYeKGZz+/JGYMTUCUcDCE7Lo011sVg==
+scss-bundle@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/scss-bundle/-/scss-bundle-3.1.2.tgz#8919dd7603d01a84822e8aab5210e5b0b50c548b"
+  integrity sha512-lvxTwCKDLgzmRWhGwJ834ggtnEhs0G9FxSJRWte+NwlshVvBcQ/kOHHkpAGDpCxIMNGz/Utl0yd/MWyQAOBhqg==
   dependencies:
     "@types/archy" "^0.0.31"
     "@types/debug" "^4.1.5"
