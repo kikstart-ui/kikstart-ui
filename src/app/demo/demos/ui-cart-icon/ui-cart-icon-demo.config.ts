@@ -9,8 +9,7 @@ export const config = {
   demos: [
     DemoHelper.config({
       title: 'cart-icon',
-      description:
-        'The <code>ui-cart-icon</code> component can be used to render an avatar in various sizes.',
+      description: 'The <code>ui-cart-icon</code> component can be used to render a shopping-cart.',
       component: CartIconSimpleComponent,
       path: 'demos/ui-cart-icon',
       files: ['cart-icon-simple.component.ts', 'cart-icon-simple.component.html'],

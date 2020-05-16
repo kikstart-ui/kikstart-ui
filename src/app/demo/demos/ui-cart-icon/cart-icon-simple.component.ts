@@ -4,10 +4,5 @@ import { Component } from '@angular/core'
   templateUrl: './cart-icon-simple.component.html',
 })
 export class CartIconSimpleComponent {
-  public examples = [
-    { name: 'Small', count: 0 },
-    { name: 'Small', count: 1 },
-    { name: 'Small', count: 10 },
-    { name: 'Small', count: 99 },
-  ]
+  public examples = [{ count: 0 }, { count: 1 }, { count: 10 }, { count: 99 }]
 }
