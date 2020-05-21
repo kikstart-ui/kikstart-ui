@@ -24,6 +24,7 @@ const routes: Routes = [
         { path: '/demos/ui-no-data', label: 'ui-no-data' },
         { path: '/demos/ui-price', label: 'ui-price' },
         { path: '/demos/ui-render', label: 'ui-render' },
+        { path: '/demos/ui-timeago', label: 'ui-timeago' },
         { path: '/demos/ui-service', label: 'UiService' },
       ],
     },
@@ -107,6 +108,11 @@ const routes: Routes = [
         path: 'ui-service',
         loadChildren: () =>
           import('./demos/ui-service/ui-service-demo.module').then((m) => m.UiServiceDemoModule),
+      },
+      {
+        path: 'ui-timeago',
+        loadChildren: () =>
+          import('./demos/ui-timeago/ui-timeago-demo.module').then((m) => m.UiTimeagoDemoModule),
       },
     ],
   },
