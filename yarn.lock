@@ -1101,17 +1101,17 @@
     rxjs "6.5.4"
     webpack-sources "1.4.3"
 
-"@ngx-formly/bootstrap@5.6.1":
-  version "5.6.1"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/bootstrap/-/bootstrap-5.6.1.tgz#d6992356f10a96a841dc6b654ec5ab824a01fecd"
-  integrity sha512-XurOrECPaFOUSerCxkPIhdmT3MHHmwJuTpc14yCEXsHLYls5FvSDSBxLcGp7WXStBEkjBfs7rObU63Vhl58OKg==
+"@ngx-formly/bootstrap@5.7.2":
+  version "5.7.2"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/bootstrap/-/bootstrap-5.7.2.tgz#96e19c4a3303b7f3f0a73102c35d6213ee9c4ec9"
+  integrity sha512-54Q8jxw1JXz+1RG0F2Nvw+Ef+Xp7XH6eKQHud8+8MguD7ifI6nfY+W36Y1+wZW1K6HBXB2XP5B8pXt8U6dHBwg==
   dependencies:
     tslib "^1.9.0"
 
-"@ngx-formly/core@5.6.1":
-  version "5.6.1"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.6.1.tgz#ad3c964cd8dbf321aa9eea6bbef0b07ff07d1d7d"
-  integrity sha512-Ki4pL7B+DbJ7xynm2QmP7Dp+Ax2OjpuAEF0XEyJZtEsUAgoOyRnOJormBhIVbAr9ycAUE9FVSp5kv3RpJeeP3w==
+"@ngx-formly/core@5.7.2":
+  version "5.7.2"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.7.2.tgz#eab6cae3e9cd20152a546f11d379c661cc47d6fa"
+  integrity sha512-ze6ZR//iIot9VSXagBShsUTZeV2tO4tpySFPIA1Ow4R3FCcSF0rre4INQm8Q/tPqG1J6ut0yjSWUEtGCTBKVrA==
   dependencies:
     tslib "^1.7.1"
 
