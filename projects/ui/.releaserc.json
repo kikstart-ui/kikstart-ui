@@ -1,7 +1,0 @@
-{
-  "branches": [
-    "master",
-    { "name": "develop", "channel": "next" },
-    { "name": "pre/rc", "prerelease": "${name.replace(/^pre\\//g,'')}" }
-  ]
-}
