@@ -1,0 +1,15 @@
+<console-layout>
+  <console-navbar>
+    <span class="right">
+      <a routerLink="/" class="ml-2 p-0" *ngIf="user">
+        <ui-avatar size="sm" [avatarUrl]="user?.avatarUrl"></ui-avatar>
+      </a>
+    </span>
+  </console-navbar>
+  <console-sidebar [homeLink]="homeLink" [links]="links" baseLink="/" [brand]="brand"> </console-sidebar>
+  <div class="h-100 overflow-auto">
+    <console-page>
+      <console-thumbs [thumbs]="thumbs"></console-thumbs>
+    </console-page>
+  </div>
+</console-layout>

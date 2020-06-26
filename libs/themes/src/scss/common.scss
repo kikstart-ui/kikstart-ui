@@ -1,0 +1,169 @@
+html,
+body {
+  height: 100vh;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+select[multiple] option:checked {
+  background: var(--light) linear-gradient(0deg, var(--light) 0%, var(--light) 100%);
+}
+
+$ui-layout-bg: $body-bg !default;
+$ui-layout-bg-light: rgba(255, 255, 255, 0.075) !default;
+$ui-layout-bg-light-hover: rgba(255, 255, 255, 0.175) !default;
+$ui-layout-bg-dark: rgba(0, 0, 0, 0.075) !default;
+$ui-layout-bg-darker: darken($ui-layout-bg, 5%) !default;
+$ui-layout-bg-dark-hover: rgba(0, 0, 0, 0.175) !default;
+$ui-layout-border-light: lighten($ui-layout-bg, 5%) !default;
+$ui-layout-border-light-hover: lighten($ui-layout-bg, 15%) !default;
+
+.bg-darker {
+  background-color: $ui-layout-bg-darker !important;
+}
+.bg-lighter {
+  background-color: $ui-layout-bg-light !important;
+}
+
+.ui-sidebar {
+  width: 252px;
+  transition: width 200ms ease-in-out !important;
+
+  .ui-collapse-icon {
+    transition: transform 500ms ease-in-out !important;
+  }
+
+  .ui-sidebar-icon {
+    font-size: 1.1rem;
+  }
+  &.ui-sidebar-collapse {
+    width: 64px;
+    .ui-collapse-icon {
+      transform: rotate(135deg);
+      transition: transform 500ms ease-in-out !important;
+      margin-left: -4px;
+    }
+    .ui-sidebar-group-header,
+    .ui-sidebar-group-hidden,
+    .ui-sidebar-label {
+      display: none;
+    }
+    .ui-sidebar-header-top,
+    .ui-sidebar-group-link {
+      padding-left: 19px;
+    }
+    .ui-sidebar-group-padding-top {
+      padding-top: 10px;
+    }
+    .ui-sidebar-group-padding-bottom {
+      padding-bottom: 10px;
+    }
+  }
+}
+.ui-sidebar {
+  border-right: 1px solid $ui-layout-border-light !important;
+  white-space: nowrap;
+}
+.ui-sidebar a {
+  text-decoration: none;
+}
+.ui-sidebar div:focus,
+.ui-sidebar a:focus {
+  outline: none;
+}
+.ui-sidebar .active a {
+  color: var(--primary) !important;
+}
+.ui-sidebar a.ui-sidebar-header-top-link {
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ui-sidebar a.ui-sidebar-header-top-link i {
+  margin-right: 16px !important;
+}
+.ui-sidebar .ui-sidebar-item {
+  background-color: inherit !important;
+  border: 0;
+  white-space: nowrap;
+}
+.ui-sidebar .ui-sidebar-item.active {
+  margin-top: 0;
+}
+.ui-sidebar .ui-sidebar-item:hover {
+  background-color: $ui-layout-bg-light !important;
+}
+.ui-sidebar .ui-sidebar-item-summary {
+  color: rgba(255, 255, 255, 0.5);
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ui-sidebar .ui-sidebar-header-top {
+  padding: 18px 18px 18px 22px;
+  font-size: 14px;
+  border-bottom: 1px solid $ui-layout-border-light !important;
+}
+.ui-sidebar .ui-sidebar-group-header {
+  //background-color: $ui-layout-bg-light;
+  padding: 20px 24px 0;
+  font-size: 14px;
+}
+.ui-sidebar .ui-sidebar-group {
+  border-bottom: 1px solid $ui-layout-border-light !important;
+}
+.ui-sidebar .ui-sidebar-group-padding-top {
+  padding-top: 20px;
+}
+.ui-sidebar .ui-sidebar-group-padding-bottom {
+  padding-bottom: 20px;
+}
+
+.ui-sidebar .ui-sidebar-group-link {
+  background-color: $ui-layout-bg-light;
+  padding: 5px 5px 5px 22px;
+  font-size: 14px;
+}
+.ui-sidebar .ui-sidebar-group-visible {
+  background-color: $ui-layout-bg-light;
+}
+.ui-sidebar-group .ui-sidebar-group-icon {
+  opacity: 0;
+  transition: opacity 400ms ease-in-out !important;
+}
+.ui-sidebar-group:hover .ui-sidebar-group-icon {
+  opacity: 1;
+}
+.ui-sidebar-chevron-right {
+  display: inline-block;
+  border-top: 3px solid $text-muted;
+  border-right: 3px solid $text-muted;
+  width: 9px;
+  height: 9px;
+}
+.ui-collapse-icon-wrapper {
+  width: 30px;
+  text-align: center;
+}
+.ui-collapse-icon {
+  display: inline-block;
+  border-top: 3px solid $text-muted;
+  border-left: 3px solid $text-muted;
+  width: 9px;
+  height: 9px;
+  transform: rotate(-45deg);
+}
+.ui-sidebar-group-hidden .ui-sidebar-chevron-right {
+  transform: rotate(135deg);
+  opacity: 0;
+  transition: all 200ms ease-in-out !important;
+}
+.ui-sidebar-group-visible .ui-sidebar-chevron-right {
+  transform: rotate(-45deg);
+  opacity: 1;
+  transition: all 200ms ease-in-out !important;
+}

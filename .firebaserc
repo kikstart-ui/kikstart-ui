@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "kikstart-ui": {
+      "hosting": {
+        "demo": [
+          "kikstart-ui"
+        ]
+      }
+    }
+  }
+}

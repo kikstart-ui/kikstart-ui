@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="overflow-auto py-3" [style.height]="'427px'">
+      <ng-container *ngFor="let preset of presets">
+        <div class="span mr-2" [ngStyle]="preset.payload" w>
+          <ui-button buttonClass="py-2 border-0 btn-block" [button]="preset"></ui-button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div [ngStyle]="backgroundStyle" style="height: 100%;">
+      {{ color1.name }}
+      {{ color2.name }}
+    </div>
+  </div>
+</div>
+
+<div class="my-3 text-center">
+  <ui-buttons [buttons]="buttons"></ui-buttons>
+</div>
+<div class="my-3 text-center">
+  <input
+    class="form-control form-control-lg text-center"
+    type="text"
+    placeholder=".form-control-lg"
+    [value]="backgroundStyle.backgroundImage"
+  />
+</div>
+<div class="row">
+  <div class="col-md-6 text-center">
+    <div>
+      <ng-container *ngFor="let color of colors; let i = index; let first = first">
+        <ng-container *ngIf="i % 14 === 0 && !first">
+          <div class="mb-1"></div>
+        </ng-container>
+        <ui-button
+          (action)="selectColor1(color.name)"
+          buttonClass="bg-{{ color.name }} pl-1 pr-2"
+          [button]="{ label: ' ' }"
+        ></ui-button>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="col-md-6 text-center">
+    <div>
+      <ng-container *ngFor="let color of colors; let i = index; let first = first">
+        <ng-container *ngIf="i % 14 === 0 && !first">
+          <div class="mb-1"></div>
+        </ng-container>
+        <ui-button
+          (action)="selectColor2(color.name)"
+          buttonClass="bg-{{ color.name }} pl-1 pr-2"
+          [button]="{ label: ' ' }"
+        ></ui-button>
+      </ng-container>
+    </div>
+  </div>
+</div>

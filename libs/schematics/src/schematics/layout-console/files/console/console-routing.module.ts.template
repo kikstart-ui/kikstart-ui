@@ -1,0 +1,35 @@
+import { Routes } from '@angular/router';
+
+import { ConsoleComponent } from './console.component';
+
+const dummyRoute = (path: string, title?: string) => ({
+  path,
+  data: {
+    title,
+  },
+  loadChildren: () =>
+    import('./console-dummy/console-dummy.module.ts').then(
+      (m) => m.ConsoleDummyModule
+    ),
+});
+
+export const routes: Routes = [
+  {
+    path: '',
+    component: ConsoleComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./console-dashboard/console-dashboard.module.ts').then(
+            (m) => m.ConsoleDashboardModule
+          ),
+      },
+      dummyRoute('layouts', 'Layouts'),
+      dummyRoute('themes', 'Themes'),
+      dummyRoute('components', 'Components'),
+      dummyRoute('users', 'Users'),
+      dummyRoute('**'),
+    ],
+  },
+];

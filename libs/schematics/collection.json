@@ -1,0 +1,22 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "schematics",
+  "version": "0.0.1",
+  "schematics": {
+    "ng-add": {
+      "description": "Use `ng add <package-name>`",
+      "factory": "./src/schematics/ng-add/ng-add",
+      "schema": "./src/schematics/ng-add/schema.json"
+    },
+    "schematics": {
+      "factory": "./src/schematics/schematics/schematic",
+      "schema": "./src/schematics/schematics/schema.json",
+      "description": "schematics schematic"
+    },
+    "layout-console": {
+      "factory": "./src/schematics/layout-console/schematic",
+      "schema": "./src/schematics/layout-console/schema.json",
+      "description": "layout-console schematic"
+    }
+  }
+}

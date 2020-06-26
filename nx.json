@@ -1,0 +1,121 @@
+{
+  "npmScope": "kikstart-ui",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "create-kikstart-ui": {
+      "tags": []
+    },
+    "demo": {
+      "tags": ["app:demo"]
+    },
+    "demo-e2e": {
+      "tags": ["app:demo"],
+      "implicitDependencies": ["demo"]
+    },
+    "layout-console": {
+      "tags": []
+    },
+    "layout-docs": {
+      "tags": []
+    },
+    "layout-web": {
+      "tags": []
+    },
+    "lib-editorjs": {
+      "tags": []
+    },
+    "schematics": {
+      "tags": []
+    },
+    "schematics-e2e": {
+      "tags": [],
+      "implicitDependencies": ["schematics"]
+    },
+    "themes": {
+      "tags": []
+    },
+    "ui-avatar": {
+      "tags": ["ui-component"]
+    },
+    "ui-brand": {
+      "tags": ["ui-component"]
+    },
+    "ui-button": {
+      "tags": ["ui-component"]
+    },
+    "ui-card": {
+      "tags": ["ui-component"]
+    },
+    "ui-cart-icon": {
+      "tags": ["ui-component"]
+    },
+    "ui-code": {
+      "tags": ["ui-component"]
+    },
+    "ui-comment": {
+      "tags": ["ui-component"]
+    },
+    "ui-footer": {
+      "tags": ["ui-component"]
+    },
+    "ui-form": {
+      "tags": ["ui-component"]
+    },
+    "ui-hero": {
+      "tags": ["ui-component"]
+    },
+    "ui-icon": {
+      "tags": ["ui-component"]
+    },
+    "ui-label": {
+      "tags": ["ui-component"]
+    },
+    "ui-link": {
+      "tags": ["ui-component"]
+    },
+    "ui-list": {
+      "tags": ["ui-component"]
+    },
+    "ui-loading": {
+      "tags": ["ui-component"]
+    },
+    "ui-markdown": {
+      "tags": ["ui-component"]
+    },
+    "ui-no-data": {
+      "tags": ["ui-component"]
+    },
+    "ui-price": {
+      "tags": ["ui-component"]
+    },
+    "ui-render": {
+      "tags": ["ui-component"]
+    },
+    "ui-sidebar": {
+      "tags": ["ui-component"]
+    },
+    "ui-tabs": {
+      "tags": ["ui-component"]
+    },
+    "ui-timeago": {
+      "tags": ["ui-component"]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'themes/src/scss/dark';
+@import 'themes/src/scss/colors';
+
+@import '~prismjs/themes/prism-okaidia.css';
+// TODO: Fix this in the ui-code component or upstream.
+pre.codeblock {
+  margin: 0;
+}
+
+.grd-kikstart {
+  background-image: linear-gradient(90deg, var(--deep-purple-700) 0%, var(--red-900) 100%);
+}
+
+.grd-kikstart-2 {
+  background-image: linear-gradient(90deg, var(--blue-700) 0%, var(--pink-900) 100%);
+}
+
+.grd-kikstart-3 {
+  background-image: linear-gradient(90deg, var(--purple-900) 0%, var(--yellow-800) 100%);
+}
+
+.grd-kikstart-4 {
+  background-image: linear-gradient(315deg, var(--deep-purple-700) 0%, var(--red-900) 100%);
+}

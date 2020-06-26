@@ -1,0 +1,15 @@
+<ng-container *ngFor="let example of examples">
+  <h3 class="my-3 my-md-5">{{ example.label }}</h3>
+  <div class="row">
+    <ng-container *ngFor="let icon of example.icons">
+      <div class="col-md-2 text-center">
+        <ui-icon
+          [spin]="icon.spin || false"
+          [pulse]="icon.pulse || false"
+          [size]="icon.size || '3x'"
+          [icon]="icon.icon"
+        ></ui-icon>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

@@ -1,0 +1,30 @@
+{
+  "name": "create-kikstart-ui",
+  "version": "2.0.0-alpha.2",
+  "description": "Create a new Kikstart UI app",
+  "author": "Bram Borggreve (https://github.com/beeman)",
+  "nxpm": {
+    "allowPackageName": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beeman/kikstart-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/beeman/kikstart-ui/issues"
+  },
+  "keywords": [
+    "kikstart-ui",
+    "kikstart"
+  ],
+  "license": "MIT",
+  "bin": {
+    "create-kikstart-ui": "./lib/create-kikstart-ui.js"
+  },
+  "dependencies": {
+    "inquirer": "^7.1.0",
+    "tmp": "0.0.33",
+    "yargs": "^11.0.0",
+    "yargs-parser": "10.0.0"
+  }
+}

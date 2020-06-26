@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="overflow-auto py-3" [style.height]="'427px'">
+      <ng-container *ngFor="let color of colors; let i = index; let first = first">
+        <ng-container *ngIf="i % 14 === 0 && !first">
+          <div class="mb-5"></div>
+        </ng-container>
+        <span
+          (click)="selectColor(color)"
+          class="p-3 mr-1 cursor-pointer"
+          [class]="'bg-' + color.name"
+          [attr.title]="color.name"
+        >
+        </span>
+      </ng-container>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="selected">
+      <button
+        class="btn btn-lg btn-outline-secondary text-{{ selected.name }} border-{{ selected.name }} mb-3"
+        [style.background-color]="selected.text"
+        (click)="random()"
+      >
+        <ui-icon icon="sync" class="text-{{ selected.name }}"></ui-icon> Random Color
+      </button>
+      <button
+        class="ml-2 btn btn-lg btn-outline-secondary border-{{ selected.text }} mb-3"
+        [style.background-color]="selected.color"
+        [style.color]="selected.text"
+        (click)="random()"
+      >
+        <ui-icon icon="sync" [style.color]="selected.text"></ui-icon> Random Color
+      </button>
+
+      <h4
+        class="my-0 py-4 text-{{ selected.name }} text-center border border-{{ selected.name }}"
+        [style.background-color]="selected.text"
+      >
+        {{ selected.name }}
+      </h4>
+      <div class="py-5 text-center cursor-pointer" [class]="'bg-' + selected.name" [style.color]="selected.text">
+        <h4 class="mb-4">{{ selected.color }}</h4>
+        <pre>bg-{{ selected.name }}</pre>
+        <pre>border-{{ selected.name }}</pre>
+        <pre>text-{{ selected.name }}</pre>
+        <pre>var(--{{ selected.name }})</pre>
+      </div>
+    </div>
+  </div>
+</div>

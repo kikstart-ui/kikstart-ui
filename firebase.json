@@ -1,0 +1,15 @@
+{
+  "hosting": [
+    {
+      "target": "demo",
+      "public": "dist/apps/demo",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

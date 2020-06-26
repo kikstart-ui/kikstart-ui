@@ -1,0 +1,6 @@
+export * from './lib/docs-layout/docs-layout.component'
+export * from './lib/docs-layout/docs-layout.module'
+export * from './lib/docs-sidebar/docs-sidebar-item.component'
+export * from './lib/docs-sidebar/docs-sidebar.component'
+export * from './lib/docs-sidebar/docs-sidebar.module'
+export * from './lib/layout-docs.module'

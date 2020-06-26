@@ -1,0 +1,30 @@
+<ui-list class="d-block mb-3 mb-md-5">
+  <ng-container *ngFor="let item of items">
+    <ui-list-item
+      [title]="item.title"
+      [description]="item.description"
+      [active]="item.active"
+      [buttons]="buttons"
+      [payload]="item"
+    >
+      <span class="right">
+        <small class="text-muted mr-2"> Updated 2 days ago </small>
+      </span>
+    </ui-list-item>
+  </ng-container>
+</ui-list>
+
+<ui-list class="d-block mb-3 mb-md-5">
+  <ng-container *ngFor="let item of items">
+    <ui-list-item
+      [link]="{ label: item.title, icon: 'fa-globe', path: '/demos/ui-list' }"
+      [buttons]="buttons"
+      [payload]="item"
+    >
+      <span class="right"> </span>
+      <span class="bottom">
+        <span class="small text-muted">Some more information</span>
+      </span>
+    </ui-list-item>
+  </ng-container>
+</ui-list>

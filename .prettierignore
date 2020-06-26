@@ -1,0 +1,5 @@
+package.json
+dist
+coverage
+tmp
+libs/themes/src/vendor

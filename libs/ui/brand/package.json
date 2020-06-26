@@ -1,0 +1,12 @@
+{
+  "name": "@kikstart-ui/ui-brand",
+  "version": "2.0.0-alpha.2",
+  "peerDependencies": {
+    "@angular/common": "^9.1.9",
+    "@angular/core": "^9.1.9"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "license": "MIT"
+}

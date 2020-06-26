@@ -1,0 +1,225 @@
+// Modified version of Darkly+Superhero 4.3.1 from Bootswatch
+// The MIT License (MIT) Copyright (c) 2013 Thomas Park
+
+//
+// Color system
+//
+
+$white: #fff !default;
+$gray-100: #ebebeb !default;
+$gray-200: #4e5d6c !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$blue: #2c3e50 !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #d9534f !default;
+$orange: #fa8334 !default;
+$yellow: #f0ad4e !default;
+$green: #5cb85c !default;
+$teal: #20c997 !default;
+$cyan: #5bc0de !default;
+
+$primary: $orange !default;
+$secondary: $gray-200 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: lighten($gray-200, 35%) !default;
+$dark: $gray-200 !default;
+
+$yiq-contrasted-threshold: 185 !default;
+
+// Body
+
+$body-bg: $blue !default;
+$body-color: $gray-100 !default;
+
+// Links
+
+$link-color: $white !default;
+
+// Fonts
+
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif,
+  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
+
+$text-muted: rgba(255, 255, 255, 0.4) !default;
+
+$font-size-base: 0.9375rem !default;
+
+$h1-font-size: 3rem !default;
+$h2-font-size: 2.5rem !default;
+$h3-font-size: 2rem !default;
+
+// Tables
+$table-accent-bg: rgba($white, 0.05);
+$table-hover-bg: rgba($white, 0.075);
+
+$table-border-color: rgba($black, 0.15);
+
+$table-head-bg: $light;
+
+$table-dark-bg: $light;
+$table-dark-border-color: $gray-200;
+$table-dark-color: $body-bg;
+
+// Forms
+
+$input-bg: $dark !default;
+$input-color: $white !default;
+$input-border-color: darken($secondary, 10%) !default;
+$input-disabled-bg: $secondary !default;
+
+$input-border-color: $body-bg !default;
+
+$input-group-addon-color: $gray-500 !default;
+$input-group-addon-bg: $gray-700 !default;
+
+$custom-file-color: $gray-500 !default;
+$custom-file-border-color: $body-bg !default;
+
+// Dropdowns
+
+// Dropdowns
+
+$dropdown-bg: $gray-200;
+$dropdown-divider-bg: rgba($black, 0.15);
+
+$dropdown-link-color: $body-color;
+$dropdown-link-hover-color: $dropdown-link-color;
+$dropdown-link-hover-bg: $table-hover-bg;
+
+$dropdown-bg: $gray-900 !default;
+$dropdown-border-color: $gray-700 !default;
+$dropdown-divider-bg: $gray-700 !default;
+
+$dropdown-link-color: $white !default;
+$dropdown-link-hover-color: $white !default;
+$dropdown-link-hover-bg: $primary !default;
+
+// Navs
+
+$nav-link-padding-x: 2rem !default;
+$nav-link-disabled-color: $gray-500 !default;
+
+$nav-tabs-border-color: $gray-200 !default;
+$nav-tabs-link-hover-border-color: $nav-tabs-border-color $nav-tabs-border-color transparent !default;
+$nav-tabs-link-active-color: $body-color !default;
+$nav-tabs-link-active-border-color: $gray-200 !default;
+
+// Navbar
+
+$navbar-padding-y: 0.7rem !default;
+
+$navbar-dark-color: rgba($white, 0.75) !default;
+$navbar-dark-hover-color: $white !default;
+
+$navbar-light-color: $white !default;
+$navbar-light-hover-color: $success !default;
+$navbar-light-active-color: $white !default;
+$navbar-light-disabled-color: rgba($white, 0.3) !default;
+$navbar-light-toggler-border-color: rgba($white, 0.1) !default;
+
+// Pagination
+
+//$pagination-hover-bg:               $nav-link-disabled-color !default;
+//$pagination-hover-border-color:     $pagination-border-color !default;
+//
+
+//$pagination-disabled-bg:            $pagination-bg !default;
+//$pagination-disabled-border-color:  $pagination-border-color !default;
+
+$pagination-bg: $gray-200 !default;
+$pagination-bg: $secondary !default;
+$pagination-border-width: 0 !default;
+$pagination-border-color: transparent !default;
+
+$pagination-hover-color: $white !default;
+$pagination-hover-bg: lighten($secondary, 10%) !default;
+$pagination-hover-border-color: transparent !default;
+
+$pagination-active-bg: $pagination-hover-bg !default;
+$pagination-active-border-color: transparent !default;
+
+$pagination-disabled-color: $nav-link-disabled-color !default;
+$pagination-disabled-bg: darken($secondary, 5%) !default;
+$pagination-disabled-border-color: transparent !default;
+
+// Jumbotron
+
+$jumbotron-bg: $gray-800 !default;
+
+// Cards
+
+$card-cap-bg: $table-hover-bg !default;
+$card-bg: $gray-200 !default;
+
+// Popovers
+
+// Popovers
+//$popover-bg:                        $gray-200 !default;
+//$popover-header-bg:                 $table-hover-bg !default;
+
+$popover-bg: $gray-800 !default;
+
+$popover-header-bg: $gray-700 !default;
+
+// Modals
+
+// Modals
+
+//$modal-content-bg:                  $gray-200 !default;
+//$modal-header-border-color:         rgba(0,0,0,.2) !default;
+
+$modal-content-bg: $gray-800 !default;
+$modal-content-border-color: $gray-700 !default;
+
+$modal-header-border-color: $gray-700 !default;
+
+// Progress bars
+
+$progress-height: 0.625rem !default;
+$progress-font-size: 0.625rem !default;
+$progress-bg: $gray-700 !default;
+
+// List group
+$list-group-bg: $gray-200 !default;
+$list-group-border-color: darken($secondary, 10%) !default;
+
+$list-group-hover-bg: $nav-link-disabled-color !default;
+
+$list-group-disabled-color: $nav-link-disabled-color !default;
+
+$list-group-action-color: $white !default;
+$list-group-action-hover-color: $white !default;
+
+// Breadcrumbs
+$breadcrumb-divider-color: $body-color !default;
+$breadcrumb-active-color: $body-color !default;
+
+$breadcrumb-bg: $gray-700 !default;
+
+// Close
+
+$close-color: $white !default;
+$close-text-shadow: none !default;
+
+// Code
+
+$pre-color: inherit !default;
+
+// Toasts
+$toast-color: $light !default;
+$toast-background-color: $dark !default;
+$toast-header-color: $white !default;
+$toast-header-background-color: $secondary !default;

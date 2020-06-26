@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "NgAddDemo",
+  "title": "NgAddDemo",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project"
+    },
+    "theme": {
+      "description": "Select the theme",
+      "type": "string",
+      "enum": ["dark", "light", "pirate"],
+      "default": "dark"
+    },
+    "skipInstall": {
+      "type": "boolean",
+      "default": false,
+      "description": "Skip installing packages"
+    }
+  },
+  "required": []
+}
