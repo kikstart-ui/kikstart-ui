@@ -1,6 +1,6 @@
 {
   "name": "@kikstart-ui/lib-editorjs",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "peerDependencies": {
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9"
