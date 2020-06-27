@@ -54,7 +54,7 @@ export class AppHomeComponent {
       links: [
         {
           label: 'Clone Starter',
-          url: 'https://github.com/beeman/kikstart-ui-starter/generate',
+          url: 'https://github.com/kikstart-ui/kikstart-ui-sandbox/generate',
           iconAfter: 'ml-2 fa fa-angle-double-right',
         },
       ],
