@@ -47,6 +47,7 @@ export class AppLayoutComponent {
       LayoutConsoleHelper.link('/demos/ui-icon', 'Icon', 'fa-cube'),
       LayoutConsoleHelper.link('/demos/ui-list', 'List', 'fa-list'),
       LayoutConsoleHelper.link('/demos/ui-markdown', 'Markdown', 'fa-file-text'),
+      LayoutConsoleHelper.link('/demos/ui-navbar', 'Navbar', 'fa-compass'),
       LayoutConsoleHelper.link('/demos/ui-no-data', 'No Data', 'fa-warning'),
       LayoutConsoleHelper.link('/demos/ui-price', 'Price', 'fa-dollar'),
       LayoutConsoleHelper.link('/demos/ui-render', 'Render', 'fa-cube'),

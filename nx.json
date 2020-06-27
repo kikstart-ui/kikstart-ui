@@ -116,6 +116,9 @@
     },
     "ui-timeago": {
       "tags": ["ui-component"]
+    },
+    "ui-navbar": {
+      "tags": []
     }
   }
 }

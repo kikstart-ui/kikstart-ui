@@ -79,6 +79,10 @@ export const routes: Routes = [
     loadChildren: () => import('./demos/ui-markdown/ui-markdown-demo.module').then((m) => m.UiMarkdownDemoModule),
   },
   {
+    path: 'ui-navbar',
+    loadChildren: () => import('./demos/ui-navbar/ui-navbar-demo.module').then((m) => m.UiNavbarDemoModule),
+  },
+  {
     path: 'ui-no-data',
     loadChildren: () => import('./demos/ui-no-data/ui-no-data-demo.module').then((m) => m.UiNoDataDemoModule),
   },

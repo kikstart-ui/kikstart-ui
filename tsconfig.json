@@ -40,6 +40,7 @@
       "@kikstart-ui/ui-list": ["libs/ui/list/src/index.ts"],
       "@kikstart-ui/ui-loading": ["libs/ui/loading/src/index.ts"],
       "@kikstart-ui/ui-markdown": ["libs/ui/markdown/src/index.ts"],
+      "@kikstart-ui/ui-navbar": ["libs/ui/navbar/src/index.ts"],
       "@kikstart-ui/ui-no-data": ["libs/ui/no-data/src/index.ts"],
       "@kikstart-ui/ui-price": ["libs/ui/price/src/index.ts"],
       "@kikstart-ui/ui-render": ["libs/ui/render/src/index.ts"],
