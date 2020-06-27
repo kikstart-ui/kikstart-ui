@@ -32,11 +32,11 @@ export class UiNavbarComponent {
   @Input() public logo: string
   @Input() public homeLink = '/'
   @Input() public links: { path: string; label: string }[]
-  @Input() public style: 'dark' | 'light' | 'primary' | 'secondary' | 'success' | 'info' | 'danger' | 'warning' =
+  @Input() public navbarStyle: 'dark' | 'light' | 'primary' | 'secondary' | 'success' | 'info' | 'danger' | 'warning' =
     'light'
   @Input() public title: string
 
   get navbarClass(): string {
-    return `navbar-${this.style} bg-${this.style} `
+    return `navbar-${this.navbarStyle} bg-${this.navbarStyle} `
   }
 }
