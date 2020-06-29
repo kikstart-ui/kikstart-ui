@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { FormlyFieldConfig } from '@ngx-formly/core'
-import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 import { BsModalService } from 'ngx-bootstrap/modal'
 import { Observable } from 'rxjs'
 import { UiFormDialogComponent } from './ui-form-dialog.component'
