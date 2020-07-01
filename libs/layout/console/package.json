@@ -1,6 +1,6 @@
 {
   "name": "@kikstart-ui/layout-console",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "peerDependencies": {
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
