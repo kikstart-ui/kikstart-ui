@@ -1,6 +1,6 @@
 {
   "name": "create-kikstart-ui",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Create a new Kikstart UI app",
   "author": "Bram Borggreve (https://github.com/beeman)",
   "nxpm": {
