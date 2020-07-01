@@ -11,7 +11,7 @@ import { THEMES } from '../version'
   exports: [ThemePickerComponent],
 })
 export class ThemesModule {
-  public static forRoot(config: ThemesConfig = { themes: THEMES }): ModuleWithProviders {
+  public static forRoot(config: ThemesConfig = { themes: THEMES }): ModuleWithProviders<ThemesModule> {
     return {
       ngModule: ThemesModule,
       providers: [{ provide: ThemesConfig, useValue: config }, ThemesService],
