@@ -1,5 +1,8 @@
 {
   "npmScope": "kikstart-ui",
+  "affected": {
+    "defaultBase": "main"
+  },
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
