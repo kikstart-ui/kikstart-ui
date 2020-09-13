@@ -25,6 +25,6 @@
     "inquirer": "^7.1.0",
     "tmp": "0.0.33",
     "yargs": "^11.0.0",
-    "yargs-parser": "10.0.0"
+    "yargs-parser": "20.0.0"
   }
 }
